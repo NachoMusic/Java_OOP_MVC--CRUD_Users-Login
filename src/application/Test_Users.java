@@ -36,8 +36,9 @@ public class Test_Users {
 					language.getProperty("lang"),"Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] currencyconfig = {"Euro €", "Dollar $", "Libra £",language.getProperty("go_back"),language.getProperty("exit")};
-			String[] languageconfig = {"English", "Spanish",language.getProperty("go_back"),language.getProperty("exit")};
-			String[] decimalsconfig = {"1 Decimal","2 Decimals","3 Decimals",language.getProperty("go_back"),language.getProperty("exit")};
+			String[] languageconfig = {language.getProperty("english"), language.getProperty("spanish"),language.getProperty("go_back"),language.getProperty("exit")};
+			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),language.getProperty("go_back"),
+					language.getProperty("exit")};
 			
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
 			switch(option){
