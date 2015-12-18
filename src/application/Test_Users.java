@@ -198,7 +198,7 @@ public class Test_Users {
 						}				
 						break;
 					case 3://Language
-						option=Menus.menu(languageconfig, "Date onfig", "Configuration about the date");
+						option=Menus.menu(languageconfig, language.getProperty("dateconf"), language.getProperty("dateconf2"));
 						switch(option){
 						case 0:
 							configApp.setLanguage_config("English");
