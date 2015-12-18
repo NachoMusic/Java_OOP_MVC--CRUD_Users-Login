@@ -123,7 +123,7 @@ public class Test_Users {
 					language.getProperty("config"));
 					switch(option){
 					case 0://date format
-						option=Menus.menu(dateconfig, "Date config", "Configuration about the date");
+						option=Menus.menu(dateconfig,language.getProperty("dateconf2"), language.getProperty("dateconf"));
 						switch(option){
 						case 0:// dd/mm/yyyy
 							configApp.setDate_config(0);
