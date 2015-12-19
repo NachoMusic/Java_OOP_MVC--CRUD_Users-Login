@@ -177,7 +177,7 @@ public class Test_Users {
 						}				
 						break;
 					case 2://Decimals
-						option=Menus.menu(decimalsconfig, "Decimals config", "Configuration about the decimals");
+						option=Menus.menu(decimalsconfig, language.getProperty("decimalsconf2"), language.getProperty("decimalsconf"));
 						switch(option){
 						case 0:
 							configApp.setDecimals_config(1);
