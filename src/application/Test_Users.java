@@ -2,6 +2,7 @@ package application;
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
+import application.modules.users.kernel.FileSave;
 import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
@@ -49,6 +50,7 @@ public class Test_Users {
 					switch(option){
 					case 0:						
 						admin1=functions_users.newadmin(configApp, language);
+						FileSave.saveadmin(admin1);
 						break;
 					case 1:
 						functions_users.getuser(admin1,0,configApp,language);
