@@ -2,6 +2,11 @@ package application.models;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import javax.swing.JOptionPane;
+
+import application.utils.Functions;
+import application.utils.Validate;
+
 public class Dates {
 	private String date;
 	//constructor
@@ -126,5 +131,86 @@ public class Dates {
 			resoult=3;
 		}
 		return resoult;
+	}
+	public String insertDate(String arg1, String arg2, Config arg){
+		boolean validate=false;
+		String date="",month="",day="",year="";
+		int daynum=0,yearnum=0;
+		
+		while(!validate){
+			month="";
+			day="";
+			year="";
+			switch(arg.getDate_config()){
+			case 0: 
+				validate=Validate.validateDate1(date=Functions.validatestring(arg1,arg2));
+				break;
+			case 1:
+				validate=Validate.validateDate2(date=Functions.validatestring(arg1,arg2));
+				break;
+			case 2:
+				validate=Validate.validateDate3(date=Functions.validatestring(arg1,arg2));
+				break;
+			case 3:
+				validate=Validate.validateDate4(date=Functions.validatestring(arg1,arg2));
+				break;
+			}
+			try{
+				if(arg.getDate_config()<2){
+				day+=date.charAt(0);
+				day+=date.charAt(1);
+				month+=date.charAt(3);
+				month+=date.charAt(4);
+				year+=date.charAt(6);
+				year+=date.charAt(7);
+				year+=date.charAt(8);
+				year+=date.charAt(9);
+				}
+				else{
+				day+=date.charAt(8);
+				day+=date.charAt(9);
+				month+=date.charAt(5);
+				month+=date.charAt(6);
+				year+=date.charAt(0);
+				year+=date.charAt(1);
+				year+=date.charAt(2);
+				year+=date.charAt(3);
+				}
+				daynum=Integer.parseInt(day);
+				yearnum=Integer.parseInt(year);
+			}catch(Exception e){}
+			switch(month){
+			case "02"://February
+				if(daynum>29){
+					validate=false;
+				}
+				if(daynum==29&&yearnum%4!=0){
+					validate=false;
+				}
+				break;
+			case "04"://April
+				if(daynum>30){
+					validate=false;
+				}
+				break;
+			case "06"://June
+				if(daynum>30){
+					validate=false;
+				}
+				break;
+			case "09"://September
+				if(daynum>30){
+					validate=false;
+				}
+				break;
+			case "11"://November
+				if(daynum>30){
+					validate=false;
+				}
+			}
+			if(!validate)
+				JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
+		}
+		return date;
 	}
 }

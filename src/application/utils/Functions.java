@@ -142,43 +142,4 @@ public class Functions {
 		}
 		return a;
 	}
-	//Sum
-	public static void sum(int []v){
-		v[0]=Functions.validateint("Type a number to sum", "First term");
-		v[1]=Functions.validateint("Type another number to sum", "Second term");
-		v[2]=v[0]+v[1];
-	}
-	//Subtraction
-	public static void subtraction(int []v){
-		v[0]=Functions.validateint("Type a number to subtract", "First subtracting");
-		v[1]=Functions.validateint("Type another number to subtract", "Second subtracting");
-		v[2]=v[0]-v[1];
-	}
-	//Multiplication
-	public static void multiplication(int []v){
-		v[0]=Functions.validateint("Type a number to multiply", "First multiplying");
-		v[1]=Functions.validateint("Type another number to multiply", "Second multiplying");
-		v[2]=v[0]*v[1];
-	}
-	//Division
-	public static void division(int []v){
-			v[0]=Functions.validateint("Type a number to divide", "Dividend");
-			v[1]=Functions.validateintdif0("Type another number to divide", "Divider");
-			v[2]=v[0]/v[1];
-	}
-	//Average
-	public static float average(int []v){
-		float average=0;
-		
-		for(int i = 0; i<v.length;i++){
-			average+=v[i];
-		}
-		if(v.length==0)
-			JOptionPane.showMessageDialog(null, "The array is empty");
-		else
-			average/=v.length;
-		return average;
-	}
-	
-	
 }
