@@ -6,6 +6,7 @@ import application.modules.users.kernel.FileSave;
 import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
+import application.modules.users.utils.Arraylist;
 import application.modules.users.utils.functions_users;
 import application.utils.Menus;
 
@@ -26,13 +27,14 @@ public class Test_Users {
 		admin dummy2 = new admin("12345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
+		Arraylist admins = new Arraylist();
 		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
 					language.getProperty("registered_user"),language.getProperty("config"),
 					language.getProperty("exit")};
 			String[] vec1 = {language.getProperty("create"), language.getProperty("change_data"), language.getProperty("print_data"),
-					language.getProperty("go_back"), language.getProperty("exit")};
+					"Delete","Find","Sort by",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
 					language.getProperty("lang"),"Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
@@ -49,19 +51,31 @@ public class Test_Users {
 					option=Menus.menu(vec1, language.getProperty("admin"), language.getProperty("application_users"));
 					switch(option){
 					case 0:						
-						admin1=functions_users.newadmin(configApp, language);
-						FileSave.saveadmin(admin1);
+						//admin1=functions_users.newadmin(configApp, language);
+						admins.addData(functions_users.newadmin(configApp, language));
+						//FileSave.saveadmin(admin1); for saving on files, will come eventually
 						break;
 					case 1:
 						functions_users.getuser(admin1,0,configApp,language);
 						break;
 					case 2:
-						JOptionPane.showMessageDialog(null,admin1.toString(configApp));
+						//JOptionPane.showMessageDialog(null,admin1.toString(configApp));
+						admin[] adminsvec = admins.printArraylist(); 
+						for(int i = 0;i<adminsvec.length;i++){
+							JOptionPane.showMessageDialog(null,adminsvec[i].toString(configApp));
+						}
+						
 						break;
-					case 3:
+					case 3://Delete
+						break;
+					case 4://Find
+						break;
+					case 5://Sort by
+						break;
+					case 6:
 						continuar2=false;
 						break;
-					case 4:
+					case 7:
 						continuar2=false;
 						continuar=4;
 						break;
