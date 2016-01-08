@@ -1,8 +1,9 @@
 package application;
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
-import application.modules.users.kernel.FileSave;
 import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
@@ -29,6 +30,7 @@ public class Test_Users {
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
 		Arraylist admins = new Arraylist();
+		//ArrayList<admin> adminAL = new ArrayList();
 		admin[] adminsvec=null;
 		
 		while(continuar!=4){
@@ -59,7 +61,13 @@ public class Test_Users {
 						adminsvec = admins.printArraylist(); 
 						break;
 					case 1:
-						functions_users.getuser(admin1,0,configApp,language);
+						try{
+							functions_users.getuser(admins.getData(Functions.validateint("Type the number of"
+									+ " the admin to change", "Change users")+1),0,configApp,language);
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(null,"You have to create an admin first");
+						}
+						
 						break;
 					case 2:
 						//JOptionPane.showMessageDialog(null,admin1.toString(configApp));
@@ -74,7 +82,9 @@ public class Test_Users {
 					case 3://Delete
 						try{
 							admins.deleteData(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
-						}catch(Exception e){}
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(null,"You have to create an admin first");
+						}
 						adminsvec = admins.printArraylist(); 
 						break;
 					case 4://Find

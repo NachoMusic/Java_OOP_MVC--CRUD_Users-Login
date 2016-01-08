@@ -1,11 +1,8 @@
 package application.modules.users.utils;
 
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
-import application.models.Config;
 import application.modules.users.models.admin;
+import application.modules.users.models.users;
 
 public class Arraylist {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -16,6 +13,9 @@ public class Arraylist {
 	}
 	public void addData(admin a){
 		admins.add(a);
+	}
+	public admin getData(int num){
+		return admins.get(num);
 	}
 	public admin[] printArraylist(){
 		admin[] vec = new admin[admins.size()];

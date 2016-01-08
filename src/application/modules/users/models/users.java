@@ -2,7 +2,7 @@ package application.modules.users.models;
 
 import application.models.Dates;
 
-public abstract class users {
+public abstract class users implements Comparable <users> {
 	//Atributes
 	private String dni,name,subname,phone_number,email,user,pass,avatar,state,date_birthday;
 	private int age,points, discount,incentives;
@@ -160,6 +160,18 @@ public abstract class users {
 	public void setIncentives(int incentives) {
 		this.incentives = incentives;
 	}
+	//Compares if two users are equals, I still have to test it
+	public boolean equals(users user){
+		return (this.dni.equals(user.getDni()));
+	}
+	public int compareTo(users user){
+		if(this.dni.compareTo(user.getDni())>0)
+			return 1;
+		if(this.dni.compareTo(user.getDni())<0)
+			return -1;
+		return 0;
+	  } 
+	
 	//toString
 	@Override
 	public String toString() {
@@ -175,7 +187,6 @@ public abstract class users {
 		cad+="The user is(state): "+this.getState()+"\n";
 		cad+="Date Birthday: "+this.getDate_birthday()+"\n";
 		cad+="Age: "+this.getAge()+"\n";
-		//cad+="Advantages: "+this.getAdvantages()+"\n";
 		return cad;
 	}
 	//to string clave primaria
