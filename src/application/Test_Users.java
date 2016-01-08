@@ -8,6 +8,7 @@ import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
 import application.modules.users.utils.Arraylist;
 import application.modules.users.utils.functions_users;
+import application.utils.Functions;
 import application.utils.Menus;
 
 public class Test_Users {
@@ -28,6 +29,7 @@ public class Test_Users {
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
 		Arraylist admins = new Arraylist();
+		admin[] adminsvec=null;
 		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
@@ -54,19 +56,26 @@ public class Test_Users {
 						//admin1=functions_users.newadmin(configApp, language);
 						admins.addData(functions_users.newadmin(configApp, language));
 						//FileSave.saveadmin(admin1); for saving on files, will come eventually
+						adminsvec = admins.printArraylist(); 
 						break;
 					case 1:
 						functions_users.getuser(admin1,0,configApp,language);
 						break;
 					case 2:
 						//JOptionPane.showMessageDialog(null,admin1.toString(configApp));
-						admin[] adminsvec = admins.printArraylist(); 
-						for(int i = 0;i<adminsvec.length;i++){
-							JOptionPane.showMessageDialog(null,adminsvec[i].toString(configApp));
-						}
-						
+						try{
+							for(int i = 0;i<adminsvec.length;i++){
+								JOptionPane.showMessageDialog(null,(i+1)+":\n"+adminsvec[i].toString(configApp));
+							}
+						}catch(Exception e){
+							JOptionPane.showMessageDialog(null,"You have to create an admin first");
+						};
 						break;
 					case 3://Delete
+						try{
+							admins.deleteData(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
+						}catch(Exception e){}
+						adminsvec = admins.printArraylist(); 
 						break;
 					case 4://Find
 						break;
@@ -96,10 +105,16 @@ public class Test_Users {
 					case 2:
 						JOptionPane.showMessageDialog(null,client1.toString());
 						break;
-					case 3:
+					case 3://Delete
+						break;
+					case 4://Find
+						break;
+					case 5://Sort by
+						break;
+					case 6:
 						continuar2=false;
 						break;
-					case 4:
+					case 7:
 						continuar2=false;
 						continuar=4;
 						break;
@@ -120,10 +135,16 @@ public class Test_Users {
 					case 2:
 						JOptionPane.showMessageDialog(null,registered_user1.toString());
 						break;
-					case 3:
+					case 3://Delete
+						break;
+					case 4://Find
+						break;
+					case 5://Sort by
+						break;
+					case 6:
 						continuar2=false;
 						break;
-					case 4:
+					case 7:
 						continuar2=false;
 						continuar=4;
 						break;
@@ -171,17 +192,33 @@ public class Test_Users {
 						case 0:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('€');
-							admin1.changeCurrency(configApp, monedaAnterior);						
+							try{
+								for(int i = 0;i<adminsvec.length;i++){
+									adminsvec[i].changeCurrency(configApp, monedaAnterior);
+								}
+							}catch(Exception e){};
+							
+						
 							break;
 						case 1:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('$');
-							admin1.changeCurrency(configApp, monedaAnterior);
+							//admin1.changeCurrency(configApp, monedaAnterior);
+							try{
+								for(int i = 0;i<adminsvec.length;i++){
+									adminsvec[i].changeCurrency(configApp, monedaAnterior);
+								}
+							}catch(Exception e){};
 							break;
 						case 2:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('£');
-							admin1.changeCurrency(configApp, monedaAnterior);
+							//admin1.changeCurrency(configApp, monedaAnterior);
+							try{
+								for(int i = 0;i<adminsvec.length;i++){
+									adminsvec[i].changeCurrency(configApp, monedaAnterior);
+								}
+							}catch(Exception e){};
 							break;
 						case 3:
 							continuar2=false;
