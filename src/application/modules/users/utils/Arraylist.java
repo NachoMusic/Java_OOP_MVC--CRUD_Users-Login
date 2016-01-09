@@ -2,7 +2,6 @@ package application.modules.users.utils;
 
 import java.util.ArrayList;
 import application.modules.users.models.admin;
-import application.modules.users.models.users;
 
 public class Arraylist {
 	@SuppressWarnings({ "unchecked", "rawtypes" })

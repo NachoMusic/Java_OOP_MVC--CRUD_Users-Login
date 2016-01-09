@@ -161,8 +161,14 @@ public abstract class users implements Comparable <users> {
 		this.incentives = incentives;
 	}
 	//Compares if two users are equals, I still have to test it
-	public boolean equals(users user){
-		return (this.dni.equals(user.getDni()));
+	public boolean equals(users user, int type){
+		switch(type){
+		case 0:
+			return ((this.dni.toUpperCase()).equals(user.getDni().toUpperCase()));
+		case 1:
+			return ((this.name.toUpperCase()).equals(user.getName().toUpperCase()));
+		}
+		return false;
 	}
 	public int compareTo(users user){
 		if(this.dni.compareTo(user.getDni())>0)
@@ -171,7 +177,6 @@ public abstract class users implements Comparable <users> {
 			return -1;
 		return 0;
 	  } 
-	
 	//toString
 	@Override
 	public String toString() {

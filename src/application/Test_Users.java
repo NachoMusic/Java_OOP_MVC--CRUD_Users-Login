@@ -1,9 +1,9 @@
 package application;
-import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
+import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
@@ -30,7 +30,6 @@ public class Test_Users {
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
 		Arraylist admins = new Arraylist();
-		//ArrayList<admin> adminAL = new ArrayList();
 		admin[] adminsvec=null;
 		
 		while(continuar!=4){
@@ -39,13 +38,15 @@ public class Test_Users {
 					language.getProperty("exit")};
 			String[] vec1 = {language.getProperty("create"), language.getProperty("change_data"), language.getProperty("print_data"),
 					"Delete","Find","Sort by",language.getProperty("go_back"), language.getProperty("exit")};
+			String[] find = {"By DNI","By name",language.getProperty("go_back")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
 					language.getProperty("lang"),"Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] currencyconfig = {"Euro €", "Dollar $", "Libra £",language.getProperty("go_back"),language.getProperty("exit")};
-			String[] languageconfig = {language.getProperty("english"), language.getProperty("spanish"),language.getProperty("go_back"),language.getProperty("exit")};
-			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),language.getProperty("go_back"),
+			String[] languageconfig = {language.getProperty("english"), language.getProperty("spanish"),language.getProperty("go_back"),
 					language.getProperty("exit")};
+			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),
+					language.getProperty("go_back"), language.getProperty("exit")};
 			
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
 			switch(option){
@@ -54,7 +55,7 @@ public class Test_Users {
 					continuar2=true;
 					option=Menus.menu(vec1, language.getProperty("admin"), language.getProperty("application_users"));
 					switch(option){
-					case 0:						
+					case 0:
 						//admin1=functions_users.newadmin(configApp, language);
 						admins.addData(functions_users.newadmin(configApp, language));
 						//FileSave.saveadmin(admin1); for saving on files, will come eventually
@@ -63,11 +64,11 @@ public class Test_Users {
 					case 1:
 						try{
 							functions_users.getuser(admins.getData(Functions.validateint("Type the number of"
-									+ " the admin to change", "Change users")+1),0,configApp,language);
+									+ " the admin to change", "Change users")-1),0,configApp,language);
 						}catch(Exception e){
-							JOptionPane.showMessageDialog(null,"You have to create an admin first");
+							JOptionPane.showMessageDialog(null,"The admin does not exist");
 						}
-						
+						adminsvec = admins.printArraylist();
 						break;
 					case 2:
 						//JOptionPane.showMessageDialog(null,admin1.toString(configApp));
@@ -88,6 +89,26 @@ public class Test_Users {
 						adminsvec = admins.printArraylist(); 
 						break;
 					case 4://Find
+						option=Menus.menu(find, "Searh admins", "Search");
+						switch(option){
+						case 0://By dni
+							admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
+							for(int i = 0;i<adminsvec.length;i++){
+								if(adminsvec[i].equals(admin1,0)){
+									JOptionPane.showMessageDialog(null,adminsvec[i].toString());
+								}
+							}
+							break;
+						case 1://By name
+							admin1.setName(Functions.validatestring("Type the DNI of the user you are looking for", "Search by DNI"));
+							for(int i = 0;i<adminsvec.length;i++){
+								if(adminsvec[i].equals(admin1,1)){
+									JOptionPane.showMessageDialog(null,adminsvec[i].toString());
+								}
+							}
+							break;
+						case 2://Go back
+						}
 						break;
 					case 5://Sort by
 						break;
