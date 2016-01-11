@@ -1,12 +1,18 @@
 package application.modules.users.utils;
 
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+import application.models.Config;
+import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
+import application.utils.Functions;
 
 public class Arraylist {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	ArrayList<admin> admins = new ArrayList();
-
+	private ArrayList<admin> admins = new ArrayList();
+	
 	public Arraylist(){
 		//constructor
 	}
@@ -16,12 +22,55 @@ public class Arraylist {
 	public admin getData(int num){
 		return admins.get(num);
 	}
-	public admin[] printArraylist(){
-		admin[] vec = new admin[admins.size()];
+	/**
+	 * It returns an array with the admins from the arraylist
+	 */
+	public void printArraylist(Config configApp){
+		int times=0;
 		for (int i = 0; i<admins.size();i++){
-			vec[i] = admins.get(i);
+			//vec[i] = admins.get(i);
+			JOptionPane.showMessageDialog(null, (i+1)+":\n"+admins.get(i).toString(configApp));
+			times++;
 		}
-		return vec;
+		if(times==0)
+			JOptionPane.showMessageDialog(null, "No admins found");
+	}
+	public void find(int option, Config config){
+		admin admin1 = new admin();
+		int times=0;
+		switch(option){
+		case 0://By dni
+			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
+			for(int i = 0;i<admins.size();i++){
+				if(admins.get(i).equals(admin1,0)){
+					JOptionPane.showMessageDialog(null,admins.get(i).toString(config));
+					times++;
+				}
+			}
+			if(times==0)
+				JOptionPane.showMessageDialog(null, "No admins found");
+			break;
+			
+		case 1://By name
+			admin1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
+			for(int i = 0;i<admins.size();i++){
+				if(admins.get(i).equals(admin1,1)){
+					JOptionPane.showMessageDialog(null,admins.get(i).toString(config));
+					times++;
+				}
+			}
+			if(times==0)
+				JOptionPane.showMessageDialog(null, "No admins found");
+			break;
+		}
+	}
+	public void changeFormatCurrency(Config configApp, char monedaAnterior){
+		
+		try{
+			for(int i = 0;i<admins.size();i++){
+				admins.get(i).changeCurrency(configApp, monedaAnterior);
+			}
+		}catch(Exception e){};
 	}
 	public void deleteData(int index){
 		admins.remove(index);

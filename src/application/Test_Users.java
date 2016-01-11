@@ -3,7 +3,6 @@ package application;
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
-import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
@@ -30,7 +29,7 @@ public class Test_Users {
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
 		Arraylist admins = new Arraylist();
-		admin[] adminsvec=null;
+		//admin[] adminsvec=null;
 		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
@@ -59,7 +58,7 @@ public class Test_Users {
 						//admin1=functions_users.newadmin(configApp, language);
 						admins.addData(functions_users.newadmin(configApp, language));
 						//FileSave.saveadmin(admin1); for saving on files, will come eventually
-						adminsvec = admins.printArraylist(); 
+						//adminsvec = admins.printArraylist(); 
 						break;
 					case 1:
 						try{
@@ -68,17 +67,10 @@ public class Test_Users {
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(null,"The admin does not exist");
 						}
-						adminsvec = admins.printArraylist();
+						//adminsvec = admins.printArraylist();
 						break;
-					case 2:
-						//JOptionPane.showMessageDialog(null,admin1.toString(configApp));
-						try{
-							for(int i = 0;i<adminsvec.length;i++){
-								JOptionPane.showMessageDialog(null,(i+1)+":\n"+adminsvec[i].toString(configApp));
-							}
-						}catch(Exception e){
-							JOptionPane.showMessageDialog(null,"You have to create an admin first");
-						};
+					case 2://Print
+						admins.printArraylist(configApp);
 						break;
 					case 3://Delete
 						try{
@@ -86,26 +78,16 @@ public class Test_Users {
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(null,"You have to create an admin first");
 						}
-						adminsvec = admins.printArraylist(); 
+						
 						break;
 					case 4://Find
 						option=Menus.menu(find, "Searh admins", "Search");
 						switch(option){
 						case 0://By dni
-							admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
-							for(int i = 0;i<adminsvec.length;i++){
-								if(adminsvec[i].equals(admin1,0)){
-									JOptionPane.showMessageDialog(null,adminsvec[i].toString());
-								}
-							}
+							admins.find(0, configApp);
 							break;
 						case 1://By name
-							admin1.setName(Functions.validatestring("Type the DNI of the user you are looking for", "Search by DNI"));
-							for(int i = 0;i<adminsvec.length;i++){
-								if(adminsvec[i].equals(admin1,1)){
-									JOptionPane.showMessageDialog(null,adminsvec[i].toString());
-								}
-							}
+							admins.find(1, configApp);
 							break;
 						case 2://Go back
 						}
@@ -223,33 +205,17 @@ public class Test_Users {
 						case 0:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('€');
-							try{
-								for(int i = 0;i<adminsvec.length;i++){
-									adminsvec[i].changeCurrency(configApp, monedaAnterior);
-								}
-							}catch(Exception e){};
-							
-						
+							admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 1:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('$');
-							//admin1.changeCurrency(configApp, monedaAnterior);
-							try{
-								for(int i = 0;i<adminsvec.length;i++){
-									adminsvec[i].changeCurrency(configApp, monedaAnterior);
-								}
-							}catch(Exception e){};
+							admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 2:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('£');
-							//admin1.changeCurrency(configApp, monedaAnterior);
-							try{
-								for(int i = 0;i<adminsvec.length;i++){
-									adminsvec[i].changeCurrency(configApp, monedaAnterior);
-								}
-							}catch(Exception e){};
+							admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 3:
 							continuar2=false;
@@ -303,7 +269,7 @@ public class Test_Users {
 							break;
 						}				
 						break;
-					case 4://Reestablece la configuración por defecto
+					case 4://Resets the default configuration
 						monedaAnterior=configApp.getCurrency_config();
 						configApp = new Config();
 						language.setIdioma(configApp.getLanguage_config());
