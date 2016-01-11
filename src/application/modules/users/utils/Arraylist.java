@@ -1,9 +1,7 @@
 package application.modules.users.utils;
 
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import application.models.Config;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
@@ -22,13 +20,11 @@ public class Arraylist {
 	public admin getData(int num){
 		return admins.get(num);
 	}
-	/**
-	 * It returns an array with the admins from the arraylist
-	 */
+	
 	public void printArraylist(Config configApp){
 		int times=0;
+		
 		for (int i = 0; i<admins.size();i++){
-			//vec[i] = admins.get(i);
 			JOptionPane.showMessageDialog(null, (i+1)+":\n"+admins.get(i).toString(configApp));
 			times++;
 		}
@@ -38,6 +34,7 @@ public class Arraylist {
 	public void find(int option, Config config){
 		admin admin1 = new admin();
 		int times=0;
+		
 		switch(option){
 		case 0://By dni
 			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
@@ -50,7 +47,6 @@ public class Arraylist {
 			if(times==0)
 				JOptionPane.showMessageDialog(null, "No admins found");
 			break;
-			
 		case 1://By name
 			admin1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
 			for(int i = 0;i<admins.size();i++){
@@ -64,6 +60,9 @@ public class Arraylist {
 			break;
 		}
 	}
+	public void sortData(){
+
+	}
 	public void changeFormatCurrency(Config configApp, char monedaAnterior){
 		
 		try{
@@ -75,6 +74,7 @@ public class Arraylist {
 	public void deleteData(int index){
 		admins.remove(index);
 	}
+	
 	/*
 	public static void main(String[] args){
 		Arraylist a = new Arraylist();

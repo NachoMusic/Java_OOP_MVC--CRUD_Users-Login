@@ -21,7 +21,6 @@ public abstract class users implements Comparable <users> {
 		this.avatar = avatar;
 		this.state = state;
 		this.date_birthday = date_birthday;
-		//this.age = age;
 		this.age=(calculate_age());
 	}
 	public users() {
@@ -238,7 +237,6 @@ public abstract class users implements Comparable <users> {
 			break;
 		}
 		return cad;
-		
 	}
 	public abstract float calculate_advantages();
 	//incentivos puntos y ___ fuera de las hijas y estaran en la madre con sus geters/setters en la madre y no en las hijas

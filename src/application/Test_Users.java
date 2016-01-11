@@ -29,7 +29,6 @@ public class Test_Users {
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
 		Arraylist admins = new Arraylist();
-		//admin[] adminsvec=null;
 		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
@@ -55,10 +54,8 @@ public class Test_Users {
 					option=Menus.menu(vec1, language.getProperty("admin"), language.getProperty("application_users"));
 					switch(option){
 					case 0:
-						//admin1=functions_users.newadmin(configApp, language);
 						admins.addData(functions_users.newadmin(configApp, language));
 						//FileSave.saveadmin(admin1); for saving on files, will come eventually
-						//adminsvec = admins.printArraylist(); 
 						break;
 					case 1:
 						try{
@@ -76,9 +73,8 @@ public class Test_Users {
 						try{
 							admins.deleteData(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
 						}catch(Exception e){
-							JOptionPane.showMessageDialog(null,"You have to create an admin first");
+							JOptionPane.showMessageDialog(null,"The admin does not exist");
 						}
-						
 						break;
 					case 4://Find
 						option=Menus.menu(find, "Searh admins", "Search");
@@ -93,6 +89,7 @@ public class Test_Users {
 						}
 						break;
 					case 5://Sort by
+						
 						break;
 					case 6:
 						continuar2=false;
@@ -177,15 +174,12 @@ public class Test_Users {
 						switch(option){
 						case 0:// dd/mm/yyyy
 							configApp.setDate_config(0);
-							
 							break;
 						case 1:
 							configApp.setDate_config(1);
-							
 							break;
 						case 2:
 							configApp.setDate_config(2);
-							
 							break;
 						case 3:
 							configApp.setDate_config(3);

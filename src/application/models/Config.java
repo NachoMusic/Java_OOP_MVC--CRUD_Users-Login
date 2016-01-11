@@ -1,6 +1,6 @@
 package application.models;
 
-public class Config {
+public class Config {//objetos singleton
 	private String language_config;
 	private char currency_config;
 	private int date_config,decimals_config;
