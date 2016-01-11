@@ -6,7 +6,7 @@ import application.models.Language;
 import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
-import application.modules.users.utils.Arraylist;
+import application.modules.users.models.singleton;
 import application.modules.users.utils.functions_users;
 import application.utils.Functions;
 import application.utils.Menus;
@@ -28,7 +28,7 @@ public class Test_Users {
 		admin dummy2 = new admin("12345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
-		Arraylist admins = new Arraylist();
+		//Arraylist_admin admins = new Arraylist_admin();
 		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
@@ -54,12 +54,12 @@ public class Test_Users {
 					option=Menus.menu(vec1, language.getProperty("admin"), language.getProperty("application_users"));
 					switch(option){
 					case 0:
-						admins.addData(functions_users.newadmin(configApp, language));
+						singleton.admins.addData(functions_users.newadmin(configApp, language));
 						//FileSave.saveadmin(admin1); for saving on files, will come eventually
 						break;
 					case 1:
 						try{
-							functions_users.getuser(admins.getData(Functions.validateint("Type the number of"
+							functions_users.getuser(singleton.admins.getData(Functions.validateint("Type the number of"
 									+ " the admin to change", "Change users")-1),0,configApp,language);
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(null,"The admin does not exist");
@@ -67,11 +67,11 @@ public class Test_Users {
 						//adminsvec = admins.printArraylist();
 						break;
 					case 2://Print
-						admins.printArraylist(configApp);
+						singleton.admins.printArraylist(configApp);
 						break;
 					case 3://Delete
 						try{
-							admins.deleteData(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
+							singleton.admins.deleteData(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(null,"The admin does not exist");
 						}
@@ -80,10 +80,10 @@ public class Test_Users {
 						option=Menus.menu(find, "Searh admins", "Search");
 						switch(option){
 						case 0://By dni
-							admins.find(0, configApp);
+							singleton.admins.find(0, configApp);
 							break;
 						case 1://By name
-							admins.find(1, configApp);
+							singleton.admins.find(1, configApp);
 							break;
 						case 2://Go back
 						}
@@ -199,17 +199,17 @@ public class Test_Users {
 						case 0:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('€');
-							admins.changeFormatCurrency(configApp,monedaAnterior);
+							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 1:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('$');
-							admins.changeFormatCurrency(configApp,monedaAnterior);
+							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 2:
 							monedaAnterior=configApp.getCurrency_config();
 							configApp.setCurrency_config('£');
-							admins.changeFormatCurrency(configApp,monedaAnterior);
+							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 3:
 							continuar2=false;
