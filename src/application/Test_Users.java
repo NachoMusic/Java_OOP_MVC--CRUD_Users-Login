@@ -7,6 +7,7 @@ import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
 import application.modules.users.models.singleton;
+import application.modules.users.utils.Arraylist_admin;
 import application.modules.users.utils.functions_users;
 import application.utils.Functions;
 import application.utils.Menus;
@@ -29,6 +30,8 @@ public class Test_Users {
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
 		//Arraylist_admin admins = new Arraylist_admin();
+		
+		singleton.admins = new Arraylist_admin();
 		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
@@ -59,12 +62,13 @@ public class Test_Users {
 						//FileSave.saveadmin(admin1); for saving on files, will come eventually
 						break;
 					case 1:
-						try{
+						singleton.admins.changeData(configApp, language);
+						/*try{
 							functions_users.getuser(singleton.admins.getData(Functions.validateint("Type the number of"
 									+ " the admin to change", "Change users")-1),0,configApp,language);
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(null,"The admin does not exist");
-						}
+						}*/
 						//adminsvec = admins.printArraylist();
 						break;
 					case 2://Print
@@ -90,14 +94,12 @@ public class Test_Users {
 						}
 						break;
 					case 5://Sort by
-						
 						option=Menus.menu(sortBy, "Sort admins", "Sort");
 						switch(option){
 						case 0://By dni
 							singleton.admins.sortData();
 							break;
 						case 1://By name
-							
 							break;
 						case 2://Go back
 						}

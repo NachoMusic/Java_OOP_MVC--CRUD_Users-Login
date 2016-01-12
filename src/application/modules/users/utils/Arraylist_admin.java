@@ -5,8 +5,10 @@ import java.util.Collections;
 
 import javax.swing.JOptionPane;
 import application.models.Config;
+import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
+import application.modules.users.models.singleton;
 import application.utils.Functions;
 
 public class Arraylist_admin {
@@ -17,12 +19,36 @@ public class Arraylist_admin {
 		//constructor
 	}
 	public void addData(admin a){
-		admins.add(a);
+		admin admin1 = a;
+		boolean action=true;
+		
+		for(int i = 0;i<admins.size();i++){
+			if(admins.get(i).equals(admin1,0)){
+				action=false;
+				
+			}
+		}
+		if(action)
+			admins.add(a);
+		else
+			JOptionPane.showMessageDialog(null, "There is already a user with the same DNI");
 	}
 	public admin getData(int num){
 		return admins.get(num);
 	}
-	
+	public void changeData(Config configApp, Language language){
+		try{
+			admin admin1 = new admin();
+			admin admin2 = singleton.admins.getData(Functions.validateint("Type the number of"
+					+ " the admin to change", "Change users")-1);
+			functions_users.getuser(admin1,0,configApp,language);
+			if(admin1.equals(admin2,0)){
+				
+			}
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null,"The admin does not exist");
+		}
+	}
 	public void printArraylist(Config configApp){
 		int times=0;
 		
