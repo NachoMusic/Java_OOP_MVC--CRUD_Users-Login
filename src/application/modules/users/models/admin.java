@@ -8,9 +8,8 @@ public class admin extends users{
 	private String hirin_date;
 	private float salary;
 	private int years_of_service, activity;
-	
-	//fechacontratacion string, antiguedad int, salary float, incentivos int, actividad int
-	//Constructores
+
+	//Constructors
 	public admin(String dni, String name, String subname, String phone_number, String email, String user, String pass,
 			String avatar, String state, String date_birthday, String hirin_date, float salary,
 			int activity) {

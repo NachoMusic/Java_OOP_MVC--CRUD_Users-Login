@@ -1,6 +1,8 @@
 package application.modules.users.utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.modules.users.kernel.GenericKernel;
@@ -61,7 +63,8 @@ public class Arraylist_admin {
 		}
 	}
 	public void sortData(){
-
+		Collections.sort(admins);
+		
 	}
 	public void changeFormatCurrency(Config configApp, char monedaAnterior){
 		

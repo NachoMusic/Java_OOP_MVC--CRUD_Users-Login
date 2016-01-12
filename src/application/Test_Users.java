@@ -37,6 +37,7 @@ public class Test_Users {
 			String[] vec1 = {language.getProperty("create"), language.getProperty("change_data"), language.getProperty("print_data"),
 					"Delete","Find","Sort by",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] find = {"By DNI","By name",language.getProperty("go_back")};
+			String[] sortBy = {"By DNI","By name",language.getProperty("go_back")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
 					language.getProperty("lang"),"Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
@@ -90,6 +91,16 @@ public class Test_Users {
 						break;
 					case 5://Sort by
 						
+						option=Menus.menu(sortBy, "Sort admins", "Sort");
+						switch(option){
+						case 0://By dni
+							singleton.admins.sortData();
+							break;
+						case 1://By name
+							
+							break;
+						case 2://Go back
+						}
 						break;
 					case 6:
 						continuar2=false;

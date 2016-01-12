@@ -175,7 +175,21 @@ public abstract class users implements Comparable <users> {
 		if(this.dni.compareTo(user.getDni())<0)
 			return -1;
 		return 0;
-	  } 
+	  }
+	/*
+	public static void main(String[] args){
+		admin dummy1 = new admin("21699146A", "Nacho", "Valera", "987654321", "asdf@asdf.asdf", "Usuario", "Pass",
+				"Avatar", "Online", "16/10/1996", "14/12/2014",1234.1234f, 1234);
+		admin dummy2 = new admin("12345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
+				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
+		admin dummy3 = new admin("13345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
+				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
+		//System.out.print(dummy1.compareTo(dummy2));
+		singleton.admins.addData(dummy1);
+		singleton.admins.addData(dummy2);
+		singleton.admins.addData(dummy3);
+		//for(int i = 0; i<singleton.admins.)
+	}*/
 	//toString
 	@Override
 	public String toString() {
