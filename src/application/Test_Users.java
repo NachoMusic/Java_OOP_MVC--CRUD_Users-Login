@@ -29,8 +29,6 @@ public class Test_Users {
 		admin dummy2 = new admin("12345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
-		//Arraylist_admin admins = new Arraylist_admin();
-		
 		singleton.admins = new Arraylist_admin();
 		
 		while(continuar!=4){
@@ -63,13 +61,6 @@ public class Test_Users {
 						break;
 					case 1:
 						singleton.admins.changeData(configApp, language);
-						/*try{
-							functions_users.getuser(singleton.admins.getData(Functions.validateint("Type the number of"
-									+ " the admin to change", "Change users")-1),0,configApp,language);
-						}catch(Exception e){
-							JOptionPane.showMessageDialog(null,"The admin does not exist");
-						}*/
-						//adminsvec = admins.printArraylist();
 						break;
 					case 2://Print
 						singleton.admins.printArraylist(configApp);

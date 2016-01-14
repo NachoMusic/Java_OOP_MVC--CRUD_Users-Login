@@ -1,6 +1,6 @@
 package application.models;
 
-public class Config {//objetos singleton
+public class Config {
 	private String language_config;
 	private char currency_config;
 	private int date_config,decimals_config;
@@ -19,7 +19,6 @@ public class Config {//objetos singleton
 		this.currency_config = '€';
 		this.decimals_config = 2;
 	}
-	
 	public int getDate_config() {
 		return date_config;
 	}

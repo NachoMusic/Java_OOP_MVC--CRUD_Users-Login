@@ -224,34 +224,34 @@ public class functions_users {
 		}
 		switch(edit){
 		case 1:
-			((users) param).setDni(GenericKernel.insertDni(language.getProperty("typedni"), "DNI"));
+			param.setDni(GenericKernel.insertDni(language.getProperty("typedni"), "DNI"));
 			break;
 		case 2:
-			((users) param).setName(GenericKernel.insertText(language.getProperty("name"), language.getProperty("name2")));
+			param.setName(GenericKernel.insertText(language.getProperty("name"), language.getProperty("name2")));
 			break;
 		case 3:
-			((users) param).setSubname(GenericKernel.insertText(language.getProperty("subname"), language.getProperty("subname2")));
+			param.setSubname(GenericKernel.insertText(language.getProperty("subname"), language.getProperty("subname2")));
 			break;
 		case 4:
-			((users) param).setPhone_number(GenericKernel.insertPhone(language.getProperty("insertphone"), language.getProperty("insertphone2")));
+			param.setPhone_number(GenericKernel.insertPhone(language.getProperty("insertphone"), language.getProperty("insertphone2")));
 			break;
 		case 5:
-			((users)param).setEmail(GenericKernel.insertEmail(language.getProperty("email"), "Email"));
+			param.setEmail(GenericKernel.insertEmail(language.getProperty("email"), "Email"));
 			break;
 		case 6:
-			((users) param).setUser(Functions.validatestring(language.getProperty("user"), language.getProperty("user2")));
+			param.setUser(Functions.validatestring(language.getProperty("user"), language.getProperty("user2")));
 			break;
 		case 7:
-			((users) param).setPass(Functions.validatestring(language.getProperty("pass"), language.getProperty("pass2")));
+			param.setPass(Functions.validatestring(language.getProperty("pass"), language.getProperty("pass2")));
 			break;
 		case 8:
-			((users) param).setAvatar(Functions.validatestring(language.getProperty("avatar"),language.getProperty("avatar2")));
+			param.setAvatar(Functions.validatestring(language.getProperty("avatar"),language.getProperty("avatar2")));
 			break;
 		case 9:
-			((users) param).setState(Functions.validatestring(language.getProperty("state"), language.getProperty("state2")));
+			param.setState(Functions.validatestring(language.getProperty("state"), language.getProperty("state2")));
 			break;
 		case 10:
-			((users) param).setDate_birthday(GenericKernel.insertDateBirthday(language.getProperty("date_birthday")+dateFormat, language.getProperty("date_birthday2"),arg));
+			param.setDate_birthday(GenericKernel.insertDateBirthday(language.getProperty("date_birthday")+dateFormat, language.getProperty("date_birthday2"),arg));
 			break;
 		}
 	}

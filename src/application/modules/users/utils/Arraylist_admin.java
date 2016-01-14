@@ -2,22 +2,20 @@ package application.modules.users.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
-import application.modules.users.models.singleton;
 import application.utils.Functions;
 
 public class Arraylist_admin {
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private ArrayList<admin> admins = new ArrayList();
+	private ArrayList<admin> admins = new ArrayList<admin>();
 	
 	public Arraylist_admin(){
 		//constructor
 	}
+	
 	public void addData(admin a){
 		admin admin1 = a;
 		boolean action=true;
@@ -25,7 +23,6 @@ public class Arraylist_admin {
 		for(int i = 0;i<admins.size();i++){
 			if(admins.get(i).equals(admin1,0)){
 				action=false;
-				
 			}
 		}
 		if(action)
@@ -38,12 +35,22 @@ public class Arraylist_admin {
 	}
 	public void changeData(Config configApp, Language language){
 		try{
-			admin admin1 = new admin();
-			admin admin2 = singleton.admins.getData(Functions.validateint("Type the number of"
-					+ " the admin to change", "Change users")-1);
-			functions_users.getuser(admin1,0,configApp,language);
-			if(admin1.equals(admin2,0)){
-				
+			int action=0;
+			String dni;
+			int num = Functions.validateint("Type the number of"
+					+ " the admin to change", "Change users");
+			
+			dni=admins.get(num-1).getDni();
+			functions_users.getuser(admins.get(num-1), 0, configApp, language);
+			for(int i=0;i<admins.size();i++){
+				if(admins.get(num-1).equals(admins.get(i),0)){
+					if(i!=num-1)
+						action++;
+				}
+			}
+			if(action!=0){
+				admins.get(num-1).setDni(dni);
+				JOptionPane.showMessageDialog(null, "There is already a user with that DNI");
 			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null,"The admin does not exist");
@@ -93,7 +100,6 @@ public class Arraylist_admin {
 		
 	}
 	public void changeFormatCurrency(Config configApp, char monedaAnterior){
-		
 		try{
 			for(int i = 0;i<admins.size();i++){
 				admins.get(i).changeCurrency(configApp, monedaAnterior);
