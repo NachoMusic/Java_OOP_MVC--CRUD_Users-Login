@@ -7,6 +7,8 @@ import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
+import application.modules.users.models.singleton;
+import application.modules.users.models.sortbyName;
 import application.utils.Functions;
 
 public class Arraylist_admin {
@@ -95,8 +97,15 @@ public class Arraylist_admin {
 			break;
 		}
 	}
-	public void sortData(){
-		Collections.sort(admins);
+	public void sortData(int type){
+		switch(type){
+		case 0:
+			Collections.sort(admins);
+			break;
+		case 1:
+			Collections.sort(admins, new sortbyName());
+			break;
+		}
 		
 	}
 	public void changeFormatCurrency(Config configApp, char monedaAnterior){

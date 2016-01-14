@@ -88,9 +88,10 @@ public class Test_Users {
 						option=Menus.menu(sortBy, "Sort admins", "Sort");
 						switch(option){
 						case 0://By dni
-							singleton.admins.sortData();
+							singleton.admins.sortData(0);
 							break;
 						case 1://By name
+							singleton.admins.sortData(1);
 							break;
 						case 2://Go back
 						}
