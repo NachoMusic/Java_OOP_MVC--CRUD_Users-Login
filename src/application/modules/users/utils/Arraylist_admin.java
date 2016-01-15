@@ -7,7 +7,7 @@ import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
-import application.modules.users.models.singleton;
+import application.modules.users.models.sortbyAge;
 import application.modules.users.models.sortbyName;
 import application.utils.Functions;
 
@@ -104,6 +104,9 @@ public class Arraylist_admin {
 			break;
 		case 1:
 			Collections.sort(admins, new sortbyName());
+			break;
+		case 2:
+			Collections.sort(admins, new sortbyAge());
 			break;
 		}
 		

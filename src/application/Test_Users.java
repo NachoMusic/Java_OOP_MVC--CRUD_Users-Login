@@ -1,5 +1,5 @@
 package application;
-
+//nombre dni fechanac edad puntos
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
@@ -17,7 +17,7 @@ public class Test_Users {
 	public static void main(String[] args){
 		Language language =new Language("English");
 		int option,continuar=0;
-		char monedaAnterior='€';
+		char monedaAnterior='ï¿½';
 		boolean continuar2=true;
 		admin admin1 = new admin();
 		client client1 = new client();
@@ -38,11 +38,11 @@ public class Test_Users {
 			String[] vec1 = {language.getProperty("create"), language.getProperty("change_data"), language.getProperty("print_data"),
 					"Delete","Find","Sort by",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] find = {"By DNI","By name",language.getProperty("go_back")};
-			String[] sortBy = {"By DNI","By name",language.getProperty("go_back")};
+			String[] sortBy = {"By DNI","By name","By birthday",language.getProperty("go_back")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
 					language.getProperty("lang"),"Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
-			String[] currencyconfig = {"Euro €", "Dollar $", "Libra £",language.getProperty("go_back"),language.getProperty("exit")};
+			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra ï¿½",language.getProperty("go_back"),language.getProperty("exit")};
 			String[] languageconfig = {language.getProperty("english"), language.getProperty("spanish"),language.getProperty("go_back"),
 					language.getProperty("exit")};
 			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),
@@ -93,7 +93,10 @@ public class Test_Users {
 						case 1://By name
 							singleton.admins.sortData(1);
 							break;
-						case 2://Go back
+						case 2://By date birthday
+							singleton.admins.sortData(2);
+							break;
+						case 3://Go back
 						}
 						break;
 					case 6:
@@ -203,7 +206,7 @@ public class Test_Users {
 						switch(option){
 						case 0:
 							monedaAnterior=configApp.getCurrency_config();
-							configApp.setCurrency_config('€');
+							configApp.setCurrency_config('ï¿½');
 							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 1:
@@ -213,7 +216,7 @@ public class Test_Users {
 							break;
 						case 2:
 							monedaAnterior=configApp.getCurrency_config();
-							configApp.setCurrency_config('£');
+							configApp.setCurrency_config('ï¿½');
 							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
 							break;
 						case 3:

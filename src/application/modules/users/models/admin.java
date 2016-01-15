@@ -28,7 +28,7 @@ public class admin extends users{
 	public admin(String dni) {
 		super(dni);
 	}
-	//Constructor a petición de usuario
+	//Constructor a peticiï¿½n de usuario
 	public admin(int i, Object option){
 		switch(i){
 		case 0:
@@ -78,13 +78,13 @@ public class admin extends users{
 		cad+=super.toString()+"\n";
 		cad+="Hirin date: "+this.getHirin_date()+"\n";
 		switch(arg.getCurrency_config()){
-		case '€':
+		case 'â‚¬':
 			cad+="Salary: "+Format.formatEuro(this.getSalary(),arg.getDecimals_config())+"\n";
 			break;
 		case '$':
 			cad+="Salary: "+Format.formatDollar(this.getSalary(),arg.getDecimals_config())+"\n";
 			break;
-		case '£':
+		case 'Â£':
 			cad+="Salary: "+Format.formatLibra(this.getSalary(),arg.getDecimals_config())+"\n";
 			break;
 		}
@@ -133,35 +133,35 @@ public class admin extends users{
 	}
 	public void changeCurrency(Config arg, char monedaAnterior){
 		float test;
-		//1€ = 1,09321$ = 0,726888£
+		//1ï¿½ = 1,09321$ = 0,726888ï¿½
 		
-		// € -> $ *1,09321 
-		//€ -> £ * 0,726888
-		//1$ -> € / 1,09321
-		//£ -> € /0,726888
-		//£ -> $ /0,664970
-		//$ -> £ *0,664970
-		if(arg.getCurrency_config()=='$'&&monedaAnterior=='€'){
+		// ï¿½ -> $ *1,09321 
+		//ï¿½ -> ï¿½ * 0,726888
+		//1$ -> ï¿½ / 1,09321
+		//ï¿½ -> ï¿½ /0,726888
+		//ï¿½ -> $ /0,664970
+		//$ -> ï¿½ *0,664970
+		if(arg.getCurrency_config()=='$'&&monedaAnterior=='ï¿½'){
 			test=(float) (this.salary*1.09321);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='€'&&monedaAnterior=='$'){
+		if(arg.getCurrency_config()=='ï¿½'&&monedaAnterior=='$'){
 			test=(float) (this.salary/1.09321);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='£'&&monedaAnterior=='€'){
+		if(arg.getCurrency_config()=='ï¿½'&&monedaAnterior=='ï¿½'){
 			test=(float) (this.salary*0.726888);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='€'&&monedaAnterior=='£'){
+		if(arg.getCurrency_config()=='ï¿½'&&monedaAnterior=='ï¿½'){
 			test=(float) (this.salary/0.726888);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='$'&&monedaAnterior=='£'){
+		if(arg.getCurrency_config()=='$'&&monedaAnterior=='ï¿½'){
 			test=(float) (this.salary/0.664970);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='£'&&monedaAnterior=='$'){
+		if(arg.getCurrency_config()=='ï¿½'&&monedaAnterior=='$'){
 			test=(float) (this.salary*0.664970);
 			this.salary=test;
 		}
