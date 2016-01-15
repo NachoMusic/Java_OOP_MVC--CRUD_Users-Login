@@ -2,38 +2,39 @@ package application.modules.users.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
 import javax.swing.JOptionPane;
+
 import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
-import application.modules.users.models.sortbyAge;
-import application.modules.users.models.sortbyName;
+import application.modules.users.models.client;
 import application.utils.Functions;
 
-public class Arraylist_admin {
-	private ArrayList<admin> admins = new ArrayList<admin>();
+public class Arraylist_client {
+private ArrayList<client> clients = new ArrayList<client>();
 	
-	public Arraylist_admin(){
+	public Arraylist_client(){
 		//constructor
 	}
 	
-	public void addData(admin a){
-		admin admin1 = a;
+	public void addData(client a){
+		client client1 = a;
 		boolean action=true;
 		
-		for(int i = 0;i<admins.size();i++){
-			if(admins.get(i).equals(admin1,0)){
+		for(int i = 0;i<clients.size();i++){
+			if(clients.get(i).equals(client1,0)){
 				action=false;
 			}
 		}
 		if(action)
-			admins.add(a);
+			clients.add(a);
 		else
 			JOptionPane.showMessageDialog(null, "There is already a user with the same DNI");
 	}
-	public admin getData(int num){
-		return admins.get(num);
+	public client getData(int num){
+		return clients.get(num);
 	}
 	public void changeData(Config configApp, Language language){
 		try{
@@ -42,16 +43,16 @@ public class Arraylist_admin {
 			int num = Functions.validateint("Type the number of"
 					+ " the admin to change", "Change users");
 			
-			dni=admins.get(num-1).getDni();
-			functions_users.getuser(admins.get(num-1), 0, configApp, language);
-			for(int i=0;i<admins.size();i++){
-				if(admins.get(num-1).equals(admins.get(i),0)){
+			dni=clients.get(num-1).getDni();
+			functions_users.getuser(clients.get(num-1), 0, configApp, language);
+			for(int i=0;i<clients.size();i++){
+				if(clients.get(num-1).equals(clients.get(i),0)){
 					if(i!=num-1)
 						action++;
 				}
 			}
 			if(action!=0){
-				admins.get(num-1).setDni(dni);
+				clients.get(num-1).setDni(dni);
 				JOptionPane.showMessageDialog(null, "There is already a user with that DNI");
 			}
 		}catch(Exception e){
@@ -61,8 +62,8 @@ public class Arraylist_admin {
 	public void printArraylist(Config configApp){
 		int times=0;
 		
-		for (int i = 0; i<admins.size();i++){
-			JOptionPane.showMessageDialog(null, (i+1)+":\n"+admins.get(i).toString(configApp));
+		for (int i = 0; i<clients.size();i++){
+			JOptionPane.showMessageDialog(null, (i+1)+":\n"+clients.get(i).toString(configApp));
 			times++;
 		}
 		if(times==0)
@@ -75,9 +76,9 @@ public class Arraylist_admin {
 		switch(option){
 		case 0://By dni
 			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
-			for(int i = 0;i<admins.size();i++){
-				if(admins.get(i).equals(admin1,0)){
-					JOptionPane.showMessageDialog(null,admins.get(i).toString(config));
+			for(int i = 0;i<clients.size();i++){
+				if(clients.get(i).equals(admin1,0)){
+					JOptionPane.showMessageDialog(null,clients.get(i).toString(config));
 					times++;
 				}
 			}
@@ -86,9 +87,9 @@ public class Arraylist_admin {
 			break;
 		case 1://By name
 			admin1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
-			for(int i = 0;i<admins.size();i++){
-				if(admins.get(i).equals(admin1,1)){
-					JOptionPane.showMessageDialog(null,admins.get(i).toString(config));
+			for(int i = 0;i<clients.size();i++){
+				if(clients.get(i).equals(admin1,1)){
+					JOptionPane.showMessageDialog(null,clients.get(i).toString(config));
 					times++;
 				}
 			}
@@ -100,25 +101,25 @@ public class Arraylist_admin {
 	public void sortData(int type){
 		switch(type){
 		case 0:
-			Collections.sort(admins);
+			Collections.sort(clients);
 			break;
 		case 1:
-			Collections.sort(admins, new sortbyName());
+			//Collections.sort(clients, new sortbyName());
 			break;
 		case 2:
-			Collections.sort(admins, new sortbyAge());
+			//Collections.sort(clients, new sortbyAge());
 			break;
 		}
 		
 	}
-	public void changeFormatCurrency(Config configApp, char monedaAnterior){
+	/*public void changeFormatCurrency(Config configApp, char monedaAnterior){
 		try{
-			for(int i = 0;i<admins.size();i++){
-				admins.get(i).changeCurrency(configApp, monedaAnterior);
+			for(int i = 0;i<clients.size();i++){
+				clients.get(i).changeCurrency(configApp, monedaAnterior);
 			}
 		}catch(Exception e){};
-	}
+	}*/
 	public void deleteData(int index){
-		admins.remove(index);
+		clients.remove(index);
 	}
 }
