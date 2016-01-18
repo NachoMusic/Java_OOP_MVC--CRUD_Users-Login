@@ -7,6 +7,7 @@ import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
+import application.modules.users.models.singleton;
 import application.modules.users.models.sortbyAge;
 import application.modules.users.models.sortbyName;
 import application.utils.Functions;
@@ -116,7 +117,11 @@ public class Arraylist_admin {
 			}
 		}catch(Exception e){};
 	}
-	public void deleteData(int index){
-		admins.remove(index);
+	public void deleteData(){
+		try{
+			admins.remove(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null,"The admin does not exist");
+		}
 	}
 }

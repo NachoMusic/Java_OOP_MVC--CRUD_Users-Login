@@ -8,6 +8,8 @@ import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
 import application.modules.users.models.singleton;
 import application.modules.users.utils.Arraylist_admin;
+import application.modules.users.utils.Arraylist_client;
+import application.modules.users.utils.Arraylist_registered_user;
 import application.modules.users.utils.functions_users;
 import application.utils.Functions;
 import application.utils.Menus;
@@ -30,6 +32,8 @@ public class Test_Users {
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
 		Config configApp = new Config();
 		singleton.admins = new Arraylist_admin();
+		singleton.clients = new Arraylist_client();
+		singleton.registered_users = new Arraylist_registered_user();
 		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
@@ -50,7 +54,7 @@ public class Test_Users {
 			
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
 			switch(option){
-			case 0:
+			case 0://Admins
 				do{
 					continuar2=true;
 					option=Menus.menu(vec1, language.getProperty("admin"), language.getProperty("application_users"));
@@ -66,11 +70,12 @@ public class Test_Users {
 						singleton.admins.printArraylist(configApp);
 						break;
 					case 3://Delete
-						try{
+						/*try{
 							singleton.admins.deleteData(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
 						}catch(Exception e){
 							JOptionPane.showMessageDialog(null,"The admin does not exist");
-						}
+						}*/
+						singleton.admins.deleteData();
 						break;
 					case 4://Find
 						option=Menus.menu(find, "Searh admins", "Search");
@@ -109,21 +114,24 @@ public class Test_Users {
 					}				
 				}while(continuar2);
 				break;
-			case 1:
+			case 1://Clients
 				do{
 					continuar2=true;
 					option=Menus.menu(vec1, "Client", "Application Users");
 					switch(option){
 					case 0:
-						client1=functions_users.newclient(configApp);
+						singleton.clients.addData(functions_users.newclient(configApp));
 						break;
 					case 1:
-						functions_users.getuser(client1,1,configApp,language);
+						singleton.clients.changeData(configApp, language);
+						//functions_users.getuser(client1,1,configApp,language);
 						break;
 					case 2:
-						JOptionPane.showMessageDialog(null,client1.toString());
+						//JOptionPane.showMessageDialog(null,client1.toString());
+						singleton.clients.printArraylist(configApp);
 						break;
 					case 3://Delete
+						
 						break;
 					case 4://Find
 						break;
@@ -139,7 +147,7 @@ public class Test_Users {
 					}
 				}while(continuar2);
 				break;
-			case 2:
+			case 2://Registered_users
 				do{
 					continuar2=true;
 					option=Menus.menu(vec1, "Registered user", "Application Users");

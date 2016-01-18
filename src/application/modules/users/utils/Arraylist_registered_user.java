@@ -119,7 +119,11 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 		}catch(Exception e){};
 	}
 	*/
-	public void deleteData(int index){
-		registered_users.remove(index);
+	public void deleteData(){
+		try{
+			registered_users.remove(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null,"The registered user does not exist");
+		}
 	}
 }

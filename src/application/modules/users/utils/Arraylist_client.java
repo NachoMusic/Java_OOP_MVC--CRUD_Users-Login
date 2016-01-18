@@ -119,7 +119,11 @@ private ArrayList<client> clients = new ArrayList<client>();
 			}
 		}catch(Exception e){};
 	}*/
-	public void deleteData(int index){
-		clients.remove(index);
+	public void deleteData(){
+		try{
+			clients.remove(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null,"The client does not exist");
+		}
 	}
 }
