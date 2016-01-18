@@ -2,9 +2,7 @@ package application.modules.users.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.swing.JOptionPane;
-
 import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;

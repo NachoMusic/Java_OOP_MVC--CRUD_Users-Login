@@ -17,7 +17,6 @@ public class Arraylist_admin {
 	public Arraylist_admin(){
 		//constructor
 	}
-	
 	public void addData(admin a){
 		admin admin1 = a;
 		boolean action=true;
@@ -109,7 +108,6 @@ public class Arraylist_admin {
 			Collections.sort(admins, new sortbyAge());
 			break;
 		}
-		
 	}
 	public void changeFormatCurrency(Config configApp, char monedaAnterior){
 		try{
