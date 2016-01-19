@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
 import application.modules.users.models.admin;
-import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
 import application.modules.users.models.singleton;
 import application.modules.users.utils.Arraylist_admin;
@@ -21,7 +20,7 @@ public class Test_Users {
 		char monedaAnterior='�';
 		boolean continuar2=true;
 		admin admin1 = new admin();
-		client client1 = new client();
+		//client client1 = new client();
 		registered_user registered_user1 = new registered_user();
 		@SuppressWarnings("unused")
 		admin dummy1 = new admin("12345678A", "Nacho", "Valera", "987654321", "asdf@asdf.asdf", "Usuario", "Pass",
@@ -29,7 +28,7 @@ public class Test_Users {
 		@SuppressWarnings("unused")
 		admin dummy2 = new admin("12345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
-		Config configApp = new Config();
+		singleton.configApp = new Config();
 		singleton.admins = new Arraylist_admin();
 		singleton.clients = new Arraylist_client();
 		singleton.registered_users = new Arraylist_registered_user();
@@ -59,14 +58,14 @@ public class Test_Users {
 					option=Menus.menu(vec1, language.getProperty("admin"), language.getProperty("application_users"));
 					switch(option){
 					case 0:
-						singleton.admins.addData(functions_users.newadmin(configApp, language));
+						singleton.admins.addData(functions_users.newadmin(language));
 						//FileSave.saveadmin(admin1); for saving on files, will come eventually
 						break;
 					case 1:
-						singleton.admins.changeData(configApp, language);
+						singleton.admins.changeData(language);
 						break;
 					case 2://Print
-						singleton.admins.printArraylist(configApp);
+						singleton.admins.printArraylist();
 						break;
 					case 3://Delete
 						singleton.admins.deleteData();
@@ -75,10 +74,10 @@ public class Test_Users {
 						option=Menus.menu(find, "Searh admins", "Search");
 						switch(option){
 						case 0://By dni
-							singleton.admins.find(0, configApp);
+							singleton.admins.find(0);
 							break;
 						case 1://By name
-							singleton.admins.find(1, configApp);
+							singleton.admins.find(1);
 							break;
 						case 2://Go back
 						}
@@ -114,15 +113,13 @@ public class Test_Users {
 					option=Menus.menu(vec1, "Client", "Application Users");
 					switch(option){
 					case 0:
-						singleton.clients.addData(functions_users.newclient(configApp));
+						singleton.clients.addData(functions_users.newclient());
 						break;
 					case 1:
-						singleton.clients.changeData(configApp, language);
-						//functions_users.getuser(client1,1,configApp,language);
+						singleton.clients.changeData(language);
 						break;
 					case 2:
-						//JOptionPane.showMessageDialog(null,client1.toString());
-						singleton.clients.printArraylist(configApp);
+						singleton.clients.printArraylist();
 						break;
 					case 3://Delete
 						singleton.clients.deleteData();
@@ -131,10 +128,10 @@ public class Test_Users {
 						option=Menus.menu(find, "Searh clients", "Search");
 						switch(option){
 						case 0://By dni
-							singleton.clients.find(0, configApp);
+							singleton.clients.find(0);
 							break;
 						case 1://By name
-							singleton.clients.find(1, configApp);
+							singleton.clients.find(1);
 							break;
 						case 2://Go back
 						}
@@ -169,11 +166,11 @@ public class Test_Users {
 					continuar2=true;
 					option=Menus.menu(vec1, "Registered user", "Application Users");
 					switch(option){
-					case 0:
-						registered_user1=functions_users.newregistered_user(configApp);
+					case 0://Add data
+						singleton.registered_users.addData(functions_users.newregistered_user());
 						break;
 					case 1:
-						functions_users.getuser(registered_user1,2,configApp,language);		
+						functions_users.getuser(registered_user1,2,language);		
 						break;
 					case 2:
 						JOptionPane.showMessageDialog(null,registered_user1.toString());
@@ -198,24 +195,24 @@ public class Test_Users {
 				do{
 					continuar2=true;
 					option=Menus.menu(config, language.getProperty("config2")+"\n"+language.getProperty("date2")+
-					configApp.getDate_config()+"     "+language.getProperty("currency2")+configApp.getCurrency_config()+
-					"     "+language.getProperty("decimals2")+configApp.getDecimals_config()+"     "+language.getProperty("language")+configApp.getLanguage_config(),
+							singleton.configApp.getDate_config()+"     "+language.getProperty("currency2")+singleton.configApp.getCurrency_config()+
+					"     "+language.getProperty("decimals2")+singleton.configApp.getDecimals_config()+"     "+language.getProperty("language")+singleton.configApp.getLanguage_config(),
 					language.getProperty("config"));
 					switch(option){
 					case 0://date format
 						option=Menus.menu(dateconfig,language.getProperty("dateconf2"), language.getProperty("dateconf"));
 						switch(option){
 						case 0:// dd/mm/yyyy
-							configApp.setDate_config(0);
+							singleton.configApp.setDate_config(0);
 							break;
 						case 1:
-							configApp.setDate_config(1);
+							singleton.configApp.setDate_config(1);
 							break;
 						case 2:
-							configApp.setDate_config(2);
+							singleton.configApp.setDate_config(2);
 							break;
 						case 3:
-							configApp.setDate_config(3);
+							singleton.configApp.setDate_config(3);
 							break;
 						case 4:
 							continuar2=false;
@@ -230,19 +227,19 @@ public class Test_Users {
 						option=Menus.menu(currencyconfig, "Currency config", "Configuration about the currency");
 						switch(option){
 						case 0:
-							monedaAnterior=configApp.getCurrency_config();
-							configApp.setCurrency_config('�');
-							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
+							monedaAnterior=singleton.configApp.getCurrency_config();
+							singleton.configApp.setCurrency_config('€');
+							singleton.admins.changeFormatCurrency(monedaAnterior);
 							break;
 						case 1:
-							monedaAnterior=configApp.getCurrency_config();
-							configApp.setCurrency_config('$');
-							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
+							monedaAnterior=singleton.configApp.getCurrency_config();
+							singleton.configApp.setCurrency_config('$');
+							singleton.admins.changeFormatCurrency(monedaAnterior);
 							break;
 						case 2:
-							monedaAnterior=configApp.getCurrency_config();
-							configApp.setCurrency_config('�');
-							singleton.admins.changeFormatCurrency(configApp,monedaAnterior);
+							monedaAnterior=singleton.configApp.getCurrency_config();
+							singleton.configApp.setCurrency_config('£');
+							singleton.admins.changeFormatCurrency(monedaAnterior);
 							break;
 						case 3:
 							continuar2=false;
@@ -257,13 +254,13 @@ public class Test_Users {
 						option=Menus.menu(decimalsconfig, language.getProperty("decimalsconf2"), language.getProperty("decimalsconf"));
 						switch(option){
 						case 0:
-							configApp.setDecimals_config(1);
+							singleton.configApp.setDecimals_config(1);
 							break;
 						case 1:
-							configApp.setDecimals_config(2);
+							singleton.configApp.setDecimals_config(2);
 							break;
 						case 2:
-							configApp.setDecimals_config(3);
+							singleton.configApp.setDecimals_config(3);
 							break;
 						case 3:
 							continuar2=false;
@@ -278,13 +275,13 @@ public class Test_Users {
 						option=Menus.menu(languageconfig, language.getProperty("dateconf"), language.getProperty("dateconf2"));
 						switch(option){
 						case 0:
-							configApp.setLanguage_config("English");
-							language.setIdioma(configApp.getLanguage_config());
+							singleton.configApp.setLanguage_config("English");
+							language.setIdioma(singleton.configApp.getLanguage_config());
 							continuar2=false;
 							break;
 						case 1:
-							configApp.setLanguage_config("Spanish");
-							language.setIdioma(configApp.getLanguage_config());
+							singleton.configApp.setLanguage_config("Spanish");
+							language.setIdioma(singleton.configApp.getLanguage_config());
 							continuar2=false;
 							break;
 						case 2:
@@ -297,10 +294,10 @@ public class Test_Users {
 						}				
 						break;
 					case 4://Resets the default configuration
-						monedaAnterior=configApp.getCurrency_config();
-						configApp = new Config();
-						language.setIdioma(configApp.getLanguage_config());
-						admin1.changeCurrency(configApp, monedaAnterior);
+						monedaAnterior=singleton.configApp.getCurrency_config();
+						singleton.configApp = new Config();
+						language.setIdioma(singleton.configApp.getLanguage_config());
+						admin1.changeCurrency(monedaAnterior);
 						break;
 					case 5:
 						continuar2=false;

@@ -1,6 +1,5 @@
 package application.modules.users.models;
 
-import application.models.Config;
 import application.models.Dates;
 import application.utils.Format;
 
@@ -28,7 +27,7 @@ public class admin extends users{
 	public admin(String dni) {
 		super(dni);
 	}
-	//Constructor a petici�n de usuario
+	//Constructor a petición de usuario
 	public admin(int i, Object option){
 		switch(i){
 		case 0:
@@ -72,20 +71,20 @@ public class admin extends users{
 	}
 	
 	//to string
-	public String toString(Config arg){
+	public String toString(){
 		String cad="";
 		
 		cad+=super.toString()+"\n";
 		cad+="Hirin date: "+this.getHirin_date()+"\n";
-		switch(arg.getCurrency_config()){
+		switch(singleton.configApp.getCurrency_config()){
 		case '€':
-			cad+="Salary: "+Format.formatEuro(this.getSalary(),arg.getDecimals_config())+"\n";
+			cad+="Salary: "+Format.formatEuro(this.getSalary(),singleton.configApp.getDecimals_config())+"\n";
 			break;
 		case '$':
-			cad+="Salary: "+Format.formatDollar(this.getSalary(),arg.getDecimals_config())+"\n";
+			cad+="Salary: "+Format.formatDollar(this.getSalary(),singleton.configApp.getDecimals_config())+"\n";
 			break;
 		case '£':
-			cad+="Salary: "+Format.formatLibra(this.getSalary(),arg.getDecimals_config())+"\n";
+			cad+="Salary: "+Format.formatLibra(this.getSalary(),singleton.configApp.getDecimals_config())+"\n";
 			break;
 		}
 		cad+="Years of service: "+this.getYears_of_service()+"\n";
@@ -131,37 +130,37 @@ public class admin extends users{
 		Dates date1 = new Dates(date);
 		return date1.timeBetweetDates(date1.DateToCalendar(), date1.SystemDate(), 1);
 	}
-	public void changeCurrency(Config arg, char monedaAnterior){
+	public void changeCurrency(char monedaAnterior){
 		float test;
 		//1� = 1,09321$ = 0,726888�
 		
-		// � -> $ *1,09321 
-		//� -> � * 0,726888
-		//1$ -> � / 1,09321
-		//� -> � /0,726888
-		//� -> $ /0,664970
-		//$ -> � *0,664970
-		if(arg.getCurrency_config()=='$'&&monedaAnterior=='�'){
+		// € -> $ *1,09321 
+		//€ -> £ * 0,726888
+		//1$ -> € / 1,09321
+		//£ -> € /0,726888
+		//£ -> $ /0,664970
+		//$ -> £ *0,664970
+		if(singleton.configApp.getCurrency_config()=='$'&&monedaAnterior=='€'){
 			test=(float) (this.salary*1.09321);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='�'&&monedaAnterior=='$'){
+		if(singleton.configApp.getCurrency_config()=='€'&&monedaAnterior=='$'){
 			test=(float) (this.salary/1.09321);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='�'&&monedaAnterior=='�'){
+		if(singleton.configApp.getCurrency_config()=='£'&&monedaAnterior=='€'){
 			test=(float) (this.salary*0.726888);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='�'&&monedaAnterior=='�'){
+		if(singleton.configApp.getCurrency_config()=='€'&&monedaAnterior=='£'){
 			test=(float) (this.salary/0.726888);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='$'&&monedaAnterior=='�'){
+		if(singleton.configApp.getCurrency_config()=='$'&&monedaAnterior=='£'){
 			test=(float) (this.salary/0.664970);
 			this.salary=test;
 		}
-		if(arg.getCurrency_config()=='�'&&monedaAnterior=='$'){
+		if(singleton.configApp.getCurrency_config()=='£'&&monedaAnterior=='$'){
 			test=(float) (this.salary*0.664970);
 			this.salary=test;
 		}

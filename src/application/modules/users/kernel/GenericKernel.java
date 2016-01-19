@@ -1,7 +1,6 @@
 package application.modules.users.kernel;
 
 import javax.swing.JOptionPane;
-import application.models.Config;
 import application.models.Dates;
 import application.utils.Functions;
 import application.utils.Validate;
@@ -94,10 +93,10 @@ public class GenericKernel {
 	 * @return	The date in a String
 	 */
 	
-	public static String insertDateBirthday(String arg1, String arg2, Config arg){
+	public static String insertDateBirthday(String arg1, String arg2){
 		boolean valid=true;
 		Dates date0=new Dates("");
-		Dates date1=new Dates(date0.insertDate(arg1,arg2, arg));
+		Dates date1=new Dates(date0.insertDate(arg1,arg2));
 
 		
 		do{
@@ -105,12 +104,12 @@ public class GenericKernel {
 			if(date1.compareWith(date1.DateToCalendar(), date1.SystemDate())!=1){
 				valid=false;
 				JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
-				date1 = new Dates(date1.insertDate(arg1,arg2, arg));
+				date1 = new Dates(date1.insertDate(arg1,arg2));
 			}
 			if(date1.timeBetweetDates(date1.DateToCalendar(), date1.SystemDate(), 1)<18){
 				JOptionPane.showMessageDialog(null, "You can't register until you're 18 years old");
 				valid=false;
-				date1 = new Dates(date1.insertDate(arg1,arg2, arg));
+				date1 = new Dates(date1.insertDate(arg1,arg2));
 			}
 		}while(!valid);
 		return date1.getDate();
@@ -123,12 +122,12 @@ public class GenericKernel {
 	 * @return The date in a String
 	 */
 	
-	public static String insertUpDate (String arg1, String arg2, String date_birthday, Config arg){
+	public static String insertUpDate (String arg1, String arg2, String date_birthday){
 		boolean valid=true;
 		int yearsDif=0;
 		Dates date1 =null;
 		Dates date0=new Dates("");
-		date1=new Dates(date0.insertDate(arg1,arg2, arg));
+		date1=new Dates(date0.insertDate(arg1,arg2));
 		Dates date2= new Dates(date_birthday);
 		
 		do{
@@ -136,19 +135,19 @@ public class GenericKernel {
 			if(date1.compareWith(date1.DateToCalendar(), date1.SystemDate())!=1){
 				valid=false;
 				JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
-				date1 = new Dates(date1.insertDate(arg1,arg2, arg));
+				date1 = new Dates(date1.insertDate(arg1,arg2));
 			}
 			yearsDif=date1.timeBetweetDates(date1.DateToCalendar(), date2.DateToCalendar(), 1);
 			if(yearsDif<18){
 				valid=false;
 				JOptionPane.showMessageDialog(null, "You could not be hired until you were 18");
-				date1 = new Dates(date1.insertDate(arg1,arg2, arg));
+				date1 = new Dates(date1.insertDate(arg1,arg2));
 			}
 			
 			if(date1.compareWith(date1.DateToCalendar(), date2.DateToCalendar())==1){
 				valid=false;
 				JOptionPane.showMessageDialog(null, "The date can not be before your date birthday");
-				date1 = new Dates(date1.insertDate(arg1,arg2,arg));
+				date1 = new Dates(date1.insertDate(arg1,arg2));
 			}
 		}while(!valid);
 		return date1.getDate();

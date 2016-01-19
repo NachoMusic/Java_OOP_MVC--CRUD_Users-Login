@@ -1,25 +1,25 @@
 package application.modules.users.utils;
 
-import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
 import application.modules.users.models.client;
 import application.modules.users.models.registered_user;
+import application.modules.users.models.singleton;
 import application.modules.users.models.users;
 import application.utils.Functions;
 import application.utils.Menus;
 
 public class functions_users {
 	
-	public static admin newadmin(Config arg, Language language){
+	public static admin newadmin(Language language){
 		String dni, name, subname, phone_number, email, user, pass,
 		avatar, state, date_birthday, hiring_date;
 		float salary;
 		int activity;
 		String dateFormat="";
 		
-		switch(arg.getDate_config()){
+		switch(singleton.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
@@ -42,21 +42,21 @@ public class functions_users {
 		pass=Functions.validatestring(language.getProperty("pass"),language.getProperty("pass2"));
 		avatar=Functions.validatestring(language.getProperty("avatar"), language.getProperty("avatar2"));
 		state=Functions.validatestring(language.getProperty("state"), language.getProperty("state2"));
-		date_birthday=GenericKernel.insertDateBirthday(language.getProperty("date_birthday")+dateFormat, language.getProperty("date_birthday2"),arg);
-		hiring_date=GenericKernel.insertUpDate(language.getProperty("hiring_date")+dateFormat, language.getProperty("hiring_date2"),date_birthday,arg);
+		date_birthday=GenericKernel.insertDateBirthday(language.getProperty("date_birthday")+dateFormat, language.getProperty("date_birthday2"));
+		hiring_date=GenericKernel.insertUpDate(language.getProperty("hiring_date")+dateFormat, language.getProperty("hiring_date2"),date_birthday);
 		salary=Functions.validatefloat(language.getProperty("salary"),language.getProperty("salary2"));
 		activity=Functions.validateint(language.getProperty("activity"), language.getProperty("activity2"));
 		return new admin(dni,name,subname,phone_number,email,user,pass,avatar,state,
 				date_birthday,hiring_date,salary,activity);
 	}
-	public static client newclient(Config arg){
+	public static client newclient(){
 		String dni, name, subname, phone_number, email, user, pass,
 		avatar, state, date_birthday, discharge_date, client_type;
 		float shopping;
 		boolean premium;
 		String dateFormat="";
 		
-		switch(arg.getDate_config()){
+		switch(singleton.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
@@ -79,21 +79,21 @@ public class functions_users {
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
 		state=Functions.validatestring("Type your state", "State");
-		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday",arg);
-		discharge_date=GenericKernel.insertUpDate("Type your discgarge date \n"+dateFormat, "Discgarge Date",date_birthday,arg);
+		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday");
+		discharge_date=GenericKernel.insertUpDate("Type your discgarge date \n"+dateFormat, "Discgarge Date",date_birthday);
 		client_type=Functions.validatestring("Type your client type", "Client Type");
 		shopping=Functions.validatefloat("Type your shopping", "Shopping");
 		premium=Functions.validateboolean("Type if you are premium or not","Premium");
 		return new client(dni,name,subname,phone_number,email,user,pass,avatar,state,
 				date_birthday,discharge_date,client_type,shopping,premium);
 	}
-	public static registered_user newregistered_user(Config arg){
+	public static registered_user newregistered_user(){
 		String dni, name, subname, phone_number, email, user, pass,
 		avatar, state, date_birthday, karma="";
 		int activity;
 		String dateFormat="";
 		
-		switch(arg.getDate_config()){
+		switch(singleton.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
@@ -117,7 +117,7 @@ public class functions_users {
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
 		state=Functions.validatestring("Type your state", "State");
-		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday",arg);
+		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday");
 		String[] vec = {"Alto","Medio","Bajo"};
 		switch(Menus.menu(vec, "Choose the Karma", "Karma")){
 		case 0:
@@ -135,10 +135,10 @@ public class functions_users {
 		return new registered_user(dni,name,subname,phone_number,email,user,pass,avatar,state,
 				date_birthday,karma,activity);
 	}
-	public static void getuser(users param, int a, Config arg, Language language){
+	public static void getuser(users param, int a, Language language){
 		int edit=14;
 		String dateFormat="";
-		switch(arg.getDate_config()){
+		switch(singleton.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
@@ -163,7 +163,7 @@ public class functions_users {
 			
 			switch(edit){
 			case 11:
-				((admin) param).setHirin_date(GenericKernel.insertUpDate("Type your hiring date \n"+dateFormat, "Hiring Date",param.getDate_birthday(),arg));
+				((admin) param).setHirin_date(GenericKernel.insertUpDate("Type your hiring date \n"+dateFormat, "Hiring Date",param.getDate_birthday()));
 				break;
 			case 12:
 				((admin) param).setSalary(Functions.validatefloat(language.getProperty("salary"), language.getProperty("salary2")));
@@ -181,7 +181,7 @@ public class functions_users {
 					+ " 12 -> Client type\n 13 Shopping\n 14-> Premium", "EDIT");
 			switch(edit){
 			case 11:
-				((client) param).setDischarge_date(GenericKernel.insertUpDate("Introduce el nuevo discharge date "+dateFormat, "discharge date", param.getDate_birthday(),arg));
+				((client) param).setDischarge_date(GenericKernel.insertUpDate("Introduce el nuevo discharge date "+dateFormat, "discharge date", param.getDate_birthday()));
 				break;
 			case 12:
 				((client) param).setClient_type(Functions.validatestring("Introduce el nuevo client type", "client type"));
@@ -251,7 +251,7 @@ public class functions_users {
 			param.setState(Functions.validatestring(language.getProperty("state"), language.getProperty("state2")));
 			break;
 		case 10:
-			param.setDate_birthday(GenericKernel.insertDateBirthday(language.getProperty("date_birthday")+dateFormat, language.getProperty("date_birthday2"),arg));
+			param.setDate_birthday(GenericKernel.insertDateBirthday(language.getProperty("date_birthday")+dateFormat, language.getProperty("date_birthday2")));
 			break;
 		}
 	}

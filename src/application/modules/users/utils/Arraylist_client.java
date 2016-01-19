@@ -2,13 +2,11 @@ package application.modules.users.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javax.swing.JOptionPane;
-
-import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.client;
+import application.modules.users.models.singleton;
 import application.modules.users.models.sortbyAge;
 import application.modules.users.models.sortbyName;
 import application.utils.Functions;
@@ -37,7 +35,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 	public client getData(int num){
 		return clients.get(num);
 	}
-	public void changeData(Config configApp, Language language){
+	public void changeData(Language language){
 		try{
 			int action=0;
 			String dni;
@@ -45,7 +43,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 					+ " the client to change", "Change users");
 			
 			dni=clients.get(num-1).getDni();
-			functions_users.getuser(clients.get(num-1), 1, configApp, language);
+			functions_users.getuser(clients.get(num-1), 1, language);
 			for(int i=0;i<clients.size();i++){
 				if(clients.get(num-1).equals(clients.get(i),0)){
 					if(i!=num-1)
@@ -60,17 +58,17 @@ private ArrayList<client> clients = new ArrayList<client>();
 			JOptionPane.showMessageDialog(null,"The client does not exist");
 		}
 	}
-	public void printArraylist(Config configApp){
+	public void printArraylist(){
 		int times=0;
 		
 		for (int i = 0; i<clients.size();i++){
-			JOptionPane.showMessageDialog(null, (i+1)+":\n"+clients.get(i).toString(configApp));
+			JOptionPane.showMessageDialog(null, (i+1)+":\n"+clients.get(i).toString(singleton.configApp));
 			times++;
 		}
 		if(times==0)
 			JOptionPane.showMessageDialog(null, "No clients found");
 	}
-	public void find(int option, Config config){
+	public void find(int option){
 		client client1 = new client();
 		int times=0;
 		
@@ -79,7 +77,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 			client1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
 			for(int i = 0;i<clients.size();i++){
 				if(clients.get(i).equals(client1,0)){
-					JOptionPane.showMessageDialog(null,clients.get(i).toString(config));
+					JOptionPane.showMessageDialog(null,clients.get(i).toString(singleton.configApp));
 					times++;
 				}
 			}
@@ -90,7 +88,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 			client1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
 			for(int i = 0;i<clients.size();i++){
 				if(clients.get(i).equals(client1,1)){
-					JOptionPane.showMessageDialog(null,clients.get(i).toString(config));
+					JOptionPane.showMessageDialog(null,clients.get(i).toString(singleton.configApp));
 					times++;
 				}
 			}

@@ -16,7 +16,7 @@ public class Config {
 		super();
 		this.date_config = 0;// dd/mm/yyyy 
 		this.language_config = "English";
-		this.currency_config = '€';
+		this.currency_config = 'â‚¬';
 		this.decimals_config = 2;
 	}
 	public int getDate_config() {

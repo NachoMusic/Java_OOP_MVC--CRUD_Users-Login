@@ -34,7 +34,7 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 	public registered_user getData(int num){
 		return registered_users.get(num);
 	}
-	public void changeData(Config configApp, Language language){
+	public void changeData(Language language){
 		try{
 			int action=0;
 			String dni;
@@ -42,7 +42,7 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 					+ " the admin to change", "Change users");
 			
 			dni=registered_users.get(num-1).getDni();
-			functions_users.getuser(registered_users.get(num-1), 0, configApp, language);
+			functions_users.getuser(registered_users.get(num-1),0,language);
 			for(int i=0;i<registered_users.size();i++){
 				if(registered_users.get(num-1).equals(registered_users.get(i),0)){
 					if(i!=num-1)

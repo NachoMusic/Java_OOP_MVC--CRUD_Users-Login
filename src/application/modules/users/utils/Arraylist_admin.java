@@ -3,7 +3,6 @@ package application.modules.users.utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
-import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
@@ -34,7 +33,7 @@ public class Arraylist_admin {
 	public admin getData(int num){
 		return admins.get(num);
 	}
-	public void changeData(Config configApp, Language language){
+	public void changeData(Language language){
 		try{
 			int action=0;
 			String dni;
@@ -42,7 +41,7 @@ public class Arraylist_admin {
 					+ " the admin to change", "Change users");
 			
 			dni=admins.get(num-1).getDni();
-			functions_users.getuser(admins.get(num-1), 0, configApp, language);
+			functions_users.getuser(admins.get(num-1), 0, language);
 			for(int i=0;i<admins.size();i++){
 				if(admins.get(num-1).equals(admins.get(i),0)){
 					if(i!=num-1)
@@ -57,17 +56,17 @@ public class Arraylist_admin {
 			JOptionPane.showMessageDialog(null,"The admin does not exist");
 		}
 	}
-	public void printArraylist(Config configApp){
+	public void printArraylist(){
 		int times=0;
 		
 		for (int i = 0; i<admins.size();i++){
-			JOptionPane.showMessageDialog(null, (i+1)+":\n"+admins.get(i).toString(configApp));
+			JOptionPane.showMessageDialog(null, (i+1)+":\n"+admins.get(i).toString());
 			times++;
 		}
 		if(times==0)
 			JOptionPane.showMessageDialog(null, "No admins found");
 	}
-	public void find(int option, Config config){
+	public void find(int option){
 		admin admin1 = new admin();
 		int times=0;
 		
@@ -76,7 +75,7 @@ public class Arraylist_admin {
 			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
 			for(int i = 0;i<admins.size();i++){
 				if(admins.get(i).equals(admin1,0)){
-					JOptionPane.showMessageDialog(null,admins.get(i).toString(config));
+					JOptionPane.showMessageDialog(null,admins.get(i).toString());
 					times++;
 				}
 			}
@@ -87,7 +86,7 @@ public class Arraylist_admin {
 			admin1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
 			for(int i = 0;i<admins.size();i++){
 				if(admins.get(i).equals(admin1,1)){
-					JOptionPane.showMessageDialog(null,admins.get(i).toString(config));
+					JOptionPane.showMessageDialog(null,admins.get(i).toString());
 					times++;
 				}
 			}
@@ -109,10 +108,10 @@ public class Arraylist_admin {
 			break;
 		}
 	}
-	public void changeFormatCurrency(Config configApp, char monedaAnterior){
+	public void changeFormatCurrency(char monedaAnterior){
 		try{
 			for(int i = 0;i<admins.size();i++){
-				admins.get(i).changeCurrency(configApp, monedaAnterior);
+				admins.get(i).changeCurrency(monedaAnterior);
 			}
 		}catch(Exception e){};
 	}

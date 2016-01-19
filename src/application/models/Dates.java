@@ -4,6 +4,7 @@ import java.util.GregorianCalendar;
 
 import javax.swing.JOptionPane;
 
+import application.modules.users.models.singleton;
 import application.utils.Functions;
 import application.utils.Validate;
 
@@ -132,7 +133,7 @@ public class Dates {
 		}
 		return resoult;
 	}
-	public String insertDate(String arg1, String arg2, Config arg){
+	public String insertDate(String arg1, String arg2){
 		boolean validate=false;
 		String date="",month="",day="",year="";
 		int daynum=0,yearnum=0;
@@ -141,7 +142,7 @@ public class Dates {
 			month="";
 			day="";
 			year="";
-			switch(arg.getDate_config()){
+			switch(singleton.configApp.getDate_config()){
 			case 0: 
 				validate=Validate.validateDate1(date=Functions.validatestring(arg1,arg2));
 				break;
@@ -156,7 +157,7 @@ public class Dates {
 				break;
 			}
 			try{
-				if(arg.getDate_config()<2){
+				if(singleton.configApp.getDate_config()<2){
 				day+=date.charAt(0);
 				day+=date.charAt(1);
 				month+=date.charAt(3);
