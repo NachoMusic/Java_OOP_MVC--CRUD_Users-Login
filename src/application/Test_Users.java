@@ -11,7 +11,6 @@ import application.modules.users.utils.Arraylist_admin;
 import application.modules.users.utils.Arraylist_client;
 import application.modules.users.utils.Arraylist_registered_user;
 import application.modules.users.utils.functions_users;
-import application.utils.Functions;
 import application.utils.Menus;
 
 public class Test_Users {
@@ -70,11 +69,6 @@ public class Test_Users {
 						singleton.admins.printArraylist(configApp);
 						break;
 					case 3://Delete
-						/*try{
-							singleton.admins.deleteData(Functions.validateint("Type the number of the user to delete", "Delete entries")-1);
-						}catch(Exception e){
-							JOptionPane.showMessageDialog(null,"The admin does not exist");
-						}*/
 						singleton.admins.deleteData();
 						break;
 					case 4://Find
@@ -131,11 +125,34 @@ public class Test_Users {
 						singleton.clients.printArraylist(configApp);
 						break;
 					case 3://Delete
-						
+						singleton.clients.deleteData();
 						break;
 					case 4://Find
+						option=Menus.menu(find, "Searh clients", "Search");
+						switch(option){
+						case 0://By dni
+							singleton.clients.find(0, configApp);
+							break;
+						case 1://By name
+							singleton.clients.find(1, configApp);
+							break;
+						case 2://Go back
+						}
 						break;
 					case 5://Sort by
+						option=Menus.menu(sortBy, "Sort admins", "Sort");
+						switch(option){
+						case 0://By dni
+							singleton.clients.sortData(0);
+							break;
+						case 1://By name
+							singleton.clients.sortData(1);
+							break;
+						case 2://By date birthday
+							singleton.clients.sortData(2);
+							break;
+						case 3://Go back
+						}
 						break;
 					case 6:
 						continuar2=false;

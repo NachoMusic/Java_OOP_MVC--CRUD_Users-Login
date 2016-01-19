@@ -7,7 +7,6 @@ import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
-import application.modules.users.models.singleton;
 import application.modules.users.models.sortbyAge;
 import application.modules.users.models.sortbyName;
 import application.utils.Functions;
