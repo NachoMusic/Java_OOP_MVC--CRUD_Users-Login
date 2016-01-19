@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
 import application.modules.users.models.admin;
-import application.modules.users.models.registered_user;
 import application.modules.users.models.singleton;
 import application.modules.users.utils.Arraylist_admin;
 import application.modules.users.utils.Arraylist_client;
@@ -21,7 +20,7 @@ public class Test_Users {
 		boolean continuar2=true;
 		admin admin1 = new admin();
 		//client client1 = new client();
-		registered_user registered_user1 = new registered_user();
+		//registered_user registered_user1 = new registered_user();
 		@SuppressWarnings("unused")
 		admin dummy1 = new admin("12345678A", "Nacho", "Valera", "987654321", "asdf@asdf.asdf", "Usuario", "Pass",
 				"Avatar", "Online", "16/10/1996", "14/12/2014",1234.1234f, 1234);
@@ -170,16 +169,40 @@ public class Test_Users {
 						singleton.registered_users.addData(functions_users.newregistered_user());
 						break;
 					case 1:
-						functions_users.getuser(registered_user1,2,language);		
+						singleton.registered_users.changeData(language);	
 						break;
 					case 2:
-						JOptionPane.showMessageDialog(null,registered_user1.toString());
+						singleton.registered_users.printArraylist();
 						break;
 					case 3://Delete
+						singleton.registered_users.deleteData();
 						break;
 					case 4://Find
+						option=Menus.menu(find, "Searh registered users", "Search");
+						switch(option){
+						case 0://By dni
+							singleton.registered_users.find(0);
+							break;
+						case 1://By name
+							singleton.registered_users.find(1);
+							break;
+						case 2://Go back
+						}
 						break;
 					case 5://Sort by
+						option=Menus.menu(sortBy, "Sort admins", "Sort");
+						switch(option){
+						case 0://By dni
+							singleton.registered_users.sortData(0);
+							break;
+						case 1://By name
+							singleton.registered_users.sortData(1);
+							break;
+						case 2://By date birthday
+							singleton.registered_users.sortData(2);
+							break;
+						case 3://Go back
+						}
 						break;
 					case 6:
 						continuar2=false;

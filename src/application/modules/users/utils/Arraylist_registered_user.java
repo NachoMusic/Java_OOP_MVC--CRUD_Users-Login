@@ -3,11 +3,12 @@ package application.modules.users.utils;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
-import application.models.Config;
 import application.models.Language;
 import application.modules.users.kernel.GenericKernel;
 import application.modules.users.models.admin;
 import application.modules.users.models.registered_user;
+import application.modules.users.models.sortbyAge;
+import application.modules.users.models.sortbyName;
 import application.utils.Functions;
 
 public class Arraylist_registered_user {
@@ -57,7 +58,7 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 			JOptionPane.showMessageDialog(null,"The admin does not exist");
 		}
 	}
-	public void printArraylist(Config configApp){
+	public void printArraylist(){
 		int times=0;
 		
 		for (int i = 0; i<registered_users.size();i++){
@@ -67,7 +68,7 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 		if(times==0)
 			JOptionPane.showMessageDialog(null, "No admins found");
 	}
-	public void find(int option, Config config){
+	public void find(int option){
 		admin admin1 = new admin();
 		int times=0;
 		
@@ -102,10 +103,10 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 			Collections.sort(registered_users);
 			break;
 		case 1:
-			//Collections.sort(registered_users, new sortbyName());
+			Collections.sort(registered_users, new sortbyName());
 			break;
 		case 2:
-			//Collections.sort(registered_users, new sortbyAge());
+			Collections.sort(registered_users, new sortbyAge());
 			break;
 		}
 		
