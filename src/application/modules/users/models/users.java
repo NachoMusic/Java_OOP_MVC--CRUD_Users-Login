@@ -1,11 +1,42 @@
 package application.modules.users.models;
 
-import application.models.Dates;
+import java.io.Serializable;
 
-public abstract class users implements Comparable <users> {
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import application.models.Dates;
+@SuppressWarnings("serial")
+@XStreamAlias("users")
+public abstract class users implements Comparable <users>, Serializable {
 	//Atributes
-	private String dni,name,subname,phone_number,email,user,pass,avatar,state,date_birthday;
-	private int age,points, discount,incentives;
+	@XStreamAlias("dni")
+	private String dni;
+	@XStreamAlias("name")
+	private String name;
+	@XStreamAlias("subname")
+	private String subname;
+	@XStreamAlias("phone_number")
+	private String phone_number;
+	@XStreamAlias("email")
+	private String email;
+	@XStreamAlias("user")
+	private String user;
+	@XStreamAlias("pass")
+	private String pass;
+	@XStreamAlias("avatar")
+	private String avatar;
+	@XStreamAlias("state")
+	private String state;
+	@XStreamAlias("date_birthday")
+	private String date_birthday;
+	@XStreamAlias("age")
+	private int age;
+	@XStreamAlias("points")
+	private int points;
+	@XStreamAlias("discount")
+	private int discount;
+	@XStreamAlias("incentives")
+	private int incentives;
+	@XStreamAlias("advantages")
 	private float advantages;
 	//Constructors
 	//dni name subname mobile birthday age login password email avatar status
@@ -28,7 +59,7 @@ public abstract class users implements Comparable <users> {
 	public users(String dni) {
 		this.dni = dni;
 	}
-	//constructor a petición del usuario
+	//constructor a peticiï¿½n del usuario
 	public users(int i, String s, int age){
 		switch(i){
 		case 0:

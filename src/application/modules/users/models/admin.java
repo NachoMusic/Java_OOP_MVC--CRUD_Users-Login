@@ -1,12 +1,23 @@
 package application.modules.users.models;
 
+import java.io.Serializable;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import application.models.Dates;
 import application.utils.Format;
 
-public class admin extends users{
+@SuppressWarnings("serial")
+@XStreamAlias("admins")
+public class admin extends users implements Serializable{
+	@XStreamAlias("hirin_date")
 	private String hirin_date;
+	@XStreamAlias("salary")
 	private float salary;
-	private int years_of_service, activity;
+	@XStreamAlias("years_of_service")
+	private int years_of_service;
+	@XStreamAlias("activity")
+	private int activity;
 
 	//Constructors
 	public admin(String dni, String name, String subname, String phone_number, String email, String user, String pass,
