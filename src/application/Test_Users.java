@@ -10,6 +10,7 @@ import application.modules.users.utils.Arraylist_client;
 import application.modules.users.utils.Arraylist_registered_user;
 import application.modules.users.utils.functions_users;
 import application.modules.users.utils.lib_files.json;
+import application.modules.users.utils.lib_files.txt;
 import application.modules.users.utils.lib_files.xml;
 import application.utils.Menus;
 
@@ -18,7 +19,7 @@ public class Test_Users {
 	public static void main(String[] args){
 		Language language =new Language("English");
 		int option,continuar=0;
-		char monedaAnterior='�';
+		char monedaAnterior='€';
 		boolean continuar2=true;
 		admin admin1 = new admin();
 		//client client1 = new client();
@@ -34,6 +35,18 @@ public class Test_Users {
 		singleton.clients = new Arraylist_client();
 		singleton.registered_users = new Arraylist_registered_user();
 		
+		switch(singleton.configApp.getSavingextension()){
+		case "json"://json
+			json.load_json();
+			break;
+		case "xml"://xml
+			xml.load_xml();
+			break;
+		case "txt": //txt
+			txt.load_txt();
+			break;
+		}
+		
 		while(continuar!=4){
 			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
 					language.getProperty("registered_user"),language.getProperty("config"),
@@ -43,7 +56,7 @@ public class Test_Users {
 			String[] find = {"By DNI","By name",language.getProperty("go_back")};
 			String[] sortBy = {"By DNI","By name","By birthday",language.getProperty("go_back")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
-					language.getProperty("lang"),"Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
+					language.getProperty("lang"),"Saving extension","Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra �",language.getProperty("go_back"),language.getProperty("exit")};
 			String[] languageconfig = {language.getProperty("english"), language.getProperty("spanish"),language.getProperty("go_back"),
@@ -86,6 +99,7 @@ public class Test_Users {
 						}
 						break;
 					case 5://Sort by
+						
 						option=Menus.menu(sortBy, "Sort admins", "Sort");
 						switch(option){
 						case 0://By dni
@@ -101,35 +115,32 @@ public class Test_Users {
 						}
 						break;
 					case 6://Save
-						option=Menus.menu(save, "Save admins", "Save");
-						switch(option){
-						case 0://json
+						//option=Menus.menu(save, "Save admins", "Save");
+						switch(singleton.configApp.getSavingextension()){
+						case "json"://json
 							json.createjson();
 							break;
-						case 1://xml
+						case "xml"://xml
 							xml.createxml();
 							break;
-						case 2://txt
-							
+						case "txt"://txt
+							txt.createtxt();
 							break;
-						case 3://Go back
 						}
 						break;
 					case 7://Load
-						option=Menus.menu(load, "Save admins", "Save");
-						switch(option){
-						case 0://json
+						//option=Menus.menu(load, "Save admins", "Save");
+						switch(singleton.configApp.getSavingextension()){
+						case "json"://json
 							json.load_json();
 							break;
-						case 1://xml
+						case "xml"://xml
 							xml.load_xml();
 							break;
-						case 2://txt
-							
+						case "txt": //txt
+							txt.load_txt();
 							break;
-						case 3://Go back
 						}
-						
 						break;
 					case 8:
 						continuar2=false;
@@ -359,16 +370,31 @@ public class Test_Users {
 							break;
 						}				
 						break;
-					case 4://Resets the default configuration
+					case 4://Saving extension
+						option=Menus.menu(save, "Save admins", "Save");
+						switch(option){
+						case 0://json
+							singleton.configApp.setSavingextension("json");
+							break;
+						case 1://xml
+							singleton.configApp.setSavingextension("xml");
+							break;
+						case 2://txt
+							singleton.configApp.setSavingextension("txt");
+							break;
+						case 3://Go back
+						}
+						break;
+					case 5://Resets the default configuration
 						monedaAnterior=singleton.configApp.getCurrency_config();
 						singleton.configApp = new Config();
 						language.setIdioma(singleton.configApp.getLanguage_config());
 						admin1.changeCurrency(monedaAnterior);
 						break;
-					case 5:
+					case 6:
 						continuar2=false;
 						break;
-					case 6:
+					case 7:
 						continuar2=false;
 						continuar=4;
 						break;
@@ -378,6 +404,17 @@ public class Test_Users {
 			case 4:
 				continuar=4;
 				}
+		}
+		switch(singleton.configApp.getSavingextension()){
+		case "json"://json
+			json.createjson();
+			break;
+		case "xml"://xml
+			xml.createxml();
+			break;
+		case "txt"://txt
+			txt.createtxt();
+			break;
 		}
 		language.getProperty("Spanish");
 		JOptionPane.showMessageDialog(null, language.getProperty("goodbye"));

@@ -65,7 +65,6 @@ public class Dates {
 			date+=Integer.toString(c1.get(Calendar.DATE));
 			date+="/"+Integer.toString(c1.get(Calendar.MONTH)+1)+"/"+Integer.toString(c1.get(Calendar.YEAR));
 			break;
-		
 		case 1:
 			date+=Integer.toString(c1.get(Calendar.DATE));
 			date+="-"+Integer.toString(c1.get(Calendar.MONTH)+1)+"-"+Integer.toString(c1.get(Calendar.YEAR));
