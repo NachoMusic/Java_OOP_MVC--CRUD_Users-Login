@@ -21,9 +21,6 @@ public class Test_Users {
 		int option,continuar=0;
 		char monedaAnterior='€';
 		boolean continuar2=true;
-		admin admin1 = new admin();
-		//client client1 = new client();
-		//registered_user registered_user1 = new registered_user();
 		@SuppressWarnings("unused")
 		admin dummy1 = new admin("12345678A", "Nacho", "Valera", "987654321", "asdf@asdf.asdf", "Usuario", "Pass",
 				"Avatar", "Online", "16/10/1996", "14/12/2014",1234.1234f, 1234);
@@ -64,7 +61,7 @@ public class Test_Users {
 			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),
 					language.getProperty("go_back"), language.getProperty("exit")};
 			String[] save = {"Save on JSON","Save on XML","Save on TXT",language.getProperty("go_back")};
-			String[] load = {"Load a JSON","Load a XML","Load a TXT",language.getProperty("go_back")};
+			//String[] load = {"Load a JSON","Load a XML","Load a TXT",language.getProperty("go_back")};
 
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
 			switch(option){
@@ -389,7 +386,9 @@ public class Test_Users {
 						monedaAnterior=singleton.configApp.getCurrency_config();
 						singleton.configApp = new Config();
 						language.setIdioma(singleton.configApp.getLanguage_config());
-						admin1.changeCurrency(monedaAnterior);
+						for(int i = 0;i<singleton.admins.getAdmins().size();i++){
+							singleton.admins.getData(i).changeCurrency(monedaAnterior);
+						}
 						break;
 					case 6:
 						continuar2=false;
