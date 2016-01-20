@@ -37,7 +37,7 @@ public class Test_Users {
 					language.getProperty("registered_user"),language.getProperty("config"),
 					language.getProperty("exit")};
 			String[] vec1 = {language.getProperty("create"), language.getProperty("change_data"), language.getProperty("print_data"),
-					"Delete","Find","Sort by",language.getProperty("go_back"), language.getProperty("exit")};
+					"Delete","Find","Sort by","Save","Load",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] find = {"By DNI","By name",language.getProperty("go_back")};
 			String[] sortBy = {"By DNI","By name","By birthday",language.getProperty("go_back")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
@@ -96,10 +96,14 @@ public class Test_Users {
 						case 3://Go back
 						}
 						break;
-					case 6:
+					case 6://Save
+						break;
+					case 7://Load
+						break;
+					case 8:
 						continuar2=false;
 						break;
-					case 7:
+					case 9:
 						continuar2=false;
 						continuar=4;
 						break;
@@ -150,10 +154,14 @@ public class Test_Users {
 						case 3://Go back
 						}
 						break;
-					case 6:
+					case 6://Save
+						break;
+					case 7://Load
+						break;
+					case 8:
 						continuar2=false;
 						break;
-					case 7:
+					case 9:
 						continuar2=false;
 						continuar=4;
 						break;
@@ -204,10 +212,14 @@ public class Test_Users {
 						case 3://Go back
 						}
 						break;
-					case 6:
+					case 6://Save
+						break;
+					case 7://Load
+						break;
+					case 8:
 						continuar2=false;
 						break;
-					case 7:
+					case 9:
 						continuar2=false;
 						continuar=4;
 						break;

@@ -1,7 +1,6 @@
 package application.modules.users.models;
 
 import java.io.Serializable;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import application.models.Dates;
 @SuppressWarnings("serial")
