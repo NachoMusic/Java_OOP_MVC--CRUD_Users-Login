@@ -8,7 +8,7 @@ import application.models.Dates;
 import application.utils.Format;
 
 @SuppressWarnings("serial")
-@XStreamAlias("admins")
+@XStreamAlias("admin")
 public class admin extends users implements Serializable{
 	@XStreamAlias("hirin_date")
 	private String hirin_date;

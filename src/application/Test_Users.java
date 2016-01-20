@@ -9,6 +9,7 @@ import application.modules.users.utils.Arraylist_admin;
 import application.modules.users.utils.Arraylist_client;
 import application.modules.users.utils.Arraylist_registered_user;
 import application.modules.users.utils.functions_users;
+import application.modules.users.utils.lib_files.json;
 import application.modules.users.utils.lib_files.xml;
 import application.utils.Menus;
 
@@ -49,7 +50,9 @@ public class Test_Users {
 					language.getProperty("exit")};
 			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),
 					language.getProperty("go_back"), language.getProperty("exit")};
-			
+			String[] save = {"Save on JSON","Save on XML","Save on TXT",language.getProperty("go_back")};
+			String[] load = {"Load a JSON","Load a XML","Load a TXT",language.getProperty("go_back")};
+
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
 			switch(option){
 			case 0://Admins
@@ -98,10 +101,35 @@ public class Test_Users {
 						}
 						break;
 					case 6://Save
-						xml.createxml();
+						option=Menus.menu(save, "Save admins", "Save");
+						switch(option){
+						case 0://json
+							json.createjson();
+							break;
+						case 1://xml
+							xml.createxml();
+							break;
+						case 2://txt
+							
+							break;
+						case 3://Go back
+						}
 						break;
 					case 7://Load
-						xml.load_xml();
+						option=Menus.menu(load, "Save admins", "Save");
+						switch(option){
+						case 0://json
+							json.load_json();
+							break;
+						case 1://xml
+							xml.load_xml();
+							break;
+						case 2://txt
+							
+							break;
+						case 3://Go back
+						}
+						
 						break;
 					case 8:
 						continuar2=false;
