@@ -28,7 +28,7 @@ public class xml {
 			Annotations.configureAliases(xstream, admin.class);
 			
 			String header = "<?xml version=\"1.0\" encoding=\"" + ENCODING + "\"?>\n";
-            xstream.toXML(singleton.admins, osw);
+            xstream.toXML(singleton.admins.getAdmins(), osw);
             StringBuffer xml = new StringBuffer();
             xml.append(header);
             xml.append(os.toString());
@@ -61,9 +61,7 @@ public class xml {
             if (seleccion == JFileChooser.APPROVE_OPTION) {
             	File JFC = fileChooser.getSelectedFile();
                 PATH = JFC.getAbsolutePath();
-                System.out.print(6);
                 singleton.admins.setAdmins((ArrayList <admin>)xstream.fromXML(new FileReader(PATH)));
-                System.out.print(7);
             }
             
         } catch (Exception E) {
