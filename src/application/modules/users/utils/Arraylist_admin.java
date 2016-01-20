@@ -16,6 +16,12 @@ public class Arraylist_admin {
 	public Arraylist_admin(){
 		//constructor
 	}
+	public ArrayList<admin> getAdmins() {
+		return admins;
+	}
+	public void setAdmins(ArrayList<admin> admins) {
+		this.admins = admins;
+	}
 	public void addData(admin a){
 		admin admin1 = a;
 		boolean action=true;

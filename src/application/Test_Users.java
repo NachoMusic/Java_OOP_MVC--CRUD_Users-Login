@@ -9,6 +9,7 @@ import application.modules.users.utils.Arraylist_admin;
 import application.modules.users.utils.Arraylist_client;
 import application.modules.users.utils.Arraylist_registered_user;
 import application.modules.users.utils.functions_users;
+import application.modules.users.utils.lib_files.xml;
 import application.utils.Menus;
 
 public class Test_Users {
@@ -97,8 +98,10 @@ public class Test_Users {
 						}
 						break;
 					case 6://Save
+						xml.createxml();
 						break;
 					case 7://Load
+						xml.load_xml();
 						break;
 					case 8:
 						continuar2=false;
