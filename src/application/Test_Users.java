@@ -18,7 +18,7 @@ import application.utils.Menus;
 public class Test_Users {
 
 	public static void main(String[] args){
-		LookAndFeel.selectTheme(4);
+		
 		Language language =new Language("English");
 		int option,continuar=0;
 		char monedaAnterior='€';
@@ -55,7 +55,7 @@ public class Test_Users {
 			String[] find = {"By DNI","By name",language.getProperty("go_back")};
 			String[] sortBy = {"By DNI","By name","By birthday",language.getProperty("go_back")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
-					language.getProperty("lang"),"Saving extension","Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
+					language.getProperty("lang"),"Saving extension","Look and Feel","Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra �",language.getProperty("go_back"),language.getProperty("exit")};
 			String[] languageconfig = {language.getProperty("english"), language.getProperty("spanish"),language.getProperty("go_back"),
@@ -63,7 +63,9 @@ public class Test_Users {
 			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),
 					language.getProperty("go_back"), language.getProperty("exit")};
 			String[] save = {"Save on JSON","Save on XML","Save on TXT",language.getProperty("go_back")};
+			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",language.getProperty("go_back")};
 			//String[] load = {"Load a JSON","Load a XML","Load a TXT",language.getProperty("go_back")};
+			LookAndFeel.selectTheme(singleton.configApp.getLookandfeel());
 
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
 			switch(option){
@@ -384,7 +386,26 @@ public class Test_Users {
 						case 3://Go back
 						}
 						break;
-					case 5://Resets the default configuration
+					case 5://Look and feel
+						option=Menus.menu(looknfeel, "Look and Feel", "Themes");
+						switch(option){
+						case 0://Metal
+							singleton.configApp.setLookandfeel(0);
+							break;
+						case 1:// GTK - WINDOWS
+							singleton.configApp.setLookandfeel(1);
+							break;
+						case 2:// CDE/Moti
+							singleton.configApp.setLookandfeel(2);
+							break;
+						case 3:// Nimbus
+							singleton.configApp.setLookandfeel(3);
+							break;
+						case 4:
+						}
+						continuar2=false;
+						break;
+					case 6://Resets the default configuration
 						monedaAnterior=singleton.configApp.getCurrency_config();
 						singleton.configApp = new Config();
 						language.setIdioma(singleton.configApp.getLanguage_config());
@@ -392,10 +413,10 @@ public class Test_Users {
 							singleton.admins.getData(i).changeCurrency(monedaAnterior);
 						}
 						break;
-					case 6:
+					case 7:
 						continuar2=false;
 						break;
-					case 7:
+					case 8:
 						continuar2=false;
 						continuar=4;
 						break;
