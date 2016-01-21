@@ -64,7 +64,6 @@ public class Test_Users {
 					language.getProperty("go_back"), language.getProperty("exit")};
 			String[] save = {"Save on JSON","Save on XML","Save on TXT",language.getProperty("go_back")};
 			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",language.getProperty("go_back")};
-			//String[] load = {"Load a JSON","Load a XML","Load a TXT",language.getProperty("go_back")};
 			LookAndFeel.selectTheme(singleton.configApp.getLookandfeel());
 
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));

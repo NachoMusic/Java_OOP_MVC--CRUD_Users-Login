@@ -7,15 +7,13 @@ import java.io.FileWriter;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
-
 import application.modules.users.models.admin;
 import application.modules.users.models.singleton;
-import application.modules.users.models.users;
 
 public class xml {
 	private static final String ENCODING = "UTF-8";
@@ -57,6 +55,8 @@ public class xml {
             Annotations.configureAliases(xstream, admin.class);
  
             JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setAcceptAllFileFilterUsed(false);
+            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("XML (*.xml)", "xml"));
             int seleccion = fileChooser.showOpenDialog(null);
             if (seleccion == JFileChooser.APPROVE_OPTION) {
             	File JFC = fileChooser.getSelectedFile();

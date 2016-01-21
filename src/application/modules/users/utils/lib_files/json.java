@@ -3,10 +3,9 @@ package application.modules.users.utils.lib_files;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
+import javax.swing.filechooser.FileNameExtensionFilter;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -14,7 +13,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-
 import application.modules.users.models.admin;
 import application.modules.users.models.singleton;
 
@@ -52,18 +50,19 @@ public class json {
        	  XStream xstream = new XStream(new JettisonMappedXmlDriver());
 	          xstream.setMode(XStream.NO_REFERENCES);
 			  xstream.alias("admin", admin.class);
-			  
 			  JFileChooser fileChooser = new JFileChooser();
+			  fileChooser.setAcceptAllFileFilterUsed(false);
+              fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("JSON (*.json)", "json"));
 	          int seleccion = fileChooser.showOpenDialog(null);
 	          if (seleccion == JFileChooser.APPROVE_OPTION) {
 	                File JFC = fileChooser.getSelectedFile();
 	                PATH = JFC.getAbsolutePath();
-	               
+	                
 	                singleton.admins.getAdmins().clear();	              
 	                JsonReader lector = new JsonReader(new FileReader(PATH));
 	                JsonParser parseador = new JsonParser();
 	                JsonElement raiz = parseador.parse(lector);
-	            		  
+
 	            	Gson json = new Gson();
 	            	JsonArray lista = raiz.getAsJsonArray();
 	            	for (JsonElement elemento : lista) {

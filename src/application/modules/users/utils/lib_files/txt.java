@@ -8,6 +8,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import application.modules.users.models.admin;
 import application.modules.users.models.singleton;
 
@@ -34,11 +36,14 @@ public class txt {
         	JOptionPane.showMessageDialog(null, "Error al grabar el TXT", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+	@SuppressWarnings("unchecked")
 	public static void load_txt() {
     	String PATH = null;
         try {
             File f;
             JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setAcceptAllFileFilterUsed(false);
+            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Texto (*.txt)", "txt"));
             int seleccion = fileChooser.showOpenDialog(null);
             if (seleccion == JFileChooser.APPROVE_OPTION) {
                 File JFC = fileChooser.getSelectedFile();
