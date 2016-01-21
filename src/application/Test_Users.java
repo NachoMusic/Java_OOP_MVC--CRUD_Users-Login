@@ -12,11 +12,13 @@ import application.modules.users.utils.functions_users;
 import application.modules.users.utils.lib_files.json;
 import application.modules.users.utils.lib_files.txt;
 import application.modules.users.utils.lib_files.xml;
+import application.utils.LookAndFeel;
 import application.utils.Menus;
 
 public class Test_Users {
 
 	public static void main(String[] args){
+		LookAndFeel.selectTheme(4);
 		Language language =new Language("English");
 		int option,continuar=0;
 		char monedaAnterior='€';
