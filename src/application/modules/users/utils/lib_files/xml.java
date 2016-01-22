@@ -63,7 +63,6 @@ public class xml {
                 PATH = JFC.getAbsolutePath();
                 singleton.admins.setAdmins((ArrayList <admin>)xstream.fromXML(new FileReader(PATH)));
             }
-            
         } catch (Exception E) {
         	JOptionPane.showMessageDialog(null, "The program couldn't load the xml", "Error", JOptionPane.ERROR_MESSAGE);
         }

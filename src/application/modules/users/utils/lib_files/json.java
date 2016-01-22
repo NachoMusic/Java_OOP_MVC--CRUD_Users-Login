@@ -19,6 +19,7 @@ import application.modules.users.models.singleton;
 public class json {
 	public static void createjson() {
         String PATH = null;
+        
 	      try {
 	          XStream xstreamjson = new XStream(new JettisonMappedXmlDriver());
 	          xstreamjson.setMode(XStream.NO_REFERENCES);
@@ -41,6 +42,9 @@ public class json {
 	      }catch (Exception E) {
 	        	JOptionPane.showMessageDialog(null, "Error creating the JSON", "Error", JOptionPane.ERROR_MESSAGE);
 	        }
+	}
+	public static void createjson_auto(){
+		
 	}
 	 public static void load_json(){
 		 String PATH = null;
