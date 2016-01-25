@@ -39,7 +39,8 @@ public class Test_Users {
 			json.load_json();
 			break;
 		case "xml"://xml
-			xml.load_xml();
+			//xml.load_xml();
+			xml.load_xml_auto();
 			break;
 		case "txt": //txt
 			txt.load_txt();
@@ -431,7 +432,8 @@ public class Test_Users {
 			json.createjson();
 			break;
 		case "xml"://xml
-			xml.createxml();
+			//xml.createxml();
+			xml.createxml_auto();
 			break;
 		case "txt"://txt
 			txt.createtxt();

@@ -30,10 +30,10 @@ public class txt {
 				ObjectOutputStream o=new ObjectOutputStream(fo);
 				o.writeObject(singleton.admins.getAdmins());
 				o.close();
-                JOptionPane.showMessageDialog(null, "Archivo TXT guardado con exito", "Archivo TXT", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "TXT file saved successfully", "TXT file", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
-        	JOptionPane.showMessageDialog(null, "Error al grabar el TXT", "Error", JOptionPane.ERROR_MESSAGE);
+        	JOptionPane.showMessageDialog(null, "Error creating the TXT", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 	@SuppressWarnings("unchecked")
@@ -43,7 +43,7 @@ public class txt {
             File f;
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setAcceptAllFileFilterUsed(false);
-            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Texto (*.txt)", "txt"));
+            fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("Text (*.txt)", "txt"));
             int seleccion = fileChooser.showOpenDialog(null);
             if (seleccion == JFileChooser.APPROVE_OPTION) {
                 File JFC = fileChooser.getSelectedFile();
@@ -55,7 +55,7 @@ public class txt {
     			oi.close();
             }
         } catch (Exception e) {
-        	JOptionPane.showMessageDialog(null, "Error al leer el TXT", "Error", JOptionPane.ERROR_MESSAGE);
+        	JOptionPane.showMessageDialog(null, "The program couldn't load the txt", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

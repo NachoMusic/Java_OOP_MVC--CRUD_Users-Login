@@ -44,7 +44,30 @@ public class json {
 	        }
 	}
 	public static void createjson_auto(){
-		
+		String PATH = null;
+        
+	      try {
+	          XStream xstreamjson = new XStream(new JettisonMappedXmlDriver());
+	          xstreamjson.setMode(XStream.NO_REFERENCES);
+	          xstreamjson.alias("admin", admin.class);
+	          
+	          JFileChooser fileChooser = new JFileChooser();
+	          int seleccion = fileChooser.showSaveDialog(null);
+	          if (seleccion == JFileChooser.APPROVE_OPTION) {
+	                File JFC = fileChooser.getSelectedFile();
+	                PATH = JFC.getAbsolutePath();
+	                PATH=PATH+ ".json";
+	                
+	                Gson gson = new Gson();
+		            String json = gson.toJson(singleton.admins.getAdmins());
+		            FileWriter fileXml = new FileWriter(PATH);
+	                fileXml.write(json.toString());
+	                fileXml.close();
+	                JOptionPane.showMessageDialog(null, "JSON file saved successfully", "JSON file", JOptionPane.INFORMATION_MESSAGE);    
+	         }
+	      }catch (Exception E) {
+	        	JOptionPane.showMessageDialog(null, "Error creating the JSON", "Error", JOptionPane.ERROR_MESSAGE);
+	        }
 	}
 	 public static void load_json(){
 		 String PATH = null;

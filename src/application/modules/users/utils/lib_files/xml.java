@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -48,6 +49,39 @@ public class xml {
 	    	JOptionPane.showMessageDialog(null, "The program couldn't make the xml", "Error", JOptionPane.ERROR_MESSAGE);
 	    } 
 	}
+	public static void createxml_auto(){
+		String PATH = null;
+
+        try {
+            PATH = new java.io.File(".").getCanonicalPath()
+                    + "/src/application/modules/users/files/admin_files/admins.xml";
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            OutputStream os = new ByteArrayOutputStream();
+            OutputStreamWriter osw = new OutputStreamWriter(os);
+            XStream xstream = new XStream();
+
+            Annotations.configureAliases(xstream, admin.class);
+            String header = "<?xml version=\"1.0\" encoding=\"" + ENCODING
+                    + "\"?>\n";
+            xstream.toXML(singleton.admins.getAdmins(), osw);
+            StringBuffer xml = new StringBuffer();
+            xml.append(header);
+            xml.append(os.toString());
+
+            FileWriter fileXml = new FileWriter(PATH);
+            fileXml.write(xml.toString());
+            fileXml.close();
+            osw.close();
+            os.close();
+        } catch (IOException e) {
+            // JOptionPane.showMessageDialog(null, "Error al grabar el XML",
+            // "Error", JOptionPane.ERROR_
+        }
+	}
 	public static void load_xml() {
     	String PATH=null;
     	try {
@@ -67,4 +101,25 @@ public class xml {
         	JOptionPane.showMessageDialog(null, "The program couldn't load the xml", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+	
+	public static void load_xml_auto(){
+		String PATH;
+
+        try {
+            XStream xstream = new XStream();
+            Annotations.configureAliases(xstream, admin.class);
+
+            PATH = new java.io.File(".").getCanonicalPath()
+                    + "/src/application/modules/users/files/admin_files/admins.xml";
+
+            File path = new File(PATH);
+
+            if (path.exists()) {
+            	singleton.admins.setAdmins((ArrayList <admin>)xstream.fromXML(new FileReader(PATH)));
+            }
+
+        } catch (IOException e) {
+            // JOptionPane.showMessageDialog(null, "The program couldn't load the xml",
+        }
+	}
 }
