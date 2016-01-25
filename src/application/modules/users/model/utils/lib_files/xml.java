@@ -55,7 +55,7 @@ public class xml {
 
         try {
             PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/application/modules/users/files/admin_files/admins.xml";
+                    + "/src/application/modules/users/model/files/admin_files/admins.xml";
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -113,7 +113,7 @@ public class xml {
             Annotations.configureAliases(xstream, admin.class);
 
             PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/application/modules/users/files/admin_files/admins.xml";
+                    + "/src/application/modules/users/model/files/admin_files/admins.xml";
 
             File path = new File(PATH);
 

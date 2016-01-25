@@ -54,7 +54,7 @@ public class json {
 	          xstreamjson.alias("admin", admin.class);
 	          try {
 	              PATH = new java.io.File(".").getCanonicalPath()
-	                      + "/src/application/modules/users/files/admin_files/admins";
+	                      + "/src/application/modules/users/model/files/admin_files/admins";
 	          } catch (IOException e) {
 	              e.printStackTrace();
 	          }
@@ -110,7 +110,7 @@ public class json {
 	          xstream.setMode(XStream.NO_REFERENCES);
 			  xstream.alias("admin", admin.class);
 			  PATH = new java.io.File(".").getCanonicalPath()
-	                    + "/src/application/modules/users/files/admin_files/admins.json";
+	                    + "/src/application/modules/users/model/files/admin_files/admins.json";
 			  File path = new File(PATH);
 	          if (path.exists()) {
 	                singleton.admins.getAdmins().clear();	              

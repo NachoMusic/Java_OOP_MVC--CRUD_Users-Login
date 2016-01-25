@@ -41,7 +41,7 @@ public class txt {
         try {
         	try {
 	              PATH = new java.io.File(".").getCanonicalPath()
-	                      + "/src/application/modules/users/files/admin_files/admins";
+	                      + "/src/application/modules/users/model/files/admin_files/admins";
 	          } catch (IOException e) {
 	              e.printStackTrace();
 	          }
@@ -84,7 +84,7 @@ public class txt {
         try {
         	try {
 	              PATH = new java.io.File(".").getCanonicalPath()
-	                      + "/src/application/modules/users/files/admin_files/admins.txt";
+	                      + "/src/application/modules/users/model/files/admin_files/admins.txt";
 	          } catch (IOException e) {
 	              e.printStackTrace();
 	          }
