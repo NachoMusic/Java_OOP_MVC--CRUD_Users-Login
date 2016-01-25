@@ -2,8 +2,8 @@
 <list>
   <admin>
     <dni>12345678Z</dni>
-    <name>juan</name>
-    <subname>pepe</subname>
+    <name>asdf</name>
+    <subname>asdf</subname>
     <phone__number>1234</phone__number>
     <email>asdf@asdf.asdf</email>
     <user>asdf</user>
@@ -17,7 +17,7 @@
     <incentives>493</incentives>
     <advantages>0.0</advantages>
     <hirin__date>12/12/2012</hirin__date>
-    <salary>1334.0</salary>
+    <salary>1234.0</salary>
     <years__of__service>3</years__of__service>
     <activity>1234</activity>
   </admin>
@@ -38,7 +38,7 @@
     <incentives>493</incentives>
     <advantages>0.0</advantages>
     <hirin__date>10/10/2014</hirin__date>
-    <salary>1334.0</salary>
+    <salary>1234.0</salary>
     <years__of__service>1</years__of__service>
     <activity>1234</activity>
   </admin>

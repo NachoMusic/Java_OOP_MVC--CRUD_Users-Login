@@ -18,7 +18,6 @@ import application.utils.Menus;
 public class Test_Users {
 
 	public static void main(String[] args){
-		
 		Language language =new Language("English");
 		int option,continuar=0;
 		char monedaAnterior='€';
@@ -52,7 +51,7 @@ public class Test_Users {
 					language.getProperty("registered_user"),language.getProperty("config"),
 					language.getProperty("exit")};
 			String[] vec1 = {language.getProperty("create"), language.getProperty("change_data"), language.getProperty("print_data"),
-					"Delete","Find","Sort by","Save","Load",language.getProperty("go_back"), language.getProperty("exit")};
+					"Delete","Find","Sort by","Export","Import",language.getProperty("go_back"), language.getProperty("exit")};
 			String[] find = {"By DNI","By name",language.getProperty("go_back")};
 			String[] sortBy = {"By DNI","By name","By birthday",language.getProperty("go_back")};
 			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
@@ -427,17 +426,9 @@ public class Test_Users {
 				continuar=4;
 				}
 		}
-		switch(singleton.configApp.getSavingextension()){
-		case "json"://json
-			json.createjson_auto();
-			break;
-		case "xml"://xml
-			xml.createxml_auto();
-			break;
-		case "txt"://txt
-			txt.createtxt_auto();
-			break;
-		}
+		json.createjson_auto();
+		xml.createxml_auto();
+		txt.createtxt_auto();
 		language.getProperty("Spanish");
 		JOptionPane.showMessageDialog(null, language.getProperty("goodbye"));
 	}
