@@ -36,10 +36,10 @@ public class Test_Users {
 		
 		switch(singleton.configApp.getSavingextension()){
 		case "json"://json
-			json.load_json();
+			//json.load_json();
+			json.load_json_auto();;
 			break;
 		case "xml"://xml
-			//xml.load_xml();
 			xml.load_xml_auto();
 			break;
 		case "txt": //txt
@@ -429,7 +429,8 @@ public class Test_Users {
 		}
 		switch(singleton.configApp.getSavingextension()){
 		case "json"://json
-			json.createjson();
+			//json.createjson();
+			json.createjson_auto();
 			break;
 		case "xml"://xml
 			//xml.createxml();

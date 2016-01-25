@@ -16,6 +16,7 @@ import com.thoughtworks.xstream.annotations.Annotations;
 import application.modules.users.models.admin;
 import application.modules.users.models.singleton;
 
+@SuppressWarnings("deprecation")
 public class xml {
 	private static final String ENCODING = "UTF-8";
 	public static void createxml(){
@@ -82,6 +83,7 @@ public class xml {
             // "Error", JOptionPane.ERROR_
         }
 	}
+	@SuppressWarnings("unchecked")
 	public static void load_xml() {
     	String PATH=null;
     	try {
@@ -102,6 +104,7 @@ public class xml {
         }
     }
 	
+	@SuppressWarnings("unchecked")
 	public static void load_xml_auto(){
 		String PATH;
 
