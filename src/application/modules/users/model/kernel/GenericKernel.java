@@ -1,4 +1,4 @@
-package application.modules.users.kernel;
+package application.modules.users.model.kernel;
 
 import javax.swing.JOptionPane;
 import application.models.Dates;

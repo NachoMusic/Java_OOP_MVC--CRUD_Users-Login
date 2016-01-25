@@ -1,14 +1,14 @@
-package application.modules.users.utils;
+package application.modules.users.model.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
 import application.models.Language;
-import application.modules.users.kernel.GenericKernel;
-import application.modules.users.models.admin;
-import application.modules.users.models.registered_user;
-import application.modules.users.models.sortbyAge;
-import application.modules.users.models.sortbyName;
+import application.modules.users.model.kernel.GenericKernel;
+import application.modules.users.model.models.admin;
+import application.modules.users.model.models.registered_user;
+import application.modules.users.model.models.sortbyAge;
+import application.modules.users.model.models.sortbyName;
 import application.utils.Functions;
 
 public class Arraylist_registered_user {

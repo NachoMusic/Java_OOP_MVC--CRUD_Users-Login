@@ -1,10 +1,11 @@
-package application.modules.users.models;
+package application.modules.users.model.models;
 
 import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import application.models.Dates;
+import application.modules.users.model.models.users;
 import application.utils.Format;
 
 @SuppressWarnings("serial")

@@ -1,4 +1,4 @@
-package application.modules.users.models;
+package application.modules.users.model.models;
 
 import application.models.Config;
 import application.models.Dates;
@@ -26,7 +26,7 @@ public class client extends users{
 	public client() {
 		super();
 	}
-	//Constructor a petición de usuario
+	//Constructor a peticiï¿½n de usuario
 	public client(int i, Object option){
 		switch(i){
 		case 0:
@@ -94,7 +94,7 @@ public class client extends users{
 	public String toString(String dni) {
 		return super.toString(dni);
 	}
-	//to String a petición de usuario
+	//to String a peticiï¿½n de usuario
 	public String toString(int i){
 		String cad="";
 		switch(i){

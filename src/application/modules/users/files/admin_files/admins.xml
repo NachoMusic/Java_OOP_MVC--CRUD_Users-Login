@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+  <admin>
+    <dni>12345678Z</dni>
+    <name>juan</name>
+    <subname>pepe</subname>
+    <phone__number>1234</phone__number>
+    <email>asdf@asdf.asdf</email>
+    <user>asdf</user>
+    <pass>fdsa</pass>
+    <avatar>asdf</avatar>
+    <state>fdsa</state>
+    <date__birthday>10/10/1990</date__birthday>
+    <age>25</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>493</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>12/12/2012</hirin__date>
+    <salary>1334.0</salary>
+    <years__of__service>3</years__of__service>
+    <activity>1234</activity>
+  </admin>
+  <admin>
+    <dni>66666666Q</dni>
+    <name>asdf</name>
+    <subname>fsda</subname>
+    <phone__number>42134321</phone__number>
+    <email>sadfsadf@asdf.fdsa</email>
+    <user>fdsafd</user>
+    <pass>fdsafdsa</pass>
+    <avatar>asdf</avatar>
+    <state>rewq</state>
+    <date__birthday>12/12/1992</date__birthday>
+    <age>23</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>493</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>10/10/2014</hirin__date>
+    <salary>1334.0</salary>
+    <years__of__service>1</years__of__service>
+    <activity>1234</activity>
+  </admin>
+</list>

@@ -1,4 +1,4 @@
-package application.modules.users.utils.lib_files;
+package application.modules.users.model.utils.lib_files;
 
 import java.io.File;
 import java.io.FileReader;
@@ -15,8 +15,8 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import application.modules.users.models.admin;
-import application.modules.users.models.singleton;
+import application.modules.users.model.models.admin;
+import application.modules.users.model.models.singleton;
 
 public class json {
 	public static void createjson() {
@@ -64,7 +64,6 @@ public class json {
 		      FileWriter fileXml = new FileWriter(PATH);
 	          fileXml.write(json.toString());
 	          fileXml.close();
-	          JOptionPane.showMessageDialog(null, "JSON file saved successfully", "JSON file", JOptionPane.INFORMATION_MESSAGE);
 	      }catch (Exception E) {
 	        	JOptionPane.showMessageDialog(null, "Error creating the JSON", "Error", JOptionPane.ERROR_MESSAGE);
 	        }

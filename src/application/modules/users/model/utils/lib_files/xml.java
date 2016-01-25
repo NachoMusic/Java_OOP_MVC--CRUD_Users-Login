@@ -1,4 +1,4 @@
-package application.modules.users.utils.lib_files;
+package application.modules.users.model.utils.lib_files;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
-import application.modules.users.models.admin;
-import application.modules.users.models.singleton;
+import application.modules.users.model.models.admin;
+import application.modules.users.model.models.singleton;
 
 @SuppressWarnings("deprecation")
 public class xml {

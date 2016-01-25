@@ -4,7 +4,7 @@ import java.util.GregorianCalendar;
 
 import javax.swing.JOptionPane;
 
-import application.modules.users.models.singleton;
+import application.modules.users.model.models.singleton;
 import application.utils.Functions;
 import application.utils.Validate;
 

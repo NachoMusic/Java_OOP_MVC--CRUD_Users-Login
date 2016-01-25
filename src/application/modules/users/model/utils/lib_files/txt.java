@@ -1,4 +1,4 @@
-package application.modules.users.utils.lib_files;
+package application.modules.users.model.utils.lib_files;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
-import application.modules.users.models.admin;
-import application.modules.users.models.singleton;
+import application.modules.users.model.models.admin;
+import application.modules.users.model.models.singleton;
 
 public class txt {
 	public static void createtxt() {
@@ -53,7 +52,6 @@ public class txt {
 				ObjectOutputStream o=new ObjectOutputStream(fo);
 				o.writeObject(singleton.admins.getAdmins());
 				o.close();
-                JOptionPane.showMessageDialog(null, "TXT file saved successfully", "TXT file", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
         	JOptionPane.showMessageDialog(null, "Error creating the TXT", "Error", JOptionPane.ERROR_MESSAGE);
         }

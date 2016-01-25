@@ -1,12 +1,12 @@
-package application.modules.users.utils;
+package application.modules.users.model.utils;
 
 import application.models.Language;
-import application.modules.users.kernel.GenericKernel;
-import application.modules.users.models.admin;
-import application.modules.users.models.client;
-import application.modules.users.models.registered_user;
-import application.modules.users.models.singleton;
-import application.modules.users.models.users;
+import application.modules.users.model.kernel.GenericKernel;
+import application.modules.users.model.models.admin;
+import application.modules.users.model.models.client;
+import application.modules.users.model.models.registered_user;
+import application.modules.users.model.models.singleton;
+import application.modules.users.model.models.users;
 import application.utils.Functions;
 import application.utils.Menus;
 

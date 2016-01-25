@@ -1,4 +1,4 @@
-package application.modules.users.models;
+package application.modules.users.model.models;
 
 import java.util.Comparator;
 

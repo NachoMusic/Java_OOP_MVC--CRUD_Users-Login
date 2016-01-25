@@ -1,4 +1,4 @@
-package application.modules.users.models;
+package application.modules.users.model.models;
 
 public class registered_user extends users{
 	private String karma;
@@ -57,7 +57,7 @@ public class registered_user extends users{
 	public String toString(String dni) {	
 		return super.toString(dni);
 	}
-	//to String a petición de usuario
+	//to String a peticiï¿½n de usuario
 	public String toString(int i){
 		String cad="";
 		switch(i){
