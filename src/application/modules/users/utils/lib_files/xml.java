@@ -122,7 +122,7 @@ public class xml {
             }
 
         } catch (IOException e) {
-            // JOptionPane.showMessageDialog(null, "The program couldn't load the xml",
+            // JOptionPane.showMessageDialog(null, "The program couldn't load the xml");
         }
 	}
 }

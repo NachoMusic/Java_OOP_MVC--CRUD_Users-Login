@@ -43,7 +43,7 @@ public class Test_Users {
 			xml.load_xml_auto();
 			break;
 		case "txt": //txt
-			txt.load_txt();
+			txt.load_txt_auto();
 			break;
 		}
 		
@@ -429,15 +429,13 @@ public class Test_Users {
 		}
 		switch(singleton.configApp.getSavingextension()){
 		case "json"://json
-			//json.createjson();
 			json.createjson_auto();
 			break;
 		case "xml"://xml
-			//xml.createxml();
 			xml.createxml_auto();
 			break;
 		case "txt"://txt
-			txt.createtxt();
+			txt.createtxt_auto();
 			break;
 		}
 		language.getProperty("Spanish");

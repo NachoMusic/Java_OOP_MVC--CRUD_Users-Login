@@ -3,6 +3,7 @@ package application.modules.users.utils.lib_files;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -36,6 +37,27 @@ public class txt {
         	JOptionPane.showMessageDialog(null, "Error creating the TXT", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+	public static void createtxt_auto() {
+        String PATH = null;
+        try {
+        	try {
+	              PATH = new java.io.File(".").getCanonicalPath()
+	                      + "/src/application/modules/users/files/admin_files/admins";
+	          } catch (IOException e) {
+	              e.printStackTrace();
+	          }
+            File f;
+                PATH=PATH+ ".txt";
+                f = new File(PATH);
+                FileOutputStream fo=new FileOutputStream(f);
+				ObjectOutputStream o=new ObjectOutputStream(fo);
+				o.writeObject(singleton.admins.getAdmins());
+				o.close();
+                JOptionPane.showMessageDialog(null, "TXT file saved successfully", "TXT file", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+        	JOptionPane.showMessageDialog(null, "Error creating the TXT", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 	@SuppressWarnings("unchecked")
 	public static void load_txt() {
     	String PATH = null;
@@ -48,6 +70,29 @@ public class txt {
             if (seleccion == JFileChooser.APPROVE_OPTION) {
                 File JFC = fileChooser.getSelectedFile();
                 PATH = JFC.getAbsolutePath();
+                f = new File(PATH);
+                FileInputStream fi=new FileInputStream(f);
+    			ObjectInputStream oi=new ObjectInputStream(fi);
+    			singleton.admins.setAdmins((ArrayList<admin>)oi.readObject());
+    			oi.close();
+            }
+        } catch (Exception e) {
+        	JOptionPane.showMessageDialog(null, "The program couldn't load the txt", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+	@SuppressWarnings("unchecked")
+	public static void load_txt_auto() {
+    	String PATH = null;
+        try {
+        	try {
+	              PATH = new java.io.File(".").getCanonicalPath()
+	                      + "/src/application/modules/users/files/admin_files/admins.txt";
+	          } catch (IOException e) {
+	              e.printStackTrace();
+	          }
+            File f;
+            File path = new File(PATH);
+            if (path.exists()) {
                 f = new File(PATH);
                 FileInputStream fi=new FileInputStream(f);
     			ObjectInputStream oi=new ObjectInputStream(fi);

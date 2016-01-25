@@ -21,7 +21,7 @@ public class Config {
 		this.language_config = "English";
 		this.currency_config = '€';
 		this.decimals_config = 2;
-		this.savingextension = "json";
+		this.savingextension = "txt";
 		this.lookandfeel = 0;
 	}
 	public int getDate_config() {

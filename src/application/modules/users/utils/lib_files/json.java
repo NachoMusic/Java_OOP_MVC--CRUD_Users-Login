@@ -49,7 +49,6 @@ public class json {
 		String PATH = null;
         
 	      try {
-	    	  
 	          XStream xstreamjson = new XStream(new JettisonMappedXmlDriver());
 	          xstreamjson.setMode(XStream.NO_REFERENCES);
 	          xstreamjson.alias("admin", admin.class);
@@ -65,8 +64,7 @@ public class json {
 		      FileWriter fileXml = new FileWriter(PATH);
 	          fileXml.write(json.toString());
 	          fileXml.close();
-	          JOptionPane.showMessageDialog(null, "JSON file saved successfully", "JSON file", JOptionPane.INFORMATION_MESSAGE);    
-	         
+	          JOptionPane.showMessageDialog(null, "JSON file saved successfully", "JSON file", JOptionPane.INFORMATION_MESSAGE);
 	      }catch (Exception E) {
 	        	JOptionPane.showMessageDialog(null, "Error creating the JSON", "Error", JOptionPane.ERROR_MESSAGE);
 	        }
