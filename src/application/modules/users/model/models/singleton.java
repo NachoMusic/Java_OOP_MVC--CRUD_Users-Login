@@ -1,9 +1,9 @@
 package application.modules.users.model.models;
 
 import application.models.Config;
-import application.modules.users.model.utils.Arraylist_admin;
-import application.modules.users.model.utils.Arraylist_client;
-import application.modules.users.model.utils.Arraylist_registered_user;
+import application.modules.users.model.BLL.Arraylist_admin;
+import application.modules.users.model.BLL.Arraylist_client;
+import application.modules.users.model.BLL.Arraylist_registered_user;
 
 public class singleton {
 	public static Arraylist_admin admins;

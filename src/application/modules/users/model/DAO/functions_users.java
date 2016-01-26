@@ -1,4 +1,4 @@
-package application.modules.users.model.utils;
+package application.modules.users.model.DAO;
 
 import application.models.Language;
 import application.modules.users.model.kernel.GenericKernel;
