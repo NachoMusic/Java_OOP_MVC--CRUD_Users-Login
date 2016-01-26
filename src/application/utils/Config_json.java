@@ -12,7 +12,7 @@ import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 import application.models.Config;
-import application.modules.users.model.models.singleton;
+import application.models.SingletonF;
 
 public class Config_json {
 	public static void create_conf_json(){
@@ -29,7 +29,7 @@ public class Config_json {
 	              e.printStackTrace();
 	          }
 	          Gson gson = new Gson();
-		      String json = gson.toJson(singleton.configApp);
+		      String json = gson.toJson(SingletonF.configApp);
 		      FileWriter fileXml = new FileWriter(PATH);
 	          fileXml.write(json.toString());
 	          fileXml.close();
@@ -54,7 +54,7 @@ public class Config_json {
 	                JsonElement raiz = parseador.parse(lector);
 	            	Gson json = new Gson();
 	            	C = json.fromJson(raiz, Config.class);
-	            	singleton.configApp =C;
+	            	SingletonF.configApp =C;
 	          } 
       } catch (Exception e) {
       	JOptionPane.showMessageDialog(null, "The program couldn't load the config", "Error", JOptionPane.ERROR_MESSAGE);

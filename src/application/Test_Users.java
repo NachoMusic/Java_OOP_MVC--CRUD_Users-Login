@@ -3,6 +3,7 @@ package application;
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
+import application.models.SingletonF;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
 import application.modules.users.model.BLL.Arraylist_admin;
@@ -19,9 +20,9 @@ import application.utils.Menus;
 public class Test_Users {
 
 	public static void main(String[] args){
-		singleton.configApp = new Config();
+		SingletonF.configApp = new Config();
 		Config_json.load_conf_json();
-		Language language =new Language(singleton.configApp.getLanguage_config());
+		Language language =new Language(SingletonF.configApp.getLanguage_config());
 		int option,continuar=0;
 		char monedaAnterior='€';
 		boolean continuar2=true;
@@ -35,7 +36,7 @@ public class Test_Users {
 		singleton.clients = new Arraylist_client();
 		singleton.registered_users = new Arraylist_registered_user();
 		
-		switch(singleton.configApp.getSavingextension()){
+		switch(SingletonF.configApp.getSavingextension()){
 		case "json"://json
 			//json.load_json();
 			json.load_json_auto();;
@@ -66,7 +67,7 @@ public class Test_Users {
 					language.getProperty("go_back"), language.getProperty("exit")};
 			String[] save = {"Save on JSON","Save on XML","Save on TXT",language.getProperty("go_back")};
 			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",language.getProperty("go_back")};
-			LookAndFeel.selectTheme(singleton.configApp.getLookandfeel());
+			LookAndFeel.selectTheme(SingletonF.configApp.getLookandfeel());
 
 			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
 			switch(option){
@@ -118,7 +119,7 @@ public class Test_Users {
 						break;
 					case 6://Save
 						//option=Menus.menu(save, "Save admins", "Save");
-						switch(singleton.configApp.getSavingextension()){
+						switch(SingletonF.configApp.getSavingextension()){
 						case "json"://json
 							json.createjson();
 							break;
@@ -132,7 +133,7 @@ public class Test_Users {
 						break;
 					case 7://Load
 						//option=Menus.menu(load, "Save admins", "Save");
-						switch(singleton.configApp.getSavingextension()){
+						switch(SingletonF.configApp.getSavingextension()){
 						case "json"://json
 							json.load_json();
 							break;
@@ -274,24 +275,24 @@ public class Test_Users {
 				do{
 					continuar2=true;
 					option=Menus.menu(config, language.getProperty("config2")+"\n"+language.getProperty("date2")+
-							singleton.configApp.getDate_config()+"     "+language.getProperty("currency2")+singleton.configApp.getCurrency_config()+
-					"     "+language.getProperty("decimals2")+singleton.configApp.getDecimals_config()+"     "+language.getProperty("language")+singleton.configApp.getLanguage_config(),
+							SingletonF.configApp.getDate_config()+"     "+language.getProperty("currency2")+SingletonF.configApp.getCurrency_config()+
+					"     "+language.getProperty("decimals2")+SingletonF.configApp.getDecimals_config()+"     "+language.getProperty("language")+SingletonF.configApp.getLanguage_config(),
 					language.getProperty("config"));
 					switch(option){
 					case 0://date format
 						option=Menus.menu(dateconfig,language.getProperty("dateconf2"), language.getProperty("dateconf"));
 						switch(option){
 						case 0:// dd/mm/yyyy
-							singleton.configApp.setDate_config(0);
+							SingletonF.configApp.setDate_config(0);
 							break;
 						case 1:
-							singleton.configApp.setDate_config(1);
+							SingletonF.configApp.setDate_config(1);
 							break;
 						case 2:
-							singleton.configApp.setDate_config(2);
+							SingletonF.configApp.setDate_config(2);
 							break;
 						case 3:
-							singleton.configApp.setDate_config(3);
+							SingletonF.configApp.setDate_config(3);
 							break;
 						case 4:
 							continuar2=false;
@@ -306,18 +307,18 @@ public class Test_Users {
 						option=Menus.menu(currencyconfig, "Currency config", "Configuration about the currency");
 						switch(option){
 						case 0:
-							monedaAnterior=singleton.configApp.getCurrency_config();
-							singleton.configApp.setCurrency_config('€');
+							monedaAnterior=SingletonF.configApp.getCurrency_config();
+							SingletonF.configApp.setCurrency_config('€');
 							singleton.admins.changeFormatCurrency(monedaAnterior);
 							break;
 						case 1:
-							monedaAnterior=singleton.configApp.getCurrency_config();
-							singleton.configApp.setCurrency_config('$');
+							monedaAnterior=SingletonF.configApp.getCurrency_config();
+							SingletonF.configApp.setCurrency_config('$');
 							singleton.admins.changeFormatCurrency(monedaAnterior);
 							break;
 						case 2:
-							monedaAnterior=singleton.configApp.getCurrency_config();
-							singleton.configApp.setCurrency_config('£');
+							monedaAnterior=SingletonF.configApp.getCurrency_config();
+							SingletonF.configApp.setCurrency_config('£');
 							singleton.admins.changeFormatCurrency(monedaAnterior);
 							break;
 						case 3:
@@ -333,13 +334,13 @@ public class Test_Users {
 						option=Menus.menu(decimalsconfig, language.getProperty("decimalsconf2"), language.getProperty("decimalsconf"));
 						switch(option){
 						case 0:
-							singleton.configApp.setDecimals_config(1);
+							SingletonF.configApp.setDecimals_config(1);
 							break;
 						case 1:
-							singleton.configApp.setDecimals_config(2);
+							SingletonF.configApp.setDecimals_config(2);
 							break;
 						case 2:
-							singleton.configApp.setDecimals_config(3);
+							SingletonF.configApp.setDecimals_config(3);
 							break;
 						case 3:
 							continuar2=false;
@@ -354,13 +355,13 @@ public class Test_Users {
 						option=Menus.menu(languageconfig, language.getProperty("dateconf"), language.getProperty("dateconf2"));
 						switch(option){
 						case 0:
-							singleton.configApp.setLanguage_config("English");
-							language.setIdioma(singleton.configApp.getLanguage_config());
+							SingletonF.configApp.setLanguage_config("English");
+							language.setIdioma(SingletonF.configApp.getLanguage_config());
 							continuar2=false;
 							break;
 						case 1:
-							singleton.configApp.setLanguage_config("Spanish");
-							language.setIdioma(singleton.configApp.getLanguage_config());
+							SingletonF.configApp.setLanguage_config("Spanish");
+							language.setIdioma(SingletonF.configApp.getLanguage_config());
 							continuar2=false;
 							break;
 						case 2:
@@ -376,13 +377,13 @@ public class Test_Users {
 						option=Menus.menu(save, "Save admins", "Save");
 						switch(option){
 						case 0://json
-							singleton.configApp.setSavingextension("json");
+							SingletonF.configApp.setSavingextension("json");
 							break;
 						case 1://xml
-							singleton.configApp.setSavingextension("xml");
+							SingletonF.configApp.setSavingextension("xml");
 							break;
 						case 2://txt
-							singleton.configApp.setSavingextension("txt");
+							SingletonF.configApp.setSavingextension("txt");
 							break;
 						case 3://Go back
 						}
@@ -391,25 +392,25 @@ public class Test_Users {
 						option=Menus.menu(looknfeel, "Look and Feel", "Themes");
 						switch(option){
 						case 0://Metal
-							singleton.configApp.setLookandfeel(0);
+							SingletonF.configApp.setLookandfeel(0);
 							break;
 						case 1:// GTK - WINDOWS
-							singleton.configApp.setLookandfeel(1);
+							SingletonF.configApp.setLookandfeel(1);
 							break;
 						case 2:// CDE/Moti
-							singleton.configApp.setLookandfeel(2);
+							SingletonF.configApp.setLookandfeel(2);
 							break;
 						case 3:// Nimbus
-							singleton.configApp.setLookandfeel(3);
+							SingletonF.configApp.setLookandfeel(3);
 							break;
 						case 4:
 						}
 						continuar2=false;
 						break;
 					case 6://Resets the default configuration
-						monedaAnterior=singleton.configApp.getCurrency_config();
-						singleton.configApp = new Config();
-						language.setIdioma(singleton.configApp.getLanguage_config());
+						monedaAnterior=SingletonF.configApp.getCurrency_config();
+						SingletonF.configApp = new Config();
+						language.setIdioma(SingletonF.configApp.getLanguage_config());
 						for(int i = 0;i<singleton.admins.getAdmins().size();i++){
 							singleton.admins.getData(i).changeCurrency(monedaAnterior);
 						}

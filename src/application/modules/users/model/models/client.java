@@ -1,13 +1,22 @@
 package application.modules.users.model.models;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import application.models.Config;
 import application.models.Dates;
 import application.utils.Format;
-
+@SuppressWarnings("serial")
+@XStreamAlias("client")
 public class client extends users{
-	private String discharge_date,client_type;
+	@XStreamAlias("discharge_date")
+	private String discharge_date;
+	@XStreamAlias("client_type")
+	private String client_type;
+	@XStreamAlias("years_service")
 	private int years_service;
+	@XStreamAlias("shopping")
 	private float shopping;
+	@XStreamAlias("premium")
 	private boolean premium;
 	
 	//constructor

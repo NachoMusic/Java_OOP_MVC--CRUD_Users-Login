@@ -1,10 +1,7 @@
 package application.models;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import javax.swing.JOptionPane;
-
-import application.modules.users.model.models.singleton;
 import application.utils.Functions;
 import application.utils.Validate;
 
@@ -141,7 +138,7 @@ public class Dates {
 			month="";
 			day="";
 			year="";
-			switch(singleton.configApp.getDate_config()){
+			switch(SingletonF.configApp.getDate_config()){
 			case 0: 
 				validate=Validate.validateDate1(date=Functions.validatestring(arg1,arg2));
 				break;
@@ -156,7 +153,7 @@ public class Dates {
 				break;
 			}
 			try{
-				if(singleton.configApp.getDate_config()<2){
+				if(SingletonF.configApp.getDate_config()<2){
 				day+=date.charAt(0);
 				day+=date.charAt(1);
 				month+=date.charAt(3);

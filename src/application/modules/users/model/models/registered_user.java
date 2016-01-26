@@ -1,7 +1,13 @@
 package application.modules.users.model.models;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@SuppressWarnings("serial")
+@XStreamAlias("registered_user")
 public class registered_user extends users{
+	@XStreamAlias("karma")
 	private String karma;
+	@XStreamAlias("activity")
 	private int activity;
 	
 	//Constructors

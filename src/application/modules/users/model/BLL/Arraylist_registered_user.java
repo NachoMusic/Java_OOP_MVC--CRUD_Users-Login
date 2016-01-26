@@ -110,7 +110,6 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 			Collections.sort(registered_users, new sortbyAge());
 			break;
 		}
-		
 	}
 	/*
 	public void changeFormatCurrency(Config configApp, char monedaAnterior){

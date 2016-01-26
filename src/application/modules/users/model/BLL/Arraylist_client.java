@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
 import application.models.Language;
+import application.models.SingletonF;
 import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.client;
-import application.modules.users.model.models.singleton;
 import application.modules.users.model.models.sortbyAge;
 import application.modules.users.model.models.sortbyName;
 import application.utils.Functions;
@@ -63,7 +63,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 		int times=0;
 		
 		for (int i = 0; i<clients.size();i++){
-			JOptionPane.showMessageDialog(null, (i+1)+":\n"+clients.get(i).toString(singleton.configApp));
+			JOptionPane.showMessageDialog(null, (i+1)+":\n"+clients.get(i).toString(SingletonF.configApp));
 			times++;
 		}
 		if(times==0)
@@ -78,7 +78,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 			client1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
 			for(int i = 0;i<clients.size();i++){
 				if(clients.get(i).equals(client1,0)){
-					JOptionPane.showMessageDialog(null,clients.get(i).toString(singleton.configApp));
+					JOptionPane.showMessageDialog(null,clients.get(i).toString(SingletonF.configApp));
 					times++;
 				}
 			}
@@ -89,7 +89,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 			client1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
 			for(int i = 0;i<clients.size();i++){
 				if(clients.get(i).equals(client1,1)){
-					JOptionPane.showMessageDialog(null,clients.get(i).toString(singleton.configApp));
+					JOptionPane.showMessageDialog(null,clients.get(i).toString(SingletonF.configApp));
 					times++;
 				}
 			}

@@ -1,6 +1,7 @@
 package application.modules.users.model.DAO;
 
 import application.models.Language;
+import application.models.SingletonF;
 import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.client;
@@ -19,7 +20,7 @@ public class functions_users {
 		int activity;
 		String dateFormat="";
 		
-		switch(singleton.configApp.getDate_config()){
+		switch(SingletonF.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
@@ -56,7 +57,7 @@ public class functions_users {
 		boolean premium;
 		String dateFormat="";
 		
-		switch(singleton.configApp.getDate_config()){
+		switch(SingletonF.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
@@ -93,7 +94,7 @@ public class functions_users {
 		int activity;
 		String dateFormat="";
 		
-		switch(singleton.configApp.getDate_config()){
+		switch(SingletonF.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
@@ -138,7 +139,7 @@ public class functions_users {
 	public static void getuser(users param, int a, Language language){
 		int edit=14;
 		String dateFormat="";
-		switch(singleton.configApp.getDate_config()){
+		switch(SingletonF.configApp.getDate_config()){
 		case 0:
 			dateFormat="dd/mm/yyyy";
 			break;
