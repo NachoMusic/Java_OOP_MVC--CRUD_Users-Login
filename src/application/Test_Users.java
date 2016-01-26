@@ -12,13 +12,16 @@ import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.DAO.functions_users;
+import application.utils.Config_json;
 import application.utils.LookAndFeel;
 import application.utils.Menus;
 
 public class Test_Users {
 
 	public static void main(String[] args){
-		Language language =new Language("English");
+		singleton.configApp = new Config();
+		Config_json.load_conf_json();
+		Language language =new Language(singleton.configApp.getLanguage_config());
 		int option,continuar=0;
 		char monedaAnterior='€';
 		boolean continuar2=true;
@@ -28,7 +31,6 @@ public class Test_Users {
 		@SuppressWarnings("unused")
 		admin dummy2 = new admin("12345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
 				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
-		singleton.configApp = new Config();
 		singleton.admins = new Arraylist_admin();
 		singleton.clients = new Arraylist_client();
 		singleton.registered_users = new Arraylist_registered_user();
@@ -429,6 +431,7 @@ public class Test_Users {
 		json.createjson_auto();
 		xml.createxml_auto();
 		txt.createtxt_auto();
+		Config_json.create_conf_json();
 		language.getProperty("Spanish");
 		JOptionPane.showMessageDialog(null, language.getProperty("goodbye"));
 	}

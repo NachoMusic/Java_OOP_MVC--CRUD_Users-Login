@@ -1,9 +1,23 @@
 package application.models;
 
-public class Config {
+import java.io.Serializable;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@SuppressWarnings("serial")
+@XStreamAlias("Config")
+public class Config implements Serializable{
+	@XStreamAlias("Clanguage_config")
 	private String language_config;
+	@XStreamAlias("currency_config")
 	private char currency_config;
-	private int date_config,decimals_config,lookandfeel;
+	@XStreamAlias("date_config")
+	private int date_config;
+	@XStreamAlias("decimals_config")
+	private int decimals_config;
+	@XStreamAlias("lookandfeel")
+	private int lookandfeel;
+	@XStreamAlias("savingextension")
 	private String savingextension;
 	
 	public Config(int date_config, String language_config, char currency_config, int decimals_config, String savingextension, int lookandfeel) {
