@@ -3,7 +3,6 @@ package application.modules.users.model.BLL;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
-import application.models.Language;
 import application.models.SingletonF;
 import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.kernel.GenericKernel;
@@ -36,7 +35,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 	public client getData(int num){
 		return clients.get(num);
 	}
-	public void changeData(Language language){
+	public void changeData(){
 		try{
 			int action=0;
 			String dni;
@@ -44,7 +43,7 @@ private ArrayList<client> clients = new ArrayList<client>();
 					+ " the client to change", "Change users");
 			
 			dni=clients.get(num-1).getDni();
-			functions_users.getuser(clients.get(num-1), 1, language);
+			functions_users.getuser(clients.get(num-1), 1);
 			for(int i=0;i<clients.size();i++){
 				if(clients.get(num-1).equals(clients.get(i),0)){
 					if(i!=num-1)

@@ -3,7 +3,6 @@ package application.modules.users.model.BLL;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
-import application.models.Language;
 import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
@@ -40,7 +39,7 @@ public class Arraylist_admin {
 	public admin getData(int num){
 		return admins.get(num);
 	}
-	public void changeData(Language language){
+	public void changeData(){
 		try{
 			int action=0;
 			String dni;
@@ -48,7 +47,7 @@ public class Arraylist_admin {
 					+ " the admin to change", "Change users");
 			
 			dni=admins.get(num-1).getDni();
-			functions_users.getuser(admins.get(num-1), 0, language);
+			functions_users.getuser(admins.get(num-1), 0);
 			for(int i=0;i<admins.size();i++){
 				if(admins.get(num-1).equals(admins.get(i),0)){
 					if(i!=num-1)

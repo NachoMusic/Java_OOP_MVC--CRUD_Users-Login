@@ -22,7 +22,8 @@ public class Test_Users {
 	public static void main(String[] args){
 		SingletonF.configApp = new Config();
 		Config_json.load_conf_json();
-		Language language =new Language(SingletonF.configApp.getLanguage_config());
+		//Language language =new Language(SingletonF.configApp.getLanguage_config());
+		SingletonF.language =new Language(SingletonF.configApp.getLanguage_config());
 		int option,continuar=0;
 		char monedaAnterior='€';
 		boolean continuar2=true;
@@ -49,37 +50,37 @@ public class Test_Users {
 		}
 		
 		while(continuar!=4){
-			String[] vec = {language.getProperty("admin"),language.getProperty("client"),
-					language.getProperty("registered_user"),language.getProperty("config"),
-					language.getProperty("exit")};
-			String[] vec1 = {language.getProperty("create"), language.getProperty("change_data"), language.getProperty("print_data"),
-					"Delete","Find","Sort by","Export","Import",language.getProperty("go_back"), language.getProperty("exit")};
-			String[] find = {"By DNI","By name",language.getProperty("go_back")};
-			String[] sortBy = {"By DNI","By name","By birthday",language.getProperty("go_back")};
-			String[] config = {language.getProperty("date"),language.getProperty("currency"),language.getProperty("decimals"),
-					language.getProperty("lang"),"Saving extension","Look and Feel","Reestablecer conf",language.getProperty("go_back"), language.getProperty("exit")};
-			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",language.getProperty("go_back"), language.getProperty("exit")};
-			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra �",language.getProperty("go_back"),language.getProperty("exit")};
-			String[] languageconfig = {language.getProperty("english"), language.getProperty("spanish"),language.getProperty("go_back"),
-					language.getProperty("exit")};
-			String[] decimalsconfig = {language.getProperty("1decimal"),language.getProperty("2decimal"),language.getProperty("3decimal"),
-					language.getProperty("go_back"), language.getProperty("exit")};
-			String[] save = {"Save on JSON","Save on XML","Save on TXT",language.getProperty("go_back")};
-			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",language.getProperty("go_back")};
+			String[] vec = {SingletonF.language.getProperty("admin"),SingletonF.language.getProperty("client"),
+					SingletonF.language.getProperty("registered_user"),SingletonF.language.getProperty("config"),
+					SingletonF.language.getProperty("exit")};
+			String[] vec1 = {SingletonF.language.getProperty("create"), SingletonF.language.getProperty("change_data"), SingletonF.language.getProperty("print_data"),
+					"Delete","Find","Sort by","Export","Import",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
+			String[] find = {"By DNI","By name",SingletonF.language.getProperty("go_back")};
+			String[] sortBy = {"By DNI","By name","By birthday",SingletonF.language.getProperty("go_back")};
+			String[] config = {SingletonF.language.getProperty("date"),SingletonF.language.getProperty("currency"),SingletonF.language.getProperty("decimals"),
+					SingletonF.language.getProperty("lang"),"Saving extension","Look and Feel","Reestablecer conf",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
+			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
+			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra �",SingletonF.language.getProperty("go_back"),SingletonF.language.getProperty("exit")};
+			String[] languageconfig = {SingletonF.language.getProperty("english"), SingletonF.language.getProperty("spanish"),SingletonF.language.getProperty("go_back"),
+					SingletonF.language.getProperty("exit")};
+			String[] decimalsconfig = {SingletonF.language.getProperty("1decimal"),SingletonF.language.getProperty("2decimal"),SingletonF.language.getProperty("3decimal"),
+					SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
+			String[] save = {"Save on JSON","Save on XML","Save on TXT",SingletonF.language.getProperty("go_back")};
+			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",SingletonF.language.getProperty("go_back")};
 			LookAndFeel.selectTheme(SingletonF.configApp.getLookandfeel());
 
-			option=Menus.menu(vec, language.getProperty("choose_an_option"),language.getProperty("application_users"));
+			option=Menus.menu(vec, SingletonF.language.getProperty("choose_an_option"),SingletonF.language.getProperty("application_users"));
 			switch(option){
 			case 0://Admins
 				do{
 					continuar2=true;
-					option=Menus.menu(vec1, language.getProperty("admin"), language.getProperty("application_users"));
+					option=Menus.menu(vec1, SingletonF.language.getProperty("admin"), SingletonF.language.getProperty("application_users"));
 					switch(option){
 					case 0:
-						singleton.admins.addData(functions_users.newadmin(language));
+						singleton.admins.addData(functions_users.newadmin());
 						break;
 					case 1:
-						singleton.admins.changeData(language);
+						singleton.admins.changeData();
 						break;
 					case 2://Print
 						singleton.admins.printArraylist();
@@ -161,7 +162,7 @@ public class Test_Users {
 						singleton.clients.addData(functions_users.newclient());
 						break;
 					case 1:
-						singleton.clients.changeData(language);
+						singleton.clients.changeData();
 						break;
 					case 2:
 						singleton.clients.printArraylist();
@@ -219,7 +220,7 @@ public class Test_Users {
 						singleton.registered_users.addData(functions_users.newregistered_user());
 						break;
 					case 1:
-						singleton.registered_users.changeData(language);	
+						singleton.registered_users.changeData();	
 						break;
 					case 2:
 						singleton.registered_users.printArraylist();
@@ -271,13 +272,13 @@ public class Test_Users {
 			case 3:
 				do{
 					continuar2=true;
-					option=Menus.menu(config, language.getProperty("config2")+"\n"+language.getProperty("date2")+
-							SingletonF.configApp.getDate_config()+"     "+language.getProperty("currency2")+SingletonF.configApp.getCurrency_config()+
-					"     "+language.getProperty("decimals2")+SingletonF.configApp.getDecimals_config()+"     "+language.getProperty("language")+SingletonF.configApp.getLanguage_config(),
-					language.getProperty("config"));
+					option=Menus.menu(config, SingletonF.language.getProperty("config2")+"\n"+SingletonF.language.getProperty("date2")+
+							SingletonF.configApp.getDate_config()+"     "+SingletonF.language.getProperty("currency2")+SingletonF.configApp.getCurrency_config()+
+					"     "+SingletonF.language.getProperty("decimals2")+SingletonF.configApp.getDecimals_config()+"     "+SingletonF.language.getProperty("language")+SingletonF.configApp.getLanguage_config(),
+					SingletonF.language.getProperty("config"));
 					switch(option){
 					case 0://date format
-						option=Menus.menu(dateconfig,language.getProperty("dateconf2"), language.getProperty("dateconf"));
+						option=Menus.menu(dateconfig,SingletonF.language.getProperty("dateconf2"), SingletonF.language.getProperty("dateconf"));
 						switch(option){
 						case 0:// dd/mm/yyyy
 							SingletonF.configApp.setDate_config(0);
@@ -328,7 +329,7 @@ public class Test_Users {
 						}				
 						break;
 					case 2://Decimals
-						option=Menus.menu(decimalsconfig, language.getProperty("decimalsconf2"), language.getProperty("decimalsconf"));
+						option=Menus.menu(decimalsconfig, SingletonF.language.getProperty("decimalsconf2"), SingletonF.language.getProperty("decimalsconf"));
 						switch(option){
 						case 0:
 							SingletonF.configApp.setDecimals_config(1);
@@ -349,16 +350,16 @@ public class Test_Users {
 						}				
 						break;
 					case 3://Language
-						option=Menus.menu(languageconfig, language.getProperty("dateconf"), language.getProperty("dateconf2"));
+						option=Menus.menu(languageconfig, SingletonF.language.getProperty("dateconf"), SingletonF.language.getProperty("dateconf2"));
 						switch(option){
 						case 0:
 							SingletonF.configApp.setLanguage_config("English");
-							language.setIdioma(SingletonF.configApp.getLanguage_config());
+							SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
 							continuar2=false;
 							break;
 						case 1:
 							SingletonF.configApp.setLanguage_config("Spanish");
-							language.setIdioma(SingletonF.configApp.getLanguage_config());
+							SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
 							continuar2=false;
 							break;
 						case 2:
@@ -407,7 +408,7 @@ public class Test_Users {
 					case 6://Resets the default configuration
 						monedaAnterior=SingletonF.configApp.getCurrency_config();
 						SingletonF.configApp = new Config();
-						language.setIdioma(SingletonF.configApp.getLanguage_config());
+						SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
 						for(int i = 0;i<singleton.admins.getAdmins().size();i++){
 							singleton.admins.getData(i).changeCurrency(monedaAnterior);
 						}
@@ -430,7 +431,7 @@ public class Test_Users {
 		xml.createxml_auto();
 		txt.createtxt_auto();
 		Config_json.create_conf_json();
-		language.getProperty("Spanish");
-		JOptionPane.showMessageDialog(null, language.getProperty("goodbye"));
+		SingletonF.language.getProperty("Spanish");
+		JOptionPane.showMessageDialog(null, SingletonF.language.getProperty("goodbye"));
 	}
 }
