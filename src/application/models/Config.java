@@ -21,7 +21,6 @@ public class Config implements Serializable{
 	private String savingextension;
 	
 	public Config(int date_config, String language_config, char currency_config, int decimals_config, String savingextension, int lookandfeel) {
-		super();
 		this.date_config = date_config;// dd/mm/yyyy dd-mm-yyyy
 		this.language_config = language_config;
 		this.currency_config = currency_config;
@@ -30,7 +29,6 @@ public class Config implements Serializable{
 		this.lookandfeel = lookandfeel;
 	}
 	public Config() {
-		super();
 		this.date_config = 0;// dd/mm/yyyy 
 		this.language_config = "English";
 		this.currency_config = '€';

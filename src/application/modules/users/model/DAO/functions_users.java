@@ -6,7 +6,6 @@ import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.client;
 import application.modules.users.model.models.registered_user;
-import application.modules.users.model.models.singleton;
 import application.modules.users.model.models.users;
 import application.utils.Functions;
 import application.utils.Menus;
@@ -108,7 +107,6 @@ public class functions_users {
 			dateFormat="yyyy-mm-dd";
 			break;
 		}
-		
 		dni=GenericKernel.insertDni("Type your DNI  \n XXXXXXXXA", "Dni");
 		name=GenericKernel.insertText("Type your name", "Name");
 		subname=GenericKernel.insertText("Type your subname", "Subname");

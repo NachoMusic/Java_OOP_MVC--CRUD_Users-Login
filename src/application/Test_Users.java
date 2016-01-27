@@ -38,7 +38,6 @@ public class Test_Users {
 		
 		switch(SingletonF.configApp.getSavingextension()){
 		case "json"://json
-			//json.load_json();
 			json.load_json_auto();;
 			break;
 		case "xml"://xml
@@ -78,7 +77,6 @@ public class Test_Users {
 					switch(option){
 					case 0:
 						singleton.admins.addData(functions_users.newadmin(language));
-						//FileSave.saveadmin(admin1); for saving on files, will come eventually
 						break;
 					case 1:
 						singleton.admins.changeData(language);
@@ -132,7 +130,6 @@ public class Test_Users {
 						}
 						break;
 					case 7://Load
-						//option=Menus.menu(load, "Save admins", "Save");
 						switch(SingletonF.configApp.getSavingextension()){
 						case "json"://json
 							json.load_json();
