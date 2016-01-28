@@ -9,6 +9,7 @@ import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.DAO.functions_users;
+import application.modules.users.model.kernel.Dummies;
 import application.utils.Config_json;
 import application.utils.LookAndFeel;
 import application.utils.Menus;
@@ -45,7 +46,7 @@ public class Test_Users {
 			String[] find = {"By DNI","By name",SingletonF.language.getProperty("go_back")};
 			String[] sortBy = {"By DNI","By name","By birthday",SingletonF.language.getProperty("go_back")};
 			String[] config = {SingletonF.language.getProperty("date"),SingletonF.language.getProperty("currency"),SingletonF.language.getProperty("decimals"),
-					SingletonF.language.getProperty("lang"),"Saving extension","Look and Feel","Reestablecer conf",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
+					SingletonF.language.getProperty("lang"),"Saving extension","Look and Feel","Reestablecer conf","DUMMIES",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra �",SingletonF.language.getProperty("go_back"),SingletonF.language.getProperty("exit")};
 			String[] languageconfig = {SingletonF.language.getProperty("english"), SingletonF.language.getProperty("spanish"),SingletonF.language.getProperty("go_back"),
@@ -54,6 +55,7 @@ public class Test_Users {
 					SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] save = {"Save on JSON","Save on XML","Save on TXT",SingletonF.language.getProperty("go_back")};
 			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",SingletonF.language.getProperty("go_back")};
+			String[] dummies = {"Add random dummies",SingletonF.language.getProperty("go_back")};
 			LookAndFeel.selectTheme(SingletonF.configApp.getLookandfeel());
 
 			option=Menus.menu(vec, SingletonF.language.getProperty("choose_an_option"),SingletonF.language.getProperty("application_users"));
@@ -390,7 +392,7 @@ public class Test_Users {
 							break;
 						case 4:
 						}
-						continuar2=false;
+						continuar2=false; 
 						break;
 					case 6://Resets the default configuration
 						monedaAnterior=SingletonF.configApp.getCurrency_config();
@@ -402,10 +404,20 @@ public class Test_Users {
 						SingletonF.configApp.setDecimals_config(2);
 						SingletonF.configApp.setLookandfeel(0);
 						break;
-					case 7:
-						continuar2=false;
+					case 7://DUMMIES
+						option=Menus.menu(dummies, SingletonF.language.getProperty("admin"), SingletonF.language.getProperty("application_users"));
+						switch(option){
+						case 0://Add random dummies
+							Dummies.generatedummies();
+							break;
+						case 1://go back
+							
+						}
 						break;
 					case 8:
+						continuar2=false;
+						break;
+					case 9:
 						continuar2=false;
 						continuar=4;
 						break;
