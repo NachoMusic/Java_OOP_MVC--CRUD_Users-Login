@@ -4,11 +4,7 @@ import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
 import application.models.SingletonF;
-import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
-import application.modules.users.model.BLL.Arraylist_admin;
-import application.modules.users.model.BLL.Arraylist_client;
-import application.modules.users.model.BLL.Arraylist_registered_user;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
@@ -22,20 +18,11 @@ public class Test_Users {
 	public static void main(String[] args){
 		SingletonF.configApp = new Config();
 		Config_json.load_conf_json();
-		//Language language =new Language(SingletonF.configApp.getLanguage_config());
 		SingletonF.language =new Language(SingletonF.configApp.getLanguage_config());
+		
 		int option,continuar=0;
 		char monedaAnterior='€';
 		boolean continuar2=true;
-		@SuppressWarnings("unused")
-		admin dummy1 = new admin("12345678A", "Nacho", "Valera", "987654321", "asdf@asdf.asdf", "Usuario", "Pass",
-				"Avatar", "Online", "16/10/1996", "14/12/2014",1234.1234f, 1234);
-		@SuppressWarnings("unused")
-		admin dummy2 = new admin("12345678Z", "Dummy", "Dummy", "123456789", "dummy@gmail.com", "DummyUser", "Pass",
-				"Avatar.jpg", "Offline", "30/11/1994", "10/11/2012",1234.1234f, 123);
-		singleton.admins = new Arraylist_admin();
-		singleton.clients = new Arraylist_client();
-		singleton.registered_users = new Arraylist_registered_user();
 		
 		switch(SingletonF.configApp.getSavingextension()){
 		case "json"://json
@@ -407,11 +394,13 @@ public class Test_Users {
 						break;
 					case 6://Resets the default configuration
 						monedaAnterior=SingletonF.configApp.getCurrency_config();
-						SingletonF.configApp = new Config();
 						SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
 						for(int i = 0;i<singleton.admins.getAdmins().size();i++){
 							singleton.admins.getData(i).changeCurrency(monedaAnterior);
 						}
+						SingletonF.configApp.setSavingextension("json");
+						SingletonF.configApp.setDecimals_config(2);
+						SingletonF.configApp.setLookandfeel(0);
 						break;
 					case 7:
 						continuar2=false;

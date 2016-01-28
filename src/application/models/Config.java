@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
+import application.modules.users.model.BLL.Arraylist_admin;
+import application.modules.users.model.BLL.Arraylist_client;
+import application.modules.users.model.BLL.Arraylist_registered_user;
+import application.modules.users.model.models.singleton;
+
 @SuppressWarnings("serial")
 @XStreamAlias("Config")
 public class Config implements Serializable{
@@ -35,6 +40,12 @@ public class Config implements Serializable{
 		this.decimals_config = 2;
 		this.savingextension = "json";
 		this.lookandfeel = 0;
+		
+		//dummies
+		
+		singleton.admins = new Arraylist_admin();
+		singleton.clients = new Arraylist_client();
+		singleton.registered_users = new Arraylist_registered_user();
 	}
 	public int getDate_config() {
 		return date_config;
