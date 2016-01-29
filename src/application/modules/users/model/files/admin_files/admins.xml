@@ -17,7 +17,7 @@
     <incentives>493</incentives>
     <advantages>0.0</advantages>
     <hirin__date>12/12/2012</hirin__date>
-    <salary>1234.0</salary>
+    <salary>1234.1084</salary>
     <years__of__service>3</years__of__service>
     <activity>1234</activity>
   </admin>
@@ -38,7 +38,7 @@
     <incentives>493</incentives>
     <advantages>0.0</advantages>
     <hirin__date>10/10/2014</hirin__date>
-    <salary>1234.0</salary>
+    <salary>1234.1084</salary>
     <years__of__service>1</years__of__service>
     <activity>1234</activity>
   </admin>
@@ -59,7 +59,7 @@
     <incentives>493</incentives>
     <advantages>0.0</advantages>
     <hirin__date>14/12/2014</hirin__date>
-    <salary>1234.1234</salary>
+    <salary>1234.2318</salary>
     <years__of__service>1</years__of__service>
     <activity>1234</activity>
   </admin>
@@ -80,7 +80,7 @@
     <incentives>493</incentives>
     <advantages>0.0</advantages>
     <hirin__date>14/12/2014</hirin__date>
-    <salary>1234.1234</salary>
+    <salary>1234.2318</salary>
     <years__of__service>1</years__of__service>
     <activity>1234</activity>
   </admin>
@@ -101,12 +101,117 @@
     <incentives>493</incentives>
     <advantages>0.0</advantages>
     <hirin__date>14/12/2014</hirin__date>
-    <salary>1234.1234</salary>
+    <salary>1234.2318</salary>
     <years__of__service>1</years__of__service>
     <activity>1234</activity>
   </admin>
   <admin>
     <dni>8343147N</dni>
+    <name>dummy</name>
+    <subname>dummy</subname>
+    <phone__number>987654321</phone__number>
+    <email>asdf@asdf.asdf</email>
+    <user>Usuario</user>
+    <pass>Pass</pass>
+    <avatar>Avatar</avatar>
+    <state>Online</state>
+    <date__birthday>10/10/1990</date__birthday>
+    <age>25</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>493</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>14/12/2014</hirin__date>
+    <salary>1234.2318</salary>
+    <years__of__service>1</years__of__service>
+    <activity>1234</activity>
+  </admin>
+  <admin>
+    <dni>7543086Y</dni>
+    <name>dummy</name>
+    <subname>dummy</subname>
+    <phone__number>987654321</phone__number>
+    <email>asdf@asdf.asdf</email>
+    <user>Usuario</user>
+    <pass>Pass</pass>
+    <avatar>Avatar</avatar>
+    <state>Online</state>
+    <date__birthday>10/10/1990</date__birthday>
+    <age>25</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>493</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>14/12/2014</hirin__date>
+    <salary>1234.2318</salary>
+    <years__of__service>1</years__of__service>
+    <activity>1234</activity>
+  </admin>
+  <admin>
+    <dni>68602460S</dni>
+    <name>dummy</name>
+    <subname>dummy</subname>
+    <phone__number>987654321</phone__number>
+    <email>asdf@asdf.asdf</email>
+    <user>Usuario</user>
+    <pass>Pass</pass>
+    <avatar>Avatar</avatar>
+    <state>Online</state>
+    <date__birthday>10/10/1990</date__birthday>
+    <age>25</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>493</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>14/12/2014</hirin__date>
+    <salary>1234.2318</salary>
+    <years__of__service>1</years__of__service>
+    <activity>1234</activity>
+  </admin>
+  <admin>
+    <dni>33110647P</dni>
+    <name>dummy</name>
+    <subname>dummy</subname>
+    <phone__number>987654321</phone__number>
+    <email>asdf@asdf.asdf</email>
+    <user>Usuario</user>
+    <pass>Pass</pass>
+    <avatar>Avatar</avatar>
+    <state>Online</state>
+    <date__birthday>10/10/1990</date__birthday>
+    <age>25</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>493</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>14/12/2014</hirin__date>
+    <salary>1234.2318</salary>
+    <years__of__service>1</years__of__service>
+    <activity>1234</activity>
+  </admin>
+  <admin>
+    <dni>92498349P</dni>
+    <name>dummy</name>
+    <subname>dummy</subname>
+    <phone__number>987654321</phone__number>
+    <email>asdf@asdf.asdf</email>
+    <user>Usuario</user>
+    <pass>Pass</pass>
+    <avatar>Avatar</avatar>
+    <state>Online</state>
+    <date__birthday>10/10/1990</date__birthday>
+    <age>25</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>493</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>14/12/2014</hirin__date>
+    <salary>1234.2318</salary>
+    <years__of__service>1</years__of__service>
+    <activity>1234</activity>
+  </admin>
+  <admin>
+    <dni>52877174J</dni>
     <name>dummy</name>
     <subname>dummy</subname>
     <phone__number>987654321</phone__number>
