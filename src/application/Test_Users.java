@@ -1,5 +1,5 @@
 package application;
-//nombre dni fechanac edad puntos
+
 import javax.swing.JOptionPane;
 import application.models.Config;
 import application.models.Language;
@@ -28,7 +28,7 @@ public class Test_Users {
 		
 		switch(SingletonF.configApp.getSavingextension()){
 		case "json"://json
-			json.load_json_auto();;
+			json.load_json_auto();
 			break;
 		case "xml"://xml
 			xml.load_xml_auto();
@@ -38,7 +38,6 @@ public class Test_Users {
 			break;
 		}
 
-		
 		while(continuar!=4){
 			String[] vec = {SingletonF.language.getProperty("admin"),SingletonF.language.getProperty("client"),
 					SingletonF.language.getProperty("registered_user"),SingletonF.language.getProperty("config"),
@@ -57,7 +56,7 @@ public class Test_Users {
 					SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] save = {"Save on JSON","Save on XML","Save on TXT",SingletonF.language.getProperty("go_back")};
 			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",SingletonF.language.getProperty("go_back")};
-			String[] dummies = {"Activate dummies mode","Deactivate dummies mode","Add random dummies",SingletonF.language.getProperty("go_back")};
+			String[] dummies = {"Activate dummies mode","Deactivate dummies mode","Add random dummies","Delete all dummies",SingletonF.language.getProperty("go_back")};
 			LookAndFeel.selectTheme(SingletonF.configApp.getLookandfeel());
 
 			option=Menus.menu(vec, SingletonF.language.getProperty("choose_an_option"),SingletonF.language.getProperty("application_users"));
@@ -410,11 +409,14 @@ public class Test_Users {
 						option=Menus.menu(dummies, SingletonF.language.getProperty("admin"), SingletonF.language.getProperty("application_users"));
 						switch(option){
 						case 0://Activate dummies
+							json.createjson_auto();
+							xml.createxml_auto();
+							txt.createtxt_auto();
 							SingletonF.configApp.setDummiesmode(true);
 							singleton.admins = new Arraylist_admin();
 							switch(SingletonF.configApp.getSavingextension()){
 							case "json"://json
-								json.load_json_auto();;
+								json.load_json_auto();
 								break;
 							case "xml"://xml
 								xml.load_xml_auto();
@@ -425,11 +427,14 @@ public class Test_Users {
 							}
 							break;
 						case 1://Deactivate dummies
+							json.createjson_auto();
+							xml.createxml_auto();
+							txt.createtxt_auto();
 							SingletonF.configApp.setDummiesmode(false);
 							singleton.admins = new Arraylist_admin();
 							switch(SingletonF.configApp.getSavingextension()){
 							case "json"://json
-								json.load_json_auto();;
+								json.load_json_auto();
 								break;
 							case "xml"://xml
 								xml.load_xml_auto();
@@ -442,8 +447,10 @@ public class Test_Users {
 						case 2://Add random dummies
 							Dummies.generatedummies();
 							break;
-						case 3://go back
-							
+						case 3:
+							Dummies.deletealldummies();
+							break;
+						case 4://go back
 						}
 						break;
 					case 8:
