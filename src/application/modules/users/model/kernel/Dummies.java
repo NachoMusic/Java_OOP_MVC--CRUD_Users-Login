@@ -22,6 +22,5 @@ public class Dummies {
 					"Avatar", "Online", "10/10/1990", "14/12/2014",1234.1234f, 1234);
 			singleton.admins.addData(dummy1);
 		}
-		
 	}
 }

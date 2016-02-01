@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import application.models.SingletonF;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
 
@@ -37,11 +39,15 @@ public class txt {
         }
     }
 	public static void createtxt_auto() {
-        String PATH = null;
+        String PATH = null,pathin="";
         try {
+        	if(SingletonF.configApp.getDummiesmode())
+	        	  pathin="/src/application/modules/users/model/files/dummies/admin_files/admins";
+	          else
+	        	  pathin="/src/application/modules/users/model/files/admin_files/admins";
         	try {
 	              PATH = new java.io.File(".").getCanonicalPath()
-	                      + "/src/application/modules/users/model/files/admin_files/admins";
+	                      + pathin;
 	          } catch (IOException e) {
 	              e.printStackTrace();
 	          }

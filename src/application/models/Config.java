@@ -24,14 +24,18 @@ public class Config implements Serializable{
 	private int lookandfeel;
 	@XStreamAlias("savingextension")
 	private String savingextension;
+	@XStreamAlias("dummiesmode")
+	private boolean dummiesmode;
 	
-	public Config(int date_config, String language_config, char currency_config, int decimals_config, String savingextension, int lookandfeel) {
+	public Config(int date_config, String language_config, char currency_config, int decimals_config, String savingextension, int lookandfeel, boolean dummiesmode) {
 		this.date_config = date_config;// dd/mm/yyyy dd-mm-yyyy
 		this.language_config = language_config;
 		this.currency_config = currency_config;
 		this.decimals_config = decimals_config;
 		this.savingextension = savingextension;
 		this.lookandfeel = lookandfeel;
+		this.dummiesmode= dummiesmode;
+		
 	}
 	public Config() {
 		this.date_config = 0;// dd/mm/yyyy 
@@ -40,6 +44,7 @@ public class Config implements Serializable{
 		this.decimals_config = 2;
 		this.savingextension = "json";
 		this.lookandfeel = 0;
+		this.dummiesmode = false;
 		
 		//dummies
 		
@@ -82,6 +87,12 @@ public class Config implements Serializable{
 	}
 	public void setLookandfeel(int lookandfeel) {
 		this.lookandfeel = lookandfeel;
+	}
+	public boolean getDummiesmode() {
+		return dummiesmode;
+	}
+	public void setDummiesmode(boolean dummiesmode) {
+		this.dummiesmode = dummiesmode;
 	}
 	
 	@Override

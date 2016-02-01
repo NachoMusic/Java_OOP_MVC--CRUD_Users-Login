@@ -5,6 +5,7 @@ import application.models.Config;
 import application.models.Language;
 import application.models.SingletonF;
 import application.modules.users.model.models.singleton;
+import application.modules.users.model.BLL.Arraylist_admin;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
@@ -36,6 +37,7 @@ public class Test_Users {
 			txt.load_txt_auto();
 			break;
 		}
+
 		
 		while(continuar!=4){
 			String[] vec = {SingletonF.language.getProperty("admin"),SingletonF.language.getProperty("client"),
@@ -55,7 +57,7 @@ public class Test_Users {
 					SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] save = {"Save on JSON","Save on XML","Save on TXT",SingletonF.language.getProperty("go_back")};
 			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",SingletonF.language.getProperty("go_back")};
-			String[] dummies = {"Add random dummies",SingletonF.language.getProperty("go_back")};
+			String[] dummies = {"Activate dummies mode","Deactivate dummies mode","Add random dummies",SingletonF.language.getProperty("go_back")};
 			LookAndFeel.selectTheme(SingletonF.configApp.getLookandfeel());
 
 			option=Menus.menu(vec, SingletonF.language.getProperty("choose_an_option"),SingletonF.language.getProperty("application_users"));
@@ -392,7 +394,7 @@ public class Test_Users {
 							break;
 						case 4:
 						}
-						continuar2=false; 
+						continuar2=false;
 						break;
 					case 6://Resets the default configuration
 						monedaAnterior=SingletonF.configApp.getCurrency_config();
@@ -407,10 +409,40 @@ public class Test_Users {
 					case 7://DUMMIES
 						option=Menus.menu(dummies, SingletonF.language.getProperty("admin"), SingletonF.language.getProperty("application_users"));
 						switch(option){
-						case 0://Add random dummies
+						case 0://Activate dummies
+							SingletonF.configApp.setDummiesmode(true);
+							singleton.admins = new Arraylist_admin();
+							switch(SingletonF.configApp.getSavingextension()){
+							case "json"://json
+								json.load_json_auto();;
+								break;
+							case "xml"://xml
+								xml.load_xml_auto();
+								break;
+							case "txt": //txt
+								txt.load_txt_auto();
+								break;
+							}
+							break;
+						case 1://Deactivate dummies
+							SingletonF.configApp.setDummiesmode(false);
+							singleton.admins = new Arraylist_admin();
+							switch(SingletonF.configApp.getSavingextension()){
+							case "json"://json
+								json.load_json_auto();;
+								break;
+							case "xml"://xml
+								xml.load_xml_auto();
+								break;
+							case "txt": //txt
+								txt.load_txt_auto();
+								break;
+							}
+							break;
+						case 2://Add random dummies
 							Dummies.generatedummies();
 							break;
-						case 1://go back
+						case 3://go back
 							
 						}
 						break;

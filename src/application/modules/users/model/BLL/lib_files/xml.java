@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.Annotations;
+
+import application.models.SingletonF;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
 
@@ -51,11 +53,15 @@ public class xml {
 	    } 
 	}
 	public static void createxml_auto(){
-		String PATH = null;
+		String PATH = null,pathin="";
 
         try {
+        	if(SingletonF.configApp.getDummiesmode())
+	        	  pathin="/src/application/modules/users/model/files/dummies/admin_files/admins.xml";
+	          else
+	        	  pathin="/src/application/modules/users/model/files/admin_files/admins.xml";
             PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/application/modules/users/model/files/admin_files/admins.xml";
+                    + pathin;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -106,14 +112,17 @@ public class xml {
 	
 	@SuppressWarnings("unchecked")
 	public static void load_xml_auto(){
-		String PATH;
+		String PATH,pathin="";
 
         try {
             XStream xstream = new XStream();
             Annotations.configureAliases(xstream, admin.class);
-
+            if(SingletonF.configApp.getDummiesmode())
+	        	  pathin="/src/application/modules/users/model/files/dummies/admin_files/admins.xml";
+	          else
+	        	  pathin="/src/application/modules/users/model/files/admin_files/admins.xml";
             PATH = new java.io.File(".").getCanonicalPath()
-                    + "/src/application/modules/users/model/files/admin_files/admins.xml";
+                    + pathin;
 
             File path = new File(PATH);
 
