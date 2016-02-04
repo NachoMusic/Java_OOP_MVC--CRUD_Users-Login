@@ -44,10 +44,10 @@ public class Test_Users {
 					SingletonF.language.getProperty("exit")};
 			String[] vec1 = {SingletonF.language.getProperty("create"), SingletonF.language.getProperty("change_data"), SingletonF.language.getProperty("print_data"),
 					"Delete","Find","Sort by","Export","Import",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
-			String[] find = {"By DNI","By name",SingletonF.language.getProperty("go_back")};
+			String[] find = {SingletonF.language.getProperty("bydni"),SingletonF.language.getProperty("Por nombre"),SingletonF.language.getProperty("go_back")};
 			String[] sortBy = {"By DNI","By name","By birthday",SingletonF.language.getProperty("go_back")};
 			String[] config = {SingletonF.language.getProperty("date"),SingletonF.language.getProperty("currency"),SingletonF.language.getProperty("decimals"),
-					SingletonF.language.getProperty("lang"),"Saving extension","Look and Feel","Reestablecer conf","DUMMIES",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
+					SingletonF.language.getProperty("lang"),SingletonF.language.getProperty("savingextension"),SingletonF.language.getProperty("looknfeel"),SingletonF.language.getProperty("resetconf"),"DUMMIES",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra £",SingletonF.language.getProperty("go_back"),SingletonF.language.getProperty("exit")};
 			String[] languageconfig = {SingletonF.language.getProperty("english"), SingletonF.language.getProperty("spanish"),SingletonF.language.getProperty("go_back"),
@@ -79,7 +79,7 @@ public class Test_Users {
 						singleton.admins.deleteData();
 						break;
 					case 4://Find
-						option=Menus.menu(find, "Searh admins", "Search");
+						option=Menus.menu(find, SingletonF.language.getProperty("searchadmins"), SingletonF.language.getProperty("search"));
 						switch(option){
 						case 0://By dni
 							singleton.admins.find(0);
@@ -92,7 +92,7 @@ public class Test_Users {
 						break;
 					case 5://Sort by
 						
-						option=Menus.menu(sortBy, "Sort admins", "Sort");
+						option=Menus.menu(sortBy, SingletonF.language.getProperty("sortadmins"), SingletonF.language.getProperty("sort"));
 						switch(option){
 						case 0://By dni
 							singleton.admins.sortData(0);
@@ -145,7 +145,7 @@ public class Test_Users {
 			case 1://Clients
 				do{
 					continuar2=true;
-					option=Menus.menu(vec1, "Client", "Application Users");
+					option=Menus.menu(vec1, SingletonF.language.getProperty("client"), SingletonF.language.getProperty("application_users"));
 					switch(option){
 					case 0:
 						singleton.clients.addData(functions_users.newclient());
@@ -203,7 +203,7 @@ public class Test_Users {
 			case 2://Registered_users
 				do{
 					continuar2=true;
-					option=Menus.menu(vec1, "Registered user", "Application Users");
+					option=Menus.menu(vec1, SingletonF.language.getProperty("registered_user"), SingletonF.language.getProperty("application_users"));
 					switch(option){
 					case 0://Add data
 						singleton.registered_users.addData(functions_users.newregistered_user());
@@ -291,7 +291,7 @@ public class Test_Users {
 						}				
 						break;
 					case 1://Currency format
-						option=Menus.menu(currencyconfig, "Currency config", "Configuration about the currency");
+						option=Menus.menu(currencyconfig, SingletonF.language.getProperty("currencyconf2"), SingletonF.language.getProperty("currencyconf"));
 						switch(option){
 						case 0:
 							monedaAnterior=SingletonF.configApp.getCurrency_config();
@@ -361,7 +361,7 @@ public class Test_Users {
 						}				
 						break;
 					case 4://Saving extension
-						option=Menus.menu(save, "Save admins", "Save");
+						option=Menus.menu(save, "Save admins", SingletonF.language.getProperty("save"));
 						switch(option){
 						case 0://json
 							SingletonF.configApp.setSavingextension("json");
@@ -376,7 +376,7 @@ public class Test_Users {
 						}
 						break;
 					case 5://Look and feel
-						option=Menus.menu(looknfeel, "Look and Feel", "Themes");
+						option=Menus.menu(looknfeel, SingletonF.language.getProperty("looknfeel"), SingletonF.language.getProperty("themes"));
 						switch(option){
 						case 0://Metal
 							SingletonF.configApp.setLookandfeel(0);
