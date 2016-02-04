@@ -8,20 +8,18 @@ import application.modules.users.model.models.singleton;
 import application.utils.Functions;
 
 public class Dummies {
-	public static final String NIF_STRING_ASOCIATION = "TRWAGMYFPDXBNJZSQVHLCKE";
+	public static final String DNI_ASOCIATION = "TRWAGMYFPDXBNJZSQVHLCKE";
 	public static String letraDNI(int dni){
-	    return String.valueOf(dni) + NIF_STRING_ASOCIATION.charAt(dni % 23);
+	    return String.valueOf(dni) + DNI_ASOCIATION.charAt(dni % 23);
 	}
 	public static void generatedummies(){
-		char lettercalc=' ';
 		String e="";
 		
-		int a = Functions.validateint("How many dummies do you want to add?", "Add Dummies");
+		int a = Functions.validateint(SingletonF.language.getProperty("dummiesadd"), SingletonF.language.getProperty("dummiesadd2"));
 		for(int i=0; i<a;i++){
 			int random=(int)(Math.random()*100000000);
 			int phone=(int)(Math.random()*1000000000);
 			e=letraDNI(random);
-			System.out.print(lettercalc);
 			admin dummy1 = new admin(e, "dummy", "dummy", Integer.toString(phone), "asdf@asdf.asdf", "Usuario", "Pass",
 					"Avatar", "Online", "10/10/1990", "14/12/2014",1234.1234f, 1234);
 			singleton.admins.addData(dummy1);
@@ -31,7 +29,7 @@ public class Dummies {
 		if(SingletonF.configApp.getDummiesmode())
 			singleton.admins = new Arraylist_admin();
 		else{
-			JOptionPane.showMessageDialog(null, "You have to activate the dummies mode for deleting them");
+			JOptionPane.showMessageDialog(null, SingletonF.language.getProperty("dummiesdelerror"));
 		}
 	}
 }

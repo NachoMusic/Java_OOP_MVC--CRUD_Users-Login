@@ -43,12 +43,4 @@ public class Language extends Properties{
         } catch (IOException ex) {
         }
     }
-	/*
-	public static void main(String[] args){
-		Language lang = new Language("English");
-		System.out.print(lang.getProperty("goodbye"));
-		lang.setIdioma("Spanish");
-		System.out.print(lang.getProperty("goodbye"));
-	}
-	*/
 }

@@ -23,7 +23,7 @@ public class Test_Users {
 		SingletonF.language =new Language(SingletonF.configApp.getLanguage_config());
 		
 		int option,continuar=0;
-		char monedaAnterior='€';
+		char monedaAnterior=SingletonF.configApp.getCurrency_config();
 		boolean continuar2=true;
 		
 		switch(SingletonF.configApp.getSavingextension()){
@@ -49,14 +49,14 @@ public class Test_Users {
 			String[] config = {SingletonF.language.getProperty("date"),SingletonF.language.getProperty("currency"),SingletonF.language.getProperty("decimals"),
 					SingletonF.language.getProperty("lang"),"Saving extension","Look and Feel","Reestablecer conf","DUMMIES",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
 			String[] dateconfig = {"dd/mm/yyyy","dd-mm-yyyy","yyyy/mm/dd","yyyy-mm-dd",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
-			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra �",SingletonF.language.getProperty("go_back"),SingletonF.language.getProperty("exit")};
+			String[] currencyconfig = {"Euro \u20ac", "Dollar $", "Libra £",SingletonF.language.getProperty("go_back"),SingletonF.language.getProperty("exit")};
 			String[] languageconfig = {SingletonF.language.getProperty("english"), SingletonF.language.getProperty("spanish"),SingletonF.language.getProperty("go_back"),
 					SingletonF.language.getProperty("exit")};
 			String[] decimalsconfig = {SingletonF.language.getProperty("1decimal"),SingletonF.language.getProperty("2decimal"),SingletonF.language.getProperty("3decimal"),
 					SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
-			String[] save = {"Save on JSON","Save on XML","Save on TXT",SingletonF.language.getProperty("go_back")};
+			String[] save = {SingletonF.language.getProperty("savejson"),SingletonF.language.getProperty("savexml"),SingletonF.language.getProperty("savetxt"),SingletonF.language.getProperty("go_back")};
 			String[] looknfeel = {"Metal","GTK Windows","CDE/Motif","Nimbus",SingletonF.language.getProperty("go_back")};
-			String[] dummies = {"Activate dummies mode","Deactivate dummies mode","Add random dummies","Delete all dummies",SingletonF.language.getProperty("go_back")};
+			String[] dummies = {SingletonF.language.getProperty("dummieson"),SingletonF.language.getProperty("dummiesoff"),SingletonF.language.getProperty("dummiesaddrand"),SingletonF.language.getProperty("dummiesdel"),SingletonF.language.getProperty("go_back")};
 			LookAndFeel.selectTheme(SingletonF.configApp.getLookandfeel());
 
 			option=Menus.menu(vec, SingletonF.language.getProperty("choose_an_option"),SingletonF.language.getProperty("application_users"));
@@ -107,7 +107,6 @@ public class Test_Users {
 						}
 						break;
 					case 6://Save
-						//option=Menus.menu(save, "Save admins", "Save");
 						switch(SingletonF.configApp.getSavingextension()){
 						case "json"://json
 							json.createjson();
