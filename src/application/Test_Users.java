@@ -43,8 +43,8 @@ public class Test_Users {
 					SingletonF.language.getProperty("registered_user"),SingletonF.language.getProperty("config"),
 					SingletonF.language.getProperty("exit")};
 			String[] vec1 = {SingletonF.language.getProperty("create"), SingletonF.language.getProperty("change_data"), SingletonF.language.getProperty("print_data"),
-					"Delete","Find","Sort by","Export","Import",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
-			String[] find = {SingletonF.language.getProperty("bydni"),SingletonF.language.getProperty("Por nombre"),SingletonF.language.getProperty("go_back")};
+					SingletonF.language.getProperty("delete"),SingletonF.language.getProperty("find"),SingletonF.language.getProperty("sortby"),SingletonF.language.getProperty("export"),SingletonF.language.getProperty("import"),SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
+			String[] find = {SingletonF.language.getProperty("bydni"),SingletonF.language.getProperty("byname"),SingletonF.language.getProperty("go_back")};
 			String[] sortBy = {"By DNI","By name","By birthday",SingletonF.language.getProperty("go_back")};
 			String[] config = {SingletonF.language.getProperty("date"),SingletonF.language.getProperty("currency"),SingletonF.language.getProperty("decimals"),
 					SingletonF.language.getProperty("lang"),SingletonF.language.getProperty("savingextension"),SingletonF.language.getProperty("looknfeel"),SingletonF.language.getProperty("resetconf"),"DUMMIES",SingletonF.language.getProperty("go_back"), SingletonF.language.getProperty("exit")};
@@ -230,7 +230,7 @@ public class Test_Users {
 						}
 						break;
 					case 5://Sort by
-						option=Menus.menu(sortBy, "Sort admins", "Sort");
+						option=Menus.menu(sortBy, "Sort registered users", "Sort");
 						switch(option){
 						case 0://By dni
 							singleton.registered_users.sortData(0);
@@ -361,7 +361,7 @@ public class Test_Users {
 						}				
 						break;
 					case 4://Saving extension
-						option=Menus.menu(save, "Save admins", SingletonF.language.getProperty("save"));
+						option=Menus.menu(save, SingletonF.language.getProperty("saveadmins"), SingletonF.language.getProperty("save"));
 						switch(option){
 						case 0://json
 							SingletonF.configApp.setSavingextension("json");

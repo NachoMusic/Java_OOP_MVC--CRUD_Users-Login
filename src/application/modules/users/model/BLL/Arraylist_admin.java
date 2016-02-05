@@ -3,6 +3,8 @@ package application.modules.users.model.BLL;
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
+
+import application.models.SingletonF;
 import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
@@ -34,7 +36,7 @@ public class Arraylist_admin {
 		if(action)
 			admins.add(a);
 		else
-			JOptionPane.showMessageDialog(null, "There is already a user with the same DNI");
+			JOptionPane.showMessageDialog(null, SingletonF.language.getProperty("dnierror"));
 	}
 	public admin getData(int num){
 		return admins.get(num);
@@ -43,8 +45,7 @@ public class Arraylist_admin {
 		try{
 			int action=0;
 			String dni;
-			int num = Functions.validateint("Type the number of"
-					+ " the admin to change", "Change users");
+			int num = Functions.validateint(SingletonF.language.getProperty("adminchange"), SingletonF.language.getProperty("adminchange2"));
 			
 			dni=admins.get(num-1).getDni();
 			functions_users.getuser(admins.get(num-1), 0);
@@ -56,10 +57,10 @@ public class Arraylist_admin {
 			}
 			if(action!=0){
 				admins.get(num-1).setDni(dni);
-				JOptionPane.showMessageDialog(null, "There is already a user with that DNI");
+				JOptionPane.showMessageDialog(null, SingletonF.language.getProperty("dnierror"));
 			}
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null,"The admin does not exist");
+			JOptionPane.showMessageDialog(null,SingletonF.language.getProperty("doesntexist"));
 		}
 	}
 	public void printArraylist(){
