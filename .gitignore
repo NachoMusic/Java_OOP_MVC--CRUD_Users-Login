@@ -2,6 +2,9 @@
 .metadata
 bin/
 tmp/
+nbproject/
+build.xml
+master
 *.tmp
 *.bak
 *.swp
@@ -42,3 +45,5 @@ local.properties
 
 # STS (Spring Tool Suite)
 .springBeans
+/nbproject/private/
+/build/
