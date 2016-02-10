@@ -5,6 +5,7 @@
  */
 package application.view;
 
+import application.models.SingletonF;
 import application.modules.users.view.admin_view;
 
 /**
@@ -17,6 +18,8 @@ public class app_view extends javax.swing.JFrame {
      */
     public app_view() {
         initComponents();
+        this.setTitle(SingletonF.language.getProperty("application_users"));
+	this.setLocationRelativeTo(null);
     }
 
     /**
@@ -49,6 +52,11 @@ public class app_view extends javax.swing.JFrame {
 
         confButton.setText("Global Configuration");
         confButton.setToolTipText("");
+        confButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confButtonActionPerformed(evt);
+            }
+        });
 
         labelMenu.setFont(new java.awt.Font("Droid Sans", 0, 16)); // NOI18N
         labelMenu.setText("Choose an option:");
@@ -96,10 +104,16 @@ public class app_view extends javax.swing.JFrame {
 
     private void adminsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminsButtonActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        this.setVisible(false);
         new admin_view().setVisible(true);
         
     }//GEN-LAST:event_adminsButtonActionPerformed
+
+    private void confButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new config_view().setVisible(true);
+    }//GEN-LAST:event_confButtonActionPerformed
 
     /**
      * @param args the command line arguments
