@@ -5,6 +5,9 @@
  */
 package application.modules.users.view;
 
+import application.modules.users.model.DAO.functions_users;
+import application.modules.users.model.models.singleton;
+
 /**
  *
  * @author nacho
@@ -27,20 +30,40 @@ public class admin_view extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        createAButton = new javax.swing.JButton();
+        changeDataAButtorn = new javax.swing.JButton();
+        printDataAButton = new javax.swing.JButton();
+        deleteDataAButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Create");
+        createAButton.setText("Create");
+        createAButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Change Data");
+        changeDataAButtorn.setText("Change Data");
+        changeDataAButtorn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeDataAButtornActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Print Data");
+        printDataAButton.setText("Print Data");
+        printDataAButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printDataAButtonActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Delete");
+        deleteDataAButton.setText("Delete");
+        deleteDataAButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteDataAButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,13 +71,13 @@ public class admin_view extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jButton1)
+                .addComponent(createAButton)
                 .addGap(35, 35, 35)
-                .addComponent(jButton2)
+                .addComponent(changeDataAButtorn)
                 .addGap(55, 55, 55)
-                .addComponent(jButton3)
+                .addComponent(printDataAButton)
                 .addGap(71, 71, 71)
-                .addComponent(jButton4)
+                .addComponent(deleteDataAButton)
                 .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -62,15 +85,35 @@ public class admin_view extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(createAButton)
+                    .addComponent(changeDataAButtorn)
+                    .addComponent(printDataAButton)
+                    .addComponent(deleteDataAButton))
                 .addContainerGap(386, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void createAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAButtonActionPerformed
+        // TODO add your handling code here:
+        singleton.admins.addData(functions_users.newadmin());
+    }//GEN-LAST:event_createAButtonActionPerformed
+
+    private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
+        // TODO add your handling code here:
+        singleton.admins.changeData();
+    }//GEN-LAST:event_changeDataAButtornActionPerformed
+
+    private void printDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDataAButtonActionPerformed
+        // TODO add your handling code here:
+        singleton.admins.printArraylist();
+    }//GEN-LAST:event_printDataAButtonActionPerformed
+
+    private void deleteDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataAButtonActionPerformed
+        // TODO add your handling code here:
+        singleton.admins.deleteData();
+    }//GEN-LAST:event_deleteDataAButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,9 +151,9 @@ public class admin_view extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton changeDataAButtorn;
+    private javax.swing.JButton createAButton;
+    private javax.swing.JButton deleteDataAButton;
+    private javax.swing.JButton printDataAButton;
     // End of variables declaration//GEN-END:variables
 }

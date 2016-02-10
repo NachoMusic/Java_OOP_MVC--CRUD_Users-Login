@@ -28,19 +28,19 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelMenu" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="adminsButton" min="-2" pref="127" max="-2" attributes="0"/>
-                          <Component id="usregButton" min="-2" pref="127" max="-2" attributes="0"/>
+                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="usregButton" pref="152" max="32767" attributes="0"/>
+                          <Component id="adminsButton" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="clientsButton" min="-2" pref="127" max="-2" attributes="0"/>
-                          <Component id="confButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="clientsButton" max="32767" attributes="0"/>
+                          <Component id="confButton" pref="157" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
