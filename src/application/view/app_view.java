@@ -111,7 +111,8 @@ public class app_view extends javax.swing.JFrame {
 
     private void confButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confButtonActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+        //this.setVisible(false);
+        dispose();
         new config_view().setVisible(true);
     }//GEN-LAST:event_confButtonActionPerformed
 

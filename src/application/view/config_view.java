@@ -43,6 +43,14 @@ public class config_view extends javax.swing.JFrame {
         }
         decimalsCombo.setSelectedIndex(SingletonF.configApp.getDecimals_config() - 1);
         dateCombo.setSelectedIndex(SingletonF.configApp.getDate_config());
+        switch(SingletonF.configApp.getLanguage_config()){
+            case "English":
+                languageCombo.setSelectedIndex(0);
+                break;
+            case "Spanish":
+                languageCombo.setSelectedIndex(1);
+                break;
+        }
         if (SingletonF.configApp.getDummiesmode()) {
             dummiesOn.setSelected(true);
         } else {
@@ -70,6 +78,8 @@ public class config_view extends javax.swing.JFrame {
         decimalsCombo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         dateCombo = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        languageCombo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         dummiesOn = new javax.swing.JRadioButton();
         dummiesOff = new javax.swing.JRadioButton();
@@ -119,6 +129,16 @@ public class config_view extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Language:");
+        jLabel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        languageCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "English", "Español" }));
+        languageCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                languageComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,12 +153,14 @@ public class config_view extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(decimalsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(dateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(languageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 169, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,7 +178,11 @@ public class config_view extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(dateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(languageCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         confpane.addTab("General", jPanel1);
@@ -396,7 +422,7 @@ public class config_view extends javax.swing.JFrame {
 
     private void howmanyDummiesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_howmanyDummiesStateChanged
         // TODO add your handling code here:
-        if(Integer.parseInt(howmanyDummies.getValue().toString())<0){
+        if (Integer.parseInt(howmanyDummies.getValue().toString()) < 0) {
             howmanyDummies.setValue(0);
         }
     }//GEN-LAST:event_howmanyDummiesStateChanged
@@ -405,6 +431,20 @@ public class config_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         SingletonF.configApp.setDate_config(dateCombo.getSelectedIndex());
     }//GEN-LAST:event_dateComboActionPerformed
+
+    private void languageComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageComboActionPerformed
+        // TODO add your handling code here:
+        switch (languageCombo.getSelectedIndex()) {
+            case 0:// English
+                SingletonF.configApp.setLanguage_config("English");
+                SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
+                break;
+            case 1:// Spanish
+                SingletonF.configApp.setLanguage_config("Spanish");
+                SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
+                break;
+        }
+    }//GEN-LAST:event_languageComboActionPerformed
 
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -468,12 +508,14 @@ public class config_view extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JComboBox<String> languageCombo;
     private javax.swing.JButton resetConf;
     private javax.swing.JLabel successAddDum;
     // End of variables declaration//GEN-END:variables

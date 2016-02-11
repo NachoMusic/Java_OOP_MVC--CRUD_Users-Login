@@ -245,19 +245,19 @@ public class admin_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         String[] sortBy = {"By DNI", "By name", "By birthday", SingletonF.language.getProperty("go_back")};
         int option = Menus.menu(sortBy, SingletonF.language.getProperty("sortadmins"),
-                                        SingletonF.language.getProperty("sort"));
-                                switch (option) {
-                                    case 0://By dni
-                                        singleton.admins.sortData(0);
-                                        break;
-                                    case 1://By name
-                                        singleton.admins.sortData(1);
-                                        break;
-                                    case 2://By date birthday
-                                        singleton.admins.sortData(2);
-                                        break;
-                                    case 3://Go back
-                                }
+                SingletonF.language.getProperty("sort"));
+        switch (option) {
+            case 0://By dni
+                singleton.admins.sortData(0);
+                break;
+            case 1://By name
+                singleton.admins.sortData(1);
+                break;
+            case 2://By date birthday
+                singleton.admins.sortData(2);
+                break;
+            case 3://Go back
+        }
     }//GEN-LAST:event_sortbyAButtonActionPerformed
 
     private void closeWindow() {
@@ -265,7 +265,8 @@ public class admin_view extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                setVisible(false);
+                //setVisible(false);
+                dispose();
                 new app_view().setVisible(true);
             }
         });
