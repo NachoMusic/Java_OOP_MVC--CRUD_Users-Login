@@ -6,6 +6,7 @@
 package application.view;
 
 import application.models.SingletonF;
+import application.modules.users.model.models.singleton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -23,7 +24,18 @@ public class config_view extends javax.swing.JFrame {
         initComponents();
         closeWindow();
         this.setTitle(SingletonF.language.getProperty("config"));
-	this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        switch (SingletonF.configApp.getCurrency_config()) {
+            case '€':
+                comboCurrency.setSelectedIndex(0);
+                break;
+            case '$':
+                comboCurrency.setSelectedIndex(1);
+                break;
+            case '£':
+                comboCurrency.setSelectedIndex(2);
+        }
+
     }
 
     /**
@@ -37,13 +49,18 @@ public class config_view extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        confpane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        comboCurrency = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         jMenu1.setText("jMenu1");
 
@@ -51,26 +68,63 @@ public class config_view extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Cosas 1");
+        jButton3.setText("Decimals");
+
+        jButton4.setText("Language");
+
+        jButton5.setText("Reset all config");
+
+        jLabel1.setText("Currency:");
+        jLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        comboCurrency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "€", "$", "£" }));
+        comboCurrency.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCurrencyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel1)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(99, 99, 99))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(79, 79, 79)
+                .addComponent(jButton3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        confpane.addTab("General", jPanel1);
 
         jLabel2.setText("Cosas 2");
 
@@ -81,17 +135,17 @@ public class config_view extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabel2)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        confpane.addTab("Dummies", jPanel2);
 
         jLabel3.setText("jLabel3");
 
@@ -102,40 +156,58 @@ public class config_view extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(jLabel3)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab3", jPanel3);
+        confpane.addTab("Look n' Feel", jPanel3);
+        confpane.addTab("Date", jTabbedPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(confpane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(confpane)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void closeWindow(){
+
+    private void comboCurrencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCurrencyActionPerformed
+        // TODO add your handling code here:
+        char monedaAnterior;
+        switch (comboCurrency.getSelectedIndex()) {
+            case 0:
+                monedaAnterior = SingletonF.configApp.getCurrency_config();
+                SingletonF.configApp.setCurrency_config('€');
+                singleton.admins.changeFormatCurrency(monedaAnterior);
+                break;
+            case 1:
+                monedaAnterior = SingletonF.configApp.getCurrency_config();
+                SingletonF.configApp.setCurrency_config('$');
+                singleton.admins.changeFormatCurrency(monedaAnterior);
+                break;
+            case 2:
+                monedaAnterior = SingletonF.configApp.getCurrency_config();
+                SingletonF.configApp.setCurrency_config('£');
+                singleton.admins.changeFormatCurrency(monedaAnterior);
+                break;
+        }
+
+    }//GEN-LAST:event_comboCurrencyActionPerformed
+    private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		addWindowListener(new WindowAdapter() {
+        addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 setVisible(false);
@@ -143,6 +215,7 @@ public class config_view extends javax.swing.JFrame {
             }
         });
     }
+
     /**
      * @param args the command line arguments
      */
@@ -179,6 +252,11 @@ public class config_view extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboCurrency;
+    private javax.swing.JTabbedPane confpane;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
