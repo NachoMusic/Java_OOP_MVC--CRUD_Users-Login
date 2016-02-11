@@ -35,6 +35,7 @@ public class config_view extends javax.swing.JFrame {
             case '£':
                 comboCurrency.setSelectedIndex(2);
         }
+        decimalsCombo.setSelectedIndex(SingletonF.configApp.getDecimals_config()-1);
 
     }
 
@@ -56,11 +57,15 @@ public class config_view extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         comboCurrency = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        decimalsCombo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        resetConf = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -84,6 +89,16 @@ public class config_view extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Decimals:");
+        jLabel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        decimalsCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
+        decimalsCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                decimalsComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,7 +108,7 @@ public class config_view extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                         .addComponent(jButton4)
                         .addGap(99, 99, 99))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -103,7 +118,12 @@ public class config_view extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(comboCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(decimalsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +132,11 @@ public class config_view extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(decimalsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addComponent(jButton3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -121,7 +145,7 @@ public class config_view extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton5)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         confpane.addTab("General", jPanel1);
@@ -135,14 +159,14 @@ public class config_view extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jLabel2)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(310, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel2)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         confpane.addTab("Dummies", jPanel2);
@@ -156,18 +180,50 @@ public class config_view extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(jLabel3)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
 
         confpane.addTab("Look n' Feel", jPanel3);
-        confpane.addTab("Date", jTabbedPane1);
+
+        jLabel4.setText("Warning, if you reset the config you will lose all the configuration");
+
+        resetConf.setBackground(new java.awt.Color(255, 0, 0));
+        resetConf.setText("Reset Configuration");
+        resetConf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetConfActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(resetConf, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(resetConf, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+
+        confpane.addTab("Reset Config", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,7 +233,7 @@ public class config_view extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(confpane)
+            .addComponent(confpane, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
         );
 
         pack();
@@ -188,23 +244,31 @@ public class config_view extends javax.swing.JFrame {
         char monedaAnterior;
         switch (comboCurrency.getSelectedIndex()) {
             case 0:
-                monedaAnterior = SingletonF.configApp.getCurrency_config();
-                SingletonF.configApp.setCurrency_config('€');
-                singleton.admins.changeFormatCurrency(monedaAnterior);
-                break;
+            monedaAnterior = SingletonF.configApp.getCurrency_config();
+            SingletonF.configApp.setCurrency_config('€');
+            singleton.admins.changeFormatCurrency(monedaAnterior);
+            break;
             case 1:
-                monedaAnterior = SingletonF.configApp.getCurrency_config();
-                SingletonF.configApp.setCurrency_config('$');
-                singleton.admins.changeFormatCurrency(monedaAnterior);
-                break;
+            monedaAnterior = SingletonF.configApp.getCurrency_config();
+            SingletonF.configApp.setCurrency_config('$');
+            singleton.admins.changeFormatCurrency(monedaAnterior);
+            break;
             case 2:
-                monedaAnterior = SingletonF.configApp.getCurrency_config();
-                SingletonF.configApp.setCurrency_config('£');
-                singleton.admins.changeFormatCurrency(monedaAnterior);
-                break;
+            monedaAnterior = SingletonF.configApp.getCurrency_config();
+            SingletonF.configApp.setCurrency_config('£');
+            singleton.admins.changeFormatCurrency(monedaAnterior);
+            break;
         }
-
     }//GEN-LAST:event_comboCurrencyActionPerformed
+
+    private void resetConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetConfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_resetConfActionPerformed
+
+    private void decimalsComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decimalsComboActionPerformed
+        // TODO add your handling code here:
+        SingletonF.configApp.setDecimals_config(decimalsCombo.getSelectedIndex()+1);
+    }//GEN-LAST:event_decimalsComboActionPerformed
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -254,17 +318,21 @@ public class config_view extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboCurrency;
     private javax.swing.JTabbedPane confpane;
+    private javax.swing.JComboBox<String> decimalsCombo;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton resetConf;
     // End of variables declaration//GEN-END:variables
 }
