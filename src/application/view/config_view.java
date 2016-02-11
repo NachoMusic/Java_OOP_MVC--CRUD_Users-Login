@@ -6,6 +6,11 @@
 package application.view;
 
 import application.models.SingletonF;
+import application.modules.users.model.BLL.Arraylist_admin;
+import application.modules.users.model.BLL.lib_files.json;
+import application.modules.users.model.BLL.lib_files.txt;
+import application.modules.users.model.BLL.lib_files.xml;
+import application.modules.users.model.kernel.Dummies;
 import application.modules.users.model.models.singleton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,6 +28,7 @@ public class config_view extends javax.swing.JFrame {
     public config_view() {
         initComponents();
         closeWindow();
+        successAddDum.setVisible(false);
         this.setTitle(SingletonF.language.getProperty("config"));
         this.setLocationRelativeTo(null);
         switch (SingletonF.configApp.getCurrency_config()) {
@@ -35,8 +41,12 @@ public class config_view extends javax.swing.JFrame {
             case '£':
                 comboCurrency.setSelectedIndex(2);
         }
-        decimalsCombo.setSelectedIndex(SingletonF.configApp.getDecimals_config()-1);
-
+        decimalsCombo.setSelectedIndex(SingletonF.configApp.getDecimals_config() - 1);
+        if (SingletonF.configApp.getDummiesmode()) {
+            dummiesOn.setSelected(true);
+        } else {
+            dummiesOff.setSelected(true);
+        }
     }
 
     /**
@@ -50,9 +60,9 @@ public class config_view extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         confpane = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -60,9 +70,14 @@ public class config_view extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         decimalsCombo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
+        dummiesOn = new javax.swing.JRadioButton();
+        dummiesOff = new javax.swing.JRadioButton();
+        jLabel5 = new javax.swing.JLabel();
+        addRandomDummies = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        howmanyDummies = new javax.swing.JSpinner();
+        successAddDum = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         resetConf = new javax.swing.JButton();
@@ -72,8 +87,6 @@ public class config_view extends javax.swing.JFrame {
         jMenu2.setText("jMenu2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton3.setText("Decimals");
 
         jButton4.setText("Language");
 
@@ -108,16 +121,13 @@ public class config_view extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                         .addComponent(jButton4)
                         .addGap(99, 99, 99))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(comboCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -136,58 +146,114 @@ public class config_view extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(decimalsCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(jButton3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
+                        .addGap(74, 74, 74)
                         .addComponent(jButton4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(85, 85, 85)
                         .addComponent(jButton5)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
         confpane.addTab("General", jPanel1);
 
-        jLabel2.setText("Cosas 2");
+        buttonGroup1.add(dummiesOn);
+        dummiesOn.setText("Activated");
+        dummiesOn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dummiesOnActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(dummiesOff);
+        dummiesOff.setText("Deactivate");
+        dummiesOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dummiesOffActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Dummies mode:");
+        jLabel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        addRandomDummies.setText("Add random dummies");
+        addRandomDummies.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRandomDummiesActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("You can add random dummies with generated fields");
+        jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        howmanyDummies.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                howmanyDummiesStateChanged(evt);
+            }
+        });
+
+        successAddDum.setForeground(new java.awt.Color(6, 124, 15));
+        successAddDum.setText("Added dummies");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel2)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(dummiesOn)
+                                .addGap(72, 72, 72)
+                                .addComponent(dummiesOff))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel2)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(94, 94, 94)
+                                    .addComponent(howmanyDummies, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(addRandomDummies)
+                                        .addComponent(successAddDum, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel5)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dummiesOff)
+                    .addComponent(dummiesOn))
+                .addGap(29, 29, 29)
                 .addComponent(jLabel2)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addRandomDummies)
+                    .addComponent(howmanyDummies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(successAddDum)
+                .addGap(52, 52, 52))
         );
 
         confpane.addTab("Dummies", jPanel2);
-
-        jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel3)
-                .addContainerGap(309, Short.MAX_VALUE))
+            .addGap(0, 381, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(244, Short.MAX_VALUE))
+            .addGap(0, 273, Short.MAX_VALUE)
         );
 
         confpane.addTab("Look n' Feel", jPanel3);
@@ -211,7 +277,7 @@ public class config_view extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(resetConf, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +299,7 @@ public class config_view extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(confpane, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+            .addComponent(confpane)
         );
 
         pack();
@@ -244,31 +310,92 @@ public class config_view extends javax.swing.JFrame {
         char monedaAnterior;
         switch (comboCurrency.getSelectedIndex()) {
             case 0:
-            monedaAnterior = SingletonF.configApp.getCurrency_config();
-            SingletonF.configApp.setCurrency_config('€');
-            singleton.admins.changeFormatCurrency(monedaAnterior);
-            break;
+                monedaAnterior = SingletonF.configApp.getCurrency_config();
+                SingletonF.configApp.setCurrency_config('€');
+                singleton.admins.changeFormatCurrency(monedaAnterior);
+                break;
             case 1:
-            monedaAnterior = SingletonF.configApp.getCurrency_config();
-            SingletonF.configApp.setCurrency_config('$');
-            singleton.admins.changeFormatCurrency(monedaAnterior);
-            break;
+                monedaAnterior = SingletonF.configApp.getCurrency_config();
+                SingletonF.configApp.setCurrency_config('$');
+                singleton.admins.changeFormatCurrency(monedaAnterior);
+                break;
             case 2:
-            monedaAnterior = SingletonF.configApp.getCurrency_config();
-            SingletonF.configApp.setCurrency_config('£');
-            singleton.admins.changeFormatCurrency(monedaAnterior);
-            break;
+                monedaAnterior = SingletonF.configApp.getCurrency_config();
+                SingletonF.configApp.setCurrency_config('£');
+                singleton.admins.changeFormatCurrency(monedaAnterior);
+                break;
         }
     }//GEN-LAST:event_comboCurrencyActionPerformed
 
     private void resetConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetConfActionPerformed
-        // TODO add your handling code here:
+        char monedaAnterior = SingletonF.configApp.getCurrency_config();
+        SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
+        for (int i = 0; i < singleton.admins.getAdmins().size(); i++) {
+            singleton.admins.getData(i).changeCurrency(monedaAnterior);
+        }
+        SingletonF.configApp.setSavingextension("json");
+        SingletonF.configApp.setDecimals_config(2);
+        SingletonF.configApp.setLookandfeel(0);
     }//GEN-LAST:event_resetConfActionPerformed
 
     private void decimalsComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decimalsComboActionPerformed
         // TODO add your handling code here:
-        SingletonF.configApp.setDecimals_config(decimalsCombo.getSelectedIndex()+1);
+        SingletonF.configApp.setDecimals_config(decimalsCombo.getSelectedIndex() + 1);
     }//GEN-LAST:event_decimalsComboActionPerformed
+
+    private void dummiesOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummiesOnActionPerformed
+        // TODO add your handling code here:
+        json.createjson_auto();
+        xml.createxml_auto();
+        txt.createtxt_auto();
+        SingletonF.configApp.setDummiesmode(true);
+        singleton.admins = new Arraylist_admin();
+        switch (SingletonF.configApp.getSavingextension()) {
+            case "json"://json
+                json.load_json_auto();
+                break;
+            case "xml"://xml
+                xml.load_xml_auto();
+                break;
+            case "txt": //txt
+                txt.load_txt_auto();
+                break;
+        }
+    }//GEN-LAST:event_dummiesOnActionPerformed
+
+    private void dummiesOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummiesOffActionPerformed
+        // TODO add your handling code here:
+        json.createjson_auto();
+        xml.createxml_auto();
+        txt.createtxt_auto();
+        SingletonF.configApp.setDummiesmode(false);
+        singleton.admins = new Arraylist_admin();
+        switch (SingletonF.configApp.getSavingextension()) {
+            case "json"://json
+                json.load_json_auto();
+                break;
+            case "xml"://xml
+                xml.load_xml_auto();
+                break;
+            case "txt": //txt
+                txt.load_txt_auto();
+                break;
+        }
+    }//GEN-LAST:event_dummiesOffActionPerformed
+
+    private void addRandomDummiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRandomDummiesActionPerformed
+        // TODO add your handling code here:
+        Dummies.generatedummies(Integer.parseInt(howmanyDummies.getValue().toString()));
+        successAddDum.setVisible(true);
+    }//GEN-LAST:event_addRandomDummiesActionPerformed
+
+    private void howmanyDummiesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_howmanyDummiesStateChanged
+        // TODO add your handling code here:
+        if(Integer.parseInt(howmanyDummies.getValue().toString())<0){
+            howmanyDummies.setValue(0);
+        }
+    }//GEN-LAST:event_howmanyDummiesStateChanged
+
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -316,16 +443,20 @@ public class config_view extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addRandomDummies;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboCurrency;
     private javax.swing.JTabbedPane confpane;
     private javax.swing.JComboBox<String> decimalsCombo;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JRadioButton dummiesOff;
+    private javax.swing.JRadioButton dummiesOn;
+    private javax.swing.JSpinner howmanyDummies;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -334,5 +465,6 @@ public class config_view extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JButton resetConf;
+    private javax.swing.JLabel successAddDum;
     // End of variables declaration//GEN-END:variables
 }

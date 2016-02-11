@@ -12,10 +12,10 @@ public class Dummies {
 	public static String letraDNI(int dni){
 	    return String.valueOf(dni) + DNI_ASOCIATION.charAt(dni % 23);
 	}
-	public static void generatedummies(){
+	public static void generatedummies(int a){
 		String e="";
 		
-		int a = Functions.validateint(SingletonF.language.getProperty("dummiesadd"), SingletonF.language.getProperty("dummiesadd2"));
+		
 		for(int i=0; i<a;i++){
 			int random=(int)(Math.random()*100000000);
 			int phone=(int)(Math.random()*1000000000);

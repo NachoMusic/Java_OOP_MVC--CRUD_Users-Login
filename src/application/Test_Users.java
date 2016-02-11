@@ -473,7 +473,7 @@ public class Test_Users {
                                         }
                                         break;
                                     case 2://Add random dummies
-                                        Dummies.generatedummies();
+                                        Dummies.generatedummies(5);
                                         break;
                                     case 3:
                                         Dummies.deletealldummies();
