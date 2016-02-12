@@ -11,6 +11,7 @@ import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.models.singleton;
+import application.utils.Functions;
 import application.utils.Menus;
 import application.view.app_view;
 import java.awt.event.WindowAdapter;
@@ -203,10 +204,10 @@ public class admin_view extends javax.swing.JFrame {
                 SingletonF.language.getProperty("search"));
         switch (option) {
             case 0://By dni
-                singleton.admins.find(0);
+                singleton.admins.find(0,Functions.validatestring("insert dni","insert dni"));
                 break;
             case 1://By name
-                singleton.admins.find(1);
+                singleton.admins.find(1,Functions.validatestring("insert name","insert name"));
                 break;
             case 2://Go back
         }

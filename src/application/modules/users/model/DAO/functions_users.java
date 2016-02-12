@@ -32,17 +32,17 @@ public class functions_users {
 			dateFormat="yyyy-mm-dd";
 			break;
 		}
-		dni=GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI");
-		name=GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"));
-		subname=GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2"));
-		phone_number=GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"));
-		email=GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email");
+		dni=GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI",Functions.validatestring("dni","dni"));
+		name=GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"),Functions.validatestring("name","name"));
+		subname=GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2"),Functions.validatestring("subname","subname"));
+		phone_number=GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"),Functions.validatestring("phone","phone"));
+		email=GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email",Functions.validatestring("email","email"));
 		user=Functions.validatestring(SingletonF.language.getProperty("user"), SingletonF.language.getProperty("user2"));
 		pass=Functions.validatestring(SingletonF.language.getProperty("pass"),SingletonF.language.getProperty("pass2"));
 		avatar=Functions.validatestring(SingletonF.language.getProperty("avatar"), SingletonF.language.getProperty("avatar2"));
 		state=Functions.validatestring(SingletonF.language.getProperty("state"), SingletonF.language.getProperty("state2"));
-		date_birthday=GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday")+dateFormat, SingletonF.language.getProperty("date_birthday2"));
-		hiring_date=GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date")+dateFormat, SingletonF.language.getProperty("hiring_date2"),date_birthday);
+		date_birthday=GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday")+dateFormat, SingletonF.language.getProperty("date_birthday2"),Functions.validatestring("datebirthday","datebirthday"));
+		hiring_date=GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date")+dateFormat, SingletonF.language.getProperty("hiring_date2"),date_birthday,Functions.validatestring("diring date","hiring date"));
 		salary=Functions.validatefloat(SingletonF.language.getProperty("salary"),SingletonF.language.getProperty("salary2"));
 		activity=Functions.validateint(SingletonF.language.getProperty("activity"), SingletonF.language.getProperty("activity2"));
 		return new admin(dni,name,subname,phone_number,email,user,pass,avatar,state,
@@ -69,17 +69,17 @@ public class functions_users {
 			dateFormat="yyyy-mm-dd";
 			break;
 		}
-		dni=GenericKernel.insertDni("Type your DNI  \n XXXXXXXXA", "Dni");
-		name=GenericKernel.insertText("Type your name", "Name");
-		subname=GenericKernel.insertText("Type your subname", "Subname");
-		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number");
-		email=GenericKernel.insertEmail("Type your email \n ejemplo@ejemplo.ejemplo", "Email");
+		dni=GenericKernel.insertDni("Type your DNI  \n XXXXXXXXA", "Dni",Functions.validatestring("dni","dni"));
+		name=GenericKernel.insertText("Type your name", "Name",Functions.validatestring("name","name"));
+		subname=GenericKernel.insertText("Type your subname", "Subname",Functions.validatestring("subname","subname"));
+		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number",Functions.validatestring("phone","phone"));
+		email=GenericKernel.insertEmail("Type your email \n ejemplo@ejemplo.ejemplo", "Email",Functions.validatestring("email","email"));
 		user=Functions.validatestring("Type your username", "Username");
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
 		state=Functions.validatestring("Type your state", "State");
-		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday");
-		discharge_date=GenericKernel.insertUpDate("Type your discgarge date \n"+dateFormat, "Discgarge Date",date_birthday);
+		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday",Functions.validatestring("datebirthday","datebirthday"));
+		discharge_date=GenericKernel.insertUpDate("Type your discgarge date \n"+dateFormat, "Discgarge Date",date_birthday,Functions.validatestring("hiring date","hiring date"));
 		client_type=Functions.validatestring("Type your client type", "Client Type");
 		shopping=Functions.validatefloat("Type your shopping", "Shopping");
 		premium=Functions.validateboolean("Type if you are premium or not","Premium");
@@ -106,16 +106,16 @@ public class functions_users {
 			dateFormat="yyyy-mm-dd";
 			break;
 		}
-		dni=GenericKernel.insertDni("Type your DNI  \n XXXXXXXXA", "Dni");
-		name=GenericKernel.insertText("Type your name", "Name");
-		subname=GenericKernel.insertText("Type your subname", "Subname");
-		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number");
-		email=GenericKernel.insertEmail("Type your email \n ejemplo@ejemplo.ejemplo", "Email");
+		dni=GenericKernel.insertDni("Type your DNI  \n XXXXXXXXA", "Dni",Functions.validatestring("dni","dni"));
+		name=GenericKernel.insertText("Type your name", "Name",Functions.validatestring("name","name"));
+		subname=GenericKernel.insertText("Type your subname", "Subname",Functions.validatestring("subname","subname"));
+		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number",Functions.validatestring("phone","phone"));
+		email=GenericKernel.insertEmail("Type your email \n ejemplo@ejemplo.ejemplo", "Email",Functions.validatestring("email","email"));
 		user=Functions.validatestring("Type your username", "Username");
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
 		state=Functions.validatestring("Type your state", "State");
-		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday");
+		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday",Functions.validatestring("datebirthday","datebirthday"));
 		String[] vec = {"Alto","Medio","Bajo"};
 		switch(Menus.menu(vec, "Choose the Karma", "Karma")){
 		case 0:
@@ -161,7 +161,7 @@ public class functions_users {
 			
 			switch(edit){
 			case 11:
-				((admin) param).setHirin_date(GenericKernel.insertUpDate("Type your hiring date \n"+dateFormat, "Hiring Date",param.getDate_birthday()));
+				((admin) param).setHirin_date(GenericKernel.insertUpDate("Type your hiring date \n"+dateFormat, "Hiring Date",param.getDate_birthday(),Functions.validatestring("up date","up date")));
 				break;
 			case 12:
 				((admin) param).setSalary(Functions.validatefloat(SingletonF.language.getProperty("salary"), SingletonF.language.getProperty("salary2")));
@@ -179,7 +179,7 @@ public class functions_users {
 					+ " 12 -> Client type\n 13 Shopping\n 14-> Premium", "EDIT");
 			switch(edit){
 			case 11:
-				((client) param).setDischarge_date(GenericKernel.insertUpDate("Introduce el nuevo discharge date "+dateFormat, "discharge date", param.getDate_birthday()));
+				((client) param).setDischarge_date(GenericKernel.insertUpDate("Introduce el nuevo discharge date "+dateFormat, "discharge date", param.getDate_birthday(),Functions.validatestring("discharge date","discharge date")));
 				break;
 			case 12:
 				((client) param).setClient_type(Functions.validatestring("Introduce el nuevo client type", "client type"));
@@ -222,19 +222,19 @@ public class functions_users {
 		}
 		switch(edit){
 		case 1:
-			param.setDni(GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI"));
+			param.setDni(GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI",Functions.validatestring("dni","dni")));
 			break;
 		case 2:
-			param.setName(GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2")));
+			param.setName(GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"),Functions.validatestring("name","name")));
 			break;
 		case 3:
-			param.setSubname(GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2")));
+			param.setSubname(GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2"),Functions.validatestring("subname","subname")));
 			break;
 		case 4:
-			param.setPhone_number(GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2")));
+			param.setPhone_number(GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"),Functions.validatestring("phone","phone")));
 			break;
 		case 5:
-			param.setEmail(GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email"));
+			param.setEmail(GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email",Functions.validatestring("email","email")));
 			break;
 		case 6:
 			param.setUser(Functions.validatestring(SingletonF.language.getProperty("user"), SingletonF.language.getProperty("user2")));
@@ -249,7 +249,7 @@ public class functions_users {
 			param.setState(Functions.validatestring(SingletonF.language.getProperty("state"), SingletonF.language.getProperty("state2")));
 			break;
 		case 10:
-			param.setDate_birthday(GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday")+dateFormat, SingletonF.language.getProperty("date_birthday2")));
+			param.setDate_birthday(GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday")+dateFormat, SingletonF.language.getProperty("date_birthday2"),Functions.validatestring("datebirthday","datebirthday")));
 			break;
 		}
 	}

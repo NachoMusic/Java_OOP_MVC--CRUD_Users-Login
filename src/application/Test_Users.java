@@ -12,6 +12,7 @@ import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.kernel.Dummies;
 import application.utils.Config_json;
+import application.utils.Functions;
 import application.utils.LookAndFeel;
 import application.utils.Menus;
 
@@ -97,10 +98,10 @@ public class Test_Users {
                                         SingletonF.language.getProperty("search"));
                                 switch (option) {
                                     case 0://By dni
-                                        singleton.admins.find(0);
+                                        singleton.admins.find(0,Functions.validatestring("insert dni","insert dni"));
                                         break;
                                     case 1://By name
-                                        singleton.admins.find(1);
+                                        singleton.admins.find(2,Functions.validatestring("insert name","insert name"));
                                         break;
                                     case 2://Go back
                                 }
@@ -180,10 +181,10 @@ public class Test_Users {
                                 option = Menus.menu(find, "Searh clients", "Search");
                                 switch (option) {
                                     case 0://By dni
-                                        singleton.clients.find(0);
+                                        singleton.clients.find(0,Functions.validatestring("insert dni","insert dni"));
                                         break;
                                     case 1://By name
-                                        singleton.clients.find(1);
+                                        singleton.clients.find(1,Functions.validatestring("insert name","insert name"));
                                         break;
                                     case 2://Go back
                                 }
@@ -239,10 +240,10 @@ public class Test_Users {
                                 option = Menus.menu(find, "Searh registered users", "Search");
                                 switch (option) {
                                     case 0://By dni
-                                        singleton.registered_users.find(0);
+                                        singleton.registered_users.find(0,Functions.validatestring("insert dni","insert dni"));
                                         break;
                                     case 1://By name
-                                        singleton.registered_users.find(1);
+                                        singleton.registered_users.find(1,Functions.validatestring("insert name","insert name"));
                                         break;
                                     case 2://Go back
                                 }

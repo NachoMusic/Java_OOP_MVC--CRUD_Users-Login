@@ -73,13 +73,13 @@ public class Arraylist_admin {
 		if(times==0)
 			JOptionPane.showMessageDialog(null, "No admins found");
 	}
-	public void find(int option){
+	public void find(int option,String dni){
 		admin admin1 = new admin();
 		int times=0;
 		
 		switch(option){
 		case 0://By dni
-			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
+			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI",dni));
 			for(int i = 0;i<admins.size();i++){
 				if(admins.get(i).equals(admin1,0)){
 					JOptionPane.showMessageDialog(null,admins.get(i).toString());

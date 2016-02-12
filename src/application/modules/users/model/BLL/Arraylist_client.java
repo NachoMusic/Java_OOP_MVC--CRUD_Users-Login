@@ -68,13 +68,13 @@ private ArrayList<client> clients = new ArrayList<client>();
 		if(times==0)
 			JOptionPane.showMessageDialog(null, "No clients found");
 	}
-	public void find(int option){
+	public void find(int option, String dni){
 		client client1 = new client();
 		int times=0;
 		
 		switch(option){
 		case 0://By dni
-			client1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
+			client1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI",dni));
 			for(int i = 0;i<clients.size();i++){
 				if(clients.get(i).equals(client1,0)){
 					JOptionPane.showMessageDialog(null,clients.get(i).toString(SingletonF.configApp));

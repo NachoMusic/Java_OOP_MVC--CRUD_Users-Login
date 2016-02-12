@@ -129,9 +129,9 @@ public class Dates {
 		}
 		return resoult;
 	}
-	public String insertDate(String arg1, String arg2){
+	public String insertDate(String arg1, String arg2,String date){
 		boolean validate=false;
-		String date="",month="",day="",year="";
+		String month="",day="",year="";
 		int daynum=0,yearnum=0;
 		
 		while(!validate){
@@ -140,16 +140,16 @@ public class Dates {
 			year="";
 			switch(SingletonF.configApp.getDate_config()){
 			case 0: 
-				validate=Validate.validateDate1(date=Functions.validatestring(arg1,arg2));
+				validate=Validate.validateDate1(date);
 				break;
 			case 1:
-				validate=Validate.validateDate2(date=Functions.validatestring(arg1,arg2));
+				validate=Validate.validateDate2(date);
 				break;
 			case 2:
-				validate=Validate.validateDate3(date=Functions.validatestring(arg1,arg2));
+				validate=Validate.validateDate3(date);
 				break;
 			case 3:
-				validate=Validate.validateDate4(date=Functions.validatestring(arg1,arg2));
+				validate=Validate.validateDate4(date);
 				break;
 			}
 			try{

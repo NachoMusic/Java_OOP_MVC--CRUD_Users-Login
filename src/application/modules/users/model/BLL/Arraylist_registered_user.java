@@ -68,13 +68,13 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 		if(times==0)
 			JOptionPane.showMessageDialog(null, "No admins found");
 	}
-	public void find(int option){
+	public void find(int option,String dni){
 		admin admin1 = new admin();
 		int times=0;
 		
 		switch(option){
 		case 0://By dni
-			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI"));
+			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI",dni));
 			for(int i = 0;i<registered_users.size();i++){
 				if(registered_users.get(i).equals(admin1,0)){
 					JOptionPane.showMessageDialog(null,registered_users.get(i).toString());// I removed config from it

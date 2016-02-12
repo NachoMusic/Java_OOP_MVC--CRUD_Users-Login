@@ -5,7 +5,10 @@
  */
 package application.modules.users.view;
 
-import application.view.app_view;
+import application.models.SingletonF;
+import application.modules.users.model.kernel.GenericKernel;
+import application.modules.users.model.models.admin;
+import application.modules.users.model.models.singleton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -24,6 +27,7 @@ public class new_admin_view extends javax.swing.JFrame {
         closeWindow();
         this.setTitle("Create new admin");
         this.setLocationRelativeTo(null);
+        saveLabel.setVisible(false);
     }
 
     /**
@@ -54,7 +58,7 @@ public class new_admin_view extends javax.swing.JFrame {
         usernameField = new javax.swing.JTextField();
         usernamelabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        passwdField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
         passwordlabel = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -78,6 +82,7 @@ public class new_admin_view extends javax.swing.JFrame {
         saveAdminButton = new javax.swing.JButton();
         discartButton = new javax.swing.JButton();
         emptyButton = new javax.swing.JButton();
+        saveLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,6 +157,8 @@ public class new_admin_view extends javax.swing.JFrame {
             }
         });
 
+        saveLabel.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,7 +199,7 @@ public class new_admin_view extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(passwordlabel)
-                                .addComponent(passwdField, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -239,9 +246,12 @@ public class new_admin_view extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(saveAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(emptyButton)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(saveLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(saveAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(emptyButton)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(38, 38, 38))
         );
@@ -327,7 +337,7 @@ public class new_admin_view extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(passwdField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(passwordlabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
@@ -335,7 +345,8 @@ public class new_admin_view extends javax.swing.JFrame {
                     .addComponent(saveAdminButton)
                     .addComponent(discartButton)
                     .addComponent(emptyButton))
-                .addGap(25, 25, 25))
+                .addGap(8, 8, 8)
+                .addComponent(saveLabel))
         );
 
         pack();
@@ -343,6 +354,55 @@ public class new_admin_view extends javax.swing.JFrame {
 
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
         // TODO add your handling code here:
+
+        String dni, name, subname, phone_number, email, user, pass,
+                avatar, state, date_birthday, hiring_date;
+        float salary = 0;
+        int activity;
+        String dateFormat = "";
+
+        switch (SingletonF.configApp.getDate_config()) {
+            case 0:
+                dateFormat = "dd/mm/yyyy";
+                break;
+            case 1:
+                dateFormat = "dd-mm-yyyy";
+                break;
+            case 2:
+                dateFormat = "yyyy/mm/dd";
+                break;
+            case 3:
+                dateFormat = "yyyy-mm-dd";
+                break;
+        }
+        System.out.print(0);
+        dni = GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI", dniField.getText());
+        System.out.print(1);
+        name = GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"), nameField.getText());
+        System.out.print(2);
+        subname = GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2"), subnameField.getText());
+        System.out.print(3);
+        phone_number = GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"), phoneField.getText());
+        System.out.print(4);
+        email = GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email", emailField.getText());
+        user = usernameField.getText();
+
+        pass = passwordField.getText();
+        avatar = avatarField.getText();
+        state = statusField.getText();
+        date_birthday = GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday") + dateFormat, SingletonF.language.getProperty("date_birthday2"), datebirthdayField.getText());
+        hiring_date = GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date") + dateFormat, SingletonF.language.getProperty("hiring_date2"), date_birthday, hiringdateField.getText());
+        System.out.print(5);
+        try {
+            salary = Float.parseFloat(salaryField.getText());
+        } catch (Exception E) {
+        };
+        System.out.print(6);
+        activity = Integer.parseInt(activityField.getText());
+        singleton.admins.addData(new admin(dni, name, subname, phone_number, email, user, pass, avatar, state,
+                date_birthday, hiring_date, salary, activity));
+        saveLabel.setText("The admin was created successfully");
+        saveLabel.setVisible(true);
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
     private void emptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyButtonActionPerformed
@@ -362,6 +422,7 @@ public class new_admin_view extends javax.swing.JFrame {
             }
         });
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -425,13 +486,14 @@ public class new_admin_view extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel namelabel;
-    private javax.swing.JTextField passwdField;
+    private javax.swing.JTextField passwordField;
     private javax.swing.JLabel passwordlabel;
     private javax.swing.JTextField phoneField;
     private javax.swing.JLabel phonelabel;
     private javax.swing.JTextField salaryField;
     private javax.swing.JLabel salarylabel;
     private javax.swing.JButton saveAdminButton;
+    private javax.swing.JLabel saveLabel;
     private javax.swing.JTextField statusField;
     private javax.swing.JLabel statuslabel;
     private javax.swing.JTextField subnameField;
