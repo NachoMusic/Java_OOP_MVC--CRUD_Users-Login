@@ -176,7 +176,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void createAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAButtonActionPerformed
         // TODO add your handling code here:
-        singleton.admins.addData(functions_users.newadmin());
+        //singleton.admins.addData(functions_users.newadmin());
+        new new_admin_view().setVisible(true);
     }//GEN-LAST:event_createAButtonActionPerformed
 
     private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
