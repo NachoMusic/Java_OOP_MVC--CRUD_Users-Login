@@ -222,8 +222,8 @@ public class new_admin_view extends javax.swing.JFrame {
 
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
         // TODO add your handling code here:
-
-        String dni, name, subname, phone_number, email, user, pass,
+        boolean valid=true;
+        String dni="", name, subname, phone_number, email, user, pass,
                 avatar, state, date_birthday, hiring_date;
         float salary = 0;
         int activity;
@@ -243,8 +243,18 @@ public class new_admin_view extends javax.swing.JFrame {
                 dateFormat = "yyyy-mm-dd";
                 break;
         }
-        System.out.print(0);
-        dni = GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI", dniField.getText());
+
+        
+        if(GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI", dniField.getText())){
+            dni=dniField.getText();
+            dnilabel.setVisible(true);
+            dnilabel.setText("Correct DNI");
+            valid=true;
+        }else{
+            dnilabel.setVisible(true);
+            dnilabel.setText("Invalid DNI");
+            valid=false;
+        }
         System.out.print(1);
         name = GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"), nameField.getText());
         System.out.print(2);
@@ -267,10 +277,14 @@ public class new_admin_view extends javax.swing.JFrame {
         };
         System.out.print(6);
         activity = Integer.parseInt(activityField.getText());
+        if(valid){
         singleton.admins.addData(new admin(dni, name, subname, phone_number, email, user, pass, avatar, state,
                 date_birthday, hiring_date, salary, activity));
         saveLabel.setText("The admin was created successfully");
         saveLabel.setVisible(true);
+        }else{
+            saveLabel.setText("The admin was not created, check the errors in the fields");
+        }
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
     private void emptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyButtonActionPerformed

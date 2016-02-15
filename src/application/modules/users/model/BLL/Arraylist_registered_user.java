@@ -74,7 +74,7 @@ private ArrayList<registered_user> registered_users = new ArrayList<registered_u
 		
 		switch(option){
 		case 0://By dni
-			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI",dni));
+			admin1.setDni(dni);
 			for(int i = 0;i<registered_users.size();i++){
 				if(registered_users.get(i).equals(admin1,0)){
 					JOptionPane.showMessageDialog(null,registered_users.get(i).toString());// I removed config from it

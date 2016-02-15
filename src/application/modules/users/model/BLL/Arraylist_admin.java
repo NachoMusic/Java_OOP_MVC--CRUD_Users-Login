@@ -79,7 +79,7 @@ public class Arraylist_admin {
 		
 		switch(option){
 		case 0://By dni
-			admin1.setDni(GenericKernel.insertDni("Type the DNI of the user you are looking for", "Search by DNI",dni));
+			admin1.setDni(dni);
 			for(int i = 0;i<admins.size();i++){
 				if(admins.get(i).equals(admin1,0)){
 					JOptionPane.showMessageDialog(null,admins.get(i).toString());

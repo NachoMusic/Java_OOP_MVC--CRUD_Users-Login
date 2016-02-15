@@ -6,7 +6,7 @@ import application.utils.Functions;
 import application.utils.Validate;
 
 public class GenericKernel {
-	public static String insertDni(String arg1, String arg2, String dni){
+	public static boolean insertDni(String arg1, String arg2, String dni){
 		String DNIletters="TRWAGMYFPDXBNJZSQVHLCKET";
 		String number="";
 		int numberint;
@@ -14,12 +14,12 @@ public class GenericKernel {
 		boolean validate=false;
 		//String dni="";
 		
-		do{
-			do{
+		//do{
+			//do{
 				validate=Validate.validateDni(dni/*=Functions.validatestring(arg1,arg2)*/);
-				if(!validate)
-					JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
-			}while(!validate);
+				//if(!validate)
+					//JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
+			//}while(!validate);
 			int[] vec = new int[dni.length()-1];
 			for(int i = 0;i<dni.length()-1;i++){
 				vec[i]=dni.charAt(i)- '0';
@@ -42,8 +42,8 @@ public class GenericKernel {
 				dni="";
 				vec=null;
 			}
-		}while(!validate);
-		return dni;
+		//}while(!validate);
+		return validate;
 	}
 	public static String insertText(String arg1, String arg2,String text){
 		boolean validate=false;

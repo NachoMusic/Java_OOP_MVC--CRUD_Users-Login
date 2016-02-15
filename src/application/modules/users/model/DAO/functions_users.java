@@ -32,7 +32,7 @@ public class functions_users {
 			dateFormat="yyyy-mm-dd";
 			break;
 		}
-		dni=GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI",Functions.validatestring("dni","dni"));
+		dni=Functions.validatestring("dni","dni");
 		name=GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"),Functions.validatestring("name","name"));
 		subname=GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2"),Functions.validatestring("subname","subname"));
 		phone_number=GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"),Functions.validatestring("phone","phone"));
@@ -69,7 +69,7 @@ public class functions_users {
 			dateFormat="yyyy-mm-dd";
 			break;
 		}
-		dni=GenericKernel.insertDni("Type your DNI  \n XXXXXXXXA", "Dni",Functions.validatestring("dni","dni"));
+		dni=Functions.validatestring("dni","dni");
 		name=GenericKernel.insertText("Type your name", "Name",Functions.validatestring("name","name"));
 		subname=GenericKernel.insertText("Type your subname", "Subname",Functions.validatestring("subname","subname"));
 		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number",Functions.validatestring("phone","phone"));
@@ -106,7 +106,7 @@ public class functions_users {
 			dateFormat="yyyy-mm-dd";
 			break;
 		}
-		dni=GenericKernel.insertDni("Type your DNI  \n XXXXXXXXA", "Dni",Functions.validatestring("dni","dni"));
+		dni=Functions.validatestring("dni","dni");
 		name=GenericKernel.insertText("Type your name", "Name",Functions.validatestring("name","name"));
 		subname=GenericKernel.insertText("Type your subname", "Subname",Functions.validatestring("subname","subname"));
 		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number",Functions.validatestring("phone","phone"));
@@ -222,7 +222,7 @@ public class functions_users {
 		}
 		switch(edit){
 		case 1:
-			param.setDni(GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI",Functions.validatestring("dni","dni")));
+			param.setDni(Functions.validatestring("dni","dni"));
 			break;
 		case 2:
 			param.setName(GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"),Functions.validatestring("name","name")));
