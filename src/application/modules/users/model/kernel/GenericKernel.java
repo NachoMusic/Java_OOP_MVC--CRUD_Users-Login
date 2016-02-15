@@ -53,26 +53,18 @@ public class GenericKernel {
         return validate;
     }
 
-    public static String insertPhone(String arg1, String arg2, String phone) {
+    public static boolean insertPhone(String arg1, String arg2, String phone) {
         boolean validate = false;
 
             validate = Validate.validatePhone(phone);
-            if (!validate) {
-                JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
-            }
-        return phone;
+        return validate;
     }
 
-    public static String insertEmail(String arg1, String arg2, String email) {
+    public static boolean insertEmail(String arg1, String arg2, String email) {
         boolean validate = false;
 
-        while (!validate) {
             validate = Validate.validateEmail(email);
-            if (!validate) {
-                JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
-            }
-        }
-        return email;
+        return validate;
     }
 
     /**
@@ -96,7 +88,6 @@ public class GenericKernel {
         Dates date0 = new Dates("");
         Dates date1 = new Dates(date0.insertDate(arg1, arg2, date));
 
-        do {
             valid = true;
             if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
                 valid = false;
@@ -108,7 +99,6 @@ public class GenericKernel {
                 valid = false;
                 date1 = new Dates(date1.insertDate(arg1, arg2, date));
             }
-        } while (!valid);
         return date1.getDate();
     }
 
@@ -129,7 +119,6 @@ public class GenericKernel {
         date1 = new Dates(date0.insertDate(arg1, arg2, date));
         Dates date2 = new Dates(date_birthday);
 
-        do {
             valid = true;
             if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
                 valid = false;
@@ -148,7 +137,6 @@ public class GenericKernel {
                 JOptionPane.showMessageDialog(null, "The date can not be before your date birthday");
                 date1 = new Dates(date1.insertDate(arg1, arg2, date));
             }
-        } while (!valid);
         return date1.getDate();
     }
 }

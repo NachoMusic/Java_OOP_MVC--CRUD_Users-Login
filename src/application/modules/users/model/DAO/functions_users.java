@@ -35,8 +35,8 @@ public class functions_users {
 		dni=Functions.validatestring("dni","dni");
 		name=Functions.validatestring("name","name");
 		subname=Functions.validatestring("subname","subname");
-		phone_number=GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"),Functions.validatestring("phone","phone"));
-		email=GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email",Functions.validatestring("email","email"));
+		phone_number=Functions.validatestring("phone","phone");
+		email=Functions.validatestring("email","email");
 		user=Functions.validatestring(SingletonF.language.getProperty("user"), SingletonF.language.getProperty("user2"));
 		pass=Functions.validatestring(SingletonF.language.getProperty("pass"),SingletonF.language.getProperty("pass2"));
 		avatar=Functions.validatestring(SingletonF.language.getProperty("avatar"), SingletonF.language.getProperty("avatar2"));
@@ -72,8 +72,8 @@ public class functions_users {
 		dni=Functions.validatestring("dni","dni");
 		name=Functions.validatestring("name","name");
 		subname=Functions.validatestring("subname","subname");
-		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number",Functions.validatestring("phone","phone"));
-		email=GenericKernel.insertEmail("Type your email \n ejemplo@ejemplo.ejemplo", "Email",Functions.validatestring("email","email"));
+		phone_number=Functions.validatestring("phone","phone");
+		email=Functions.validatestring("email","email");
 		user=Functions.validatestring("Type your username", "Username");
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
@@ -109,8 +109,8 @@ public class functions_users {
 		dni=Functions.validatestring("dni","dni");
 		name=Functions.validatestring("name","name");
 		subname=Functions.validatestring("subname","subname");
-		phone_number=GenericKernel.insertPhone("Type your Phone Number", "Phone number",Functions.validatestring("phone","phone"));
-		email=GenericKernel.insertEmail("Type your email \n ejemplo@ejemplo.ejemplo", "Email",Functions.validatestring("email","email"));
+		phone_number=Functions.validatestring("phone","phone");
+		email=Functions.validatestring("email","email");
 		user=Functions.validatestring("Type your username", "Username");
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
@@ -231,10 +231,10 @@ public class functions_users {
 			param.setSubname(Functions.validatestring("subname","subname"));
 			break;
 		case 4:
-			param.setPhone_number(GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"),Functions.validatestring("phone","phone")));
+			param.setPhone_number(Functions.validatestring("phone","phone"));
 			break;
 		case 5:
-			param.setEmail(GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email",Functions.validatestring("email","email")));
+			param.setEmail(Functions.validatestring("email","email"));
 			break;
 		case 6:
 			param.setUser(Functions.validatestring(SingletonF.language.getProperty("user"), SingletonF.language.getProperty("user2")));
