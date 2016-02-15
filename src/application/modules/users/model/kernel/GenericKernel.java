@@ -19,7 +19,6 @@ public class GenericKernel {
         //do{
         validate = Validate.validateDni(dni/*=Functions.validatestring(arg1,arg2)*/);
         //if(!validate)
-        //JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
         //}while(!validate);
         int[] vec = new int[dni.length() - 1];
         for (int i = 0; i < dni.length() - 1; i++) {
@@ -83,7 +82,7 @@ public class GenericKernel {
      * @param arg2	Title
      * @return	The date in a String
      */
-    public static String insertDateBirthday(String arg1, String arg2, String date) {
+    public static boolean insertDateBirthday(String arg1, String arg2, String date) {
         boolean valid = true;
         Dates date0 = new Dates("");
         Dates date1 = new Dates(date0.insertDate(arg1, arg2, date));
@@ -91,7 +90,6 @@ public class GenericKernel {
             valid = true;
             if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
                 valid = false;
-                JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
                 date1 = new Dates(date1.insertDate(arg1, arg2, date));
             }
             if (date1.timeBetweetDates(date1.DateToCalendar(), date1.SystemDate(), 1) < 18) {
@@ -99,7 +97,7 @@ public class GenericKernel {
                 valid = false;
                 date1 = new Dates(date1.insertDate(arg1, arg2, date));
             }
-        return date1.getDate();
+        return valid;
     }
 
     /**
@@ -122,7 +120,6 @@ public class GenericKernel {
             valid = true;
             if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
                 valid = false;
-                JOptionPane.showMessageDialog(null, "You have not introduced a valid argument");
                 date1 = new Dates(date1.insertDate(arg1, arg2, date));
             }
             yearsDif = date1.timeBetweetDates(date1.DateToCalendar(), date2.DateToCalendar(), 1);

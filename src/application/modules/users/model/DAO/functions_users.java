@@ -41,7 +41,7 @@ public class functions_users {
 		pass=Functions.validatestring(SingletonF.language.getProperty("pass"),SingletonF.language.getProperty("pass2"));
 		avatar=Functions.validatestring(SingletonF.language.getProperty("avatar"), SingletonF.language.getProperty("avatar2"));
 		state=Functions.validatestring(SingletonF.language.getProperty("state"), SingletonF.language.getProperty("state2"));
-		date_birthday=GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday")+dateFormat, SingletonF.language.getProperty("date_birthday2"),Functions.validatestring("datebirthday","datebirthday"));
+		date_birthday=Functions.validatestring("datebirthday","datebirthday");
 		hiring_date=GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date")+dateFormat, SingletonF.language.getProperty("hiring_date2"),date_birthday,Functions.validatestring("diring date","hiring date"));
 		salary=Functions.validatefloat(SingletonF.language.getProperty("salary"),SingletonF.language.getProperty("salary2"));
 		activity=Functions.validateint(SingletonF.language.getProperty("activity"), SingletonF.language.getProperty("activity2"));
@@ -78,7 +78,7 @@ public class functions_users {
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
 		state=Functions.validatestring("Type your state", "State");
-		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday",Functions.validatestring("datebirthday","datebirthday"));
+		date_birthday=Functions.validatestring("datebirthday","datebirthday");
 		discharge_date=GenericKernel.insertUpDate("Type your discgarge date \n"+dateFormat, "Discgarge Date",date_birthday,Functions.validatestring("hiring date","hiring date"));
 		client_type=Functions.validatestring("Type your client type", "Client Type");
 		shopping=Functions.validatefloat("Type your shopping", "Shopping");
@@ -115,7 +115,7 @@ public class functions_users {
 		pass=Functions.validatestring("Type your password", "Password");
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
 		state=Functions.validatestring("Type your state", "State");
-		date_birthday=GenericKernel.insertDateBirthday("Type your date birthday \n"+dateFormat, "Date birthday",Functions.validatestring("datebirthday","datebirthday"));
+		date_birthday=Functions.validatestring("datebirthday","datebirthday");
 		String[] vec = {"Alto","Medio","Bajo"};
 		switch(Menus.menu(vec, "Choose the Karma", "Karma")){
 		case 0:
@@ -249,7 +249,7 @@ public class functions_users {
 			param.setState(Functions.validatestring(SingletonF.language.getProperty("state"), SingletonF.language.getProperty("state2")));
 			break;
 		case 10:
-			param.setDate_birthday(GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday")+dateFormat, SingletonF.language.getProperty("date_birthday2"),Functions.validatestring("datebirthday","datebirthday")));
+			param.setDate_birthday(Functions.validatestring("datebirthday","datebirthday"));
 			break;
 		}
 	}

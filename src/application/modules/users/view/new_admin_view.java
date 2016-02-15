@@ -5,12 +5,15 @@
  */
 package application.modules.users.view;
 
+import application.models.Dates;
 import application.models.SingletonF;
 import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
@@ -78,7 +81,6 @@ public class new_admin_view extends javax.swing.JFrame {
         avatarField = new javax.swing.JTextField();
         avatarlabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        datebirthdayField = new javax.swing.JTextField();
         datebirthdaylabel = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         hiringdateField = new javax.swing.JTextField();
@@ -96,6 +98,7 @@ public class new_admin_view extends javax.swing.JFrame {
         discartButton = new javax.swing.JButton();
         emptyButton = new javax.swing.JButton();
         saveLabel = new javax.swing.JLabel();
+        datebirthdayField = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,7 +165,6 @@ public class new_admin_view extends javax.swing.JFrame {
 
         jLabel17.setText("Date birthday:");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
-        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 83, -1));
 
         datebirthdaylabel.setText(" ");
         getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 100, -1));
@@ -217,15 +219,18 @@ public class new_admin_view extends javax.swing.JFrame {
         saveLabel.setText(" ");
         getContentPane().add(saveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 420, -1));
 
+        datebirthdayField.setDateFormatString("dd/MM/yyyy");
+        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
         // TODO add your handling code here:
-        boolean valid[] = new boolean[5];
+        boolean valid[] = new boolean[6];
         boolean validA=true;
         String dni = "", name = "", subname = "", phone_number = "", email = "", user = "", pass = "",
-                avatar = "", state = "", date_birthday = "", hiring_date = "";
+                avatar = "", state = "", date_birthday = "", hiring_date = "", sdate;
         float salary = 0;
         int activity;
         String dateFormat = "";
@@ -297,13 +302,23 @@ public class new_admin_view extends javax.swing.JFrame {
         pass = passwordField.getText();
         avatar = avatarField.getText();
         state = statusField.getText();
-        date_birthday = GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday") + dateFormat, SingletonF.language.getProperty("date_birthday2"), datebirthdayField.getText());
+        
+        Dates dateB = new Dates("12/12/2014");
+        System.out.println(dateB.DateToString(datebirthdayField.getCalendar(), 0));
+        if(GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday") + dateFormat, SingletonF.language.getProperty("date_birthday2"), dateB.DateToString(datebirthdayField.getCalendar(), 0))){
+            date_birthday = dateB.DateToString(datebirthdayField.getCalendar(), 0);
+            datebirthdaylabel.setText("Correct");
+            valid[5]=true;
+        }else {
+            datebirthdaylabel.setVisible(true);
+            datebirthdaylabel.setText("Incorrect birthday");
+            valid[5]=false;
+        }
         hiring_date = GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date") + dateFormat, SingletonF.language.getProperty("hiring_date2"), date_birthday, hiringdateField.getText());
         try {
             salary = Float.parseFloat(salaryField.getText());
         } catch (Exception E) {
         }
-        System.out.print(6);
         activity = Integer.parseInt(activityField.getText());
         for (int i = 0; i < valid.length; i++) {
             if (!valid[i])
@@ -323,20 +338,6 @@ public class new_admin_view extends javax.swing.JFrame {
     private void emptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyButtonActionPerformed
         // TODO add your handling code here:
         initComponents();
-        /*dniField.setText("");
-        nameField.setText("");
-        subnameField.setText("");
-        phoneField.setText("");
-        emailField.setText("");
-        usernameField.setText("");
-        passwordField.setText("");
-        datebirthdayField.setText("");
-        hiringdateField.setText("");
-        salaryField.setText("");
-        avatarField.setText("");
-        statusField.setText("");
-        activityField.setText("");
-         */
     }//GEN-LAST:event_emptyButtonActionPerformed
 
     /**
@@ -390,7 +391,7 @@ public class new_admin_view extends javax.swing.JFrame {
     private javax.swing.JLabel activitylabel;
     private javax.swing.JTextField avatarField;
     private javax.swing.JLabel avatarlabel;
-    private javax.swing.JTextField datebirthdayField;
+    private com.toedter.calendar.JDateChooser datebirthdayField;
     private javax.swing.JLabel datebirthdaylabel;
     private javax.swing.JButton discartButton;
     private javax.swing.JTextField dniField;
