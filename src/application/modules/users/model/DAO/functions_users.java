@@ -42,7 +42,7 @@ public class functions_users {
 		avatar=Functions.validatestring(SingletonF.language.getProperty("avatar"), SingletonF.language.getProperty("avatar2"));
 		state=Functions.validatestring(SingletonF.language.getProperty("state"), SingletonF.language.getProperty("state2"));
 		date_birthday=Functions.validatestring("datebirthday","datebirthday");
-		hiring_date=GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date")+dateFormat, SingletonF.language.getProperty("hiring_date2"),date_birthday,Functions.validatestring("diring date","hiring date"));
+		hiring_date=Functions.validatestring("diring date","hiring date");
 		salary=Functions.validatefloat(SingletonF.language.getProperty("salary"),SingletonF.language.getProperty("salary2"));
 		activity=Functions.validateint(SingletonF.language.getProperty("activity"), SingletonF.language.getProperty("activity2"));
 		return new admin(dni,name,subname,phone_number,email,user,pass,avatar,state,
@@ -79,7 +79,7 @@ public class functions_users {
 		avatar=Functions.validatestring("Type the link to the avatar", "Avatar");
 		state=Functions.validatestring("Type your state", "State");
 		date_birthday=Functions.validatestring("datebirthday","datebirthday");
-		discharge_date=GenericKernel.insertUpDate("Type your discgarge date \n"+dateFormat, "Discgarge Date",date_birthday,Functions.validatestring("hiring date","hiring date"));
+		discharge_date=Functions.validatestring("hiring date","hiring date");
 		client_type=Functions.validatestring("Type your client type", "Client Type");
 		shopping=Functions.validatefloat("Type your shopping", "Shopping");
 		premium=Functions.validateboolean("Type if you are premium or not","Premium");
@@ -161,7 +161,7 @@ public class functions_users {
 			
 			switch(edit){
 			case 11:
-				((admin) param).setHirin_date(GenericKernel.insertUpDate("Type your hiring date \n"+dateFormat, "Hiring Date",param.getDate_birthday(),Functions.validatestring("up date","up date")));
+				((admin) param).setHirin_date(Functions.validatestring("up date","up date"));
 				break;
 			case 12:
 				((admin) param).setSalary(Functions.validatefloat(SingletonF.language.getProperty("salary"), SingletonF.language.getProperty("salary2")));
@@ -179,7 +179,7 @@ public class functions_users {
 					+ " 12 -> Client type\n 13 Shopping\n 14-> Premium", "EDIT");
 			switch(edit){
 			case 11:
-				((client) param).setDischarge_date(GenericKernel.insertUpDate("Introduce el nuevo discharge date "+dateFormat, "discharge date", param.getDate_birthday(),Functions.validatestring("discharge date","discharge date")));
+				((client) param).setDischarge_date(Functions.validatestring("discharge date","discharge date"));
 				break;
 			case 12:
 				((client) param).setClient_type(Functions.validatestring("Introduce el nuevo client type", "client type"));

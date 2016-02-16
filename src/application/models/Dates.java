@@ -2,8 +2,6 @@ package application.models;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import javax.swing.JOptionPane;
-import application.utils.Functions;
 import application.utils.Validate;
 
 public class Dates {

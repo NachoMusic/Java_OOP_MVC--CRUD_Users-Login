@@ -109,7 +109,7 @@ public class GenericKernel {
      * @return The date in a String
      */
 
-    public static String insertUpDate(String arg1, String arg2, String date_birthday, String date) {
+    public static boolean insertUpDate(String arg1, String arg2, String date_birthday, String date) {
         boolean valid = true;
         int yearsDif = 0;
         Dates date1 = null;
@@ -134,6 +134,6 @@ public class GenericKernel {
                 JOptionPane.showMessageDialog(null, "The date can not be before your date birthday");
                 date1 = new Dates(date1.insertDate(arg1, arg2, date));
             }
-        return date1.getDate();
+        return valid;
     }
 }
