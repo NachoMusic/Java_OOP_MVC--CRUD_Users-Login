@@ -7,7 +7,7 @@ package application.utils;
 
 public class Validate {
 	private static final String dniFormat = "^([0-9]{8})[A-Za-z]{1}$";
-	private static final String textFormat = "[a-zA-ZñÑ\\s]+([ ]?)+([a-zA-Z]*)+([ ]?)+([a-zA-Z]*)";
+	private static final String textFormat = "[a-zA-Zï¿½ï¿½\\s]+([ ]?)+([a-zA-Z]*)+([ ]?)+([a-zA-Z]*)";
 	private static final String phoneFormat = "^([+]|[0-9]+)*$";
 	private static final String emailFormat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	private static final String dateFormat1="(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/]((175[7-9])|(17[6-9][0-9])|(1[8-9][0-9][0-9])|([2-9][0-9][0-9][0-9]))";
@@ -39,9 +39,4 @@ public class Validate {
 	public static boolean validateDate4(String date){
 		return date.matches(dateFormat4);
 	}
-	/*
-	public static void main(String[] args){
-		System.out.print(validateDate4("2010-02-15"));
-	}
-	*/
 }
