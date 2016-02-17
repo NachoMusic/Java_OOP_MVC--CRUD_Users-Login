@@ -5,12 +5,9 @@
  */
 package application.modules.users.view;
 
-import application.models.Dates;
-import application.models.SingletonF;
+
+import application.modules.users.model.BLL.bll;
 import application.modules.users.model.DAO.functions_users;
-import application.modules.users.model.kernel.GenericKernel;
-import application.modules.users.model.models.admin;
-import application.modules.users.model.models.singleton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -113,6 +110,12 @@ public class new_admin_view extends javax.swing.JFrame {
 
         namelabel.setText(" ");
         getContentPane().add(namelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
+
+        dniField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dniFieldActionPerformed(evt);
+            }
+        });
         getContentPane().add(dniField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 140, -1));
         getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, -1));
 
@@ -236,6 +239,14 @@ public class new_admin_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         initComponents();
     }//GEN-LAST:event_emptyButtonActionPerformed
+
+    private void dniFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniFieldActionPerformed
+        // TODO add your handling code here:
+        //llamas al bll que llama al dao
+        //el kernel será el dao, y el functions users será el bll dice otro nombre
+        bll.validateDNI();
+        
+    }//GEN-LAST:event_dniFieldActionPerformed
 
     /**
      * @param args the command line arguments

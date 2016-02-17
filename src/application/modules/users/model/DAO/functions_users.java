@@ -33,14 +33,14 @@ import application.utils.Functions;
 import application.utils.Menus;
 
 public class functions_users {
-    
-    public static boolean newAdmin(){
+
+    public static boolean newAdmin() {
         boolean valid[] = new boolean[6];
-        boolean validA=true;
+        boolean validA = true;
         String dni = "", name = "", subname = "", phone_number = "", email = "", user = "", pass = "",
                 avatar = "", state = "", date_birthday = "", hiring_date = "", sdate;
         float salary = 0;
-        int activity=0;
+        int activity = 0;
         String dateFormat = "";
 
         switch (SingletonF.configApp.getDate_config()) {
@@ -80,8 +80,8 @@ public class functions_users {
         if (GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2"), subnameField.getText())) {
             subname = subnameField.getText();
             subnamelabel.setText("Correct");
-            valid[2]=true;
-        }else {
+            valid[2] = true;
+        } else {
             subnamelabel.setVisible(true);
             subnamelabel.setText("Incorrect subname");
             valid[2] = false;
@@ -90,55 +90,57 @@ public class functions_users {
         if (GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"), phoneField.getText())) {
             phone_number = phoneField.getText();
             phonelabel.setText("Correct");
-            valid[3]=true;
-        }else{
+            valid[3] = true;
+        } else {
             phonelabel.setVisible(true);
             phonelabel.setText("Incorrect phone");
-            valid[3]=false;
+            valid[3] = false;
         }
-        
-        if(GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email", emailField.getText())){
-            email=emailField.getText();
+
+        if (GenericKernel.insertEmail(SingletonF.language.getProperty("email"), "Email", emailField.getText())) {
+            email = emailField.getText();
             emaillabel.setText("Correct");
-            valid[4]=true;
-        }else{
+            valid[4] = true;
+        } else {
             emaillabel.setVerifyInputWhenFocusTarget(true);
             emaillabel.setText("Incorrect email");
-            valid[4]=false;
+            valid[4] = false;
         }
         user = usernameField.getText();
         pass = passwordField.getText();
         avatar = avatarField.getText();
         state = statusField.getText();
-        
+
         Dates dateB = new Dates("");
-        if(GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday") + dateFormat, SingletonF.language.getProperty("date_birthday2"), dateB.DateToString(datebirthdayField.getCalendar(), 0))){
+        if (GenericKernel.insertDateBirthday(SingletonF.language.getProperty("date_birthday") + dateFormat, SingletonF.language.getProperty("date_birthday2"), dateB.DateToString(datebirthdayField.getCalendar(), 0))) {
             date_birthday = dateB.DateToString(datebirthdayField.getCalendar(), 0);
             datebirthdaylabel.setText("Correct");
-            valid[5]=true;
-        }else {
+            valid[5] = true;
+        } else {
             datebirthdaylabel.setVisible(true);
             datebirthdaylabel.setText("Incorrect birthday");
-            valid[5]=false;
+            valid[5] = false;
         }
-        if(GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date") + dateFormat, SingletonF.language.getProperty("hiring_date2"), date_birthday, dateB.DateToString(hiringdateField.getCalendar(), 0))){
+        if (GenericKernel.insertUpDate(SingletonF.language.getProperty("hiring_date") + dateFormat, SingletonF.language.getProperty("hiring_date2"), date_birthday, dateB.DateToString(hiringdateField.getCalendar(), 0))) {
             hiring_date = dateB.DateToString(hiringdateField.getCalendar(), 0);
             hiringdatelabel.setText("Correct");
-        } else{
+        } else {
             hiringdatelabel.setText("Incorrect hiring date");
             hiringdatelabel.setVisible(true);
         }
-        
+
         try {
             salary = Float.parseFloat(salaryField.getText());
         } catch (Exception E) {
         }
-        try{
-        activity = Integer.parseInt(activityField.getText());
-        } catch (Exception E){}
+        try {
+            activity = Integer.parseInt(activityField.getText());
+        } catch (Exception E) {
+        }
         for (int i = 0; i < valid.length; i++) {
-            if (!valid[i])
-                validA=false;
+            if (!valid[i]) {
+                validA = false;
+            }
         }
         if (validA) {
             singleton.admins.addData(new admin(dni, name, subname, phone_number, email, user, pass, avatar, state,
@@ -149,7 +151,7 @@ public class functions_users {
         }
         return validA;
     }
-    
+
     public static admin newadmin() {
         String dni, name, subname, phone_number, email, user, pass,
                 avatar, state, date_birthday, hiring_date;
