@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 
 import application.models.SingletonF;
 import application.modules.users.model.DAO.functions_users;
-import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.sortbyAge;
 import application.modules.users.model.models.sortbyName;

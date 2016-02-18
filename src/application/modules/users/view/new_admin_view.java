@@ -103,28 +103,73 @@ public class new_admin_view extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         dnilabel.setText(" ");
-        getContentPane().add(dnilabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 110, -1));
+        getContentPane().add(dnilabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 27, 20, 20));
 
         jLabel3.setText("Name:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         namelabel.setText(" ");
-        getContentPane().add(namelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 110, -1));
+        getContentPane().add(namelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 20, -1));
 
         dniField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dniFieldActionPerformed(evt);
             }
         });
+        dniField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dniFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dniFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                dniFieldKeyReleased(evt);
+            }
+        });
         getContentPane().add(dniField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 140, -1));
+
+        nameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameFieldActionPerformed(evt);
+            }
+        });
+        nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nameFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nameFieldKeyReleased(evt);
+            }
+        });
         getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, -1));
 
         jLabel5.setText("Subname:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        subnameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subnameFieldActionPerformed(evt);
+            }
+        });
+        subnameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                subnameFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                subnameFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                subnameFieldKeyReleased(evt);
+            }
+        });
         getContentPane().add(subnameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 140, -1));
 
         subnamelabel.setText(" ");
-        getContentPane().add(subnamelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 110, -1));
+        getContentPane().add(subnamelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 147, 20, 20));
 
         jLabel7.setText("Phone:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
@@ -247,6 +292,61 @@ public class new_admin_view extends javax.swing.JFrame {
         bll.validateDNI();
         
     }//GEN-LAST:event_dniFieldActionPerformed
+
+    private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateDNI();
+    }//GEN-LAST:event_dniFieldKeyTyped
+
+    private void dniFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateDNI();
+    }//GEN-LAST:event_dniFieldKeyPressed
+
+    private void dniFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateDNI();
+    }//GEN-LAST:event_dniFieldKeyReleased
+
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateName();
+    }//GEN-LAST:event_nameFieldActionPerformed
+
+    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateName();
+    }//GEN-LAST:event_nameFieldKeyPressed
+
+    private void nameFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateName();
+    }//GEN-LAST:event_nameFieldKeyReleased
+
+    private void nameFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateName();
+    }//GEN-LAST:event_nameFieldKeyTyped
+
+    private void subnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subnameFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateSubname();
+    }//GEN-LAST:event_subnameFieldActionPerformed
+
+    private void subnameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_subnameFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateSubname();
+    }//GEN-LAST:event_subnameFieldKeyPressed
+
+    private void subnameFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_subnameFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateSubname();
+    }//GEN-LAST:event_subnameFieldKeyReleased
+
+    private void subnameFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_subnameFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateSubname();
+    }//GEN-LAST:event_subnameFieldKeyTyped
 
     /**
      * @param args the command line arguments

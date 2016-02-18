@@ -15,4 +15,10 @@ public class bll {
     public static void validateDNI(){
         dao.validateDNI();
     }
+    public static void validateName(){
+        dao.validateName();
+    }
+    public static void validateSubname(){
+        dao.validateSubname();
+    }
 }
