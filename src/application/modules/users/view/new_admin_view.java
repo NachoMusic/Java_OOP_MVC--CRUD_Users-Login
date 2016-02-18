@@ -70,7 +70,6 @@ public class new_admin_view extends javax.swing.JFrame {
         usernameField = new javax.swing.JTextField();
         usernamelabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        passwordField = new javax.swing.JTextField();
         passwordlabel = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -95,6 +94,7 @@ public class new_admin_view extends javax.swing.JFrame {
         saveLabel = new javax.swing.JLabel();
         hiringdateField = new com.toedter.calendar.JDateChooser();
         datebirthdayField = new com.toedter.calendar.JDateChooser();
+        passwordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -173,75 +173,193 @@ public class new_admin_view extends javax.swing.JFrame {
 
         jLabel7.setText("Phone:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        phoneField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phoneFieldActionPerformed(evt);
+            }
+        });
+        phoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                phoneFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                phoneFieldKeyReleased(evt);
+            }
+        });
         getContentPane().add(phoneField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 140, -1));
 
         phonelabel.setText(" ");
-        getContentPane().add(phonelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 120, -1));
+        getContentPane().add(phonelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 197, 20, 20));
 
         jLabel9.setText("Email:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+
+        emailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailFieldActionPerformed(evt);
+            }
+        });
+        emailField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                emailFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                emailFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                emailFieldKeyReleased(evt);
+            }
+        });
         getContentPane().add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 140, -1));
 
         emaillabel.setText(" ");
-        getContentPane().add(emaillabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 120, -1));
+        getContentPane().add(emaillabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 257, 20, 20));
 
         jLabel11.setText("Username:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, 20));
+
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameFieldActionPerformed(evt);
+            }
+        });
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyReleased(evt);
+            }
+        });
         getContentPane().add(usernameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 140, -1));
 
         usernamelabel.setText(" ");
-        getContentPane().add(usernamelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 110, -1));
+        getContentPane().add(usernamelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 317, 20, 20));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 9, 416));
-        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 140, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 9, 416));
 
         passwordlabel.setText(" ");
-        getContentPane().add(passwordlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, 110, -1));
+        getContentPane().add(passwordlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 377, 20, 20));
 
         jLabel14.setText("Password:");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         jLabel15.setText("Avatar:");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
-        getContentPane().add(avatarField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 90, 80));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+
+        avatarField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avatarFieldActionPerformed(evt);
+            }
+        });
+        avatarField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                avatarFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                avatarFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                avatarFieldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(avatarField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 90, 80));
 
         avatarlabel.setText(" ");
-        getContentPane().add(avatarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, 100, -1));
+        getContentPane().add(avatarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 100, -1));
 
         jLabel17.setText("Date birthday:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
         datebirthdaylabel.setText(" ");
-        getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 100, -1));
+        getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 20, 20));
 
         jLabel19.setText("Hiring date:");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, -1, -1));
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         hiringdatelabel.setText(" ");
-        getContentPane().add(hiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 110, -1));
+        getContentPane().add(hiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 20, -1));
 
         jLabel21.setText("Base salary:");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
-        getContentPane().add(salaryField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 120, -1));
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
+
+        salaryField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salaryFieldActionPerformed(evt);
+            }
+        });
+        salaryField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                salaryFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                salaryFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                salaryFieldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(salaryField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 120, -1));
 
         salarylabel.setText(" ");
-        getContentPane().add(salarylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 110, -1));
+        getContentPane().add(salarylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 20, -1));
 
         jLabel23.setText("Initial Activity:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
-        getContentPane().add(activityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 120, -1));
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
+
+        activityField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activityFieldActionPerformed(evt);
+            }
+        });
+        activityField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                activityFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                activityFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                activityFieldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(activityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 120, -1));
 
         activitylabel.setText(" ");
-        getContentPane().add(activitylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 110, -1));
+        getContentPane().add(activitylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 20, -1));
 
         jLabel25.setText("Status:");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 137, -1, 20));
-        getContentPane().add(statusField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 120, -1));
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 20));
+
+        statusField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statusFieldActionPerformed(evt);
+            }
+        });
+        statusField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                statusFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                statusFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                statusFieldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(statusField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 120, -1));
 
         statuslabel.setText(" ");
-        getContentPane().add(statuslabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 110, 20));
+        getContentPane().add(statuslabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 20, 20));
 
         saveAdminButton.setText("Save");
         saveAdminButton.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +370,7 @@ public class new_admin_view extends javax.swing.JFrame {
         getContentPane().add(saveAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 70, -1));
 
         discartButton.setText("Discart");
-        getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, -1, -1));
+        getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, -1, -1));
 
         emptyButton.setText("Empty all fields");
         emptyButton.addActionListener(new java.awt.event.ActionListener() {
@@ -260,16 +378,34 @@ public class new_admin_view extends javax.swing.JFrame {
                 emptyButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(emptyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, -1, -1));
+        getContentPane().add(emptyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
 
         saveLabel.setText(" ");
-        getContentPane().add(saveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 530, -1));
+        getContentPane().add(saveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 540, 20));
 
         hiringdateField.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(hiringdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 150, -1));
+        getContentPane().add(hiringdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 150, -1));
 
         datebirthdayField.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 150, -1));
+        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 150, -1));
+
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyReleased(evt);
+            }
+        });
+        getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -348,6 +484,167 @@ public class new_admin_view extends javax.swing.JFrame {
         bll.validateSubname();
     }//GEN-LAST:event_subnameFieldKeyTyped
 
+    private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validatePhone();
+    }//GEN-LAST:event_phoneFieldActionPerformed
+
+    private void phoneFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validatePhone();
+    }//GEN-LAST:event_phoneFieldKeyPressed
+
+    private void phoneFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validatePhone();
+    }//GEN-LAST:event_phoneFieldKeyReleased
+
+    private void phoneFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validatePhone();
+    }//GEN-LAST:event_phoneFieldKeyTyped
+
+    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateEmail();
+    }//GEN-LAST:event_emailFieldActionPerformed
+
+    private void emailFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateEmail();
+    }//GEN-LAST:event_emailFieldKeyPressed
+
+    private void emailFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateEmail();
+    }//GEN-LAST:event_emailFieldKeyReleased
+
+    private void emailFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateEmail();
+    }//GEN-LAST:event_emailFieldKeyTyped
+
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateUsername();
+        
+    }//GEN-LAST:event_usernameFieldActionPerformed
+
+    private void avatarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateAvatar();
+    }//GEN-LAST:event_avatarFieldActionPerformed
+
+    private void avatarFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_avatarFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateAvatar();
+    }//GEN-LAST:event_avatarFieldKeyPressed
+
+    private void avatarFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_avatarFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateAvatar();
+    }//GEN-LAST:event_avatarFieldKeyReleased
+
+    private void avatarFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_avatarFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateAvatar();
+    }//GEN-LAST:event_avatarFieldKeyTyped
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateUsername();
+    }//GEN-LAST:event_usernameFieldKeyPressed
+
+    private void usernameFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateUsername();
+    }//GEN-LAST:event_usernameFieldKeyReleased
+
+    private void usernameFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateUsername();
+    }//GEN-LAST:event_usernameFieldKeyTyped
+
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validatePassword();
+    }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validatePassword();
+    }//GEN-LAST:event_passwordFieldKeyPressed
+
+    private void passwordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validatePassword();
+    }//GEN-LAST:event_passwordFieldKeyReleased
+
+    private void passwordFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validatePassword();
+    }//GEN-LAST:event_passwordFieldKeyTyped
+
+    private void statusFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateStatus();
+    }//GEN-LAST:event_statusFieldActionPerformed
+
+    private void statusFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateStatus();
+    }//GEN-LAST:event_statusFieldKeyPressed
+
+    private void statusFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateStatus();
+    }//GEN-LAST:event_statusFieldKeyReleased
+
+    private void statusFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateStatus();
+    }//GEN-LAST:event_statusFieldKeyTyped
+
+    private void salaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaryFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateSalary();
+    }//GEN-LAST:event_salaryFieldActionPerformed
+
+    private void salaryFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salaryFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateSalary();
+    }//GEN-LAST:event_salaryFieldKeyPressed
+
+    private void salaryFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salaryFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateSalary();
+    }//GEN-LAST:event_salaryFieldKeyReleased
+
+    private void salaryFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salaryFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateSalary();
+    }//GEN-LAST:event_salaryFieldKeyTyped
+
+    private void activityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityFieldActionPerformed
+        // TODO add your handling code here:
+        bll.validateActivity();
+    }//GEN-LAST:event_activityFieldActionPerformed
+
+    private void activityFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_activityFieldKeyPressed
+        // TODO add your handling code here:
+        bll.validateActivity();
+    }//GEN-LAST:event_activityFieldKeyPressed
+
+    private void activityFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_activityFieldKeyReleased
+        // TODO add your handling code here:
+        bll.validateActivity();
+    }//GEN-LAST:event_activityFieldKeyReleased
+
+    private void activityFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_activityFieldKeyTyped
+        // TODO add your handling code here:
+        bll.validateActivity();
+    }//GEN-LAST:event_activityFieldKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -424,7 +721,7 @@ public class new_admin_view extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JTextField nameField;
     public static javax.swing.JLabel namelabel;
-    public static javax.swing.JTextField passwordField;
+    public static javax.swing.JPasswordField passwordField;
     public static javax.swing.JLabel passwordlabel;
     public static javax.swing.JTextField phoneField;
     public static javax.swing.JLabel phonelabel;

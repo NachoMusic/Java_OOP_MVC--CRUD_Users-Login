@@ -140,7 +140,7 @@ public class Dates {
         return resoult;
     }
 
-    public String insertDate(String arg1, String arg2, String date) {
+    public String insertDate(String date) {
         boolean validate = false;
         String month = "", day = "", year = "";
         int daynum = 0, yearnum = 0;

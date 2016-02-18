@@ -37,43 +37,31 @@ public class functions_users {
                 dateFormat = "yyyy-mm-dd";
                 break;
         }
-
+        
         if (GenericKernel.insertDni(SingletonF.language.getProperty("typedni"), "DNI", dniField.getText())) {
             dni = dniField.getText();
-            dnilabel.setText("Correct DNI");
             valid[0] = true;
         } else {
-            dnilabel.setVisible(true);
-            dnilabel.setText("Invalid DNI");
             valid[0] = false;
         }
 
         if (GenericKernel.insertText(SingletonF.language.getProperty("name"), SingletonF.language.getProperty("name2"), nameField.getText())) {
             name = nameField.getText();
-            namelabel.setText("Correct");
             valid[1] = true;
         } else {
-            namelabel.setVisible(true);
-            namelabel.setText("Incorrect Name");
             valid[1] = false;
         }
         if (GenericKernel.insertText(SingletonF.language.getProperty("subname"), SingletonF.language.getProperty("subname2"), subnameField.getText())) {
             subname = subnameField.getText();
-            subnamelabel.setText("Correct");
             valid[2] = true;
         } else {
-            subnamelabel.setVisible(true);
-            subnamelabel.setText("Incorrect subname");
             valid[2] = false;
         }
 
         if (GenericKernel.insertPhone(SingletonF.language.getProperty("insertphone"), SingletonF.language.getProperty("insertphone2"), phoneField.getText())) {
             phone_number = phoneField.getText();
-            phonelabel.setText("Correct");
             valid[3] = true;
         } else {
-            phonelabel.setVisible(true);
-            phonelabel.setText("Incorrect phone");
             valid[3] = false;
         }
 
