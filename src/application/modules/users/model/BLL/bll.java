@@ -23,7 +23,12 @@ import static application.modules.users.view.new_admin_view.saveLabel;
 import static application.modules.users.view.new_admin_view.statusField;
 import static application.modules.users.view.new_admin_view.subnameField;
 import static application.modules.users.view.new_admin_view.usernameField;
-import application.utils.Functions;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  *
@@ -59,14 +64,8 @@ public class bll {
         return dao.validatePassword();
     }
 
-    public static boolean validateAvatar(int option) {
-        boolean a = false;
-        if (option == 0) {
-            a = dao.validateAvatar();
-        } else {
-            a = true;
-        }
-        return a;
+    public static String validateAvatar() {
+        return dao.validateAvatar();
     }
 
     public static boolean validateStatus() {
@@ -187,40 +186,44 @@ public class bll {
         System.out.print("a");
         //System.out.println(validateBirthday() + " ASFD");
         if (validateDNI() && validateName() && validateSubname() && validatePhone()
-                && validateEmail() && validateUsername() && validatePassword() && validateAvatar(1)
+                && validateEmail() && validateUsername() && validatePassword()
                 && validateStatus() && validateBirthday() && validateHiringdate()
                 && validateSalary() && validateActivity()) {
             validA = true;
             dni = dniField.getText();
-            System.out.println(dni);
             name = nameField.getText();
-            System.out.println(name);
             subname = subnameField.getText();
-            System.out.println(subname);
             phone_number = phoneField.getText();
-            System.out.println(phone_number);
             email = emailField.getText();
-            System.out.println(email);
             user = usernameField.getText();
-            System.out.println(user);
             pass = passwordField.getText();
-            System.out.println(pass);
-            avatar = avatarField.getText();
-            System.out.println(avatar);
-            state = statusField.getText();
-            System.out.println(state);
-            Dates date = new Dates("");
-            date_birthday = date.DateToString(datebirthdayField.getCalendar(),0);
-            System.out.println(date_birthday);
-            hiring_date = date.DateToString(hiringdateField.getCalendar(),0);
-            System.out.println(hiring_date);
-            salary = Float.parseFloat(salaryField.getText());
+            File origen = new File(avatarField.getText());
+            File destino = new File("src/application/modules/users/view/img/" + dniField.getText());
+            try {
+                InputStream in = new FileInputStream(origen);
+                OutputStream out = new FileOutputStream(destino);
 
-            System.out.println(salary);
+                byte[] buf = new byte[1024];
+                int len;
+
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+
+                in.close();
+                out.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+            //avatar = avatarField.getText();
+            avatar = "src/application/modules/users/view/img/" + dniField.getText();
+            state = statusField.getText();
+            Dates date = new Dates("");
+            date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
+            hiring_date = date.DateToString(hiringdateField.getCalendar(), 0);
+            salary = Float.parseFloat(salaryField.getText());
             activity = Integer.parseInt(activityField.getText());
-            System.out.println(activity);
-            //singleton.admins.addData(new admin(dni, name, subname, phone_number, email, user, pass, avatar, state,
-            //        date_birthday, hiring_date, salary, activity));
+
             singleton.admins.addData(new admin(dni, name, subname, phone_number, email, user, pass, avatar, state,
                     date_birthday, hiring_date, salary, activity));
             System.out.println("Admin created");

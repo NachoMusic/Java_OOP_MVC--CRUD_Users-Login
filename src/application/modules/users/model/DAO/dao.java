@@ -9,6 +9,7 @@ import application.models.Dates;
 import static application.modules.users.view.new_admin_view.*;
 import application.utils.Validate;
 import java.awt.Image;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -136,7 +137,7 @@ public class dao {
         return validate;
     }
 
-    public static boolean validateAvatar() {
+    public static String validateAvatar() {
         boolean validate = false;
         /*if (avatarField.getText().isEmpty()) {
             avatarlabel.setVisible(true);
@@ -150,11 +151,13 @@ public class dao {
         JFileChooser avatar = new JFileChooser();
         avatar.setFileFilter(img);
         int option = avatar.showOpenDialog(null);
-
+        String image="";
+        
         if (option == JFileChooser.APPROVE_OPTION) {
-            String image = avatar.getSelectedFile().getPath();
-            String file = avatar.getSelectedFile().toString();
-            avatarField.setIcon(new ImageIcon(image));
+            image = avatar.getSelectedFile().getPath();
+            
+            //String file = avatar.getSelectedFile().toString();
+            //avatarField.setIcon(new ImageIcon(image));
             ImageIcon icon = new ImageIcon(image);
             Image imgn = icon.getImage();
             Image newimg = imgn.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
@@ -165,10 +168,10 @@ public class dao {
 
             avatarlabel.setVisible(true);
             avatarlabel.setIcon(valid);
-
+            avatarField.setText(image);
             validate = true;
         }
-        return validate;
+        return image;
     }
 
     public static boolean validateAvatar1() {

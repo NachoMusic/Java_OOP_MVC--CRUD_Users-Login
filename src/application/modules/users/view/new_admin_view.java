@@ -633,7 +633,7 @@ public class new_admin_view extends javax.swing.JFrame {
 
     private void avatarFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avatarFieldMouseClicked
         // TODO add your handling code here:
-        bll.validateAvatar(0);
+        bll.validateAvatar();
     }//GEN-LAST:event_avatarFieldMouseClicked
 
     private void avatarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarbuttonActionPerformed
@@ -656,7 +656,7 @@ public class new_admin_view extends javax.swing.JFrame {
             avatarField.setText(image);
             
         }*/
-        bll.validateAvatar(0);
+        bll.validateAvatar();
     }//GEN-LAST:event_avatarbuttonActionPerformed
 
     /**
