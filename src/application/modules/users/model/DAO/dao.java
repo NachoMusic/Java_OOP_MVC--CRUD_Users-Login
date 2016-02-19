@@ -8,8 +8,11 @@ package application.modules.users.model.DAO;
 import application.models.Dates;
 import static application.modules.users.view.new_admin_view.*;
 import application.utils.Validate;
+import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -60,7 +63,7 @@ public class dao {
         if (Validate.validateText(nameField.getText())) {
             namelabel.setVisible(true);
             namelabel.setIcon(valid);
-            validate= true;
+            validate = true;
         } else {
             namelabel.setVisible(true);
             namelabel.setIcon(warning);
@@ -135,6 +138,41 @@ public class dao {
 
     public static boolean validateAvatar() {
         boolean validate = false;
+        /*if (avatarField.getText().isEmpty()) {
+            avatarlabel.setVisible(true);
+            avatarlabel.setIcon(warning);
+        } else {
+            avatarlabel.setVisible(true);
+            avatarlabel.setIcon(valid);
+            validate = true;
+        }*/
+        FileNameExtensionFilter img = new FileNameExtensionFilter("JPG image", "jpg");
+        JFileChooser avatar = new JFileChooser();
+        avatar.setFileFilter(img);
+        int option = avatar.showOpenDialog(null);
+
+        if (option == JFileChooser.APPROVE_OPTION) {
+            String image = avatar.getSelectedFile().getPath();
+            String file = avatar.getSelectedFile().toString();
+            avatarField.setIcon(new ImageIcon(image));
+            ImageIcon icon = new ImageIcon(image);
+            Image imgn = icon.getImage();
+            Image newimg = imgn.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            avatarField.setIcon(newIcon);
+            avatarField.setSize(150, 150);
+            avatarField.setText(image);
+
+            avatarlabel.setVisible(true);
+            avatarlabel.setIcon(valid);
+
+            validate = true;
+        }
+        return validate;
+    }
+
+    public static boolean validateAvatar1() {
+        boolean validate = false;
         if (avatarField.getText().isEmpty()) {
             avatarlabel.setVisible(true);
             avatarlabel.setIcon(warning);
@@ -161,18 +199,7 @@ public class dao {
 
     public static boolean validateBirthday() {
         boolean validate = true;
-        Dates date0 = new Dates("");
-        Dates date1 = new Dates(date0.insertDate(datebirthdayField.getDateFormatString()));
-
-        if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
-            validate = false;
-            date1 = new Dates(date1.insertDate(datebirthdayField.getDateFormatString()));
-        }
-        if (date1.timeBetweetDates(date1.DateToCalendar(), date1.SystemDate(), 1) < 18) {
-            JOptionPane.showMessageDialog(null, "You can't register until you're 18 years old");
-            validate = false;
-            date1 = new Dates(date1.insertDate(datebirthdayField.getDateFormatString()));
-        }
+        
         if (validate) {
             datebirthdaylabel.setVisible(true);
             datebirthdaylabel.setIcon(valid);
@@ -185,29 +212,7 @@ public class dao {
 
     public static boolean validateHiringdate() {
         boolean validate = true;
-        int yearsDif = 0;
-        Dates date1 = null;
-        Dates date0 = new Dates("");
-        date1 = new Dates(date0.insertDate(hiringdateField.getDateFormatString()));
-        Dates date2 = new Dates(datebirthdayField.getDateFormatString());
-
-        validate = true;
-        if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
-            validate = false;
-            date1 = new Dates(date1.insertDate(hiringdateField.getDateFormatString()));
-        }
-        yearsDif = date1.timeBetweetDates(date1.DateToCalendar(), date2.DateToCalendar(), 1);
-        if (yearsDif < 18) {
-            validate = false;
-            JOptionPane.showMessageDialog(null, "You could not be hired until you were 18");
-            date1 = new Dates(date1.insertDate(hiringdateField.getDateFormatString()));
-        }
-
-        if (date1.compareWith(date1.DateToCalendar(), date2.DateToCalendar()) == 1) {
-            validate = false;
-            JOptionPane.showMessageDialog(null, "The date can not be before your date birthday");
-            date1 = new Dates(date1.insertDate(hiringdateField.getDateFormatString()));
-        }
+        
         if (validate) {
             hiringdatelabel.setVisible(true);
             hiringdatelabel.setIcon(valid);
@@ -217,8 +222,8 @@ public class dao {
         }
         return validate;
     }
-    
-    public static boolean validateSalary(){
+
+    public static boolean validateSalary() {
         boolean validate = false;
         if (salaryField.getText().isEmpty()) {
             salarylabel.setVisible(true);
@@ -230,7 +235,8 @@ public class dao {
         }
         return validate;
     }
-    public static boolean validateActivity(){
+
+    public static boolean validateActivity() {
         boolean validate = false;
         if (activityField.getText().isEmpty()) {
             activitylabel.setVisible(true);

@@ -7,9 +7,9 @@ package application.modules.users.view;
 
 
 import application.modules.users.model.BLL.bll;
-import application.modules.users.model.DAO.functions_users;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.ImageIcon;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
@@ -21,11 +21,15 @@ public class new_admin_view extends javax.swing.JFrame {
     /**
      * Creates new form new_admin_view
      */
+    public static ImageIcon defaultAvatar = new ImageIcon("src/application/modules/users/view/img/anonymous_add.png");
+    //private FileNameExtensionFilter img = new FileNameExtensionFilter("JPG image","jpg");
+    
     public new_admin_view() {
         initComponents();
         closeWindow();
         this.setTitle("Create new admin");
         this.setLocationRelativeTo(null);
+        
         saveLabel.setVisible(false);
         dnilabel.setVisible(false);
         namelabel.setVisible(false);
@@ -40,6 +44,8 @@ public class new_admin_view extends javax.swing.JFrame {
         hiringdatelabel.setVisible(false);
         phonelabel.setVisible(false);
         avatarlabel.setVisible(false);
+        avatarField.setIcon(defaultAvatar);
+        avatarField.setText("src/application/modules/users/view/img/anonymous_add.png");
     }
 
     /**
@@ -73,7 +79,6 @@ public class new_admin_view extends javax.swing.JFrame {
         passwordlabel = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        avatarField = new javax.swing.JTextField();
         avatarlabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         datebirthdaylabel = new javax.swing.JLabel();
@@ -95,6 +100,8 @@ public class new_admin_view extends javax.swing.JFrame {
         hiringdateField = new com.toedter.calendar.JDateChooser();
         datebirthdayField = new com.toedter.calendar.JDateChooser();
         passwordField = new javax.swing.JPasswordField();
+        avatarField = new javax.swing.JLabel();
+        avatarbutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -256,26 +263,8 @@ public class new_admin_view extends javax.swing.JFrame {
         jLabel15.setText("Avatar:");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
 
-        avatarField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                avatarFieldActionPerformed(evt);
-            }
-        });
-        avatarField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                avatarFieldKeyTyped(evt);
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                avatarFieldKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                avatarFieldKeyReleased(evt);
-            }
-        });
-        getContentPane().add(avatarField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 90, 80));
-
         avatarlabel.setText(" ");
-        getContentPane().add(avatarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 100, -1));
+        getContentPane().add(avatarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 20, -1));
 
         jLabel17.setText("Date birthday:");
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
@@ -407,12 +396,29 @@ public class new_admin_view extends javax.swing.JFrame {
         });
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 140, -1));
 
+        avatarField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        avatarField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                avatarFieldMouseClicked(evt);
+            }
+        });
+        getContentPane().add(avatarField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 90, 80));
+
+        avatarbutton.setText("Select avatar");
+        avatarbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avatarbuttonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(avatarbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 70, 90, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
         // TODO add your handling code here:
-        if(functions_users.newAdmin())
+        System.out.println("save button pressed");
+        if(bll.newAdmin())
             dispose();
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
@@ -530,26 +536,6 @@ public class new_admin_view extends javax.swing.JFrame {
         
     }//GEN-LAST:event_usernameFieldActionPerformed
 
-    private void avatarFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarFieldActionPerformed
-        // TODO add your handling code here:
-        bll.validateAvatar();
-    }//GEN-LAST:event_avatarFieldActionPerformed
-
-    private void avatarFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_avatarFieldKeyPressed
-        // TODO add your handling code here:
-        bll.validateAvatar();
-    }//GEN-LAST:event_avatarFieldKeyPressed
-
-    private void avatarFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_avatarFieldKeyReleased
-        // TODO add your handling code here:
-        bll.validateAvatar();
-    }//GEN-LAST:event_avatarFieldKeyReleased
-
-    private void avatarFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_avatarFieldKeyTyped
-        // TODO add your handling code here:
-        bll.validateAvatar();
-    }//GEN-LAST:event_avatarFieldKeyTyped
-
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
         // TODO add your handling code here:
         bll.validateUsername();
@@ -645,6 +631,34 @@ public class new_admin_view extends javax.swing.JFrame {
         bll.validateActivity();
     }//GEN-LAST:event_activityFieldKeyTyped
 
+    private void avatarFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_avatarFieldMouseClicked
+        // TODO add your handling code here:
+        bll.validateAvatar(0);
+    }//GEN-LAST:event_avatarFieldMouseClicked
+
+    private void avatarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarbuttonActionPerformed
+        // TODO add your handling code here:
+        /*
+        JFileChooser avatar = new JFileChooser();
+        avatar.setFileFilter(img);
+        int option = avatar.showOpenDialog(this);
+        
+        if(option==JFileChooser.APPROVE_OPTION){
+            String image = avatar.getSelectedFile().getPath();
+            String file = avatar.getSelectedFile().toString();
+            avatarField.setIcon(new ImageIcon(image));
+            ImageIcon icon = new ImageIcon(image);
+            Image imgn = icon.getImage();
+            Image newimg = imgn.getScaledInstance(150,150,java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            avatarField.setIcon(newIcon);
+            avatarField.setSize(150,150);
+            avatarField.setText(image);
+            
+        }*/
+        bll.validateAvatar(0);
+    }//GEN-LAST:event_avatarbuttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -693,7 +707,8 @@ public class new_admin_view extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField activityField;
     public static javax.swing.JLabel activitylabel;
-    public static javax.swing.JTextField avatarField;
+    public static javax.swing.JLabel avatarField;
+    private javax.swing.JButton avatarbutton;
     public static javax.swing.JLabel avatarlabel;
     public static com.toedter.calendar.JDateChooser datebirthdayField;
     public static javax.swing.JLabel datebirthdaylabel;
