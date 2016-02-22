@@ -5,8 +5,8 @@
  */
 package application;
 
-import application.models.Config;
-import application.models.Language;
+import application.modules.config.model.Config;
+import application.modules.config.model.Language;
 import application.models.SingletonF;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;

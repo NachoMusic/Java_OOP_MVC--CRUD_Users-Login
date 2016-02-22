@@ -5,6 +5,7 @@
  */
 package application.view;
 
+import application.modules.config.view.config_view;
 import application.models.SingletonF;
 import application.modules.users.view.admin_view;
 

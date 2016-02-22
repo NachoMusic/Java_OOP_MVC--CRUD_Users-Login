@@ -1,8 +1,8 @@
 package application;
 
 import javax.swing.JOptionPane;
-import application.models.Config;
-import application.models.Language;
+import application.modules.config.model.Config;
+import application.modules.config.model.Language;
 import application.models.SingletonF;
 import application.modules.users.model.models.singleton;
 import application.modules.users.model.BLL.Arraylist_admin;

@@ -252,7 +252,7 @@ public class new_admin_view extends javax.swing.JFrame {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 9, 416));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 9, 416));
 
         passwordlabel.setText(" ");
         getContentPane().add(passwordlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 377, 20, 20));
@@ -367,16 +367,20 @@ public class new_admin_view extends javax.swing.JFrame {
                 emptyButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(emptyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
+        getContentPane().add(emptyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, -1, -1));
 
         saveLabel.setText(" ");
         getContentPane().add(saveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 540, 20));
 
         hiringdateField.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(hiringdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 150, -1));
+        hiringdateField.setMaxSelectableDate(new java.util.Date(4070908882000L));
+        hiringdateField.setMinSelectableDate(new java.util.Date(-2208984234000L));
+        getContentPane().add(hiringdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 170, -1));
 
         datebirthdayField.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 150, -1));
+        datebirthdayField.setMaxSelectableDate(new java.util.Date(4070908882000L));
+        datebirthdayField.setMinSelectableDate(new java.util.Date(-2208984234000L));
+        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 170, -1));
 
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -638,24 +642,6 @@ public class new_admin_view extends javax.swing.JFrame {
 
     private void avatarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarbuttonActionPerformed
         // TODO add your handling code here:
-        /*
-        JFileChooser avatar = new JFileChooser();
-        avatar.setFileFilter(img);
-        int option = avatar.showOpenDialog(this);
-        
-        if(option==JFileChooser.APPROVE_OPTION){
-            String image = avatar.getSelectedFile().getPath();
-            String file = avatar.getSelectedFile().toString();
-            avatarField.setIcon(new ImageIcon(image));
-            ImageIcon icon = new ImageIcon(image);
-            Image imgn = icon.getImage();
-            Image newimg = imgn.getScaledInstance(150,150,java.awt.Image.SCALE_SMOOTH);
-            ImageIcon newIcon = new ImageIcon(newimg);
-            avatarField.setIcon(newIcon);
-            avatarField.setSize(150,150);
-            avatarField.setText(image);
-            
-        }*/
         bll.validateAvatar();
     }//GEN-LAST:event_avatarbuttonActionPerformed
 

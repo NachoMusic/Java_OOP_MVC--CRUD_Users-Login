@@ -173,7 +173,7 @@ public class dao {
         }
         return image;
     }
-
+/*
     public static boolean validateAvatar1() {
         boolean validate = false;
         if (avatarField.getText().isEmpty()) {
@@ -186,7 +186,7 @@ public class dao {
         }
         return validate;
     }
-
+*/
     public static boolean validateStatus() {
         boolean validate = false;
         if (statusField.getText().isEmpty()) {
@@ -202,14 +202,27 @@ public class dao {
 
     public static boolean validateBirthday() {
         boolean validate = true;
-        
+        /*
         if (validate) {
             datebirthdaylabel.setVisible(true);
             datebirthdaylabel.setIcon(valid);
         } else {
             datebirthdaylabel.setVisible(true);
             datebirthdaylabel.setIcon(warning);
-        }
+        }*/
+        Dates date0 = new Dates("");
+        Dates date1 = new Dates(date0.DateToString(datebirthdayField.getCalendar(), 0)); //Cambiar el 0 por la de la confi
+
+            validate = true;
+            if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
+                validate = false;
+                date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0))); //Cambiar el 0 por la de la confi
+            }
+            if (date1.timeBetweetDates(date1.DateToCalendar(), date1.SystemDate(), 1) < 18) {
+                JOptionPane.showMessageDialog(null, "You can't register until you're 18 years old");
+                validate = false;
+                date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0))); //Cambiar el 0 por la de la confi
+            }
         return validate;
     }
 

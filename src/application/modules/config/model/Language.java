@@ -1,4 +1,4 @@
-package application.models;
+package application.modules.config.model;
 
 import java.io.IOException;
 import java.util.Properties;
