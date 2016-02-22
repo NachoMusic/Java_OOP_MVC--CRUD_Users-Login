@@ -241,13 +241,13 @@ public class dao {
 
     public static boolean validateActivity() {
         boolean validate = false;
-        if (activityField.getText().isEmpty()) {
-            activitylabel.setVisible(true);
-            activitylabel.setIcon(warning);
-        } else {
+        if (Validate.validateInt(activityField.getText())) {
             activitylabel.setVisible(true);
             activitylabel.setIcon(valid);
             validate = true;
+        } else {
+            activitylabel.setVisible(true);
+            activitylabel.setIcon(warning);
         }
         return validate;
     }
