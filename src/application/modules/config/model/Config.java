@@ -1,9 +1,7 @@
 package application.modules.config.model;
 
 import java.io.Serializable;
-
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-
 import application.modules.users.model.BLL.Arraylist_admin;
 import application.modules.users.model.BLL.Arraylist_client;
 import application.modules.users.model.BLL.Arraylist_registered_user;
@@ -45,8 +43,6 @@ public class Config implements Serializable{
 		this.savingextension = "json";
 		this.lookandfeel = 0;
 		this.dummiesmode = false;
-		
-		//dummies
 		
 		singleton.admins = new Arraylist_admin();
 		singleton.clients = new Arraylist_client();

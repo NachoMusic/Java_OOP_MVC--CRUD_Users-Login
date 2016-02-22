@@ -270,13 +270,13 @@ public class new_admin_view extends javax.swing.JFrame {
         getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
         datebirthdaylabel.setText(" ");
-        getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 20, 20));
+        getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 20, 20));
 
         jLabel19.setText("Hiring date:");
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         hiringdatelabel.setText(" ");
-        getContentPane().add(hiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 20, -1));
+        getContentPane().add(hiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 20, -1));
 
         jLabel21.setText("Base salary:");
         getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
@@ -359,6 +359,11 @@ public class new_admin_view extends javax.swing.JFrame {
         getContentPane().add(saveAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 70, -1));
 
         discartButton.setText("Discart");
+        discartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discartButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, -1, -1));
 
         emptyButton.setText("Empty all fields");
@@ -644,6 +649,12 @@ public class new_admin_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         bll.validateAvatar();
     }//GEN-LAST:event_avatarbuttonActionPerformed
+
+    private void discartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discartButtonActionPerformed
+        // TODO add your handling code here:
+        bll.validateBirthday();
+        bll.validateHiringdate();
+    }//GEN-LAST:event_discartButtonActionPerformed
 
     /**
      * @param args the command line arguments
