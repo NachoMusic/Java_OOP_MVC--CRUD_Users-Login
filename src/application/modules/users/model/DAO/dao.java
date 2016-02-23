@@ -203,7 +203,7 @@ public class dao {
 
     public static boolean validateBirthday() {
         boolean validate = true;
-        
+
         try {
             Dates date0 = new Dates("");
             Dates date1 = new Dates(date0.DateToString(datebirthdayField.getCalendar(), 0)); //Cambiar el 0 por la de la confi
@@ -256,7 +256,7 @@ public class dao {
                 date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
             }
 
-            if (date1.compareWith(date1.DateToCalendar(),date2.DateToCalendar()) == 1) {
+            if (date1.compareWith(date1.DateToCalendar(), date2.DateToCalendar()) == 1) {
                 validate = false;
                 //JOptionPane.showMessageDialog(null, "The date can not be before your date birthday");
                 saveLabel.setText("The hiring date can not be before your date birthday");
@@ -278,13 +278,13 @@ public class dao {
 
     public static boolean validateSalary() {
         boolean validate = false;
-        if (salaryField.getText().isEmpty()) {
-            salarylabel.setVisible(true);
-            salarylabel.setIcon(warning);
-        } else {
+        if (Validate.validateFloat(salaryField.getText())) {
             salarylabel.setVisible(true);
             salarylabel.setIcon(valid);
             validate = true;
+        } else {
+            salarylabel.setVisible(true);
+            salarylabel.setIcon(warning);
         }
         return validate;
     }

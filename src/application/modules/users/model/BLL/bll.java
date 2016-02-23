@@ -107,6 +107,7 @@ public class bll {
             email = emailField.getText();
             user = usernameField.getText();
             pass = passwordField.getText();
+            
             File origen = new File(avatarField.getText());
             File destino = new File("src/application/modules/users/view/img/" + dniField.getText());
             try {
@@ -123,6 +124,7 @@ public class bll {
                 ioe.printStackTrace();
             }
             avatar = "src/application/modules/users/view/img/" + dniField.getText();
+            
             state = statusField.getText();
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);

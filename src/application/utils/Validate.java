@@ -17,6 +17,7 @@ public class Validate {
     private static final String dateFormat3 = "((175[7-9])|(17[6-9][0-9])|(1[8-9][0-9][0-9])|([2-9][0-9][0-9][0-9]))[/](0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])";
     private static final String dateFormat4 = "((175[7-9])|(17[6-9][0-9])|(1[8-9][0-9][0-9])|([2-9][0-9][0-9][0-9]))[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])";
     private static final String integer = "^([0-9])*$";
+    private static final String floatnum = "[\\-\\+]?[0-9]*(\\.[0-9]+)?";
 
     public static boolean validateDni(String dni) {
         return dni.matches(dniFormat);
@@ -52,5 +53,8 @@ public class Validate {
 
     public static boolean validateInt(String number){
         return number.matches(integer);
+    }
+    public static boolean validateFloat(String floatnumber){
+        return floatnumber.matches(floatnum);
     }
 }

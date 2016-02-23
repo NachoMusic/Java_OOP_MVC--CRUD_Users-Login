@@ -359,11 +359,6 @@ public class new_admin_view extends javax.swing.JFrame {
         getContentPane().add(saveAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 70, -1));
 
         discartButton.setText("Discart");
-        discartButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                discartButtonActionPerformed(evt);
-            }
-        });
         getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, -1, -1));
 
         emptyButton.setText("Empty all fields");
@@ -419,7 +414,7 @@ public class new_admin_view extends javax.swing.JFrame {
                 avatarbuttonActionPerformed(evt);
             }
         });
-        getContentPane().add(avatarbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 70, 90, -1));
+        getContentPane().add(avatarbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 70, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -441,22 +436,29 @@ public class new_admin_view extends javax.swing.JFrame {
         //llamas al bll que llama al dao
         //el kernel será el dao, y el functions users será el bll dice otro nombre
         bll.validateDNI();
-        
+        bll.validateBirthday();
+        bll.validateHiringdate();
     }//GEN-LAST:event_dniFieldActionPerformed
 
     private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyTyped
         // TODO add your handling code here:
         bll.validateDNI();
+        bll.validateBirthday();
+        bll.validateHiringdate();
     }//GEN-LAST:event_dniFieldKeyTyped
 
     private void dniFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyPressed
         // TODO add your handling code here:
         bll.validateDNI();
+        bll.validateBirthday();
+        bll.validateHiringdate();
     }//GEN-LAST:event_dniFieldKeyPressed
 
     private void dniFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyReleased
         // TODO add your handling code here:
         bll.validateDNI();
+        bll.validateBirthday();
+        bll.validateHiringdate();
     }//GEN-LAST:event_dniFieldKeyReleased
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
@@ -649,12 +651,6 @@ public class new_admin_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         bll.validateAvatar();
     }//GEN-LAST:event_avatarbuttonActionPerformed
-
-    private void discartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discartButtonActionPerformed
-        // TODO add your handling code here:
-        bll.validateBirthday();
-        bll.validateHiringdate();
-    }//GEN-LAST:event_discartButtonActionPerformed
 
     /**
      * @param args the command line arguments
