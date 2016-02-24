@@ -8,6 +8,8 @@ package application.modules.users.model.DAO;
 import application.models.Dates;
 import static application.modules.users.view.new_admin_view.*;
 import application.utils.Validate;
+import static java.awt.Color.red;
+import static java.awt.Color.white;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -46,9 +48,11 @@ public class dao {
             if (lettercalc == lettergiven) {
                 dnilabel.setVisible(true);
                 dnilabel.setIcon(valid);
+                dniField.setBackground(white);
             } else {
                 dnilabel.setVisible(true);
                 dnilabel.setIcon(warning);
+                dniField.setBackground(red);
             }
         } else {
             dnilabel.setVisible(true);
@@ -62,10 +66,12 @@ public class dao {
         if (Validate.validateText(nameField.getText())) {
             namelabel.setVisible(true);
             namelabel.setIcon(valid);
+            nameField.setBackground(white);
             validate = true;
         } else {
             namelabel.setVisible(true);
             namelabel.setIcon(warning);
+            nameField.setBackground(red);
         }
         return validate;
     }
@@ -75,10 +81,12 @@ public class dao {
         if (Validate.validateText(subnameField.getText())) {
             subnamelabel.setVisible(true);
             subnamelabel.setIcon(valid);
+            subnameField.setBackground(white);
             validate = true;
         } else {
             subnamelabel.setVisible(true);
             subnamelabel.setIcon(warning);
+            subnameField.setBackground(red);
         }
         return validate;
     }
@@ -88,10 +96,12 @@ public class dao {
         if (Validate.validatePhone(phoneField.getText())) {
             phonelabel.setVisible(true);
             phonelabel.setIcon(valid);
+            phoneField.setBackground(white);
             validate = true;
         } else {
             phonelabel.setVisible(true);
             phonelabel.setIcon(warning);
+            phoneField.setBackground(red);
         }
         return validate;
     }
@@ -101,10 +111,12 @@ public class dao {
         if (Validate.validateEmail(emailField.getText())) {
             emaillabel.setVisible(true);
             emaillabel.setIcon(valid);
+            emailField.setBackground(white);
             validate = true;
         } else {
             emaillabel.setVisible(true);
             emaillabel.setIcon(warning);
+            emailField.setBackground(red);
         }
         return validate;
     }
@@ -114,9 +126,11 @@ public class dao {
         if (usernameField.getText().isEmpty()) {
             usernamelabel.setVisible(true);
             usernamelabel.setIcon(warning);
+            usernameField.setBackground(red);
         } else {
             usernamelabel.setVisible(true);
             usernamelabel.setIcon(valid);
+            usernameField.setBackground(white);
             validate = true;
         }
         return validate;
@@ -127,9 +141,11 @@ public class dao {
         if (passwordField.getText().isEmpty()) {
             passwordlabel.setVisible(true);
             passwordlabel.setIcon(warning);
+            passwordField.setBackground(red);
         } else {
             passwordlabel.setVisible(true);
             passwordlabel.setIcon(valid);
+            passwordField.setBackground(white);
             validate = true;
         }
         return validate;
@@ -137,14 +153,6 @@ public class dao {
 
     public static String validateAvatar() {
         boolean validate = false;
-        /*if (avatarField.getText().isEmpty()) {
-            avatarlabel.setVisible(true);
-            avatarlabel.setIcon(warning);
-        } else {
-            avatarlabel.setVisible(true);
-            avatarlabel.setIcon(valid);
-            validate = true;
-        }*/
         FileNameExtensionFilter img = new FileNameExtensionFilter("JPG image", "jpg");
         JFileChooser avatar = new JFileChooser();
         avatar.setFileFilter(img);
@@ -172,28 +180,17 @@ public class dao {
         return image;
     }
 
-    /*
-    public static boolean validateAvatar1() {
-        boolean validate = false;
-        if (avatarField.getText().isEmpty()) {
-            avatarlabel.setVisible(true);
-            avatarlabel.setIcon(warning);
-        } else {
-            avatarlabel.setVisible(true);
-            avatarlabel.setIcon(valid);
-            validate = true;
-        }
-        return validate;
-    }
-     */
+
     public static boolean validateStatus() {
         boolean validate = false;
         if (statusField.getText().isEmpty()) {
             statuslabel.setVisible(true);
             statuslabel.setIcon(warning);
+            statusField.setBackground(red);
         } else {
             statuslabel.setVisible(true);
             statuslabel.setIcon(valid);
+            statusField.setBackground(white);
             validate = true;
         }
         return validate;
@@ -212,7 +209,6 @@ public class dao {
                 date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0))); //Cambiar el 0 por la de la confi
             }
             if (date1.timeBetweetDates(date1.DateToCalendar(), date1.SystemDate(), 1) < 18) {
-                //JOptionPane.showMessageDialog(null, "You can't register until you're 18 years old");
                 saveLabel.setText("You can't register until you're 18 years old");
                 saveLabel.setVisible(true);
                 validate = false;
@@ -224,9 +220,11 @@ public class dao {
         if (validate) {
             datebirthdaylabel.setIcon(valid);
             datebirthdaylabel.setVisible(true);
+            datebirthdayField.setBackground(white);
         } else {
             datebirthdaylabel.setIcon(warning);
             datebirthdaylabel.setVisible(true);
+            datebirthdayField.setBackground(red);
         }
         return validate;
     }
@@ -267,9 +265,11 @@ public class dao {
         if (validate) {
             hiringdatelabel.setIcon(valid);
             hiringdatelabel.setVisible(true);
+            hiringdateField.setBackground(white);
         } else {
             hiringdatelabel.setIcon(warning);
             hiringdatelabel.setVisible(true);
+            hiringdateField.setBackground(red);
         }
         return validate;
     }
@@ -279,10 +279,12 @@ public class dao {
         if (Validate.validateFloat(salaryField.getText())) {
             salarylabel.setVisible(true);
             salarylabel.setIcon(valid);
+            salaryField.setBackground(white);
             validate = true;
         } else {
             salarylabel.setVisible(true);
             salarylabel.setIcon(warning);
+            salaryField.setBackground(red);
         }
         return validate;
     }
@@ -292,10 +294,12 @@ public class dao {
         if (Validate.validateInt(activityField.getText())) {
             activitylabel.setVisible(true);
             activitylabel.setIcon(valid);
+            activityField.setBackground(white);
             validate = true;
         } else {
             activitylabel.setVisible(true);
             activitylabel.setIcon(warning);
+            activityField.setBackground(red);
         }
         return validate;
     }
