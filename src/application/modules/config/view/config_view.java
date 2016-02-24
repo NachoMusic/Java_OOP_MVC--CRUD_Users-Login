@@ -12,7 +12,6 @@ import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.kernel.Dummies;
 import application.modules.users.model.models.singleton;
-import application.modules.menu.view.app_view;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -452,8 +451,9 @@ public class config_view extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                setVisible(false);
-                new app_view().setVisible(true);
+                //setVisible(false);
+                //new app_view().setVisible(true);
+                dispose();
             }
         });
     }
