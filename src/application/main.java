@@ -13,7 +13,7 @@ import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.view.new_admin_view;
 import application.utils.Config_json;
-import application.view.app_view;
+import application.modules.menu.view.app_view;
 
 /**
  *

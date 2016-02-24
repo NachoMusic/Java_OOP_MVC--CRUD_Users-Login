@@ -13,7 +13,7 @@ import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.models.singleton;
 import application.utils.Functions;
 import application.utils.Menus;
-import application.view.app_view;
+import application.modules.menu.view.app_view;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -52,6 +52,11 @@ public class admin_view extends javax.swing.JFrame {
         sortbyAButton = new javax.swing.JButton();
         exportAButton = new javax.swing.JButton();
         importAButton = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        filemenu = new javax.swing.JMenu();
+        importmenu = new javax.swing.JMenuItem();
+        exportmenu = new javax.swing.JMenuItem();
+        sortmenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,18 +129,42 @@ public class admin_view extends javax.swing.JFrame {
             }
         });
 
+        filemenu.setText("File");
+
+        importmenu.setText("Import");
+        importmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                importmenuActionPerformed(evt);
+            }
+        });
+        filemenu.add(importmenu);
+
+        exportmenu.setText("Export");
+        exportmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportmenuActionPerformed(evt);
+            }
+        });
+        filemenu.add(exportmenu);
+
+        jMenuBar1.add(filemenu);
+
+        sortmenu.setText("Sort");
+        jMenuBar1.add(sortmenu);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(findAButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(createAButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(createAButton, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(changeDataAButtorn)
@@ -149,13 +178,16 @@ public class admin_view extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(exportAButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(importAButton)))))
-                .addContainerGap(118, Short.MAX_VALUE))
+                                .addComponent(importAButton))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createAButton)
                     .addComponent(changeDataAButtorn)
@@ -167,9 +199,7 @@ public class admin_view extends javax.swing.JFrame {
                     .addComponent(sortbyAButton)
                     .addComponent(exportAButton)
                     .addComponent(importAButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -262,6 +292,36 @@ public class admin_view extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_sortbyAButtonActionPerformed
 
+    private void exportmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportmenuActionPerformed
+        // TODO add your handling code here:
+        switch (SingletonF.configApp.getSavingextension()) {
+            case "json"://json
+                json.createjson();
+                break;
+            case "xml"://xml
+                xml.createxml();
+                break;
+            case "txt"://txt
+                txt.createtxt();
+                break;
+        }
+    }//GEN-LAST:event_exportmenuActionPerformed
+
+    private void importmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importmenuActionPerformed
+        // TODO add your handling code here:
+        switch (SingletonF.configApp.getSavingextension()) {
+            case "json"://json
+                json.load_json();
+                break;
+            case "xml"://xml
+                xml.load_xml();
+                break;
+            case "txt": //txt
+                txt.load_txt();
+                break;
+        }
+    }//GEN-LAST:event_importmenuActionPerformed
+
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -314,11 +374,16 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JButton createAButton;
     private javax.swing.JButton deleteDataAButton;
     private javax.swing.JButton exportAButton;
+    private javax.swing.JMenuItem exportmenu;
+    private javax.swing.JMenu filemenu;
     private javax.swing.JButton findAButton;
     private javax.swing.JButton importAButton;
+    private javax.swing.JMenuItem importmenu;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton printDataAButton;
     private javax.swing.JButton sortbyAButton;
+    private javax.swing.JMenu sortmenu;
     // End of variables declaration//GEN-END:variables
 }

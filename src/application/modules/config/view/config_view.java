@@ -12,7 +12,7 @@ import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.kernel.Dummies;
 import application.modules.users.model.models.singleton;
-import application.view.app_view;
+import application.modules.menu.view.app_view;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.view;
+package application.modules.menu.view;
 
 import application.modules.config.view.config_view;
 import application.models.SingletonF;
@@ -37,21 +37,25 @@ public class app_view extends javax.swing.JFrame {
         usregButton = new javax.swing.JButton();
         confButton = new javax.swing.JButton();
         labelMenu = new javax.swing.JLabel();
+        conflabel = new javax.swing.JLabel();
+        adminlabel = new javax.swing.JLabel();
+        clientslabel = new javax.swing.JLabel();
+        userslabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        adminsButton.setText("Admins");
+        adminsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/user_admin.png"))); // NOI18N
         adminsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminsButtonActionPerformed(evt);
             }
         });
 
-        clientsButton.setText("Clients");
+        clientsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/users.png"))); // NOI18N
 
-        usregButton.setText("Registered Users");
+        usregButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/user_man.png"))); // NOI18N
 
-        confButton.setText("Global Configuration");
+        confButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/configuration.png"))); // NOI18N
         confButton.setToolTipText("");
         confButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,8 +63,20 @@ public class app_view extends javax.swing.JFrame {
             }
         });
 
-        labelMenu.setFont(new java.awt.Font("Droid Sans", 0, 16)); // NOI18N
+        labelMenu.setFont(new java.awt.Font("Droid Sans", 1, 18)); // NOI18N
         labelMenu.setText("Choose an option:");
+
+        conflabel.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        conflabel.setText("Configuration");
+
+        adminlabel.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        adminlabel.setText("Admins");
+
+        clientslabel.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        clientslabel.setText("Clients");
+
+        userslabel.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
+        userslabel.setText("Registered users");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,18 +84,21 @@ public class app_view extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelMenu)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usregButton, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(adminsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(clientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(confButton, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                            .addComponent(usregButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(adminsButton))
+                        .addComponent(adminlabel)
+                        .addComponent(userslabel))
+                    .addComponent(labelMenu))
+                .addGap(83, 83, 83)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(clientslabel)
+                    .addComponent(conflabel)
+                    .addComponent(confButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(clientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,17 +106,22 @@ public class app_view extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(labelMenu)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(adminsButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(usregButton)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(clientsButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(confButton)
-                        .addGap(38, 38, 38))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adminsButton)
+                    .addComponent(clientsButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adminlabel)
+                    .addComponent(clientslabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usregButton)
+                    .addComponent(confButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(conflabel)
+                    .addComponent(userslabel))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,10 +177,14 @@ public class app_view extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adminlabel;
     private javax.swing.JButton adminsButton;
     private javax.swing.JButton clientsButton;
+    private javax.swing.JLabel clientslabel;
     private javax.swing.JButton confButton;
+    private javax.swing.JLabel conflabel;
     private javax.swing.JLabel labelMenu;
+    private javax.swing.JLabel userslabel;
     private javax.swing.JButton usregButton;
     // End of variables declaration//GEN-END:variables
 }

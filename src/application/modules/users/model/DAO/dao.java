@@ -9,10 +9,8 @@ import application.models.Dates;
 import static application.modules.users.view.new_admin_view.*;
 import application.utils.Validate;
 import java.awt.Image;
-import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
