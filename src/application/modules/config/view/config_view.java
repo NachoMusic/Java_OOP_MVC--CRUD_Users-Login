@@ -28,6 +28,7 @@ public class config_view extends javax.swing.JFrame {
     public config_view() {
         initComponents();
         closeWindow();
+        this.setAlwaysOnTop(true);
         successAddDum.setVisible(false);
         this.setTitle(SingletonF.language.getProperty("config"));
         this.setLocationRelativeTo(null);

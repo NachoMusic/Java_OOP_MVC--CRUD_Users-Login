@@ -5,7 +5,6 @@
  */
 package application.modules.users.view;
 
-
 import application.modules.users.model.BLL.bll;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,13 +22,13 @@ public class new_admin_view extends javax.swing.JFrame {
      */
     public static ImageIcon defaultAvatar = new ImageIcon("src/application/modules/users/view/img/anonymous_add.png");
     //private FileNameExtensionFilter img = new FileNameExtensionFilter("JPG image","jpg");
-    
+
     public new_admin_view() {
         initComponents();
         closeWindow();
         this.setTitle("Create new admin");
         this.setLocationRelativeTo(null);
-        
+
         saveLabel.setVisible(false);
         dnilabel.setVisible(false);
         namelabel.setVisible(false);
@@ -80,9 +79,9 @@ public class new_admin_view extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         avatarlabel = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        namebirthdaylabel = new javax.swing.JLabel();
         datebirthdaylabel = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        namehiringdatelabel = new javax.swing.JLabel();
         hiringdatelabel = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         salaryField = new javax.swing.JTextField();
@@ -266,14 +265,24 @@ public class new_admin_view extends javax.swing.JFrame {
         avatarlabel.setText(" ");
         getContentPane().add(avatarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 20, -1));
 
-        jLabel17.setText("Date birthday:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+        namebirthdaylabel.setText("Date birthday:");
+        namebirthdaylabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                namebirthdaylabelMouseEntered(evt);
+            }
+        });
+        getContentPane().add(namebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
 
         datebirthdaylabel.setText(" ");
         getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 20, 20));
 
-        jLabel19.setText("Hiring date:");
-        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        namehiringdatelabel.setText("Hiring date:");
+        namehiringdatelabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                namehiringdatelabelMouseEntered(evt);
+            }
+        });
+        getContentPane().add(namehiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
         hiringdatelabel.setText(" ");
         getContentPane().add(hiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 20, -1));
@@ -356,10 +365,10 @@ public class new_admin_view extends javax.swing.JFrame {
                 saveAdminButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(saveAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 70, -1));
+        getContentPane().add(saveAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 100, -1));
 
         discartButton.setText("Discart");
-        getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, -1, -1));
+        getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 90, -1));
 
         emptyButton.setText("Empty all fields");
         emptyButton.addActionListener(new java.awt.event.ActionListener() {
@@ -421,9 +430,13 @@ public class new_admin_view extends javax.swing.JFrame {
 
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("save button pressed");
-        if(bll.newAdmin())
-            dispose();
+        if (emptyButton.isVisible()) {
+            if (bll.newAdmin())
+                dispose();
+        }else{
+            if(bll.editAdmin())
+                dispose();
+        }
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
     private void emptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyButtonActionPerformed
@@ -436,8 +449,6 @@ public class new_admin_view extends javax.swing.JFrame {
         //llamas al bll que llama al dao
         //el kernel será el dao, y el functions users será el bll dice otro nombre
         bll.validateDNI();
-        bll.validateBirthday();
-        bll.validateHiringdate();
     }//GEN-LAST:event_dniFieldActionPerformed
 
     private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyTyped
@@ -544,7 +555,7 @@ public class new_admin_view extends javax.swing.JFrame {
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
         bll.validateUsername();
-        
+
     }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
@@ -652,6 +663,16 @@ public class new_admin_view extends javax.swing.JFrame {
         bll.validateAvatar();
     }//GEN-LAST:event_avatarbuttonActionPerformed
 
+    private void namebirthdaylabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_namebirthdaylabelMouseEntered
+        // TODO add your handling code here:
+        bll.validateBirthday();
+    }//GEN-LAST:event_namebirthdaylabelMouseEntered
+
+    private void namehiringdatelabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_namehiringdatelabelMouseEntered
+        // TODO add your handling code here:
+        bll.validateHiringdate();
+    }//GEN-LAST:event_namehiringdatelabelMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -665,37 +686,6 @@ public class new_admin_view extends javax.swing.JFrame {
         });
     }
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(new_admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(new_admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(new_admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(new_admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new new_admin_view().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField activityField;
@@ -717,8 +707,6 @@ public class new_admin_view extends javax.swing.JFrame {
     public static javax.swing.JLabel jLabel11;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel15;
-    public static javax.swing.JLabel jLabel17;
-    public static javax.swing.JLabel jLabel19;
     public static javax.swing.JLabel jLabel21;
     public static javax.swing.JLabel jLabel23;
     public static javax.swing.JLabel jLabel25;
@@ -728,6 +716,8 @@ public class new_admin_view extends javax.swing.JFrame {
     public static javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JTextField nameField;
+    public static javax.swing.JLabel namebirthdaylabel;
+    public static javax.swing.JLabel namehiringdatelabel;
     public static javax.swing.JLabel namelabel;
     public static javax.swing.JPasswordField passwordField;
     public static javax.swing.JLabel passwordlabel;

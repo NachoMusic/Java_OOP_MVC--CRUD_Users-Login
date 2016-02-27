@@ -14,13 +14,16 @@ import application.modules.users.view.admin_view;
  * @author nacho
  */
 public class app_view extends javax.swing.JFrame {
+
     /**
      * Creates new form app_view
      */
+    public static config_view configview;
+
     public app_view() {
         initComponents();
         this.setTitle(SingletonF.language.getProperty("application_users"));
-	this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -131,14 +134,18 @@ public class app_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         new admin_view().setVisible(true);
-        
+
     }//GEN-LAST:event_adminsButtonActionPerformed
 
     private void confButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confButtonActionPerformed
         // TODO add your handling code here:
         //this.setVisible(false);
         //dispose();
-        new config_view().setVisible(true);
+
+        configview = new config_view();
+        configview.setVisible(true);
+
+
     }//GEN-LAST:event_confButtonActionPerformed
 
     /**

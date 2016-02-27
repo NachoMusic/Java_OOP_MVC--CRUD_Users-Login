@@ -5,17 +5,19 @@
  */
 package application.modules.users.view;
 
+import application.models.Dates;
 import application.models.SingletonF;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
-import application.modules.users.model.DAO.functions_users;
 import application.modules.users.model.models.singleton;
 import application.utils.Functions;
 import application.utils.Menus;
 import application.modules.menu.view.app_view;
+import static application.modules.users.view.new_admin_view.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Date;
 
 /**
  *
@@ -32,6 +34,7 @@ public class admin_view extends javax.swing.JFrame {
         this.setTitle("Administrators");
         this.setLocationRelativeTo(null);
     }
+    public static int Admintochange;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -213,7 +216,27 @@ public class admin_view extends javax.swing.JFrame {
 
     private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
         // TODO add your handling code here:
-        singleton.admins.changeData();
+        //singleton.admins.changeData();
+        
+        Admintochange = Functions.validateint(SingletonF.language.getProperty("adminchange"), SingletonF.language.getProperty("adminchange2"));
+        new new_admin_view().setVisible(true);
+        saveAdminButton.setText("Edit Admin");
+        emptyButton.setVisible(false);
+        dniField.setText(singleton.admins.getData(Admintochange-1).getDni());
+        nameField.setText(singleton.admins.getData(Admintochange-1).getName());
+        subnameField.setText(singleton.admins.getData(Admintochange-1).getSubname());
+        phoneField.setText(singleton.admins.getData(Admintochange-1).getPhone_number());
+        emailField.setText(singleton.admins.getData(Admintochange-1).getEmail());
+        usernameField.setText(singleton.admins.getData(Admintochange-1).getUser());
+        passwordField.setText(singleton.admins.getData(Admintochange-1).getPass());
+        avatarField.setText(singleton.admins.getData(Admintochange-1).getAvatar());
+        statusField.setText(singleton.admins.getData(Admintochange-1).getState());
+        Dates b = new Dates(singleton.admins.getData(Admintochange-1).getDate_birthday());
+        datebirthdayField.setCalendar(b.DateToCalendar());
+        Dates h = new Dates(singleton.admins.getData(Admintochange-1).getHirin_date());
+        hiringdateField.setCalendar(h.DateToCalendar());
+        salaryField.setText(singleton.admins.getData(Admintochange-1).getSalary()+"");
+        activityField.setText(singleton.admins.getData(Admintochange-1).getActivity()+"");
     }//GEN-LAST:event_changeDataAButtornActionPerformed
 
     private void printDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDataAButtonActionPerformed
@@ -337,37 +360,6 @@ public class admin_view extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(admin_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new admin_view().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton changeDataAButtorn;

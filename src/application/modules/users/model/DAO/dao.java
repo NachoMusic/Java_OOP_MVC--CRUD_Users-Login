@@ -57,6 +57,7 @@ public class dao {
         } else {
             dnilabel.setVisible(true);
             dnilabel.setIcon(warning);
+            dniField.setBackground(red);
         }
         return validate;
     }

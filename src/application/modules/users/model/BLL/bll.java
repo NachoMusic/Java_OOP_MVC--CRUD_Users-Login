@@ -9,6 +9,7 @@ import application.models.Dates;
 import application.modules.users.model.DAO.dao;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
+import static application.modules.users.view.admin_view.Admintochange;
 import static application.modules.users.view.new_admin_view.activityField;
 import static application.modules.users.view.new_admin_view.avatarField;
 import static application.modules.users.view.new_admin_view.datebirthdayField;
@@ -107,7 +108,7 @@ public class bll {
             email = emailField.getText();
             user = usernameField.getText();
             pass = passwordField.getText();
-            
+
             File origen = new File(avatarField.getText());
             File destino = new File("src/application/modules/users/view/img/" + dniField.getText());
             try {
@@ -124,7 +125,7 @@ public class bll {
                 ioe.printStackTrace();
             }
             avatar = "src/application/modules/users/view/img/" + dniField.getText();
-            
+
             state = statusField.getText();
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
@@ -137,6 +138,70 @@ public class bll {
         } else {
             saveLabel.setVisible(true);
             saveLabel.setText("The admin was not created, check the errors in the fields");
+            validA = false;
+        }
+        return validA;
+    }
+
+    public static boolean editAdmin() {
+        boolean validA = true;
+        String dni, name, subname, phone_number, email, user, pass, avatar,
+                state, date_birthday, hiring_date;
+        float salary;
+        int activity;
+
+        if (validateDNI() && validateName() && validateSubname() && validatePhone()
+                && validateEmail() && validateUsername() && validatePassword()
+                && validateStatus() && validateBirthday() && validateHiringdate()
+                && validateSalary() && validateActivity()) {
+            validA = true;
+            dni = dniField.getText();
+            name = nameField.getText();
+            subname = subnameField.getText();
+            phone_number = phoneField.getText();
+            email = emailField.getText();
+            user = usernameField.getText();
+            pass = passwordField.getText();
+            try {
+                File origen = new File(avatarField.getText());
+                File destino = new File("src/application/modules/users/view/img/" + dniField.getText());
+
+                InputStream in = new FileInputStream(origen);
+                OutputStream out = new FileOutputStream(destino);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                in.close();
+                out.close();
+            } catch (Exception e) {
+            }
+            avatar = "src/application/modules/users/view/img/" + dniField.getText();
+
+            state = statusField.getText();
+            Dates date = new Dates("");
+            date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
+            hiring_date = date.DateToString(hiringdateField.getCalendar(), 0);
+            salary = Float.parseFloat(salaryField.getText());
+            activity = Integer.parseInt(activityField.getText());
+
+            singleton.admins.getData(Admintochange - 1).setDni(dni);
+            singleton.admins.getData(Admintochange - 1).setName(name);
+            singleton.admins.getData(Admintochange - 1).setSubname(subname);
+            singleton.admins.getData(Admintochange - 1).setPhone_number(phone_number);
+            singleton.admins.getData(Admintochange - 1).setEmail(email);
+            singleton.admins.getData(Admintochange - 1).setUser(user);
+            singleton.admins.getData(Admintochange - 1).setPass(pass);
+            singleton.admins.getData(Admintochange - 1).setAvatar(avatar);
+            singleton.admins.getData(Admintochange - 1).setState(state);
+            singleton.admins.getData(Admintochange - 1).setDate_birthday(date_birthday);
+            singleton.admins.getData(Admintochange - 1).setHirin_date(hiring_date);
+            singleton.admins.getData(Admintochange - 1).setSalary(salary);
+            singleton.admins.getData(Admintochange - 1).setActivity(activity);
+        } else {
+            saveLabel.setVisible(true);
+            saveLabel.setText("The admin was not edited, check the errors in the fields");
             validA = false;
         }
         return validA;
