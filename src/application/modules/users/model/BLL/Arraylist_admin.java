@@ -43,6 +43,10 @@ public class Arraylist_admin {
         }
     }
 
+    public int size() {
+        return admins.size();
+    }
+
     public admin getData(int num) {
         return admins.get(num);
     }

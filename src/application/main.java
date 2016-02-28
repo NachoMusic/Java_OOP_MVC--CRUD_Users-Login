@@ -58,7 +58,6 @@ public class main {
         }
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
-            
             public void run() {
                 new app_view().setVisible(true);
             }
