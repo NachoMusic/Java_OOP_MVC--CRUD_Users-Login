@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list>
   <admin>
-    <dni>11111111H</dni>
-    <name>prueba</name>
-    <subname>asdf</subname>
-    <phone__number>135135</phone__number>
-    <email>fsad@asdf.fsda</email>
-    <user>agasasf</user>
-    <pass>fqweaszfd</pass>
-    <avatar>asdfw</avatar>
-    <state>asffdsa</state>
-    <date__birthday>10/10/1991</date__birthday>
-    <age>24</age>
-    <points>0</points>
-    <discount>0</discount>
-    <incentives>493</incentives>
-    <advantages>0.0</advantages>
-    <hirin__date>12/12/2014</hirin__date>
-    <salary>1128.7859</salary>
-    <years__of__service>1</years__of__service>
-    <activity>1234</activity>
-  </admin>
-  <admin>
     <dni>12345678Z</dni>
     <name>ASDFASDAFAGSSGAE</name>
     <subname>asdf</subname>

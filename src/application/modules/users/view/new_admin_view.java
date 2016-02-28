@@ -431,11 +431,15 @@ public class new_admin_view extends javax.swing.JFrame {
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
         // TODO add your handling code here:
         if (emptyButton.isVisible()) {
-            if (bll.newAdmin())
+            if (bll.newAdmin()){
                 dispose();
+                new admin_view().setVisible(true);
+            }
         }else{
-            if(bll.editAdmin())
+            if(bll.editAdmin()){
                 dispose();
+                new admin_view().setVisible(true);
+            }
         }
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 

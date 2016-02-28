@@ -36,15 +36,48 @@ public class admin_view extends javax.swing.JFrame {
         closeWindow();
         this.setTitle("Administrators");
         this.setLocationRelativeTo(null);
-        model = (DefaultTableModel) adminstable.getModel();
+        updatetable();
+        /*model = (DefaultTableModel) adminstable.getModel();
 
         for (int i = 0; i < singleton.admins.size(); i++) {
-            model.insertRow(model.getRowCount(), new Object[]{singleton.admins.getData(i).getDni(),
+            model.insertRow(model.getRowCount(), new Object[]{i+1,singleton.admins.getData(i).getDni(),
                 singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
                 singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
                 singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
                 singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getHirin_date(),
                 singleton.admins.getData(i).getSalary(), singleton.admins.getData(i).getActivity()
+            });
+        }*/
+    }
+    public void updatetable(){
+        adminstable = new javax.swing.JTable();
+        adminstable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+            },
+            new String [] {
+                "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
+            }
+        ));
+        adminstable.setColumnSelectionAllowed(true);
+        adminstable.getTableHeader().setReorderingAllowed(false);
+        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminstableMouseClicked(evt);
+            }
+        });
+        list.setViewportView(adminstable);
+        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        
+
+        model = (DefaultTableModel) adminstable.getModel();
+        for (int i = 0; i < singleton.admins.size(); i++) {
+            model.insertRow(model.getRowCount(), new Object[]{i+1,singleton.admins.getData(i).getDni(),
+                singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
+                singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
+                singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
+                singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
+                singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
+                singleton.admins.getData(i).getActivity()
             });
         }
     }
@@ -78,7 +111,13 @@ public class admin_view extends javax.swing.JFrame {
         end = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        dniform = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        nameform = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        surnameform = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
         importmenu = new javax.swing.JMenuItem();
@@ -155,13 +194,14 @@ public class admin_view extends javax.swing.JFrame {
         });
 
         panelviews.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 101, 101)));
+        panelviews.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         adminstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Hiring Date", "Salary", "Activity"
+                "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
             }
         ));
         adminstable.setColumnSelectionAllowed(true);
@@ -174,72 +214,91 @@ public class admin_view extends javax.swing.JFrame {
         list.setViewportView(adminstable);
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
+        panelviews.add(list, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 1130, 160));
+
         beginning.setText("|<");
+        panelviews.add(beginning, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, -1, -1));
 
         backwards.setText("<");
+        panelviews.add(backwards, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
 
         forward.setText(">");
+        panelviews.add(forward, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, -1, -1));
 
         end.setText(">|");
-
-        javax.swing.GroupLayout panelviewsLayout = new javax.swing.GroupLayout(panelviews);
-        panelviews.setLayout(panelviewsLayout);
-        panelviewsLayout.setHorizontalGroup(
-            panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelviewsLayout.createSequentialGroup()
-                .addGap(324, 324, 324)
-                .addComponent(beginning)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(backwards)
-                .addGap(34, 34, 34)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(forward)
-                .addGap(18, 18, 18)
-                .addComponent(end))
-            .addComponent(list, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        panelviewsLayout.setVerticalGroup(
-            panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelviewsLayout.createSequentialGroup()
-                .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(beginning)
-                    .addComponent(backwards)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(forward)
-                    .addComponent(end))
-                .addGap(22, 22, 22))
-        );
+        panelviews.add(end, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 160, -1, -1));
+        panelviews.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 51, -1));
 
         jTabbedPane1.addTab("List", panelviews);
+
+        jLabel2.setText("DNI:");
+
+        dniform.setEditable(false);
+
+        jLabel4.setText("Name:");
+
+        nameform.setEditable(false);
+
+        jLabel6.setText("Surname:");
+
+        surnameform.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(39, 39, 39))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(27, 27, 27)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(nameform, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(dniform)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(surnameform, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)))
+                .addGap(734, 734, 734))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 194, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(dniform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(nameform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(surnameform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Form", jPanel1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1132, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 194, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Kanbas", jPanel2);
+        jTabbedPane1.addTab("Kanban", jPanel3);
 
         filemenu.setText("File");
 
@@ -298,21 +357,21 @@ public class admin_view extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(findAButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(createAButton, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(35, 35, 35)
+                        .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(changeDataAButtorn)
                             .addComponent(sortbyAButton))
-                        .addGap(55, 55, 55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(printDataAButton)
-                                .addGap(92, 92, 92)
-                                .addComponent(deleteDataAButton))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(exportAButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(importAButton)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(importAButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(printDataAButton)
+                                .addGap(167, 167, 167)
+                                .addComponent(deleteDataAButton)))
+                        .addGap(257, 257, 257)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -321,23 +380,24 @@ public class admin_view extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(findAButton)
+                            .addComponent(sortbyAButton)
+                            .addComponent(exportAButton))
+                        .addGap(78, 78, 78))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(createAButton)
                             .addComponent(changeDataAButtorn)
                             .addComponent(printDataAButton)
                             .addComponent(deleteDataAButton))
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(11, 11, 11)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(findAButton)
-                    .addComponent(sortbyAButton)
-                    .addComponent(exportAButton)
-                    .addComponent(importAButton))
-                .addGap(78, 78, 78))
+                        .addGap(18, 18, 18)
+                        .addComponent(importAButton)
+                        .addGap(89, 89, 89))))
         );
 
         pack();
@@ -347,13 +407,14 @@ public class admin_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         //singleton.admins.addData(functions_users.newadmin());
         new new_admin_view().setVisible(true);
+        dispose();
     }//GEN-LAST:event_createAButtonActionPerformed
 
     private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
         // TODO add your handling code here:
         //singleton.admins.changeData();
 
-        Admintochange = Functions.validateint(SingletonF.language.getProperty("adminchange"), SingletonF.language.getProperty("adminchange2"));
+        Admintochange = Integer.parseInt(selected);
         new new_admin_view().setVisible(true);
         saveAdminButton.setText("Edit Admin");
         emptyButton.setVisible(false);
@@ -372,6 +433,7 @@ public class admin_view extends javax.swing.JFrame {
         hiringdateField.setCalendar(h.DateToCalendar());
         salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
         activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");
+        dispose();
     }//GEN-LAST:event_changeDataAButtornActionPerformed
 
     private void printDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDataAButtonActionPerformed
@@ -379,7 +441,18 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_printDataAButtonActionPerformed
 
     private void deleteDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataAButtonActionPerformed
-        singleton.admins.deleteData();
+        singleton.admins.deleteData(Integer.parseInt(selected));
+        updatetable();
+        
+        /*for (int i = 0; i < singleton.admins.size(); i++) { //Mover a una funcion
+            model.insertRow(model.getRowCount(), new Object[]{i+1,singleton.admins.getData(i).getDni(),
+                singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
+                singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
+                singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
+                singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getHirin_date(),
+                singleton.admins.getData(i).getSalary(), singleton.admins.getData(i).getActivity()
+            });
+        }*/
     }//GEN-LAST:event_deleteDataAButtonActionPerformed
 
     private void findAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findAButtonActionPerformed
@@ -442,6 +515,7 @@ public class admin_view extends javax.swing.JFrame {
                 break;
             case 3://Go back
         }
+        updatetable();
     }//GEN-LAST:event_sortbyAButtonActionPerformed
 
     private void exportmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportmenuActionPerformed
@@ -471,6 +545,7 @@ public class admin_view extends javax.swing.JFrame {
                 txt.load_txt();
                 break;
         }
+        updatetable();
     }//GEN-LAST:event_importmenuActionPerformed
 
     private void listmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listmenuActionPerformed
@@ -484,6 +559,9 @@ public class admin_view extends javax.swing.JFrame {
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
         // TODO add your handling code here:
         selected = String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0));
+        dniform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 1)));
+        nameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 2)));
+        surnameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 3)));
     }//GEN-LAST:event_adminstableMouseClicked
 
     private void closeWindow() {
@@ -509,6 +587,7 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JButton changeDataAButtorn;
     private javax.swing.JButton createAButton;
     private javax.swing.JButton deleteDataAButton;
+    private javax.swing.JTextField dniform;
     private javax.swing.JButton end;
     private javax.swing.JButton exportAButton;
     private javax.swing.JMenuItem exportmenu;
@@ -519,18 +598,23 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JButton importAButton;
     private javax.swing.JMenuItem importmenu;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem kanbanmenu;
     private javax.swing.JScrollPane list;
     private javax.swing.JMenuItem listmenu;
+    private javax.swing.JTextField nameform;
     private javax.swing.JPanel panelviews;
     private javax.swing.JButton printDataAButton;
     private javax.swing.JButton sortbyAButton;
     private javax.swing.JMenu sortmenu;
+    private javax.swing.JTextField surnameform;
     // End of variables declaration//GEN-END:variables
 }

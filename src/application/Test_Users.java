@@ -91,7 +91,7 @@ public class Test_Users {
                                 singleton.admins.printArraylist();
                                 break;
                             case 3://Delete
-                                singleton.admins.deleteData();
+                                singleton.admins.deleteData(Functions.validateInt(""));
                                 break;
                             case 4://Find
                                 option = Menus.menu(find, SingletonF.language.getProperty("searchadmins"),

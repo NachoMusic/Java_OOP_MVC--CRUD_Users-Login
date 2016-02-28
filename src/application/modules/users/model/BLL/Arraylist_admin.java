@@ -142,9 +142,9 @@ public class Arraylist_admin {
         };
     }
 
-    public void deleteData() {
+    public void deleteData(int num) {
         try {
-            admins.remove(Functions.validateint("Type the number of the user to delete", "Delete entries") - 1);
+            admins.remove(num - 1);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "The admin does not exist");
         }
