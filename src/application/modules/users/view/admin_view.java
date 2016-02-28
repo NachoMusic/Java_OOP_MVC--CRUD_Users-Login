@@ -49,17 +49,26 @@ public class admin_view extends javax.swing.JFrame {
         changeDataAButtorn = new javax.swing.JButton();
         printDataAButton = new javax.swing.JButton();
         deleteDataAButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         findAButton = new javax.swing.JButton();
         sortbyAButton = new javax.swing.JButton();
         exportAButton = new javax.swing.JButton();
         importAButton = new javax.swing.JButton();
+        panelviews = new javax.swing.JPanel();
+        list = new javax.swing.JScrollPane();
+        adminstable = new javax.swing.JTable();
+        beginning = new javax.swing.JButton();
+        backwards = new javax.swing.JButton();
+        forward = new javax.swing.JButton();
+        end = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
         importmenu = new javax.swing.JMenuItem();
         exportmenu = new javax.swing.JMenuItem();
         sortmenu = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        listmenu = new javax.swing.JMenuItem();
+        formmenu = new javax.swing.JMenuItem();
+        kanbanmenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,19 +100,6 @@ public class admin_view extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
         findAButton.setText("Find");
         findAButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +128,75 @@ public class admin_view extends javax.swing.JFrame {
             }
         });
 
+        panelviews.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 101, 101)));
+
+        adminstable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Hiring Date", "Salary", "Activity"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        adminstable.setColumnSelectionAllowed(true);
+        adminstable.getTableHeader().setReorderingAllowed(false);
+        list.setViewportView(adminstable);
+        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        beginning.setText("|<");
+
+        backwards.setText("<");
+
+        forward.setText(">");
+
+        end.setText(">|");
+
+        javax.swing.GroupLayout panelviewsLayout = new javax.swing.GroupLayout(panelviews);
+        panelviews.setLayout(panelviewsLayout);
+        panelviewsLayout.setHorizontalGroup(
+            panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelviewsLayout.createSequentialGroup()
+                .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(318, 318, 318)
+                        .addComponent(beginning)
+                        .addGap(18, 18, 18)
+                        .addComponent(backwards)
+                        .addGap(72, 72, 72)
+                        .addComponent(forward)
+                        .addGap(18, 18, 18)
+                        .addComponent(end)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelviewsLayout.setVerticalGroup(
+            panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelviewsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backwards)
+                    .addComponent(forward)
+                    .addComponent(end)
+                    .addComponent(beginning))
+                .addContainerGap())
+        );
+
         filemenu.setText("File");
 
         importmenu.setText("Import");
@@ -155,6 +220,24 @@ public class admin_view extends javax.swing.JFrame {
         sortmenu.setText("Sort");
         jMenuBar1.add(sortmenu);
 
+        jMenu1.setText("Views");
+
+        listmenu.setText("List");
+        listmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listmenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(listmenu);
+
+        formmenu.setText("Form");
+        jMenu1.add(formmenu);
+
+        kanbanmenu.setText("Kanban");
+        jMenu1.add(kanbanmenu);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,9 +245,12 @@ public class admin_view extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelviews, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(206, 206, 206)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(findAButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(createAButton, javax.swing.GroupLayout.Alignment.LEADING))
@@ -181,16 +267,15 @@ public class admin_view extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(exportAButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(importAButton))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                                .addComponent(importAButton)))
+                        .addGap(0, 310, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
+                .addComponent(panelviews, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createAButton)
                     .addComponent(changeDataAButtorn)
@@ -202,7 +287,7 @@ public class admin_view extends javax.swing.JFrame {
                     .addComponent(sortbyAButton)
                     .addComponent(exportAButton)
                     .addComponent(importAButton))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGap(71, 71, 71))
         );
 
         pack();
@@ -345,6 +430,11 @@ public class admin_view extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_importmenuActionPerformed
 
+    private void listmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listmenuActionPerformed
+        // TODO add your handling code here:
+        panelviews.setVisible(true);
+    }//GEN-LAST:event_listmenuActionPerformed
+
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -362,18 +452,27 @@ public class admin_view extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable adminstable;
+    private javax.swing.JButton backwards;
+    private javax.swing.JButton beginning;
     private javax.swing.JButton changeDataAButtorn;
     private javax.swing.JButton createAButton;
     private javax.swing.JButton deleteDataAButton;
+    private javax.swing.JButton end;
     private javax.swing.JButton exportAButton;
     private javax.swing.JMenuItem exportmenu;
     private javax.swing.JMenu filemenu;
     private javax.swing.JButton findAButton;
+    private javax.swing.JMenuItem formmenu;
+    private javax.swing.JButton forward;
     private javax.swing.JButton importAButton;
     private javax.swing.JMenuItem importmenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JMenuItem kanbanmenu;
+    private javax.swing.JScrollPane list;
+    private javax.swing.JMenuItem listmenu;
+    private javax.swing.JPanel panelviews;
     private javax.swing.JButton printDataAButton;
     private javax.swing.JButton sortbyAButton;
     private javax.swing.JMenu sortmenu;
