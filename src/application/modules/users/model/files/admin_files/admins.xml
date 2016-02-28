@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list>
   <admin>
-    <dni>12345678Z</dni>
-    <name>ASDFASDAFAGSSGAE</name>
-    <subname>asdf</subname>
-    <phone__number>1234</phone__number>
-    <email>asdf@asdf.asdf</email>
-    <user>asdf</user>
-    <pass>fdsa</pass>
-    <avatar>asdf</avatar>
-    <state>fdsa</state>
-    <date__birthday>10/10/1990</date__birthday>
-    <age>25</age>
+    <dni>00000000T</dni>
+    <name>asfdf</name>
+    <subname>fsad</subname>
+    <phone__number>3241</phone__number>
+    <email>sfda@safd.adsf</email>
+    <user>dafs</user>
+    <pass>afsd</pass>
+    <avatar>src/application/modules/users/view/img/00000000T</avatar>
+    <state>asfd</state>
+    <date__birthday>09/02/1984</date__birthday>
+    <age>32</age>
     <points>0</points>
     <discount>0</discount>
     <incentives>493</incentives>
     <advantages>0.0</advantages>
-    <hirin__date>12/12/2012</hirin__date>
-    <salary>1128.885</salary>
-    <years__of__service>3</years__of__service>
+    <hirin__date>03/02/2016</hirin__date>
+    <salary>1234.0</salary>
+    <years__of__service>0</years__of__service>
     <activity>1234</activity>
   </admin>
   <admin>
-    <dni>66666666Q</dni>
+    <dni>21699146A</dni>
     <name>asdf</name>
-    <subname>fsda</subname>
-    <phone__number>42134321</phone__number>
-    <email>sadfsadf@asdf.fdsa</email>
-    <user>fdsafd</user>
-    <pass>fdsafdsa</pass>
-    <avatar>asdf</avatar>
-    <state>rewq</state>
-    <date__birthday>12/12/1992</date__birthday>
-    <age>23</age>
+    <subname>sfd</subname>
+    <phone__number>1234</phone__number>
+    <email>afsd@as.adfs</email>
+    <user>sfad</user>
+    <pass>asdf</pass>
+    <avatar>src/application/modules/users/view/img/21699146A</avatar>
+    <state>fasd</state>
+    <date__birthday>11/02/1983</date__birthday>
+    <age>33</age>
     <points>0</points>
     <discount>0</discount>
     <incentives>493</incentives>
     <advantages>0.0</advantages>
-    <hirin__date>10/10/2014</hirin__date>
-    <salary>1128.885</salary>
-    <years__of__service>1</years__of__service>
+    <hirin__date>01/02/2016</hirin__date>
+    <salary>1234.0</salary>
+    <years__of__service>0</years__of__service>
     <activity>1234</activity>
   </admin>
 </list>
