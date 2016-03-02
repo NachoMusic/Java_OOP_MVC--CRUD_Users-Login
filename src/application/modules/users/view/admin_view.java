@@ -15,8 +15,13 @@ import application.utils.Functions;
 import application.utils.Menus;
 import application.modules.menu.view.app_view;
 import static application.modules.users.view.new_admin_view.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,11 +40,15 @@ public class admin_view extends javax.swing.JFrame {
     public admin_view() {
         initComponents();
         closeWindow();
+
         this.setTitle("Administrators");
         this.setLocationRelativeTo(null);
         page = 10;
         movepage = 10;
         updatetable();
+        //messages();
+        //admincreated.setVisible(false);
+        timer.start();
         /*model = (DefaultTableModel) adminstable.getModel();
 
         for (int i = 0; i < singleton.admins.size(); i++) {
@@ -72,19 +81,7 @@ public class admin_view extends javax.swing.JFrame {
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         model = (DefaultTableModel) adminstable.getModel();
-        /*for (int i = 0; i < singleton.admins.size(); i++) {
-            model.insertRow(model.getRowCount(), new Object[]{i+1,singleton.admins.getData(i).getDni(),
-                singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
-                singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
-                singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
-                singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
-                singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
-                singleton.admins.getData(i).getActivity()
-            });
-        }*/
- /*if(page==10){
-            movepage=10;
-        }*/
+
         int maxpage = singleton.admins.size();
         if (movepage > maxpage) {
             movepage = maxpage;
@@ -101,6 +98,21 @@ public class admin_view extends javax.swing.JFrame {
                 });
             }
         } else {
+            if (movepage - page < 0 || movepage < 0) {
+                movepage = 10;
+                page = 10;
+                combopage.setSelectedIndex(0);
+                for (int i = 0; i < 10; i++) {
+                    model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
+                        singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
+                        singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
+                        singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
+                        singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
+                        singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
+                        singleton.admins.getData(i).getActivity()
+                    });
+                }
+            }
             for (int i = (movepage - page); i < movepage; i++) {
                 model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
                     singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
@@ -170,6 +182,7 @@ public class admin_view extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         ageform = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
+        admincreated = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
         importmenu = new javax.swing.JMenuItem();
@@ -294,7 +307,7 @@ public class admin_view extends javax.swing.JFrame {
         panelviews.add(end, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, -1));
         panelviews.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 51, -1));
 
-        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 5 Admins", "Show 20 Admins", "Show 50 Admins" }));
+        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 5 Admins" }));
         combopage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combopageActionPerformed(evt);
@@ -318,9 +331,15 @@ public class admin_view extends javax.swing.JFrame {
 
         jLabel1.setText("Phone:");
 
+        phoneform.setEditable(false);
+
         jLabel3.setText("Email:");
 
         jLabel5.setText("User:");
+
+        emailform.setEditable(false);
+
+        userform.setEditable(false);
 
         jLabel7.setText("Status:");
 
@@ -332,9 +351,21 @@ public class admin_view extends javax.swing.JFrame {
 
         jLabel11.setText("Activity:");
 
+        stateform.setEditable(false);
+
+        birthdayform.setEditable(false);
+
+        hiringdateform.setEditable(false);
+
+        salaryform.setEditable(false);
+
+        activityform.setEditable(false);
+
         avatarform.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel12.setText("Age:");
+
+        ageform.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -464,6 +495,10 @@ public class admin_view extends javax.swing.JFrame {
 
         tabbedtable.addTab("Kanban", jPanel3);
 
+        admincreated.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        admincreated.setForeground(new java.awt.Color(18, 107, 1));
+        admincreated.setText("Admins");
+
         filemenu.setText("File");
 
         importmenu.setText("Import");
@@ -538,12 +573,18 @@ public class admin_view extends javax.swing.JFrame {
                         .addGap(138, 138, 138)
                         .addComponent(jButton1)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(552, 552, 552)
+                .addComponent(admincreated)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tabbedtable, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(admincreated)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -576,27 +617,28 @@ public class admin_view extends javax.swing.JFrame {
     private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
         // TODO add your handling code here:
         //singleton.admins.changeData();
-
-        Admintochange = Integer.parseInt(selected);
-        new new_admin_view().setVisible(true);
-        saveAdminButton.setText("Edit Admin");
-        emptyButton.setVisible(false);
-        dniField.setText(singleton.admins.getData(Admintochange - 1).getDni());
-        nameField.setText(singleton.admins.getData(Admintochange - 1).getName());
-        subnameField.setText(singleton.admins.getData(Admintochange - 1).getSubname());
-        phoneField.setText(singleton.admins.getData(Admintochange - 1).getPhone_number());
-        emailField.setText(singleton.admins.getData(Admintochange - 1).getEmail());
-        usernameField.setText(singleton.admins.getData(Admintochange - 1).getUser());
-        passwordField.setText(singleton.admins.getData(Admintochange - 1).getPass());
-        avatarField.setText(singleton.admins.getData(Admintochange - 1).getAvatar());
-        statusField.setText(singleton.admins.getData(Admintochange - 1).getState());
-        Dates b = new Dates(singleton.admins.getData(Admintochange - 1).getDate_birthday());
-        datebirthdayField.setCalendar(b.DateToCalendar());
-        Dates h = new Dates(singleton.admins.getData(Admintochange - 1).getHirin_date());
-        hiringdateField.setCalendar(h.DateToCalendar());
-        salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
-        activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");
-        dispose();
+        if (selected != null) {
+            Admintochange = Integer.parseInt(selected);
+            new new_admin_view().setVisible(true);
+            saveAdminButton.setText("Edit Admin");
+            emptyButton.setVisible(false);
+            dniField.setText(singleton.admins.getData(Admintochange - 1).getDni());
+            nameField.setText(singleton.admins.getData(Admintochange - 1).getName());
+            subnameField.setText(singleton.admins.getData(Admintochange - 1).getSubname());
+            phoneField.setText(singleton.admins.getData(Admintochange - 1).getPhone_number());
+            emailField.setText(singleton.admins.getData(Admintochange - 1).getEmail());
+            usernameField.setText(singleton.admins.getData(Admintochange - 1).getUser());
+            passwordField.setText(singleton.admins.getData(Admintochange - 1).getPass());
+            avatarField.setText(singleton.admins.getData(Admintochange - 1).getAvatar());
+            statusField.setText(singleton.admins.getData(Admintochange - 1).getState());
+            Dates b = new Dates(singleton.admins.getData(Admintochange - 1).getDate_birthday());
+            datebirthdayField.setCalendar(b.DateToCalendar());
+            Dates h = new Dates(singleton.admins.getData(Admintochange - 1).getHirin_date());
+            hiringdateField.setCalendar(h.DateToCalendar());
+            salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
+            activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");
+            dispose();
+        }
     }//GEN-LAST:event_changeDataAButtornActionPerformed
 
     private void printDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDataAButtonActionPerformed
@@ -604,18 +646,10 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_printDataAButtonActionPerformed
 
     private void deleteDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataAButtonActionPerformed
-        singleton.admins.deleteData(Integer.parseInt(selected));
-        updatetable();
-
-        /*for (int i = 0; i < singleton.admins.size(); i++) { //Mover a una funcion
-            model.insertRow(model.getRowCount(), new Object[]{i+1,singleton.admins.getData(i).getDni(),
-                singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
-                singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
-                singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
-                singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getHirin_date(),
-                singleton.admins.getData(i).getSalary(), singleton.admins.getData(i).getActivity()
-            });
-        }*/
+        if (selected != null) {
+            singleton.admins.deleteData(Integer.parseInt(selected));
+            updatetable();
+        }
     }//GEN-LAST:event_deleteDataAButtonActionPerformed
 
     private void findAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findAButtonActionPerformed
@@ -744,7 +778,8 @@ public class admin_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         movepage += page;
         if (movepage > singleton.admins.size() + page) {
-            movepage -= page;
+            //movepage -= page;
+            movepage = 10;
         }
         updatetable();
     }//GEN-LAST:event_forwardActionPerformed
@@ -760,19 +795,28 @@ public class admin_view extends javax.swing.JFrame {
 
     private void combopageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopageActionPerformed
         // TODO add your handling code here:
-        switch(combopage.getSelectedIndex()){
+
+        switch (combopage.getSelectedIndex()) {
             case 0:
+                movepage = 10;
                 page = 10;
                 break;
             case 1:
+                movepage = 10;
                 page = 5;
                 break;
-            case 2:
-                page = 20;
+            /*case 2:
+                if (singleton.admins.size() > 20) {
+                    movepage = 10;
+                    page = 20;
+                }
                 break;
             case 3:
-                page = 50;
-                break;
+                if (singleton.admins.size() > 50) {
+                    movepage = 10;
+                    page = 50;
+                }
+                break;*/
         }
         updatetable();
     }//GEN-LAST:event_combopageActionPerformed
@@ -789,12 +833,18 @@ public class admin_view extends javax.swing.JFrame {
         });
     }
 
+    Timer timer = new Timer(30000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                admincreated.setVisible(false);
+            }
+        });
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField activityform;
+    public static javax.swing.JLabel admincreated;
     private javax.swing.JTable adminstable;
     private javax.swing.JTextField ageform;
     private javax.swing.JLabel avatarform;

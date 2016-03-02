@@ -6,6 +6,7 @@
 package application.modules.users.view;
 
 import application.modules.users.model.BLL.bll;
+import static application.modules.users.view.admin_view.admincreated;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -431,15 +432,23 @@ public class new_admin_view extends javax.swing.JFrame {
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
         // TODO add your handling code here:
         if (emptyButton.isVisible()) {
-            if (bll.newAdmin()){
+            if (bll.newAdmin()) {
                 dispose();
                 new admin_view().setVisible(true);
+                admincreated.setText("Created");
+                admincreated.setVisible(true);
             }
-        }else{
-            if(bll.editAdmin()){
-                dispose();
-                new admin_view().setVisible(true);
-            }
+        } else if (bll.editAdmin()) {
+            dispose();
+            new admin_view().setVisible(true);
+            /*try {
+                    admincreated.setText("Admin Modified");
+                    admincreated.setVisible(true);
+                    Thread.sleep(3000);
+                    admincreated.setVisible(false);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(new_admin_view.class.getName()).log(Level.SEVERE, null, ex);
+                }*/
         }
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
@@ -685,6 +694,7 @@ public class new_admin_view extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                new admin_view().setVisible(true);
                 dispose();
             }
         });
