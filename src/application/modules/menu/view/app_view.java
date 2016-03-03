@@ -27,14 +27,7 @@ public class app_view extends javax.swing.JFrame {
         
         this.setTitle(SingletonF.language.getProperty("application_users"));
         this.setLocationRelativeTo(null);
-        
-        //
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                dispose();
-            }
-        });
+        close();
     }
 
     /**
@@ -155,10 +148,16 @@ public class app_view extends javax.swing.JFrame {
 
         configview = new config_view();
         configview.setVisible(true);
-
-
     }//GEN-LAST:event_confButtonActionPerformed
-
+    public void close(){
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                dispose();
+                System.exit(0);
+            }
+        });
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

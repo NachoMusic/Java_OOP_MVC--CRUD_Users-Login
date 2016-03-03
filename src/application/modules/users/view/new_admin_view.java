@@ -441,14 +441,7 @@ public class new_admin_view extends javax.swing.JFrame {
         } else if (bll.editAdmin()) {
             dispose();
             new admin_view().setVisible(true);
-            /*try {
-                    admincreated.setText("Admin Modified");
-                    admincreated.setVisible(true);
-                    Thread.sleep(3000);
-                    admincreated.setVisible(false);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(new_admin_view.class.getName()).log(Level.SEVERE, null, ex);
-                }*/
+
         }
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
