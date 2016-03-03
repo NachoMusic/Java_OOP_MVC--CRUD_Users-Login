@@ -6,7 +6,6 @@
 package application.modules.users.model.pager;
 
 import application.modules.users.model.models.singleton;
-import static application.modules.users.view.admin_view.combopage;
 import static application.modules.users.view.admin_view.model;
 import static application.modules.users.view.admin_view.movepage;
 import static application.modules.users.view.admin_view.page;
@@ -16,9 +15,56 @@ import static application.modules.users.view.admin_view.page;
  * @author nacho
  */
 public class Pager {
+
     public static void updatetable2() {
         int maxpage = singleton.admins.size();
-        
+        int translatedpage = 0;
+
+        if (maxpage < movepage) {
+            for (int i = 0; i < singleton.admins.size(); i++) {
+                model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
+                    singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
+                    singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
+                    singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
+                    singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
+                    singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
+                    singleton.admins.getData(i).getActivity()
+                });
+                System.out.println(i + "a");
+            }
+        } else {
+            if (page == 0) {
+                translatedpage = 0;
+            } else {
+                translatedpage = page * movepage;
+            }
+            if ((translatedpage + movepage) >= maxpage) {
+                for (int i = translatedpage; i < singleton.admins.size(); i++) {
+                    model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
+                        singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
+                        singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
+                        singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
+                        singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
+                        singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
+                        singleton.admins.getData(i).getActivity()
+                    });
+                    System.out.println(i + "c");
+                }
+            } else {
+                for (int i = translatedpage; i < translatedpage + movepage; i++) {
+                    model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
+                        singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
+                        singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
+                        singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
+                        singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
+                        singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
+                        singleton.admins.getData(i).getActivity()
+                    });
+                    System.out.println(i + "B");
+                }
+            }
+        }
+        /*
         if (movepage > maxpage) {
             movepage = maxpage;
         }
@@ -60,5 +106,6 @@ public class Pager {
                 });
             }
         }
+         */
     }
 }

@@ -44,7 +44,7 @@ public class admin_view extends javax.swing.JFrame {
 
         this.setTitle("Administrators");
         this.setLocationRelativeTo(null);
-        page = 10;
+        page = 0;
         movepage = 10;
         updatetable();
         //messages();
@@ -263,6 +263,11 @@ public class admin_view extends javax.swing.JFrame {
         panelviews.add(list, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 1130, 190));
 
         beginning.setText("|<");
+        beginning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                beginningActionPerformed(evt);
+            }
+        });
         panelviews.add(beginning, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
 
         backwards.setText("<");
@@ -282,10 +287,15 @@ public class admin_view extends javax.swing.JFrame {
         panelviews.add(forward, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, -1, -1));
 
         end.setText(">|");
+        end.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endActionPerformed(evt);
+            }
+        });
         panelviews.add(end, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, -1));
         panelviews.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 51, -1));
 
-        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 5 Admins" }));
+        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 20 Admins" }));
         combopage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combopageActionPerformed(evt);
@@ -921,21 +931,25 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_adminstableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
-        // TODO add your handling code here:
-        movepage += page;
+        if(page<(singleton.admins.size()/movepage)){
+            page++;
+        }
+        /*movepage += page;
         if (movepage > singleton.admins.size() + page) {
             //movepage -= page;
             movepage = 10;
-        }
+        }*/
         updatetable();
     }//GEN-LAST:event_forwardActionPerformed
 
     private void backwardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardsActionPerformed
-        // TODO add your handling code here:
-        movepage -= page;
+        if(page>0){
+            page--;
+        }
+        /*movepage -= page;
         if (movepage < page) {
             movepage = page;
-        }
+        }*/
         updatetable();
     }//GEN-LAST:event_backwardsActionPerformed
 
@@ -945,24 +959,12 @@ public class admin_view extends javax.swing.JFrame {
         switch (combopage.getSelectedIndex()) {
             case 0:
                 movepage = 10;
-                page = 10;
+                page = 0;
                 break;
             case 1:
-                movepage = 10;
-                page = 5;
+                movepage = 20;
+                page = 0;
                 break;
-            /*case 2:
-                if (singleton.admins.size() > 20) {
-                    movepage = 10;
-                    page = 20;
-                }
-                break;
-            case 3:
-                if (singleton.admins.size() > 50) {
-                    movepage = 10;
-                    page = 50;
-                }
-                break;*/
         }
         updatetable();
     }//GEN-LAST:event_combopageActionPerformed
@@ -998,6 +1000,16 @@ public class admin_view extends javax.swing.JFrame {
         //pagina.initLinkBox();
     }//GEN-LAST:event_ultimoActionPerformed
 
+    private void beginningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginningActionPerformed
+        page=0;
+        updatetable();
+    }//GEN-LAST:event_beginningActionPerformed
+
+    private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
+        page=singleton.admins.size()/movepage;
+        updatetable();
+    }//GEN-LAST:event_endActionPerformed
+
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -1023,7 +1035,6 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JButton ANTERIOR;
     public static javax.swing.JTextField CAJA;
     public static javax.swing.JButton SIGUIENTE;
-    public static javax.swing.JTable TABLA;
     public static javax.swing.JTable TABLA1;
     private javax.swing.JTextField activityform;
     public static javax.swing.JLabel admincreated;
@@ -1070,14 +1081,12 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     public static javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     public static javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem kanbanmenu;
