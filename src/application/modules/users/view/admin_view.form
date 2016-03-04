@@ -484,21 +484,21 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="numtab1" min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                          <Component id="numtab1" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="numtab2" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="numtab2" min="-2" pref="28" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="numtab3" min="-2" pref="17" max="-2" attributes="0"/>
+                          <Component id="numtab3" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="numtab4" min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="numtab4" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="numtab5" min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="numtab5" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="numtab6" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="numtab6" min="-2" pref="22" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="numtab7" min="-2" pref="17" max="-2" attributes="0"/>
-                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <Component id="numtab7" min="-2" pref="20" max="-2" attributes="0"/>
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -528,6 +528,10 @@
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="1"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="numtab1MousePressed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="numtab1MouseClicked"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>

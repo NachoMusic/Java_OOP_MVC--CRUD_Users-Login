@@ -15,7 +15,10 @@ import application.utils.Functions;
 import application.utils.Menus;
 import application.modules.menu.view.app_view;
 import application.modules.users.model.pager.Pager;
+import static application.modules.users.model.pager.Pager.model;
+import static application.modules.users.model.pager.Pager.selected;
 import static application.modules.users.view.new_admin_view.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -33,9 +36,7 @@ public class admin_view extends javax.swing.JFrame {
     /**
      * Creates new form admin_view
      */
-    public static DefaultTableModel model;
-    public static String selected;
-    public static int page, movepage;
+    Pager pager = new Pager();
 
     public admin_view() {
         initComponents();
@@ -51,8 +52,8 @@ public class admin_view extends javax.swing.JFrame {
         numtab6.setVisible(false);
         numtab7.setVisible(false);
         
-        page = 0;
-        movepage = 10;
+        pager.page = 0;
+        //pager.movepage = 10;
         updatetable();
         timer.start();
     }
@@ -80,7 +81,8 @@ public class admin_view extends javax.swing.JFrame {
         TableRowSorter sorter = new TableRowSorter(model);
         adminstable.setRowSorter(sorter);
 
-        Pager.updatetable2();
+        pager.updatetable2();
+        pager.pagenum();
     }
 
     public static int Admintochange;
@@ -303,6 +305,14 @@ public class admin_view extends javax.swing.JFrame {
         numtab1.setForeground(java.awt.Color.blue);
         numtab1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab1.setText("1");
+        numtab1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                numtab1MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numtab1MouseClicked(evt);
+            }
+        });
 
         numtab2.setForeground(new java.awt.Color(21, 0, 255));
         numtab2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -333,21 +343,21 @@ public class admin_view extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(numtab1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(numtab1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numtab2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numtab3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numtab4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numtab5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numtab6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab7, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addComponent(numtab7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -800,11 +810,11 @@ public class admin_view extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.print(selected);
-        Pager.pagenum();
+        pager.pagenum();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
-        Pager.selectadmin();
+        pager.selectadmin();
     }//GEN-LAST:event_adminstableMouseClicked
 
     private void adminstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMousePressed
@@ -812,49 +822,59 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_adminstableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
-        Pager.forward();
+        pager.forward();
         updatetable();
     }//GEN-LAST:event_forwardActionPerformed
 
     private void backwardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardsActionPerformed
-        Pager.backwards();
+        pager.backwards();
         updatetable();
     }//GEN-LAST:event_backwardsActionPerformed
 
     private void combopageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopageActionPerformed
         switch (combopage.getSelectedIndex()) {
             case 0:
-                movepage = 10;
-                page = 0;
+                pager.movepage = 10;
+                pager.page = 0;
                 break;
             case 1:
-                movepage = 20;
-                page = 0;
+                pager.movepage = 20;
+                pager.page = 0;
                 break;
             case 2:
-                movepage = 50;
-                page = 0;
+                pager.movepage = 50;
+                pager.page = 0;
             case 3:
-                movepage = 100;
-                page = 0;
+                pager.movepage = 100;
+                pager.page = 0;
         }
         updatetable();
     }//GEN-LAST:event_combopageActionPerformed
 
     private void beginningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginningActionPerformed
-        page = 0;
+        pager.page = 0;
         updatetable();
     }//GEN-LAST:event_beginningActionPerformed
 
     private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
-        page = singleton.admins.size() / movepage;
+        pager.page = singleton.admins.size() / pager.movepage;
         updatetable();
     }//GEN-LAST:event_endActionPerformed
 
     private void pagefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagefieldActionPerformed
-        Pager.pagefield();
+        pager.pagefield();
         updatetable();
     }//GEN-LAST:event_pagefieldActionPerformed
+
+    private void numtab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MouseClicked
+        numtab1.setForeground(Color.magenta);
+        pager.page=Integer.parseInt(numtab1.getText())-1;
+        updatetable();
+    }//GEN-LAST:event_numtab1MouseClicked
+
+    private void numtab1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MousePressed
+        numtab1.setForeground(Color.GRAY);
+    }//GEN-LAST:event_numtab1MousePressed
 
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
