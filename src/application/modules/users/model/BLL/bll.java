@@ -10,16 +10,19 @@ import application.modules.users.model.DAO.dao;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
 import static application.modules.users.view.admin_view.Admintochange;
+import application.modules.users.view.new_admin_view;
 import static application.modules.users.view.new_admin_view.activityField;
 import static application.modules.users.view.new_admin_view.avatarField;
 import static application.modules.users.view.new_admin_view.datebirthdayField;
 import static application.modules.users.view.new_admin_view.dniField;
 import static application.modules.users.view.new_admin_view.emailField;
+import static application.modules.users.view.new_admin_view.emptyButton;
 import static application.modules.users.view.new_admin_view.hiringdateField;
 import static application.modules.users.view.new_admin_view.nameField;
 import static application.modules.users.view.new_admin_view.passwordField;
 import static application.modules.users.view.new_admin_view.phoneField;
 import static application.modules.users.view.new_admin_view.salaryField;
+import static application.modules.users.view.new_admin_view.saveAdminButton;
 import static application.modules.users.view.new_admin_view.saveLabel;
 import static application.modules.users.view.new_admin_view.statusField;
 import static application.modules.users.view.new_admin_view.subnameField;
@@ -87,6 +90,32 @@ public class bll {
 
     public static boolean validateActivity() {
         return dao.validateActivity();
+    }
+    public static boolean editadmin(){
+        boolean validA=false;
+        if (singleton.pager.getSelected() != null) {
+            Admintochange = Integer.parseInt(singleton.pager.getSelected());
+            new new_admin_view().setVisible(true);
+            saveAdminButton.setText("Edit Admin");
+            emptyButton.setVisible(false);
+            dniField.setText(singleton.admins.getData(Admintochange - 1).getDni());
+            nameField.setText(singleton.admins.getData(Admintochange - 1).getName());
+            subnameField.setText(singleton.admins.getData(Admintochange - 1).getSubname());
+            phoneField.setText(singleton.admins.getData(Admintochange - 1).getPhone_number());
+            emailField.setText(singleton.admins.getData(Admintochange - 1).getEmail());
+            usernameField.setText(singleton.admins.getData(Admintochange - 1).getUser());
+            passwordField.setText(singleton.admins.getData(Admintochange - 1).getPass());
+            avatarField.setText(singleton.admins.getData(Admintochange - 1).getAvatar());
+            statusField.setText(singleton.admins.getData(Admintochange - 1).getState());
+            Dates b = new Dates(singleton.admins.getData(Admintochange - 1).getDate_birthday());
+            datebirthdayField.setCalendar(b.DateToCalendar());
+            Dates h = new Dates(singleton.admins.getData(Admintochange - 1).getHirin_date());
+            hiringdateField.setCalendar(h.DateToCalendar());
+            salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
+            activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");
+            validA=true;
+        }
+        return validA;
     }
 
     public static boolean newAdmin() {

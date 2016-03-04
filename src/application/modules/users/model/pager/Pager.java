@@ -16,15 +16,55 @@ import javax.swing.table.DefaultTableModel;
  * @author nacho
  */
 public class Pager {
-    public int maxpage;
-    public int movepage;
-    public int page;
-    public static String selected;
-    public static DefaultTableModel model;
+    private int maxpage;
+    private int movepage;
+    private int page;
+    private String selected;
+    private DefaultTableModel model;
 
     public Pager() {
         this.movepage=10;
         this.page=0;
+    }
+
+    public int getMaxpage() {
+        return maxpage;
+    }
+
+    public int getMovepage() {
+        return movepage;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public String getSelected() {
+        return selected;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public void setMaxpage(int maxpage) {
+        this.maxpage = maxpage;
+    }
+
+    public void setMovepage(int movepage) {
+        this.movepage = movepage;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public void setSelected(String selected) {
+        this.selected = selected;
+    }
+
+    public void setModel(DefaultTableModel model) {
+        this.model = model;
     }
     
     public void updatetable2() {
@@ -49,7 +89,7 @@ public class Pager {
         pagefield.setText(String.valueOf(page+1)+"/"+(int)((maxpage/(movepage))+1));
     }
     
-    public static void printadmins(int i){
+    public void printadmins(int i){
         model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
                     singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
                     singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
@@ -75,12 +115,12 @@ public class Pager {
     public void pagefield(){
         int prepage;
         prepage = Functions.validateInt(pagefield.getText()) - 1;
-        if (prepage >= 0 && prepage < singleton.admins.size() / movepage) {
+        if (prepage >= 0 && prepage <= singleton.admins.size() / movepage) {
             page = prepage;
         }
     }
     
-    public void pagenum(){//pruebas
+    public void pagenum(){//aun en pruebas
         int num = (int)((maxpage/(movepage))+1), num1=1,num2=2,num3=3,num4=4,num5=5,num6=6,num7=7;
         if(num>7){
             num1=num-6;

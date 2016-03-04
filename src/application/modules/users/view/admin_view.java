@@ -14,9 +14,8 @@ import application.modules.users.model.models.singleton;
 import application.utils.Functions;
 import application.utils.Menus;
 import application.modules.menu.view.app_view;
+import application.modules.users.model.BLL.bll;
 import application.modules.users.model.pager.Pager;
-import static application.modules.users.model.pager.Pager.model;
-import static application.modules.users.model.pager.Pager.selected;
 import static application.modules.users.view.new_admin_view.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -36,8 +35,7 @@ public class admin_view extends javax.swing.JFrame {
     /**
      * Creates new form admin_view
      */
-    Pager pager = new Pager();
-
+    
     public admin_view() {
         initComponents();
         closeWindow();
@@ -51,8 +49,8 @@ public class admin_view extends javax.swing.JFrame {
         numtab5.setVisible(false);
         numtab6.setVisible(false);
         numtab7.setVisible(false);
-        
-        pager.page = 0;
+        singleton.pager = new Pager();
+        singleton.pager.setPage(0);
         //pager.movepage = 10;
         updatetable();
         timer.start();
@@ -75,14 +73,14 @@ public class admin_view extends javax.swing.JFrame {
         });
         list.setViewportView(adminstable);
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        model = (DefaultTableModel) adminstable.getModel();
+        singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
 
         // Creamos un ordenador de filas para el modelo
-        TableRowSorter sorter = new TableRowSorter(model);
+        TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
         adminstable.setRowSorter(sorter);
 
-        pager.updatetable2();
-        pager.pagenum();
+        singleton.pager.updatetable2();
+        singleton.pager.pagenum();
     }
 
     public static int Admintochange;
@@ -317,26 +315,74 @@ public class admin_view extends javax.swing.JFrame {
         numtab2.setForeground(new java.awt.Color(21, 0, 255));
         numtab2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab2.setText("2");
+        numtab2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                numtab2MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numtab2MouseClicked(evt);
+            }
+        });
 
         numtab3.setForeground(java.awt.Color.blue);
         numtab3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab3.setText("3");
+        numtab3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                numtab3MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numtab3MouseClicked(evt);
+            }
+        });
 
         numtab4.setForeground(java.awt.Color.blue);
         numtab4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab4.setText("4");
+        numtab4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                numtab4MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numtab4MouseClicked(evt);
+            }
+        });
 
         numtab5.setForeground(java.awt.Color.blue);
         numtab5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab5.setText("5");
+        numtab5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                numtab5MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numtab5MouseClicked(evt);
+            }
+        });
 
         numtab6.setForeground(java.awt.Color.blue);
         numtab6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab6.setText("6");
+        numtab6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                numtab6MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numtab6MouseClicked(evt);
+            }
+        });
 
         numtab7.setForeground(java.awt.Color.blue);
         numtab7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab7.setText("7");
+        numtab7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                numtab7MousePressed(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                numtab7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -667,37 +713,13 @@ public class admin_view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAButtonActionPerformed
-        // TODO add your handling code here:
-        //singleton.admins.addData(functions_users.newadmin());
         new new_admin_view().setVisible(true);
         dispose();
     }//GEN-LAST:event_createAButtonActionPerformed
 
     private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
-        // TODO add your handling code here:
-        //singleton.admins.changeData();
-        if (selected != null) {
-            Admintochange = Integer.parseInt(selected);
-            new new_admin_view().setVisible(true);
-            saveAdminButton.setText("Edit Admin");
-            emptyButton.setVisible(false);
-            dniField.setText(singleton.admins.getData(Admintochange - 1).getDni());
-            nameField.setText(singleton.admins.getData(Admintochange - 1).getName());
-            subnameField.setText(singleton.admins.getData(Admintochange - 1).getSubname());
-            phoneField.setText(singleton.admins.getData(Admintochange - 1).getPhone_number());
-            emailField.setText(singleton.admins.getData(Admintochange - 1).getEmail());
-            usernameField.setText(singleton.admins.getData(Admintochange - 1).getUser());
-            passwordField.setText(singleton.admins.getData(Admintochange - 1).getPass());
-            avatarField.setText(singleton.admins.getData(Admintochange - 1).getAvatar());
-            statusField.setText(singleton.admins.getData(Admintochange - 1).getState());
-            Dates b = new Dates(singleton.admins.getData(Admintochange - 1).getDate_birthday());
-            datebirthdayField.setCalendar(b.DateToCalendar());
-            Dates h = new Dates(singleton.admins.getData(Admintochange - 1).getHirin_date());
-            hiringdateField.setCalendar(h.DateToCalendar());
-            salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
-            activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");
+        if(bll.editadmin())
             dispose();
-        }
     }//GEN-LAST:event_changeDataAButtornActionPerformed
 
     private void printDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDataAButtonActionPerformed
@@ -705,8 +727,8 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_printDataAButtonActionPerformed
 
     private void deleteDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataAButtonActionPerformed
-        if (selected != null) {
-            singleton.admins.deleteData(Integer.parseInt(selected));
+        if (singleton.pager.getSelected() != null) {
+            singleton.admins.deleteData(Integer.parseInt(singleton.pager.getSelected()));
             updatetable();
         }
     }//GEN-LAST:event_deleteDataAButtonActionPerformed
@@ -809,12 +831,11 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_listmenuActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.print(selected);
-        pager.pagenum();
+        singleton.pager.pagenum();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
-        pager.selectadmin();
+        singleton.pager.selectadmin();
     }//GEN-LAST:event_adminstableMouseClicked
 
     private void adminstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMousePressed
@@ -822,59 +843,119 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_adminstableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
-        pager.forward();
+        singleton.pager.forward();
         updatetable();
     }//GEN-LAST:event_forwardActionPerformed
 
     private void backwardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardsActionPerformed
-        pager.backwards();
+        singleton.pager.backwards();
         updatetable();
     }//GEN-LAST:event_backwardsActionPerformed
 
     private void combopageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopageActionPerformed
         switch (combopage.getSelectedIndex()) {
             case 0:
-                pager.movepage = 10;
-                pager.page = 0;
+                singleton.pager.setMovepage(10);
+                singleton.pager.setPage(0);
                 break;
             case 1:
-                pager.movepage = 20;
-                pager.page = 0;
+                singleton.pager.setMovepage(20);
+                singleton.pager.setPage(0);
                 break;
             case 2:
-                pager.movepage = 50;
-                pager.page = 0;
+                singleton.pager.setMovepage(50);
+                singleton.pager.setPage(0);
             case 3:
-                pager.movepage = 100;
-                pager.page = 0;
+                singleton.pager.setMovepage(100);
+                singleton.pager.setPage(0);
         }
         updatetable();
     }//GEN-LAST:event_combopageActionPerformed
 
     private void beginningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginningActionPerformed
-        pager.page = 0;
+        singleton.pager.setPage(0);
         updatetable();
     }//GEN-LAST:event_beginningActionPerformed
 
     private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
-        pager.page = singleton.admins.size() / pager.movepage;
+        singleton.pager.setPage(singleton.admins.size() / singleton.pager.getMovepage());
         updatetable();
     }//GEN-LAST:event_endActionPerformed
 
     private void pagefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagefieldActionPerformed
-        pager.pagefield();
+        singleton.pager.pagefield();
         updatetable();
     }//GEN-LAST:event_pagefieldActionPerformed
 
     private void numtab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MouseClicked
         numtab1.setForeground(Color.magenta);
-        pager.page=Integer.parseInt(numtab1.getText())-1;
+        singleton.pager.setPage(Integer.parseInt(numtab1.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab1MouseClicked
 
     private void numtab1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MousePressed
         numtab1.setForeground(Color.GRAY);
     }//GEN-LAST:event_numtab1MousePressed
+
+    private void numtab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab2MouseClicked
+        numtab2.setForeground(Color.magenta);
+        singleton.pager.setPage(Integer.parseInt(numtab2.getText())-1);
+        updatetable();
+    }//GEN-LAST:event_numtab2MouseClicked
+
+    private void numtab2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab2MousePressed
+        numtab2.setForeground(Color.GRAY);
+    }//GEN-LAST:event_numtab2MousePressed
+
+    private void numtab3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab3MouseClicked
+        numtab3.setForeground(Color.magenta);
+        singleton.pager.setPage(Integer.parseInt(numtab3.getText())-1);
+        updatetable();
+    }//GEN-LAST:event_numtab3MouseClicked
+
+    private void numtab3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab3MousePressed
+        numtab3.setForeground(Color.GRAY);
+    }//GEN-LAST:event_numtab3MousePressed
+
+    private void numtab4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab4MouseClicked
+        numtab4.setForeground(Color.magenta);
+        singleton.pager.setPage(Integer.parseInt(numtab4.getText())-1);
+        updatetable();
+    }//GEN-LAST:event_numtab4MouseClicked
+
+    private void numtab4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab4MousePressed
+        numtab4.setForeground(Color.GRAY);
+    }//GEN-LAST:event_numtab4MousePressed
+
+    private void numtab5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab5MouseClicked
+        numtab5.setForeground(Color.magenta);
+        singleton.pager.setPage(Integer.parseInt(numtab5.getText())-1);
+        updatetable();
+    }//GEN-LAST:event_numtab5MouseClicked
+
+    private void numtab5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab5MousePressed
+        numtab5.setForeground(Color.GRAY);
+    }//GEN-LAST:event_numtab5MousePressed
+
+    private void numtab6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab6MouseClicked
+        numtab6.setForeground(Color.magenta);
+        singleton.pager.setPage(Integer.parseInt(numtab6.getText())-1);
+        updatetable();
+    }//GEN-LAST:event_numtab6MouseClicked
+
+    private void numtab6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab6MousePressed
+        numtab6.setForeground(Color.GRAY);
+    }//GEN-LAST:event_numtab6MousePressed
+
+    private void numtab7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab7MouseClicked
+        numtab7.setForeground(Color.magenta);
+        singleton.pager.setPage(Integer.parseInt(numtab7.getText())-1);
+        updatetable();
+    }//GEN-LAST:event_numtab7MouseClicked
+
+    private void numtab7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab7MousePressed
+        numtab7.setForeground(Color.GRAY);
+    }//GEN-LAST:event_numtab7MousePressed
 
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
