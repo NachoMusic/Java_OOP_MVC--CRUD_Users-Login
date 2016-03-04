@@ -2,42 +2,21 @@
 <list>
   <admin>
     <dni>00000000T</dni>
-    <name>asfdf</name>
-    <subname>fsad</subname>
-    <phone__number>3241</phone__number>
-    <email>sfda@safd.adsf</email>
-    <user>dafs</user>
-    <pass>afsd</pass>
-    <avatar>src/application/modules/users/view/img/00000000T</avatar>
-    <state>asfd</state>
-    <date__birthday>09/02/1984</date__birthday>
-    <age>32</age>
-    <points>0</points>
-    <discount>0</discount>
-    <incentives>493</incentives>
-    <advantages>0.0</advantages>
-    <hirin__date>03/02/2016</hirin__date>
-    <salary>1234.0</salary>
-    <years__of__service>0</years__of__service>
-    <activity>1234</activity>
-  </admin>
-  <admin>
-    <dni>21699146A</dni>
     <name>asdf</name>
-    <subname>sfd</subname>
-    <phone__number>1234</phone__number>
-    <email>afsd@as.adfs</email>
-    <user>sfad</user>
+    <subname>asdf</subname>
+    <phone__number>12341234</phone__number>
+    <email>asdf@asdf.asd</email>
+    <user>fsad</user>
     <pass>asdf</pass>
-    <avatar>src/application/modules/users/view/img/21699146A</avatar>
-    <state>fasd</state>
-    <date__birthday>11/02/1983</date__birthday>
-    <age>33</age>
+    <avatar>src/application/modules/users/view/img/00000000T</avatar>
+    <state>asdf</state>
+    <date__birthday>08/03/1985</date__birthday>
+    <age>31</age>
     <points>0</points>
     <discount>0</discount>
     <incentives>493</incentives>
     <advantages>0.0</advantages>
-    <hirin__date>01/02/2016</hirin__date>
+    <hirin__date>01/03/2016</hirin__date>
     <salary>1234.0</salary>
     <years__of__service>0</years__of__service>
     <activity>1234</activity>

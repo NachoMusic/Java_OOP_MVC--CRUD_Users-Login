@@ -30,7 +30,7 @@ public class Functions {
     }
 
     public static int validateInt(String s) {
-        int a = 0;
+        int a = 1;
 
         boolean correcto = true;
 

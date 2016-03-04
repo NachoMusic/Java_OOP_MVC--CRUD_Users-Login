@@ -20,10 +20,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -44,24 +43,18 @@ public class admin_view extends javax.swing.JFrame {
 
         this.setTitle("Administrators");
         this.setLocationRelativeTo(null);
+        numtab1.setVisible(false);
+        numtab2.setVisible(false);
+        numtab3.setVisible(false);
+        numtab4.setVisible(false);
+        numtab5.setVisible(false);
+        numtab6.setVisible(false);
+        numtab7.setVisible(false);
+        
         page = 0;
         movepage = 10;
         updatetable();
-        //messages();
-        //admincreated.setVisible(false);
         timer.start();
-
-        /*model = (DefaultTableModel) adminstable.getModel();
-        
-        for (int i = 0; i < singleton.admins.size(); i++) {
-            model.insertRow(model.getRowCount(), new Object[]{i+1,singleton.admins.getData(i).getDni(),
-                singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
-                singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
-                singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
-                singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getHirin_date(),
-                singleton.admins.getData(i).getSalary(), singleton.admins.getData(i).getActivity()
-            });
-        }*/
     }
 
     public void updatetable() {
@@ -83,9 +76,13 @@ public class admin_view extends javax.swing.JFrame {
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         model = (DefaultTableModel) adminstable.getModel();
 
+        // Creamos un ordenador de filas para el modelo
+        TableRowSorter sorter = new TableRowSorter(model);
+        adminstable.setRowSorter(sorter);
+
         Pager.updatetable2();
     }
-    
+
     public static int Admintochange;
 
     /**
@@ -114,8 +111,16 @@ public class admin_view extends javax.swing.JFrame {
         backwards = new javax.swing.JButton();
         forward = new javax.swing.JButton();
         end = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        pagefield = new javax.swing.JTextField();
         combopage = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        numtab1 = new javax.swing.JLabel();
+        numtab2 = new javax.swing.JLabel();
+        numtab3 = new javax.swing.JLabel();
+        numtab4 = new javax.swing.JLabel();
+        numtab5 = new javax.swing.JLabel();
+        numtab6 = new javax.swing.JLabel();
+        numtab7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         dniform = new javax.swing.JTextField();
@@ -144,23 +149,6 @@ public class admin_view extends javax.swing.JFrame {
         ageform = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         admincreated = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        TABLA1 = new javax.swing.JTable();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        ANTERIOR = new javax.swing.JButton();
-        SIGUIENTE = new javax.swing.JButton();
-        CAJA = new javax.swing.JTextField();
-        primero = new javax.swing.JButton();
-        ultimo = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
         importmenu = new javax.swing.JMenuItem();
@@ -293,15 +281,89 @@ public class admin_view extends javax.swing.JFrame {
             }
         });
         panelviews.add(end, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, -1));
-        panelviews.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 51, -1));
 
-        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 20 Admins" }));
+        pagefield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pagefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pagefieldActionPerformed(evt);
+            }
+        });
+        panelviews.add(pagefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 60, -1));
+
+        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 20 Admins", "Show 50 Admins", "Show 100 Admins" }));
         combopage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combopageActionPerformed(evt);
             }
         });
         panelviews.add(combopage, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, -1, -1));
+
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        numtab1.setForeground(java.awt.Color.blue);
+        numtab1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numtab1.setText("1");
+
+        numtab2.setForeground(new java.awt.Color(21, 0, 255));
+        numtab2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numtab2.setText("2");
+
+        numtab3.setForeground(java.awt.Color.blue);
+        numtab3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numtab3.setText("3");
+
+        numtab4.setForeground(java.awt.Color.blue);
+        numtab4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numtab4.setText("4");
+
+        numtab5.setForeground(java.awt.Color.blue);
+        numtab5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numtab5.setText("5");
+
+        numtab6.setForeground(java.awt.Color.blue);
+        numtab6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numtab6.setText("6");
+
+        numtab7.setForeground(java.awt.Color.blue);
+        numtab7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numtab7.setText("7");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(numtab1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(numtab2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(numtab3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(numtab4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(numtab5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(numtab6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(numtab7, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numtab2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numtab3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numtab4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numtab5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numtab6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numtab7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numtab1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
+        );
+
+        panelviews.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 230, 30));
 
         tabbedtable.addTab("List", panelviews);
 
@@ -486,131 +548,6 @@ public class admin_view extends javax.swing.JFrame {
         admincreated.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         admincreated.setForeground(new java.awt.Color(18, 107, 1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5", "10", "15", "20", "50", "100" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("Show entries:");
-
-        jLabel14.setText("Filtra First Name");
-
-        jLabel15.setText("jLabel3");
-
-        jButton2.setText("Volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        TABLA1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(TABLA1);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 32, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 217, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 31, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        ANTERIOR.setText("<");
-        ANTERIOR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ANTERIORActionPerformed(evt);
-            }
-        });
-        jPanel8.add(ANTERIOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
-
-        SIGUIENTE.setText(">");
-        SIGUIENTE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SIGUIENTEActionPerformed(evt);
-            }
-        });
-        jPanel8.add(SIGUIENTE, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
-
-        CAJA.setEditable(false);
-        CAJA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        CAJA.setPreferredSize(new java.awt.Dimension(140, 20));
-        jPanel8.add(CAJA, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 80, 30));
-
-        primero.setText("|<");
-        primero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                primeroActionPerformed(evt);
-            }
-        });
-        jPanel8.add(primero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
-
-        ultimo.setText(">|");
-        ultimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ultimoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(ultimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
-
         filemenu.setText("File");
 
         importmenu.setText("Import");
@@ -687,32 +624,7 @@ public class admin_view extends javax.swing.JFrame {
                             .addComponent(deleteDataAButton)
                             .addComponent(importAButton))
                         .addGap(138, 138, 138)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -721,26 +633,7 @@ public class admin_view extends javax.swing.JFrame {
                 .addComponent(tabbedtable, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(admincreated)
-                .addGap(41, 41, 41)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -907,23 +800,11 @@ public class admin_view extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.out.print(selected);
+        Pager.pagenum();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
-        // TODO add your handling code here:
-        selected = String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0));
-        dniform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 1)));
-        nameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 2)));
-        surnameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 3)));
-        phoneform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 4)));
-        emailform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 5)));
-        userform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 6)));
-        stateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 7)));
-        birthdayform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 8)));
-        ageform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 9)));
-        hiringdateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 10)));
-        salaryform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 11)));
-        activityform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 12)));
+        Pager.selectadmin();
     }//GEN-LAST:event_adminstableMouseClicked
 
     private void adminstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMousePressed
@@ -931,31 +812,16 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_adminstableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
-        if(page<(singleton.admins.size()/movepage)){
-            page++;
-        }
-        /*movepage += page;
-        if (movepage > singleton.admins.size() + page) {
-            //movepage -= page;
-            movepage = 10;
-        }*/
+        Pager.forward();
         updatetable();
     }//GEN-LAST:event_forwardActionPerformed
 
     private void backwardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardsActionPerformed
-        if(page>0){
-            page--;
-        }
-        /*movepage -= page;
-        if (movepage < page) {
-            movepage = page;
-        }*/
+        Pager.backwards();
         updatetable();
     }//GEN-LAST:event_backwardsActionPerformed
 
     private void combopageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopageActionPerformed
-        // TODO add your handling code here:
-
         switch (combopage.getSelectedIndex()) {
             case 0:
                 movepage = 10;
@@ -965,64 +831,43 @@ public class admin_view extends javax.swing.JFrame {
                 movepage = 20;
                 page = 0;
                 break;
+            case 2:
+                movepage = 50;
+                page = 0;
+            case 3:
+                movepage = 100;
+                page = 0;
         }
         updatetable();
     }//GEN-LAST:event_combopageActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        //pagina.itemsPerPage=Integer.parseInt(jComboBox1.getSelectedItem().toString());
-        //pagina.currentPageIndex = 1;
-        //pagina.initLinkBox();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //this.dispose();
-        //new menu().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void ANTERIORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ANTERIORActionPerformed
-        //pagina.currentPageIndex -= 1;
-        //pagina.initLinkBox();
-    }//GEN-LAST:event_ANTERIORActionPerformed
-
-    private void SIGUIENTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SIGUIENTEActionPerformed
-        //pagina.currentPageIndex += 1;
-        //pagina.initLinkBox();
-    }//GEN-LAST:event_SIGUIENTEActionPerformed
-
-    private void primeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeroActionPerformed
-        //pagina.currentPageIndex = 1;
-        //pagina.initLinkBox();
-    }//GEN-LAST:event_primeroActionPerformed
-
-    private void ultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ultimoActionPerformed
-        //pagina.currentPageIndex = pagina.maxPageIndex;
-        //pagina.initLinkBox();
-    }//GEN-LAST:event_ultimoActionPerformed
-
     private void beginningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginningActionPerformed
-        page=0;
+        page = 0;
         updatetable();
     }//GEN-LAST:event_beginningActionPerformed
 
     private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
-        page=singleton.admins.size()/movepage;
+        page = singleton.admins.size() / movepage;
         updatetable();
     }//GEN-LAST:event_endActionPerformed
+
+    private void pagefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagefieldActionPerformed
+        Pager.pagefield();
+        updatetable();
+    }//GEN-LAST:event_pagefieldActionPerformed
 
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                //setVisible(false);
                 dispose();
                 new app_view().setVisible(true);
             }
         });
     }
 
-    Timer timer = new Timer(10000, new ActionListener() {
+    Timer timer = new Timer(15000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             admincreated.setVisible(false);
         }
@@ -1032,24 +877,20 @@ public class admin_view extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton ANTERIOR;
-    public static javax.swing.JTextField CAJA;
-    public static javax.swing.JButton SIGUIENTE;
-    public static javax.swing.JTable TABLA1;
-    private javax.swing.JTextField activityform;
+    public static javax.swing.JTextField activityform;
     public static javax.swing.JLabel admincreated;
     public static javax.swing.JTable adminstable;
-    private javax.swing.JTextField ageform;
-    private javax.swing.JLabel avatarform;
+    public static javax.swing.JTextField ageform;
+    public static javax.swing.JLabel avatarform;
     private javax.swing.JButton backwards;
     private javax.swing.JButton beginning;
-    private javax.swing.JTextField birthdayform;
+    public static javax.swing.JTextField birthdayform;
     private javax.swing.JButton changeDataAButtorn;
     public static javax.swing.JComboBox<String> combopage;
     private javax.swing.JButton createAButton;
     private javax.swing.JButton deleteDataAButton;
-    private javax.swing.JTextField dniform;
-    private javax.swing.JTextField emailform;
+    public static javax.swing.JTextField dniform;
+    public static javax.swing.JTextField emailform;
     private javax.swing.JButton end;
     private javax.swing.JButton exportAButton;
     private javax.swing.JMenuItem exportmenu;
@@ -1057,19 +898,14 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JButton findAButton;
     private javax.swing.JMenuItem formmenu;
     private javax.swing.JButton forward;
-    private javax.swing.JTextField hiringdateform;
+    public static javax.swing.JTextField hiringdateform;
     private javax.swing.JButton importAButton;
     private javax.swing.JMenuItem importmenu;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    public static javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    public static javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1081,29 +917,29 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    public static javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    public static javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuItem kanbanmenu;
     public static javax.swing.JScrollPane list;
     private javax.swing.JMenuItem listmenu;
-    private javax.swing.JTextField nameform;
+    public static javax.swing.JTextField nameform;
+    public static javax.swing.JLabel numtab1;
+    public static javax.swing.JLabel numtab2;
+    public static javax.swing.JLabel numtab3;
+    public static javax.swing.JLabel numtab4;
+    public static javax.swing.JLabel numtab5;
+    public static javax.swing.JLabel numtab6;
+    public static javax.swing.JLabel numtab7;
+    public static javax.swing.JTextField pagefield;
     private javax.swing.JPanel panelviews;
-    private javax.swing.JTextField phoneform;
-    public static javax.swing.JButton primero;
+    public static javax.swing.JTextField phoneform;
     private javax.swing.JButton printDataAButton;
-    private javax.swing.JTextField salaryform;
+    public static javax.swing.JTextField salaryform;
     private javax.swing.JButton sortbyAButton;
     private javax.swing.JMenu sortmenu;
-    private javax.swing.JTextField stateform;
-    private javax.swing.JTextField surnameform;
+    public static javax.swing.JTextField stateform;
+    public static javax.swing.JTextField surnameform;
     private javax.swing.JTabbedPane tabbedtable;
-    public static javax.swing.JButton ultimo;
-    private javax.swing.JTextField userform;
+    public static javax.swing.JTextField userform;
     // End of variables declaration//GEN-END:variables
 }
