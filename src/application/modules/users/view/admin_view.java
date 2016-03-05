@@ -5,7 +5,6 @@
  */
 package application.modules.users.view;
 
-import application.models.Dates;
 import application.models.SingletonF;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
@@ -51,7 +50,6 @@ public class admin_view extends javax.swing.JFrame {
         numtab7.setVisible(false);
         singleton.pager = new Pager();
         singleton.pager.setPage(0);
-        //pager.movepage = 10;
         updatetable();
         timer.start();
     }
@@ -225,7 +223,6 @@ public class admin_view extends javax.swing.JFrame {
         });
 
         panelviews.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 101, 101)));
-        panelviews.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         adminstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -248,15 +245,12 @@ public class admin_view extends javax.swing.JFrame {
         list.setViewportView(adminstable);
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        panelviews.add(list, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 1130, 190));
-
         beginning.setText("|<");
         beginning.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 beginningActionPerformed(evt);
             }
         });
-        panelviews.add(beginning, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
 
         backwards.setText("<");
         backwards.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +258,6 @@ public class admin_view extends javax.swing.JFrame {
                 backwardsActionPerformed(evt);
             }
         });
-        panelviews.add(backwards, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
 
         forward.setText(">");
         forward.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +265,6 @@ public class admin_view extends javax.swing.JFrame {
                 forwardActionPerformed(evt);
             }
         });
-        panelviews.add(forward, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, -1, -1));
 
         end.setText(">|");
         end.addActionListener(new java.awt.event.ActionListener() {
@@ -280,7 +272,6 @@ public class admin_view extends javax.swing.JFrame {
                 endActionPerformed(evt);
             }
         });
-        panelviews.add(end, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, -1, -1));
 
         pagefield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         pagefield.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +279,6 @@ public class admin_view extends javax.swing.JFrame {
                 pagefieldActionPerformed(evt);
             }
         });
-        panelviews.add(pagefield, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 60, -1));
 
         combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 20 Admins", "Show 50 Admins", "Show 100 Admins" }));
         combopage.addActionListener(new java.awt.event.ActionListener() {
@@ -296,9 +286,8 @@ public class admin_view extends javax.swing.JFrame {
                 combopageActionPerformed(evt);
             }
         });
-        panelviews.add(combopage, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, -1, -1));
 
-        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBorder(null);
 
         numtab1.setForeground(java.awt.Color.blue);
         numtab1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -389,9 +378,9 @@ public class admin_view extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap()
                 .addComponent(numtab1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(numtab2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(numtab3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,7 +392,7 @@ public class admin_view extends javax.swing.JFrame {
                 .addComponent(numtab6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(numtab7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,7 +408,52 @@ public class admin_view extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        panelviews.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 230, 30));
+        javax.swing.GroupLayout panelviewsLayout = new javax.swing.GroupLayout(panelviews);
+        panelviews.setLayout(panelviewsLayout);
+        panelviewsLayout.setHorizontalGroup(
+            panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelviewsLayout.createSequentialGroup()
+                .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelviewsLayout.createSequentialGroup()
+                .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(609, 609, 609)
+                        .addComponent(forward))
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(649, 649, 649)
+                        .addComponent(end))
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(479, 479, 479)
+                        .addComponent(backwards))
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(529, 529, 529)
+                        .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(439, 439, 439)
+                        .addComponent(beginning)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(combopage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(291, 291, 291))
+        );
+        panelviewsLayout.setVerticalGroup(
+            panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(panelviewsLayout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(forward)
+                    .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(end)
+                        .addComponent(combopage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(backwards)
+                    .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(beginning)))
+        );
 
         tabbedtable.addTab("List", panelviews);
 
@@ -652,10 +686,6 @@ public class admin_view extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(552, 552, 552)
-                .addComponent(admincreated)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -665,31 +695,35 @@ public class admin_view extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(findAButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(createAButton, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(111, 111, 111)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(changeDataAButtorn)
-                            .addComponent(sortbyAButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(exportAButton)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(printDataAButton)
-                                .addGap(216, 216, 216)))
-                        .addGap(69, 69, 69)
+                        .addGap(165, 165, 165)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(deleteDataAButton)
-                            .addComponent(importAButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(sortbyAButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(exportAButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(changeDataAButtorn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(printDataAButton)))
+                        .addGap(246, 246, 246)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deleteDataAButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(importAButton, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(138, 138, 138)
                         .addComponent(jButton1)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(407, 407, 407)
+                .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tabbedtable, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(admincreated)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
@@ -968,7 +1002,7 @@ public class admin_view extends javax.swing.JFrame {
         });
     }
 
-    Timer timer = new Timer(15000, new ActionListener() {
+    Timer timer = new Timer(3000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             admincreated.setVisible(false);
         }
