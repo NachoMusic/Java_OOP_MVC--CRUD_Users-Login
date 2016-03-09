@@ -69,14 +69,14 @@ public class admin_view extends javax.swing.JFrame {
                 adminstableMouseClicked(evt);
             }
         });
+        
         list.setViewportView(adminstable);
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
-
         // Creamos un ordenador de filas para el modelo
         TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
         adminstable.setRowSorter(sorter);
-
+        adminstable.setColumnSelectionAllowed(false);
         singleton.pager.updatetable2();
         singleton.pager.pagenum();
     }
@@ -232,7 +232,7 @@ public class admin_view extends javax.swing.JFrame {
                 "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
             }
         ));
-        adminstable.setColumnSelectionAllowed(true);
+        adminstable.setCellSelectionEnabled(false);
         adminstable.getTableHeader().setReorderingAllowed(false);
         adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -424,17 +424,18 @@ public class admin_view extends javax.swing.JFrame {
                         .addGap(649, 649, 649)
                         .addComponent(end))
                     .addGroup(panelviewsLayout.createSequentialGroup()
-                        .addGap(479, 479, 479)
-                        .addComponent(backwards))
-                    .addGroup(panelviewsLayout.createSequentialGroup()
-                        .addGap(529, 529, 529)
-                        .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelviewsLayout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelviewsLayout.createSequentialGroup()
-                        .addGap(439, 439, 439)
-                        .addComponent(beginning)))
+                        .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelviewsLayout.createSequentialGroup()
+                                .addGap(479, 479, 479)
+                                .addComponent(backwards))
+                            .addGroup(panelviewsLayout.createSequentialGroup()
+                                .addGap(159, 159, 159)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelviewsLayout.createSequentialGroup()
+                                .addGap(439, 439, 439)
+                                .addComponent(beginning)))
+                        .addGap(26, 26, 26)
+                        .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(combopage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(291, 291, 291))
@@ -908,11 +909,15 @@ public class admin_view extends javax.swing.JFrame {
 
     private void beginningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginningActionPerformed
         singleton.pager.setPage(0);
+        forward.setEnabled(true);
+        end.setEnabled(true);
         updatetable();
     }//GEN-LAST:event_beginningActionPerformed
 
     private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
         singleton.pager.setPage(singleton.admins.size() / singleton.pager.getMovepage());
+        backwards.setEnabled(true);
+        beginning.setEnabled(true);
         updatetable();
     }//GEN-LAST:event_endActionPerformed
 
@@ -923,6 +928,7 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MouseClicked
         numtab1.setForeground(Color.magenta);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab1.getText())-1);
         singleton.pager.setPage(Integer.parseInt(numtab1.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab1MouseClicked
@@ -933,6 +939,7 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab2MouseClicked
         numtab2.setForeground(Color.magenta);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab2.getText())-1);
         singleton.pager.setPage(Integer.parseInt(numtab2.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab2MouseClicked
@@ -943,6 +950,7 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab3MouseClicked
         numtab3.setForeground(Color.magenta);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab3.getText())-1);
         singleton.pager.setPage(Integer.parseInt(numtab3.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab3MouseClicked
@@ -953,6 +961,7 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab4MouseClicked
         numtab4.setForeground(Color.magenta);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab4.getText())-1);
         singleton.pager.setPage(Integer.parseInt(numtab4.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab4MouseClicked
@@ -963,6 +972,7 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab5MouseClicked
         numtab5.setForeground(Color.magenta);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab5.getText())-1);
         singleton.pager.setPage(Integer.parseInt(numtab5.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab5MouseClicked
@@ -973,6 +983,7 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab6MouseClicked
         numtab6.setForeground(Color.magenta);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab6.getText())-1);
         singleton.pager.setPage(Integer.parseInt(numtab6.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab6MouseClicked
@@ -983,6 +994,7 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab7MouseClicked
         numtab7.setForeground(Color.magenta);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab7.getText())-1);
         singleton.pager.setPage(Integer.parseInt(numtab7.getText())-1);
         updatetable();
     }//GEN-LAST:event_numtab7MouseClicked
@@ -1017,8 +1029,8 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JTable adminstable;
     public static javax.swing.JTextField ageform;
     public static javax.swing.JLabel avatarform;
-    private javax.swing.JButton backwards;
-    private javax.swing.JButton beginning;
+    public static javax.swing.JButton backwards;
+    public static javax.swing.JButton beginning;
     public static javax.swing.JTextField birthdayform;
     private javax.swing.JButton changeDataAButtorn;
     public static javax.swing.JComboBox<String> combopage;
@@ -1026,13 +1038,13 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JButton deleteDataAButton;
     public static javax.swing.JTextField dniform;
     public static javax.swing.JTextField emailform;
-    private javax.swing.JButton end;
+    public static javax.swing.JButton end;
     private javax.swing.JButton exportAButton;
     private javax.swing.JMenuItem exportmenu;
     private javax.swing.JMenu filemenu;
     private javax.swing.JButton findAButton;
     private javax.swing.JMenuItem formmenu;
-    private javax.swing.JButton forward;
+    public static javax.swing.JButton forward;
     public static javax.swing.JTextField hiringdateform;
     private javax.swing.JButton importAButton;
     private javax.swing.JMenuItem importmenu;
