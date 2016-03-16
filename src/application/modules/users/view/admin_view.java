@@ -17,15 +17,17 @@ import application.modules.users.model.BLL.bll;
 import application.modules.users.model.pager.Pager;
 import static application.modules.users.view.new_admin_view.*;
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import static org.apache.batik.svggen.font.table.Table.head;
 
 /**
  *
@@ -60,16 +62,16 @@ public class admin_view extends javax.swing.JFrame {
         timer.start();
         //admincreated.setVisible(true);
     }
-    
+
     JTable jTable = new JTable() {
         private static final long serialVersionUID = 1L;
 
-        public boolean isCellEditable(int row, int column) {                
-                return false;               
-        };
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
     
 
-   };
+    };
     public void updatetable() {
         //adminstable = new javax.swing.JTable();
         adminstable = jTable;
@@ -79,17 +81,26 @@ public class admin_view extends javax.swing.JFrame {
                     "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
                 }
         ));
-        
+        adminstable.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent me) {
+                JTable table = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = table.rowAtPoint(p);
+                if (me.getClickCount() == 2) {
+                    tabbedtable.setSelectedIndex(1);
+                }
+            }
+        });
         adminstable.setColumnSelectionAllowed(true);
         adminstable.getTableHeader().setReorderingAllowed(false);
         //prueba
-        
+
         adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 adminstableMouseClicked(evt);
             }
         });
-        
+
         list.setViewportView(adminstable);
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
