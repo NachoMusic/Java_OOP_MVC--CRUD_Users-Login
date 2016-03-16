@@ -21,9 +21,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import static org.apache.batik.svggen.font.table.Table.head;
 
 /**
  *
@@ -34,7 +36,6 @@ public class admin_view extends javax.swing.JFrame {
     /**
      * Creates new form admin_view
      */
-    
     public admin_view() {
         initComponents();
         closeWindow();
@@ -51,19 +52,38 @@ public class admin_view extends javax.swing.JFrame {
         singleton.pager = new Pager();
         singleton.pager.setPage(0);
         updatetable();
+        Timer timer = new Timer(10000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                admincreated.setVisible(false);
+            }
+        });
         timer.start();
+        //admincreated.setVisible(true);
     }
+    
+    JTable jTable = new JTable() {
+        private static final long serialVersionUID = 1L;
 
+        public boolean isCellEditable(int row, int column) {                
+                return false;               
+        };
+    
+
+   };
     public void updatetable() {
-        adminstable = new javax.swing.JTable();
+        //adminstable = new javax.swing.JTable();
+        adminstable = jTable;
         adminstable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
                     "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
                 }
         ));
+        
         adminstable.setColumnSelectionAllowed(true);
         adminstable.getTableHeader().setReorderingAllowed(false);
+        //prueba
+        
         adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 adminstableMouseClicked(evt);
@@ -100,7 +120,6 @@ public class admin_view extends javax.swing.JFrame {
         sortbyAButton = new javax.swing.JButton();
         exportAButton = new javax.swing.JButton();
         importAButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         tabbedtable = new javax.swing.JTabbedPane();
         panelviews = new javax.swing.JPanel();
         list = new javax.swing.JScrollPane();
@@ -215,13 +234,6 @@ public class admin_view extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Test button");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         panelviews.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 101, 101)));
 
         adminstable.setModel(new javax.swing.table.DefaultTableModel(
@@ -232,7 +244,6 @@ public class admin_view extends javax.swing.JFrame {
                 "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
             }
         ));
-        adminstable.setCellSelectionEnabled(false);
         adminstable.getTableHeader().setReorderingAllowed(false);
         adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -710,8 +721,7 @@ public class admin_view extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(deleteDataAButton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(importAButton, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(138, 138, 138)
-                        .addComponent(jButton1)))
+                        .addGap(213, 213, 213)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(407, 407, 407)
@@ -726,14 +736,11 @@ public class admin_view extends javax.swing.JFrame {
                 .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(findAButton)
-                            .addComponent(sortbyAButton)
-                            .addComponent(exportAButton)
-                            .addComponent(importAButton)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(findAButton)
+                        .addComponent(sortbyAButton)
+                        .addComponent(exportAButton)
+                        .addComponent(importAButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(createAButton)
@@ -753,8 +760,9 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_createAButtonActionPerformed
 
     private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
-        if(bll.editadmin())
+        if (bll.editadmin()) {
             dispose();
+        }
     }//GEN-LAST:event_changeDataAButtornActionPerformed
 
     private void printDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDataAButtonActionPerformed
@@ -865,10 +873,6 @@ public class admin_view extends javax.swing.JFrame {
         adminstable.setVisible(true);
     }//GEN-LAST:event_listmenuActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        singleton.pager.pagenum();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
         singleton.pager.selectadmin();
     }//GEN-LAST:event_adminstableMouseClicked
@@ -928,8 +932,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MouseClicked
         numtab1.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab1.getText())-1);
-        singleton.pager.setPage(Integer.parseInt(numtab1.getText())-1);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
+        singleton.pager.setPage(Integer.parseInt(numtab1.getText()) - 1);
         updatetable();
     }//GEN-LAST:event_numtab1MouseClicked
 
@@ -939,8 +943,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab2MouseClicked
         numtab2.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab2.getText())-1);
-        singleton.pager.setPage(Integer.parseInt(numtab2.getText())-1);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
+        singleton.pager.setPage(Integer.parseInt(numtab2.getText()) - 1);
         updatetable();
     }//GEN-LAST:event_numtab2MouseClicked
 
@@ -950,8 +954,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab3MouseClicked
         numtab3.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab3.getText())-1);
-        singleton.pager.setPage(Integer.parseInt(numtab3.getText())-1);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
+        singleton.pager.setPage(Integer.parseInt(numtab3.getText()) - 1);
         updatetable();
     }//GEN-LAST:event_numtab3MouseClicked
 
@@ -961,8 +965,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab4MouseClicked
         numtab4.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab4.getText())-1);
-        singleton.pager.setPage(Integer.parseInt(numtab4.getText())-1);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
+        singleton.pager.setPage(Integer.parseInt(numtab4.getText()) - 1);
         updatetable();
     }//GEN-LAST:event_numtab4MouseClicked
 
@@ -972,8 +976,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab5MouseClicked
         numtab5.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab5.getText())-1);
-        singleton.pager.setPage(Integer.parseInt(numtab5.getText())-1);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
+        singleton.pager.setPage(Integer.parseInt(numtab5.getText()) - 1);
         updatetable();
     }//GEN-LAST:event_numtab5MouseClicked
 
@@ -983,8 +987,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab6MouseClicked
         numtab6.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab6.getText())-1);
-        singleton.pager.setPage(Integer.parseInt(numtab6.getText())-1);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
+        singleton.pager.setPage(Integer.parseInt(numtab6.getText()) - 1);
         updatetable();
     }//GEN-LAST:event_numtab6MouseClicked
 
@@ -994,8 +998,8 @@ public class admin_view extends javax.swing.JFrame {
 
     private void numtab7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab7MouseClicked
         numtab7.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab7.getText())-1);
-        singleton.pager.setPage(Integer.parseInt(numtab7.getText())-1);
+        singleton.pager.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
+        singleton.pager.setPage(Integer.parseInt(numtab7.getText()) - 1);
         updatetable();
     }//GEN-LAST:event_numtab7MouseClicked
 
@@ -1014,11 +1018,11 @@ public class admin_view extends javax.swing.JFrame {
         });
     }
 
-    Timer timer = new Timer(3000, new ActionListener() {
+    /*Timer timer = new Timer(5000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             admincreated.setVisible(false);
         }
-    });
+    });*/
     /**
      * @param args the command line arguments
      */
@@ -1048,7 +1052,6 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JTextField hiringdateform;
     private javax.swing.JButton importAButton;
     private javax.swing.JMenuItem importmenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

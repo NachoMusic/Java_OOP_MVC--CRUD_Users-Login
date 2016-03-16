@@ -369,6 +369,11 @@ public class new_admin_view extends javax.swing.JFrame {
         getContentPane().add(saveAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 100, -1));
 
         discartButton.setText("Discart");
+        discartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                discartButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 90, -1));
 
         emptyButton.setText("Empty all fields");
@@ -441,7 +446,8 @@ public class new_admin_view extends javax.swing.JFrame {
         } else if (bll.editAdmin()) {
             dispose();
             new admin_view().setVisible(true);
-
+            admincreated.setText("Edited");
+            admincreated.setVisible(true);
         }
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
@@ -678,6 +684,11 @@ public class new_admin_view extends javax.swing.JFrame {
         // TODO add your handling code here:
         bll.validateHiringdate();
     }//GEN-LAST:event_namehiringdatelabelMouseEntered
+
+    private void discartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discartButtonActionPerformed
+        new admin_view().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_discartButtonActionPerformed
 
     /**
      * @param args the command line arguments
