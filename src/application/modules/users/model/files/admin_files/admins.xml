@@ -2,7 +2,7 @@
 <list>
   <admin>
     <dni>00000000T</dni>
-    <name>asdf</name>
+    <name>Homer</name>
     <subname>asdf</subname>
     <phone__number>12341234</phone__number>
     <email>asdf@asdf.asd</email>
@@ -20,5 +20,26 @@
     <salary>1234.0</salary>
     <years__of__service>0</years__of__service>
     <activity>1234</activity>
+  </admin>
+  <admin>
+    <dni>12345678Z</dni>
+    <name>sadf</name>
+    <subname>fsda</subname>
+    <phone__number>1342</phone__number>
+    <email>sfad@asfd.dfsa</email>
+    <user>sfad</user>
+    <pass>afds</pass>
+    <avatar>src/application/modules/users/view/img/12345678Z</avatar>
+    <state>asdf</state>
+    <date__birthday>09/03/1988</date__birthday>
+    <age>28</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>488</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>01/03/2016</hirin__date>
+    <salary>241.0</salary>
+    <years__of__service>0</years__of__service>
+    <activity>1221</activity>
   </admin>
 </list>

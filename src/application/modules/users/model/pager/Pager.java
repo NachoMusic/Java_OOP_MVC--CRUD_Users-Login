@@ -4,7 +4,11 @@ package application.modules.users.model.pager;
 import application.modules.users.model.models.singleton;
 import static application.modules.users.view.admin_view.adminstable;
 import static application.modules.users.view.admin_view.*;
+import static application.modules.users.view.new_admin_view.avatarField;
+import static application.modules.users.view.new_admin_view.defaultAvatar;
 import application.utils.Functions;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -142,7 +146,6 @@ public class Pager {
     }
     
     public void pagenum(){//aun en pruebas
-        //this.selectedpage=this.page;
         int num = (int)((maxpage/(movepage))+1), num1=1,num2=2,num3=3,num4=4,num5=5,num6=6,num7=7;
         if(num>7){
             if(selectedpage>3){
@@ -155,7 +158,6 @@ public class Pager {
                     num6=selectedpage+3;
                     num7=selectedpage+4;
                     num = 7;
-                    //System.out.print("Dentro");
                 } else {
                     num1=num-6;
                     num2=num-5;
@@ -215,5 +217,16 @@ public class Pager {
         hiringdateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 10)));
         salaryform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 11)));
         activityform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 12)));
+        try{
+            ImageIcon icon = new ImageIcon(singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getAvatar());
+            Image imgn = icon.getImage();
+            Image newimg = imgn.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon newIcon = new ImageIcon(newimg);
+            avatarform.setIcon(newIcon);
+            avatarform.setText(singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getAvatar());
+        }catch(Exception E){
+            avatarform.setIcon(defaultAvatar);
+            avatarform.setText("src/application/modules/users/view/img/"+singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getDni());
+        }
     }
 }

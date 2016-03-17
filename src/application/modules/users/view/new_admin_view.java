@@ -6,7 +6,11 @@
 package application.modules.users.view;
 
 import application.modules.users.model.BLL.bll;
+import application.modules.users.model.BLL.lib_files.json;
+import application.modules.users.model.BLL.lib_files.txt;
+import application.modules.users.model.BLL.lib_files.xml;
 import static application.modules.users.view.admin_view.admincreated;
+import application.utils.Config_json;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
@@ -43,9 +47,9 @@ public class new_admin_view extends javax.swing.JFrame {
         datebirthdaylabel.setVisible(false);
         hiringdatelabel.setVisible(false);
         phonelabel.setVisible(false);
-        avatarlabel.setVisible(false);
+        avatarlabel.setVisible(false);/*
         avatarField.setIcon(defaultAvatar);
-        avatarField.setText("src/application/modules/users/view/img/anonymous_add.png");
+        avatarField.setText("src/application/modules/users/view/img/anonymous_add.png");*/
     }
 
     /**
@@ -442,12 +446,20 @@ public class new_admin_view extends javax.swing.JFrame {
                 new admin_view().setVisible(true);
                 admincreated.setText("Created");
                 admincreated.setVisible(true);
+                json.createjson_auto();
+                xml.createxml_auto();
+                txt.createtxt_auto();
+                Config_json.create_conf_json();
             }
         } else if (bll.editAdmin()) {
             dispose();
             new admin_view().setVisible(true);
             admincreated.setText("Edited");
             admincreated.setVisible(true);
+            json.createjson_auto();
+            xml.createxml_auto();
+            txt.createtxt_auto();
+            Config_json.create_conf_json();
         }
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 

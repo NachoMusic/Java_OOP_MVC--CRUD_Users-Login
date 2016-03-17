@@ -14,6 +14,7 @@ import application.modules.users.view.new_admin_view;
 import static application.modules.users.view.new_admin_view.activityField;
 import static application.modules.users.view.new_admin_view.avatarField;
 import static application.modules.users.view.new_admin_view.datebirthdayField;
+import static application.modules.users.view.new_admin_view.defaultAvatar;
 import static application.modules.users.view.new_admin_view.dniField;
 import static application.modules.users.view.new_admin_view.emailField;
 import static application.modules.users.view.new_admin_view.emptyButton;
@@ -27,12 +28,14 @@ import static application.modules.users.view.new_admin_view.saveLabel;
 import static application.modules.users.view.new_admin_view.statusField;
 import static application.modules.users.view.new_admin_view.subnameField;
 import static application.modules.users.view.new_admin_view.usernameField;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -113,6 +116,18 @@ public class bll {
             hiringdateField.setCalendar(h.DateToCalendar());
             salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
             activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");
+            try{
+                ImageIcon icon = new ImageIcon(singleton.admins.getData(Admintochange -1 ).getAvatar());
+                Image imgn = icon.getImage();
+                Image newimg = imgn.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
+                ImageIcon newIcon = new ImageIcon(newimg);
+                avatarField.setIcon(newIcon);
+                avatarField.setText(singleton.admins.getData(Admintochange -1 ).getAvatar());
+            }catch(Exception E){
+                avatarField.setIcon(defaultAvatar);
+                avatarField.setText("src/application/modules/users/view/img/"+singleton.admins.getData(Admintochange - 1).getDni());
+            }
+            
             validA=true;
         }
         return validA;
@@ -194,16 +209,18 @@ public class bll {
             try {
                 File origen = new File(avatarField.getText());
                 File destino = new File("src/application/modules/users/view/img/" + dniField.getText());
-
-                InputStream in = new FileInputStream(origen);
-                OutputStream out = new FileOutputStream(destino);
-                byte[] buf = new byte[1024];
-                int len;
-                while ((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
+                String b = "src/application/modules/users/view/img/" + dniField.getText();
+                if(!avatarField.getText().equals(b)){
+                    InputStream in = new FileInputStream(origen);
+                    OutputStream out = new FileOutputStream(destino);
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = in.read(buf)) > 0) {
+                        out.write(buf, 0, len);
+                    }
+                    in.close();
+                    out.close();
                 }
-                in.close();
-                out.close();
             } catch (Exception e) {
             }
             avatar = "src/application/modules/users/view/img/" + dniField.getText();
