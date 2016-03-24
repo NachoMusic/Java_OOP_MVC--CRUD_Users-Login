@@ -8,6 +8,7 @@ package application;
 import application.modules.config.model.Config;
 import application.modules.config.model.Language;
 import application.models.SingletonF;
+import application.modules.menu.controller.controller;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
@@ -59,11 +60,10 @@ public class main {
         //</editor-fold>
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new app_view().setVisible(true);
+                //new app_view().setVisible(true);
+                new controller(new app_view()).init();
             }
         }
         );
-        
-        
     }
 }

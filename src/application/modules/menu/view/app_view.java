@@ -24,10 +24,10 @@ public class app_view extends javax.swing.JFrame {
 
     public app_view() {
         initComponents();
-        
+        /*
         this.setTitle(SingletonF.language.getProperty("application_users"));
         this.setLocationRelativeTo(null);
-        close();
+        close();*/
     }
 
     /**
@@ -135,21 +135,15 @@ public class app_view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adminsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminsButtonActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new admin_view().setVisible(true);
-
+        /*this.setVisible(false);
+        new admin_view().setVisible(true);*/
     }//GEN-LAST:event_adminsButtonActionPerformed
 
     private void confButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confButtonActionPerformed
-        // TODO add your handling code here:
-        //this.setVisible(false);
-        //dispose();
-
         configview = new config_view();
         configview.setVisible(true);
     }//GEN-LAST:event_confButtonActionPerformed
-    public void close(){
+    /*public void close(){
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -157,18 +151,18 @@ public class app_view extends javax.swing.JFrame {
                 System.exit(0);
             }
         });
-    }
+    }*/
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminlabel;
-    private javax.swing.JButton adminsButton;
-    private javax.swing.JButton clientsButton;
+    public static javax.swing.JButton adminsButton;
+    public static javax.swing.JButton clientsButton;
     private javax.swing.JLabel clientslabel;
-    private javax.swing.JButton confButton;
+    public static javax.swing.JButton confButton;
     private javax.swing.JLabel conflabel;
     private javax.swing.JLabel labelMenu;
     private javax.swing.JLabel userslabel;
-    private javax.swing.JButton usregButton;
+    public static javax.swing.JButton usregButton;
     // End of variables declaration//GEN-END:variables
 }
