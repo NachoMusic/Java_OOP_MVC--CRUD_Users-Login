@@ -6,6 +6,7 @@
 package application.modules.users.view;
 
 import application.models.SingletonF;
+import application.modules.menu.controller.controller;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
@@ -74,7 +75,6 @@ public class admin_view extends javax.swing.JFrame {
 
     };
     public void updatetable() {
-        //adminstable = new javax.swing.JTable();
         adminstable = jTable;
         adminstable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
@@ -1056,7 +1056,7 @@ public class admin_view extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 dispose();
-                new app_view().setVisible(true);
+                new controller(new app_view()).init();
             }
         });
     }

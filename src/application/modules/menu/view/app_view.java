@@ -24,10 +24,6 @@ public class app_view extends javax.swing.JFrame {
 
     public app_view() {
         initComponents();
-        /*
-        this.setTitle(SingletonF.language.getProperty("application_users"));
-        this.setLocationRelativeTo(null);
-        close();*/
     }
 
     /**
@@ -135,24 +131,12 @@ public class app_view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adminsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminsButtonActionPerformed
-        /*this.setVisible(false);
-        new admin_view().setVisible(true);*/
+
     }//GEN-LAST:event_adminsButtonActionPerformed
 
     private void confButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confButtonActionPerformed
-        configview = new config_view();
-        configview.setVisible(true);
+        
     }//GEN-LAST:event_confButtonActionPerformed
-    /*public void close(){
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                dispose();
-                System.exit(0);
-            }
-        });
-    }*/
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminlabel;
