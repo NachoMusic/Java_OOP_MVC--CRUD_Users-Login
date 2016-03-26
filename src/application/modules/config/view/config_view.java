@@ -5,17 +5,7 @@
  */
 package application.modules.config.view;
 
-import application.models.SingletonF;
-import application.modules.users.model.BLL.Arraylist_admin;
-import application.modules.users.model.BLL.lib_files.json;
-import application.modules.users.model.BLL.lib_files.txt;
-import application.modules.users.model.BLL.lib_files.xml;
-import application.modules.users.model.kernel.Dummies;
-import application.modules.users.model.models.singleton;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
-
+import application.modules.menu.view.app_view;
 /**
  *
  * @author nacho
@@ -27,48 +17,6 @@ public class config_view extends javax.swing.JFrame {
      */
     public config_view() {
         initComponents();
-        
-        closeWindow();
-        this.setAlwaysOnTop(true);
-        successAddDum.setVisible(false);
-        this.setTitle(SingletonF.language.getProperty("config"));
-        this.setLocationRelativeTo(null);
-        switch (SingletonF.configApp.getCurrency_config()) {
-            case '€':
-                comboCurrency.setSelectedIndex(0);
-                break;
-            case '$':
-                comboCurrency.setSelectedIndex(1);
-                break;
-            case '£':
-                comboCurrency.setSelectedIndex(2);
-        }
-        decimalsCombo.setSelectedIndex(SingletonF.configApp.getDecimals_config() - 1);
-        dateCombo.setSelectedIndex(SingletonF.configApp.getDate_config());
-        switch (SingletonF.configApp.getLanguage_config()) {
-            case "English":
-                languageCombo.setSelectedIndex(0);
-                break;
-            case "Spanish":
-                languageCombo.setSelectedIndex(1);
-                break;
-        }
-        if (SingletonF.configApp.getDummiesmode()) {
-            dummiesOn.setSelected(true);
-        } else {
-            dummiesOff.setSelected(true);
-        }
-        switch (SingletonF.configApp.getSavingextension()) {
-            case "json"://json
-                jsonbutton.setSelected(true);
-                break;
-            case "xml"://xml
-                xmlbutton.setSelected(true);
-                break;
-            case "txt"://txt
-                txtbutton.setSelected(true);
-                break;
-        }
     }
 
     /**
@@ -121,68 +69,33 @@ public class config_view extends javax.swing.JFrame {
         currencyconflabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         comboCurrency.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "€", "$", "£" }));
-        comboCurrency.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboCurrencyActionPerformed(evt);
-            }
-        });
 
         decimalsconflabel.setText("Decimals:");
         decimalsconflabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         decimalsCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
-        decimalsCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                decimalsComboActionPerformed(evt);
-            }
-        });
 
         dateconflabel.setText("Date format:");
         dateconflabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         dateCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dd/mm/yyyy", "dd-mm-yyyy", "yyyy/mm/dd", "yyyy-mm-dd" }));
-        dateCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dateComboActionPerformed(evt);
-            }
-        });
 
         languagelabel.setText("Language:");
         languagelabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         languageCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "English", "Español" }));
-        languageCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                languageComboActionPerformed(evt);
-            }
-        });
 
         languagelabel1.setText("Def. extension:");
         languagelabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         buttonGroup2.add(jsonbutton);
         jsonbutton.setText("JSON");
-        jsonbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jsonbuttonActionPerformed(evt);
-            }
-        });
 
         buttonGroup2.add(txtbutton);
         txtbutton.setText("TXT");
-        txtbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuttonActionPerformed(evt);
-            }
-        });
 
         buttonGroup2.add(xmlbutton);
         xmlbutton.setText("XML");
-        xmlbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                xmlbuttonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -242,38 +155,17 @@ public class config_view extends javax.swing.JFrame {
 
         buttonGroup1.add(dummiesOn);
         dummiesOn.setText("Activated");
-        dummiesOn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dummiesOnActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(dummiesOff);
         dummiesOff.setText("Deactivate");
-        dummiesOff.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dummiesOffActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Dummies mode:");
         jLabel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         addRandomDummies.setText("Add random dummies");
-        addRandomDummies.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addRandomDummiesActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("You can add random dummies with generated fields");
         jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        howmanyDummies.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                howmanyDummiesStateChanged(evt);
-            }
-        });
 
         successAddDum.setForeground(new java.awt.Color(6, 124, 15));
         successAddDum.setText("Added dummies");
@@ -346,11 +238,6 @@ public class config_view extends javax.swing.JFrame {
 
         resetConf.setBackground(new java.awt.Color(255, 0, 0));
         resetConf.setText("Reset Configuration");
-        resetConf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetConfActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -389,157 +276,20 @@ public class config_view extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboCurrencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCurrencyActionPerformed
-        // TODO add your handling code here:
-        char monedaAnterior;
-        switch (comboCurrency.getSelectedIndex()) {
-            case 0:
-                monedaAnterior = SingletonF.configApp.getCurrency_config();
-                SingletonF.configApp.setCurrency_config('€');
-                singleton.admins.changeFormatCurrency(monedaAnterior);
-                break;
-            case 1:
-                monedaAnterior = SingletonF.configApp.getCurrency_config();
-                SingletonF.configApp.setCurrency_config('$');
-                singleton.admins.changeFormatCurrency(monedaAnterior);
-                break;
-            case 2:
-                monedaAnterior = SingletonF.configApp.getCurrency_config();
-                SingletonF.configApp.setCurrency_config('£');
-                singleton.admins.changeFormatCurrency(monedaAnterior);
-                break;
-        }
-    }//GEN-LAST:event_comboCurrencyActionPerformed
-
-    private void resetConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetConfActionPerformed
-        char monedaAnterior = SingletonF.configApp.getCurrency_config();
-        SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
-        for (int i = 0; i < singleton.admins.getAdmins().size(); i++) {
-            singleton.admins.getData(i).changeCurrency(monedaAnterior);
-        }
-        SingletonF.configApp.setSavingextension("json");
-        SingletonF.configApp.setDecimals_config(2);
-        SingletonF.configApp.setLookandfeel(0);
-    }//GEN-LAST:event_resetConfActionPerformed
-
-    private void decimalsComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_decimalsComboActionPerformed
-        // TODO add your handling code here:
-        SingletonF.configApp.setDecimals_config(decimalsCombo.getSelectedIndex() + 1);
-    }//GEN-LAST:event_decimalsComboActionPerformed
-
-    private void dummiesOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummiesOnActionPerformed
-        // TODO add your handling code here:
-        json.createjson_auto();
-        xml.createxml_auto();
-        txt.createtxt_auto();
-        SingletonF.configApp.setDummiesmode(true);
-        singleton.admins = new Arraylist_admin();
-        switch (SingletonF.configApp.getSavingextension()) {
-            case "json"://json
-                json.load_json_auto();
-                break;
-            case "xml"://xml
-                xml.load_xml_auto();
-                break;
-            case "txt": //txt
-                txt.load_txt_auto();
-                break;
-        }
-    }//GEN-LAST:event_dummiesOnActionPerformed
-
-    private void dummiesOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dummiesOffActionPerformed
-        // TODO add your handling code here:
-        json.createjson_auto();
-        xml.createxml_auto();
-        txt.createtxt_auto();
-        SingletonF.configApp.setDummiesmode(false);
-        singleton.admins = new Arraylist_admin();
-        switch (SingletonF.configApp.getSavingextension()) {
-            case "json"://json
-                json.load_json_auto();
-                break;
-            case "xml"://xml
-                xml.load_xml_auto();
-                break;
-            case "txt": //txt
-                txt.load_txt_auto();
-                break;
-        }
-    }//GEN-LAST:event_dummiesOffActionPerformed
-
-    private void addRandomDummiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRandomDummiesActionPerformed
-        // TODO add your handling code here:
-        Dummies.generatedummies(Integer.parseInt(howmanyDummies.getValue().toString()));
-        successAddDum.setVisible(true);
-    }//GEN-LAST:event_addRandomDummiesActionPerformed
-
-    private void howmanyDummiesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_howmanyDummiesStateChanged
-        // TODO add your handling code here:
-        if (Integer.parseInt(howmanyDummies.getValue().toString()) < 0) {
-            howmanyDummies.setValue(0);
-        }
-    }//GEN-LAST:event_howmanyDummiesStateChanged
-
-    private void dateComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateComboActionPerformed
-        // TODO add your handling code here:
-        SingletonF.configApp.setDate_config(dateCombo.getSelectedIndex());
-    }//GEN-LAST:event_dateComboActionPerformed
-
-    private void languageComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageComboActionPerformed
-        // TODO add your handling code here:
-        switch (languageCombo.getSelectedIndex()) {
-            case 0:// English
-                SingletonF.configApp.setLanguage_config("English");
-                SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
-                break;
-            case 1:// Spanish
-                SingletonF.configApp.setLanguage_config("Spanish");
-                SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
-                break;
-        }
-    }//GEN-LAST:event_languageComboActionPerformed
-
-    private void jsonbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsonbuttonActionPerformed
-        // TODO add your handling code here:
-        SingletonF.configApp.setSavingextension("json");
-    }//GEN-LAST:event_jsonbuttonActionPerformed
-
-    private void txtbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuttonActionPerformed
-        // TODO add your handling code here:
-        SingletonF.configApp.setSavingextension("txt");
-    }//GEN-LAST:event_txtbuttonActionPerformed
-
-    private void xmlbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xmlbuttonActionPerformed
-        // TODO add your handling code here:
-        SingletonF.configApp.setSavingextension("xml");
-    }//GEN-LAST:event_xmlbuttonActionPerformed
-
-    private void closeWindow() {
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                //setVisible(false);
-                //new app_view().setVisible(true);
-                dispose();
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addRandomDummies;
+    public static javax.swing.JButton addRandomDummies;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JComboBox<String> comboCurrency;
+    public static javax.swing.JComboBox<String> comboCurrency;
     private javax.swing.JTabbedPane confpane;
     private javax.swing.JLabel currencyconflabel;
-    private javax.swing.JComboBox<String> dateCombo;
+    public static javax.swing.JComboBox<String> dateCombo;
     private javax.swing.JLabel dateconflabel;
-    private javax.swing.JComboBox<String> decimalsCombo;
+    public static javax.swing.JComboBox<String> decimalsCombo;
     private javax.swing.JLabel decimalsconflabel;
-    private javax.swing.JRadioButton dummiesOff;
-    private javax.swing.JRadioButton dummiesOn;
-    private javax.swing.JSpinner howmanyDummies;
+    public static javax.swing.JRadioButton dummiesOff;
+    public static javax.swing.JRadioButton dummiesOn;
+    public static javax.swing.JSpinner howmanyDummies;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -549,13 +299,13 @@ public class config_view extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jsonbutton;
-    private javax.swing.JComboBox<String> languageCombo;
+    public static javax.swing.JRadioButton jsonbutton;
+    public static javax.swing.JComboBox<String> languageCombo;
     private javax.swing.JLabel languagelabel;
     private javax.swing.JLabel languagelabel1;
-    private javax.swing.JButton resetConf;
-    private javax.swing.JLabel successAddDum;
-    private javax.swing.JRadioButton txtbutton;
-    private javax.swing.JRadioButton xmlbutton;
+    public static javax.swing.JButton resetConf;
+    public static javax.swing.JLabel successAddDum;
+    public static javax.swing.JRadioButton txtbutton;
+    public static javax.swing.JRadioButton xmlbutton;
     // End of variables declaration//GEN-END:variables
 }

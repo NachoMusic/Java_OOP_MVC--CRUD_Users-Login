@@ -6,10 +6,6 @@
 package application.modules.menu.view;
 
 import application.modules.config.view.config_view;
-import application.models.SingletonF;
-import application.modules.users.view.admin_view;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 /**
  *

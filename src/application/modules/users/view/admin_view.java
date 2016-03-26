@@ -1056,7 +1056,7 @@ public class admin_view extends javax.swing.JFrame {
             @Override
             public void windowClosing(WindowEvent e) {
                 dispose();
-                new controller(new app_view()).init();
+                new controller(new app_view(),0).init("menu");
             }
         });
     }
