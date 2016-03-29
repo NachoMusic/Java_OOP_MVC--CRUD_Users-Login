@@ -6,14 +6,14 @@
 package application.modules.users.view;
 
 import application.models.SingletonF;
-import application.modules.menu.controller.controller;
+import application.modules.menu_config.controller.controller;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.models.singleton;
 import application.utils.Functions;
 import application.utils.Menus;
-import application.modules.menu.view.app_view;
+import application.modules.menu_config.view.app_view;
 import application.modules.users.model.BLL.bll;
 import application.modules.users.model.pager.Pager;
 import static application.modules.users.view.new_admin_view.*;

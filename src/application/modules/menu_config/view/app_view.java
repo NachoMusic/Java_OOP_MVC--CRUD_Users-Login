@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.modules.menu.view;
+package application.modules.menu_config.view;
 
-import application.modules.config.view.config_view;
+import application.modules.menu_config.view.config_view;
 
 /**
  *
@@ -43,18 +43,18 @@ public class app_view extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        adminsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/user_admin.png"))); // NOI18N
+        adminsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu_config/view/img/user_admin.png"))); // NOI18N
         adminsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminsButtonActionPerformed(evt);
             }
         });
 
-        clientsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/users.png"))); // NOI18N
+        clientsButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu_config/view/img/user_man.png"))); // NOI18N
 
-        usregButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/user_man.png"))); // NOI18N
+        usregButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu_config/view/img/users.png"))); // NOI18N
 
-        confButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu/view/img/configuration.png"))); // NOI18N
+        confButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/application/modules/menu_config/view/img/configuration.png"))); // NOI18N
         confButton.setToolTipText("");
         confButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,45 +82,52 @@ public class app_view extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(usregButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(adminsButton))
-                        .addComponent(adminlabel)
-                        .addComponent(userslabel))
-                    .addComponent(labelMenu))
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(clientslabel)
-                    .addComponent(conflabel)
-                    .addComponent(confButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(clientsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelMenu)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(adminsButton)
+                            .addComponent(adminlabel)
+                            .addComponent(usregButton)
+                            .addComponent(userslabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(clientslabel)
+                            .addComponent(clientsButton)
+                            .addComponent(conflabel)
+                            .addComponent(confButton))
+                        .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(labelMenu)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adminsButton)
-                    .addComponent(clientsButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adminlabel)
-                    .addComponent(clientslabel))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usregButton)
-                    .addComponent(confButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(conflabel)
-                    .addComponent(userslabel))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(adminsButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(adminlabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(clientsButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clientslabel)))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(confButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(conflabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(usregButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userslabel)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();

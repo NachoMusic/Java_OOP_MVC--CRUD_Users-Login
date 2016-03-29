@@ -2,7 +2,7 @@ package application.modules.users.model.models;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-import application.modules.config.model.Config;
+import application.modules.menu_config.model.Config;
 import application.models.Dates;
 import application.utils.Format;
 @SuppressWarnings("serial")

@@ -1,4 +1,4 @@
-package application.modules.config.model;
+package application.modules.menu_config.model;
 
 import java.io.Serializable;
 import com.thoughtworks.xstream.annotations.XStreamAlias;

@@ -24,55 +24,65 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="usregButton" max="32767" attributes="0"/>
-                          <Component id="adminsButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="adminlabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="userslabel" alignment="0" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="labelMenu" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Component id="labelMenu" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="adminsButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="adminlabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="usregButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="userslabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="clientslabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="clientsButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="conflabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="confButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="clientslabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="conflabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="confButton" max="32767" attributes="0"/>
-                  <Component id="clientsButton" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="labelMenu" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="adminsButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="clientsButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="adminlabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="clientslabel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="usregButton" min="-2" max="-2" attributes="0"/>
-                  <Component id="confButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="adminsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="adminlabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="clientsButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="clientslabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="conflabel" min="-2" max="-2" attributes="0"/>
-                  <Component id="userslabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="confButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="conflabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="usregButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="userslabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,7 +91,7 @@
     <Component class="javax.swing.JButton" name="adminsButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/application/modules/menu/view/img/user_admin.png"/>
+          <Image iconType="3" name="/application/modules/menu_config/view/img/user_admin.png"/>
         </Property>
       </Properties>
       <Events>
@@ -94,7 +104,7 @@
     <Component class="javax.swing.JButton" name="clientsButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/application/modules/menu/view/img/users.png"/>
+          <Image iconType="3" name="/application/modules/menu_config/view/img/user_man.png"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -104,7 +114,7 @@
     <Component class="javax.swing.JButton" name="usregButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/application/modules/menu/view/img/user_man.png"/>
+          <Image iconType="3" name="/application/modules/menu_config/view/img/users.png"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -114,7 +124,7 @@
     <Component class="javax.swing.JButton" name="confButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/application/modules/menu/view/img/configuration.png"/>
+          <Image iconType="3" name="/application/modules/menu_config/view/img/configuration.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>

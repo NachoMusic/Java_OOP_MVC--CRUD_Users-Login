@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.modules.menu.controller;
+package application.modules.menu_config.controller;
 
 import application.models.SingletonF;
-import application.modules.config.view.config_view;
-import static application.modules.config.view.config_view.comboCurrency;
-import static application.modules.config.view.config_view.dateCombo;
-import static application.modules.config.view.config_view.decimalsCombo;
-import static application.modules.config.view.config_view.dummiesOff;
-import static application.modules.config.view.config_view.dummiesOn;
-import static application.modules.config.view.config_view.howmanyDummies;
-import static application.modules.config.view.config_view.jsonbutton;
-import static application.modules.config.view.config_view.languageCombo;
-import static application.modules.config.view.config_view.successAddDum;
-import static application.modules.config.view.config_view.txtbutton;
-import static application.modules.config.view.config_view.xmlbutton;
-import application.modules.menu.view.app_view;
+import application.modules.menu_config.view.config_view;
+import static application.modules.menu_config.view.config_view.comboCurrency;
+import static application.modules.menu_config.view.config_view.dateCombo;
+import static application.modules.menu_config.view.config_view.decimalsCombo;
+import static application.modules.menu_config.view.config_view.dummiesOff;
+import static application.modules.menu_config.view.config_view.dummiesOn;
+import static application.modules.menu_config.view.config_view.howmanyDummies;
+import static application.modules.menu_config.view.config_view.jsonbutton;
+import static application.modules.menu_config.view.config_view.languageCombo;
+import static application.modules.menu_config.view.config_view.successAddDum;
+import static application.modules.menu_config.view.config_view.txtbutton;
+import static application.modules.menu_config.view.config_view.xmlbutton;
+import application.modules.menu_config.view.app_view;
 import application.modules.users.model.BLL.Arraylist_admin;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
@@ -45,7 +45,6 @@ public class controller implements ActionListener {
     public controller(JFrame inicio, int i) {
         switch (i) {
             case 0:
-                System.out.println("arranque");
                 menu = (app_view) inicio;
                 break;
             case 1:
@@ -72,10 +71,10 @@ public class controller implements ActionListener {
         dummiesOff,
         addRandomDummies,
         resetConf,
+        closeC,
     }
 
     public void init(String type) {
-        System.out.println("init0");
         switch (type) {
             case "menu":
                 menu.setVisible(true);
@@ -92,7 +91,6 @@ public class controller implements ActionListener {
                 closeM();
                 break;
             case "config":
-                System.out.println("initasdf");
                 config.setVisible(true);
                 config.setLocationRelativeTo(null);
                 config_view.comboCurrency.setActionCommand("comboCurrency");
@@ -117,6 +115,8 @@ public class controller implements ActionListener {
                 config_view.addRandomDummies.addActionListener(this);
                 config_view.resetConf.setActionCommand("resetConf");
                 config_view.resetConf.addActionListener(this);
+                config_view.closeC.setActionCommand("closeC");
+                config_view.closeC.addActionListener(this);
 
                 config.setTitle(SingletonF.language.getProperty("config"));
                 switch (SingletonF.configApp.getCurrency_config()) {
@@ -129,7 +129,6 @@ public class controller implements ActionListener {
                     case '£':
                         comboCurrency.setSelectedIndex(2);
                 }
-                System.out.println(SingletonF.configApp.getDate_config());
                 decimalsCombo.setSelectedIndex(SingletonF.configApp.getDecimals_config()-1);
                 try{
                     dateCombo.setSelectedIndex(SingletonF.configApp.getDate_config());
@@ -160,7 +159,6 @@ public class controller implements ActionListener {
                         txtbutton.setSelected(true);
                         break;
                 }
-                System.out.println("close");
                 closeC();
                 break;
         }
@@ -170,7 +168,6 @@ public class controller implements ActionListener {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                System.out.println("Close");
                 menu.dispose();
                 System.exit(0);
             }
@@ -309,6 +306,9 @@ public class controller implements ActionListener {
                 SingletonF.configApp.setDecimals_config(2);
                 SingletonF.configApp.setLookandfeel(0);
                 break;
+            case closeC:
+                config.dispose();
+                new controller(new app_view(),0).init("menu");
         }
     }
 }
