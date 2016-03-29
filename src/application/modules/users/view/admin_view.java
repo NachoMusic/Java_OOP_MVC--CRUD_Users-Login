@@ -15,19 +15,15 @@ import application.utils.Functions;
 import application.utils.Menus;
 import application.modules.menu_config.view.app_view;
 import application.modules.users.model.BLL.bll;
-import application.modules.users.model.pager.Pager;
 import static application.modules.users.view.new_admin_view.*;
 import application.utils.Config_json;
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JTable;
-import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -42,6 +38,7 @@ public class admin_view extends javax.swing.JFrame {
      */
     public admin_view() {
         initComponents();
+        /*
         closeWindow();
 
         this.setTitle("Administrators");
@@ -62,7 +59,7 @@ public class admin_view extends javax.swing.JFrame {
             }
         });
         timer.start();
-        //admincreated.setVisible(true);
+        //admincreated.setVisible(true);*/
     }
 
     JTable jTable = new JTable() {
@@ -72,7 +69,6 @@ public class admin_view extends javax.swing.JFrame {
             return false;
         }
     
-
     };
     public void updatetable() {
         adminstable = jTable;
@@ -1070,7 +1066,7 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JMenuItem exportmenu;
     private javax.swing.JMenu filemenu;
     public static javax.swing.JButton findAButton;
-    private javax.swing.JMenuItem formmenu;
+    public static javax.swing.JMenuItem formmenu;
     public static javax.swing.JButton forward;
     public static javax.swing.JTextField hiringdateform;
     public static javax.swing.JButton importAButton;
@@ -1093,9 +1089,9 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JMenuItem kanbanmenu;
+    public static javax.swing.JMenuItem kanbanmenu;
     public static javax.swing.JScrollPane list;
-    private javax.swing.JMenuItem listmenu;
+    public static javax.swing.JMenuItem listmenu;
     public static javax.swing.JTextField nameform;
     public static javax.swing.JLabel numtab1;
     public static javax.swing.JLabel numtab2;
@@ -1112,7 +1108,7 @@ public class admin_view extends javax.swing.JFrame {
     private javax.swing.JMenu sortmenu;
     public static javax.swing.JTextField stateform;
     public static javax.swing.JTextField surnameform;
-    private javax.swing.JTabbedPane tabbedtable;
+    public static javax.swing.JTabbedPane tabbedtable;
     public static javax.swing.JTextField userform;
     // End of variables declaration//GEN-END:variables
 }

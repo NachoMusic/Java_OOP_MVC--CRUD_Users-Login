@@ -19,6 +19,7 @@ import static application.modules.menu_config.view.config_view.successAddDum;
 import static application.modules.menu_config.view.config_view.txtbutton;
 import static application.modules.menu_config.view.config_view.xmlbutton;
 import application.modules.menu_config.view.app_view;
+import application.modules.users.controller.admin_controller;
 import application.modules.users.model.BLL.Arraylist_admin;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
@@ -77,9 +78,9 @@ public class controller implements ActionListener {
     public void init(String type) {
         switch (type) {
             case "menu":
+                menu.setLocationRelativeTo(null);
                 menu.setVisible(true);
                 menu.setTitle(SingletonF.language.getProperty("application_users"));
-                menu.setLocationRelativeTo(null);
                 app_view.adminsButton.setActionCommand("adminsButton");
                 app_view.adminsButton.addActionListener(this);
                 app_view.clientsButton.setActionCommand("clientsButton");
@@ -91,8 +92,8 @@ public class controller implements ActionListener {
                 closeM();
                 break;
             case "config":
-                config.setVisible(true);
                 config.setLocationRelativeTo(null);
+                config.setVisible(true);
                 config_view.comboCurrency.setActionCommand("comboCurrency");
                 config_view.comboCurrency.addActionListener(this);
                 config_view.decimalsCombo.setActionCommand("decimalsCombo");
@@ -189,8 +190,11 @@ public class controller implements ActionListener {
         switch (action.valueOf(ae.getActionCommand())) {
             //Menu
             case adminsButton:
-                menu.setVisible(false);
-                new admin_view().setVisible(true);
+                /*menu.setVisible(false);
+                new admin_view().setVisible(true);*/
+                System.out.println("Admins");
+                new admin_controller(new admin_view(), 0).init("v");
+                System.out.println("Admins");
                 break;
 
             case clientsButton:

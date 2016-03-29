@@ -721,7 +721,7 @@ public class new_admin_view extends javax.swing.JFrame {
     public static javax.swing.JTextField activityField;
     public static javax.swing.JLabel activitylabel;
     public static javax.swing.JLabel avatarField;
-    private javax.swing.JButton avatarbutton;
+    public static javax.swing.JButton avatarbutton;
     public static javax.swing.JLabel avatarlabel;
     public static com.toedter.calendar.JDateChooser datebirthdayField;
     public static javax.swing.JLabel datebirthdaylabel;

@@ -10,6 +10,9 @@ import application.modules.users.model.DAO.dao;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
 import static application.modules.users.view.admin_view.Admintochange;
+import static application.modules.users.view.admin_view.adminstable;
+import static application.modules.users.view.admin_view.list;
+import static application.modules.users.view.admin_view.tabbedtable;
 import application.modules.users.view.new_admin_view;
 import static application.modules.users.view.new_admin_view.activityField;
 import static application.modules.users.view.new_admin_view.avatarField;
@@ -29,6 +32,9 @@ import static application.modules.users.view.new_admin_view.statusField;
 import static application.modules.users.view.new_admin_view.subnameField;
 import static application.modules.users.view.new_admin_view.usernameField;
 import java.awt.Image;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -36,6 +42,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -94,8 +103,9 @@ public class bll {
     public static boolean validateActivity() {
         return dao.validateActivity();
     }
-    public static boolean editadmin(){
-        boolean validA=false;
+
+    public static boolean editadmin() {
+        boolean validA = false;
         if (singleton.pager.getSelected() != null) {
             Admintochange = Integer.parseInt(singleton.pager.getSelected());
             new new_admin_view().setVisible(true);
@@ -116,19 +126,19 @@ public class bll {
             hiringdateField.setCalendar(h.DateToCalendar());
             salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
             activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");
-            try{
-                ImageIcon icon = new ImageIcon(singleton.admins.getData(Admintochange -1 ).getAvatar());
+            try {
+                ImageIcon icon = new ImageIcon(singleton.admins.getData(Admintochange - 1).getAvatar());
                 Image imgn = icon.getImage();
                 Image newimg = imgn.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon newIcon = new ImageIcon(newimg);
                 avatarField.setIcon(newIcon);
-                avatarField.setText(singleton.admins.getData(Admintochange -1 ).getAvatar());
-            }catch(Exception E){
+                avatarField.setText(singleton.admins.getData(Admintochange - 1).getAvatar());
+            } catch (Exception E) {
                 avatarField.setIcon(defaultAvatar);
-                avatarField.setText("src/application/modules/users/view/img/"+singleton.admins.getData(Admintochange - 1).getDni());
+                avatarField.setText("src/application/modules/users/view/img/" + singleton.admins.getData(Admintochange - 1).getDni());
             }
-            
-            validA=true;
+
+            validA = true;
         }
         return validA;
     }
@@ -210,7 +220,7 @@ public class bll {
                 File origen = new File(avatarField.getText());
                 File destino = new File("src/application/modules/users/view/img/" + dniField.getText());
                 String b = "src/application/modules/users/view/img/" + dniField.getText();
-                if(!avatarField.getText().equals(b)){
+                if (!avatarField.getText().equals(b)) {
                     InputStream in = new FileInputStream(origen);
                     OutputStream out = new FileOutputStream(destino);
                     byte[] buf = new byte[1024];
@@ -251,5 +261,51 @@ public class bll {
             validA = false;
         }
         return validA;
+    }
+
+    public static void updatetable() {
+        JTable jTable = new JTable() {
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
+        adminstable = jTable;
+        adminstable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
+                }
+        ));
+        adminstable.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent me) {
+                JTable table = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = table.rowAtPoint(p);
+                if (me.getClickCount() == 2) {
+                    tabbedtable.setSelectedIndex(1);
+                }
+            }
+        });
+        adminstable.setColumnSelectionAllowed(true);
+        adminstable.getTableHeader().setReorderingAllowed(false);
+        /* clicar el formulario -> echarlo al controller
+        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminstableMouseClicked(evt);
+            }
+        });*/
+
+        list.setViewportView(adminstable);
+        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
+        // Creamos un ordenador de filas para el modelo
+        TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
+        adminstable.setRowSorter(sorter);
+        adminstable.setColumnSelectionAllowed(false);
+        singleton.pager.updatetable2();
+        singleton.pager.pagenum();
     }
 }

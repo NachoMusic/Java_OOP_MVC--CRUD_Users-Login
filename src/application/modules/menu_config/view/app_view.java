@@ -94,13 +94,13 @@ public class app_view extends javax.swing.JFrame {
                             .addComponent(adminlabel)
                             .addComponent(usregButton)
                             .addComponent(userslabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(clientslabel)
                             .addComponent(clientsButton)
                             .addComponent(conflabel)
                             .addComponent(confButton))
-                        .addGap(21, 21, 21))))
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
