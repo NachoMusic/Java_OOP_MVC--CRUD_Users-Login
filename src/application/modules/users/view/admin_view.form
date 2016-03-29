@@ -109,16 +109,13 @@
                               <Component id="exportAButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="changeDataAButtorn" min="-2" max="-2" attributes="0"/>
+                              <Component id="changeDataAButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="printDataAButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="deleteDataAButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="deleteDataAButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="importAButton" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="importAButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -148,8 +145,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="createAButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="changeDataAButtorn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="printDataAButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="changeDataAButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="deleteDataAButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -168,22 +164,20 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createAButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="changeDataAButtorn">
+    <Component class="javax.swing.JButton" name="changeDataAButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Change Data"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeDataAButtornActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeDataAButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="printDataAButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Print Data"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printDataAButtonActionPerformed"/>
-      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="deleteDataAButton">
       <Properties>
@@ -192,6 +186,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteDataAButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="findAButton">
       <Properties>
@@ -200,6 +197,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findAButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="sortbyAButton">
       <Properties>
@@ -208,6 +208,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortbyAButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="exportAButton">
       <Properties>
@@ -216,6 +219,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportAButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="importAButton">
       <Properties>
@@ -224,6 +230,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="importAButtonActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JTabbedPane" name="tabbedtable">
 

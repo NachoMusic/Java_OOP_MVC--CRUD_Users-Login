@@ -124,8 +124,7 @@ public class admin_view extends javax.swing.JFrame {
     private void initComponents() {
 
         createAButton = new javax.swing.JButton();
-        changeDataAButtorn = new javax.swing.JButton();
-        printDataAButton = new javax.swing.JButton();
+        changeDataAButton = new javax.swing.JButton();
         deleteDataAButton = new javax.swing.JButton();
         findAButton = new javax.swing.JButton();
         sortbyAButton = new javax.swing.JButton();
@@ -197,17 +196,10 @@ public class admin_view extends javax.swing.JFrame {
             }
         });
 
-        changeDataAButtorn.setText("Change Data");
-        changeDataAButtorn.addActionListener(new java.awt.event.ActionListener() {
+        changeDataAButton.setText("Change Data");
+        changeDataAButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                changeDataAButtornActionPerformed(evt);
-            }
-        });
-
-        printDataAButton.setText("Print Data");
-        printDataAButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printDataAButtonActionPerformed(evt);
+                changeDataAButtonActionPerformed(evt);
             }
         });
 
@@ -745,13 +737,11 @@ public class admin_view extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(exportAButton))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(changeDataAButtorn)
+                                .addComponent(changeDataAButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(printDataAButton)))
+                                .addComponent(deleteDataAButton)))
                         .addGap(246, 246, 246)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deleteDataAButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(importAButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(importAButton)
                         .addGap(213, 213, 213)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -775,8 +765,7 @@ public class admin_view extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(createAButton)
-                            .addComponent(changeDataAButtorn)
-                            .addComponent(printDataAButton)
+                            .addComponent(changeDataAButton)
                             .addComponent(deleteDataAButton))
                         .addGap(60, 60, 60)))
                 .addContainerGap())
@@ -790,15 +779,11 @@ public class admin_view extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_createAButtonActionPerformed
 
-    private void changeDataAButtornActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtornActionPerformed
+    private void changeDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtonActionPerformed
         if (bll.editadmin()) {
             dispose();
         }
-    }//GEN-LAST:event_changeDataAButtornActionPerformed
-
-    private void printDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printDataAButtonActionPerformed
-        singleton.admins.printArraylist();
-    }//GEN-LAST:event_printDataAButtonActionPerformed
+    }//GEN-LAST:event_changeDataAButtonActionPerformed
 
     private void deleteDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataAButtonActionPerformed
         if (singleton.pager.getSelected() != null) {
@@ -1074,21 +1059,21 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JButton backwards;
     public static javax.swing.JButton beginning;
     public static javax.swing.JTextField birthdayform;
-    private javax.swing.JButton changeDataAButtorn;
+    public static javax.swing.JButton changeDataAButton;
     public static javax.swing.JComboBox<String> combopage;
-    private javax.swing.JButton createAButton;
-    private javax.swing.JButton deleteDataAButton;
+    public static javax.swing.JButton createAButton;
+    public static javax.swing.JButton deleteDataAButton;
     public static javax.swing.JTextField dniform;
     public static javax.swing.JTextField emailform;
     public static javax.swing.JButton end;
-    private javax.swing.JButton exportAButton;
+    public static javax.swing.JButton exportAButton;
     private javax.swing.JMenuItem exportmenu;
     private javax.swing.JMenu filemenu;
-    private javax.swing.JButton findAButton;
+    public static javax.swing.JButton findAButton;
     private javax.swing.JMenuItem formmenu;
     public static javax.swing.JButton forward;
     public static javax.swing.JTextField hiringdateform;
-    private javax.swing.JButton importAButton;
+    public static javax.swing.JButton importAButton;
     private javax.swing.JMenuItem importmenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1122,9 +1107,8 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JTextField pagefield;
     private javax.swing.JPanel panelviews;
     public static javax.swing.JTextField phoneform;
-    private javax.swing.JButton printDataAButton;
     public static javax.swing.JTextField salaryform;
-    private javax.swing.JButton sortbyAButton;
+    public static javax.swing.JButton sortbyAButton;
     private javax.swing.JMenu sortmenu;
     public static javax.swing.JTextField stateform;
     public static javax.swing.JTextField surnameform;
