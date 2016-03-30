@@ -38,28 +38,6 @@ public class admin_view extends javax.swing.JFrame {
      */
     public admin_view() {
         initComponents();
-        /*
-        closeWindow();
-
-        this.setTitle("Administrators");
-        this.setLocationRelativeTo(null);
-        numtab1.setVisible(false);
-        numtab2.setVisible(false);
-        numtab3.setVisible(false);
-        numtab4.setVisible(false);
-        numtab5.setVisible(false);
-        numtab6.setVisible(false);
-        numtab7.setVisible(false);
-        singleton.pager = new Pager();
-        singleton.pager.setPage(0);
-        updatetable();
-        Timer timer = new Timer(10000, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                admincreated.setVisible(false);
-            }
-        });
-        timer.start();
-        //admincreated.setVisible(true);*/
     }
 
     JTable jTable = new JTable() {
@@ -173,6 +151,7 @@ public class admin_view extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         admincreated = new javax.swing.JLabel();
+        backA = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
         importmenu = new javax.swing.JMenuItem();
@@ -659,6 +638,8 @@ public class admin_view extends javax.swing.JFrame {
         admincreated.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         admincreated.setForeground(new java.awt.Color(18, 107, 1));
 
+        backA.setText("Volver");
+
         filemenu.setText("File");
 
         importmenu.setText("Import");
@@ -701,11 +682,6 @@ public class admin_view extends javax.swing.JFrame {
         jMenu1.add(formmenu);
 
         kanbanmenu.setText("Kanban");
-        kanbanmenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kanbanmenuActionPerformed(evt);
-            }
-        });
         jMenu1.add(kanbanmenu);
 
         jMenuBar1.add(jMenu1);
@@ -736,8 +712,10 @@ public class admin_view extends javax.swing.JFrame {
                                 .addComponent(changeDataAButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(deleteDataAButton)))
-                        .addGap(246, 246, 246)
-                        .addComponent(importAButton)
+                        .addGap(237, 237, 237)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(importAButton)
+                            .addComponent(backA))
                         .addGap(213, 213, 213)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -762,7 +740,8 @@ public class admin_view extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(createAButton)
                             .addComponent(changeDataAButton)
-                            .addComponent(deleteDataAButton))
+                            .addComponent(deleteDataAButton)
+                            .addComponent(backA))
                         .addGap(60, 60, 60)))
                 .addContainerGap())
         );
@@ -771,122 +750,43 @@ public class admin_view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAButtonActionPerformed
-        new new_admin_view().setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_createAButtonActionPerformed
 
     private void changeDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtonActionPerformed
-        if (bll.editadmin()) {
-            dispose();
-        }
+        
     }//GEN-LAST:event_changeDataAButtonActionPerformed
 
     private void deleteDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteDataAButtonActionPerformed
-        if (singleton.pager.getSelected() != null) {
-            singleton.admins.deleteData(Integer.parseInt(singleton.pager.getSelected()));
-            updatetable();
-            json.createjson_auto();
-            xml.createxml_auto();
-            txt.createtxt_auto();
-            Config_json.create_conf_json();
-        }
+        
     }//GEN-LAST:event_deleteDataAButtonActionPerformed
 
     private void findAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findAButtonActionPerformed
-        String[] find = {SingletonF.language.getProperty("bydni"), SingletonF.language.getProperty("byname"),
-            SingletonF.language.getProperty("go_back")};
-        int option = Menus.menu(find, SingletonF.language.getProperty("searchadmins"),
-                SingletonF.language.getProperty("search"));
-        switch (option) {
-            case 0://By dni
-                singleton.admins.find(0, Functions.validatestring("insert dni", "insert dni"));
-                break;
-            case 1://By name
-                singleton.admins.find(1, Functions.validatestring("insert name", "insert name"));
-                break;
-            case 2://Go back
-        }
+        
     }//GEN-LAST:event_findAButtonActionPerformed
 
     private void exportAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAButtonActionPerformed
-        switch (SingletonF.configApp.getSavingextension()) {
-            case "json"://json
-                json.createjson();
-                break;
-            case "xml"://xml
-                xml.createxml();
-                break;
-            case "txt"://txt
-                txt.createtxt();
-                break;
-        }
+        
     }//GEN-LAST:event_exportAButtonActionPerformed
 
     private void importAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importAButtonActionPerformed
-        switch (SingletonF.configApp.getSavingextension()) {
-            case "json"://json
-                json.load_json();
-                break;
-            case "xml"://xml
-                xml.load_xml();
-                break;
-            case "txt": //txt
-                txt.load_txt();
-                break;
-        }
+        
     }//GEN-LAST:event_importAButtonActionPerformed
 
     private void sortbyAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortbyAButtonActionPerformed
-        String[] sortBy = {"By DNI", "By name", "By birthday", SingletonF.language.getProperty("go_back")};
-        int option = Menus.menu(sortBy, SingletonF.language.getProperty("sortadmins"),
-                SingletonF.language.getProperty("sort"));
-        switch (option) {
-            case 0://By dni
-                singleton.admins.sortData(0);
-                break;
-            case 1://By name
-                singleton.admins.sortData(1);
-                break;
-            case 2://By date birthday
-                singleton.admins.sortData(2);
-                break;
-            case 3://Go back
-        }
-        updatetable();
+        
     }//GEN-LAST:event_sortbyAButtonActionPerformed
 
     private void exportmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportmenuActionPerformed
-        switch (SingletonF.configApp.getSavingextension()) {
-            case "json"://json
-                json.createjson();
-                break;
-            case "xml"://xml
-                xml.createxml();
-                break;
-            case "txt"://txt
-                txt.createtxt();
-                break;
-        }
+        
     }//GEN-LAST:event_exportmenuActionPerformed
 
     private void importmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importmenuActionPerformed
-        // TODO add your handling code here:
-        switch (SingletonF.configApp.getSavingextension()) {
-            case "json"://json
-                json.load_json();
-                break;
-            case "xml"://xml
-                xml.load_xml();
-                break;
-            case "txt": //txt
-                txt.load_txt();
-                break;
-        }
-        updatetable();
+
     }//GEN-LAST:event_importmenuActionPerformed
 
     private void listmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listmenuActionPerformed
-        tabbedtable.setSelectedIndex(0);
+        
     }//GEN-LAST:event_listmenuActionPerformed
 
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
@@ -898,52 +798,27 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_adminstableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
-        singleton.pager.forward();
-        updatetable();
+        
     }//GEN-LAST:event_forwardActionPerformed
 
     private void backwardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backwardsActionPerformed
-        singleton.pager.backwards();
-        updatetable();
+        
     }//GEN-LAST:event_backwardsActionPerformed
 
     private void combopageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combopageActionPerformed
-        switch (combopage.getSelectedIndex()) {
-            case 0:
-                singleton.pager.setMovepage(10);
-                singleton.pager.setPage(0);
-                break;
-            case 1:
-                singleton.pager.setMovepage(20);
-                singleton.pager.setPage(0);
-                break;
-            case 2:
-                singleton.pager.setMovepage(50);
-                singleton.pager.setPage(0);
-            case 3:
-                singleton.pager.setMovepage(100);
-                singleton.pager.setPage(0);
-        }
-        updatetable();
+        
     }//GEN-LAST:event_combopageActionPerformed
 
     private void beginningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beginningActionPerformed
-        singleton.pager.setPage(0);
-        forward.setEnabled(true);
-        end.setEnabled(true);
-        updatetable();
+        
     }//GEN-LAST:event_beginningActionPerformed
 
     private void endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endActionPerformed
-        singleton.pager.setPage(singleton.admins.size() / singleton.pager.getMovepage());
-        backwards.setEnabled(true);
-        beginning.setEnabled(true);
-        updatetable();
+        
     }//GEN-LAST:event_endActionPerformed
 
     private void pagefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagefieldActionPerformed
-        singleton.pager.pagefield();
-        updatetable();
+        
     }//GEN-LAST:event_pagefieldActionPerformed
 
     private void numtab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MouseClicked
@@ -1024,12 +899,8 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_numtab7MousePressed
 
     private void formmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formmenuActionPerformed
-        tabbedtable.setSelectedIndex(1);
+        
     }//GEN-LAST:event_formmenuActionPerformed
-
-    private void kanbanmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kanbanmenuActionPerformed
-        tabbedtable.setSelectedIndex(2);
-    }//GEN-LAST:event_kanbanmenuActionPerformed
 
     private void closeWindow() {
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -1052,6 +923,7 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JTable adminstable;
     public static javax.swing.JTextField ageform;
     public static javax.swing.JLabel avatarform;
+    public static javax.swing.JButton backA;
     public static javax.swing.JButton backwards;
     public static javax.swing.JButton beginning;
     public static javax.swing.JTextField birthdayform;

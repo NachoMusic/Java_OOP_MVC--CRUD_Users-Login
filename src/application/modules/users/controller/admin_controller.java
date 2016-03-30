@@ -5,15 +5,25 @@
  */
 package application.modules.users.controller;
 
+import application.models.SingletonF;
 import application.modules.menu_config.controller.controller;
 import application.modules.menu_config.view.app_view;
 import static application.modules.users.controller.admin_controller.admin_f;
 import static application.modules.users.controller.admin_controller.admin_v;
 import application.modules.users.model.BLL.bll;
+import static application.modules.users.model.BLL.bll.updatetable;
+import application.modules.users.model.BLL.lib_files.json;
+import application.modules.users.model.BLL.lib_files.txt;
+import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.models.singleton;
 import application.modules.users.model.pager.Pager;
 import application.modules.users.view.admin_view;
 import static application.modules.users.view.admin_view.admincreated;
+import static application.modules.users.view.admin_view.backwards;
+import static application.modules.users.view.admin_view.beginning;
+import static application.modules.users.view.admin_view.combopage;
+import static application.modules.users.view.admin_view.end;
+import static application.modules.users.view.admin_view.forward;
 import static application.modules.users.view.admin_view.numtab1;
 import static application.modules.users.view.admin_view.numtab2;
 import static application.modules.users.view.admin_view.numtab3;
@@ -21,10 +31,15 @@ import static application.modules.users.view.admin_view.numtab4;
 import static application.modules.users.view.admin_view.numtab5;
 import static application.modules.users.view.admin_view.numtab6;
 import static application.modules.users.view.admin_view.numtab7;
+import static application.modules.users.view.admin_view.tabbedtable;
 import application.modules.users.view.new_admin_view;
+import application.utils.Config_json;
+import application.utils.Functions;
+import application.utils.Menus;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -34,7 +49,7 @@ import javax.swing.Timer;
  *
  * @author nacho
  */
-public class admin_controller implements ActionListener {
+public class admin_controller implements ActionListener/*, MouseClicked */ {
 
     public static admin_view admin_v;
     public static new_admin_view admin_f;
@@ -74,18 +89,17 @@ public class admin_controller implements ActionListener {
         combopage,
         listmenu,
         formmenu,
+        backA,
         //Admin_f
     }
 
     public void init(String type) {
         switch (type) {
             case "v":
-                System.out.println("1");
                 closeV();
                 admin_v.setTitle("Administrators");
                 admin_v.setLocationRelativeTo(null);
                 admin_v.setVisible(true);
-                System.out.println("2");
                 numtab1.setVisible(false);
                 numtab2.setVisible(false);
                 numtab3.setVisible(false);
@@ -172,24 +186,96 @@ public class admin_controller implements ActionListener {
                 }
                 break;
             case deleteDataAButton:
+                if (singleton.pager.getSelected() != null) {
+                    singleton.admins.deleteData(Integer.parseInt(singleton.pager.getSelected()));
+                    updatetable();
+                    json.createjson_auto();
+                    xml.createxml_auto();
+                    txt.createtxt_auto();
+                    Config_json.create_conf_json();
+                }
                 break;
             case findAButton:
+                String[] find = {SingletonF.language.getProperty("bydni"), SingletonF.language.getProperty("byname"),
+                    SingletonF.language.getProperty("go_back")};
+                int option = Menus.menu(find, SingletonF.language.getProperty("searchadmins"),
+                        SingletonF.language.getProperty("search"));
+                switch (option) {
+                    case 0://By dni
+                        singleton.admins.find(0, Functions.validatestring("insert dni", "insert dni"));
+                        break;
+                    case 1://By name
+                        singleton.admins.find(1, Functions.validatestring("insert name", "insert name"));
+                        break;
+                    case 2://Go back
+                }
                 break;
             case sortbyAButton:
+                String[] sortBy = {"By DNI", "By name", "By birthday", SingletonF.language.getProperty("go_back")};
+                int optionS = Menus.menu(sortBy, SingletonF.language.getProperty("sortadmins"),
+                        SingletonF.language.getProperty("sort"));
+                switch (optionS) {
+                    case 0://By dni
+                        singleton.admins.sortData(0);
+                        break;
+                    case 1://By name
+                        singleton.admins.sortData(1);
+                        break;
+                    case 2://By date birthday
+                        singleton.admins.sortData(2);
+                        break;
+                    case 3://Go back
+                }
+                updatetable();
                 break;
             case exportAButton:
+                switch (SingletonF.configApp.getSavingextension()) {
+                    case "json"://json
+                        json.createjson();
+                        break;
+                    case "xml"://xml
+                        xml.createxml();
+                        break;
+                    case "txt"://txt
+                        txt.createtxt();
+                        break;
+                }
                 break;
             case importAButton:
+                switch (SingletonF.configApp.getSavingextension()) {
+                    case "json"://json
+                        json.load_json();
+                        break;
+                    case "xml"://xml
+                        xml.load_xml();
+                        break;
+                    case "txt": //txt
+                        txt.load_txt();
+                        break;
+                }
                 break;
             case backwards:
+                singleton.pager.backwards();
+                updatetable();
                 break;
             case forward:
+                singleton.pager.forward();
+                updatetable();
                 break;
             case beginning:
+                singleton.pager.setPage(0);
+                forward.setEnabled(true);
+                end.setEnabled(true);
+                updatetable();
                 break;
             case end:
+                singleton.pager.setPage(singleton.admins.size() / singleton.pager.getMovepage());
+                backwards.setEnabled(true);
+                beginning.setEnabled(true);
+                updatetable();
                 break;
             case numtab1:
+                
                 break;
             case numtab2:
                 break;
@@ -204,13 +290,41 @@ public class admin_controller implements ActionListener {
             case numtab7:
                 break;
             case pagefield:
+                singleton.pager.pagefield();
+                updatetable();
                 break;
             case combopage:
+                switch (combopage.getSelectedIndex()) {
+                    case 0:
+                        singleton.pager.setMovepage(10);
+                        singleton.pager.setPage(0);
+                        break;
+                    case 1:
+                        singleton.pager.setMovepage(20);
+                        singleton.pager.setPage(0);
+                        break;
+                    case 2:
+                        singleton.pager.setMovepage(50);
+                        singleton.pager.setPage(0);
+                    case 3:
+                        singleton.pager.setMovepage(100);
+                        singleton.pager.setPage(0);
+                }
+                updatetable();
                 break;
             case listmenu:
+                tabbedtable.setSelectedIndex(0);
                 break;
             case formmenu:
+                tabbedtable.setSelectedIndex(1);
                 break;
         }
     }
+    /*
+    @Override
+    public void MouseClicked (MouseEvent ae) {
+        switch (action.valueOf(ae.getActionCommand())) {
+
+        }
+    }*/
 }

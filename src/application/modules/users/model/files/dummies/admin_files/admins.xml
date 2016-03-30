@@ -113,18 +113,18 @@
     <email>asdf@asdf.asdf</email>
     <user>Usuario</user>
     <pass>Pass</pass>
-    <avatar>Avatar</avatar>
+    <avatar>src/application/modules/users/view/img/97253936T</avatar>
     <state>Online</state>
     <date__birthday>10/10/1990</date__birthday>
     <age>25</age>
     <points>0</points>
     <discount>0</discount>
-    <incentives>493</incentives>
+    <incentives>533</incentives>
     <advantages>0.0</advantages>
     <hirin__date>14/12/2014</hirin__date>
     <salary>1234.1234</salary>
     <years__of__service>1</years__of__service>
-    <activity>1234</activity>
+    <activity>1334</activity>
   </admin>
   <admin>
     <dni>57359565A</dni>

@@ -190,11 +190,7 @@ public class controller implements ActionListener {
         switch (action.valueOf(ae.getActionCommand())) {
             //Menu
             case adminsButton:
-                /*menu.setVisible(false);
-                new admin_view().setVisible(true);*/
-                System.out.println("Admins");
                 new admin_controller(new admin_view(), 0).init("v");
-                System.out.println("Admins");
                 break;
 
             case clientsButton:
@@ -208,9 +204,6 @@ public class controller implements ActionListener {
             case confButton:
                 menu.dispose();
                 new controller(new config_view(), 1).init("config");
-                /*
-                configview = new config_view();
-                configview.setVisible(true);*/
                 break;
             //Config
             case comboCurrency:

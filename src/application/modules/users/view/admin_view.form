@@ -63,9 +63,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kanban"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kanbanmenuActionPerformed"/>
-              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
@@ -123,8 +120,11 @@
                               <Component id="deleteDataAButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
-                      <Component id="importAButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="importAButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="backA" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -156,6 +156,7 @@
                           <Component id="createAButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="changeDataAButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="deleteDataAButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="backA" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
@@ -1055,6 +1056,14 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="1" green="6b" red="12" type="rgb"/>
         </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="backA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
