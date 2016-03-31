@@ -11,7 +11,6 @@ import application.modules.menu_config.view.app_view;
 import static application.modules.users.controller.admin_controller.admin_f;
 import static application.modules.users.controller.admin_controller.admin_v;
 import application.modules.users.model.BLL.bll;
-import static application.modules.users.model.BLL.bll.updatetable;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
 import application.modules.users.model.BLL.lib_files.xml;
@@ -25,6 +24,7 @@ import static application.modules.users.view.admin_view.beginning;
 import static application.modules.users.view.admin_view.combopage;
 import static application.modules.users.view.admin_view.end;
 import static application.modules.users.view.admin_view.forward;
+import static application.modules.users.view.admin_view.list;
 import static application.modules.users.view.admin_view.numtab1;
 import static application.modules.users.view.admin_view.numtab2;
 import static application.modules.users.view.admin_view.numtab3;
@@ -38,6 +38,7 @@ import application.utils.Config_json;
 import application.utils.Functions;
 import application.utils.Menus;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,6 +50,8 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -152,28 +155,6 @@ public class admin_controller implements ActionListener, MouseListener {
                     public void actionPerformed(ActionEvent e) {
                         admincreated.setVisible(false);
                     }
-                });/*
-                adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
-
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        adminstableMouseClicked(evt);
-                    }
-                });*/
-
-                adminstable.addMouseListener(new MouseAdapter() {
-                    public void mousePressed(MouseEvent me) {
-                        JTable table = (JTable) me.getSource();
-                        Point p = me.getPoint();
-                        int row = table.rowAtPoint(p);
-                        if (me.getClickCount() == 2) {
-                            //tabbedtable.setSelectedIndex(1);
-                            singleton.pager.selectadmin();
-                            if (bll.editadmin()) {
-                                admin_v.dispose();
-                            }
-                        }
-
-                    }
                 });
 
                 admin_view.adminstable.setName("adminstable");
@@ -210,7 +191,20 @@ public class admin_controller implements ActionListener, MouseListener {
                 admin_view.formmenu.addActionListener(this);
                 admin_view.backA.setActionCommand("backA");
                 admin_view.backA.addActionListener(this);
-                //admin_view.adminstable.addMouseListener(this);
+                admin_view.numtab1.setActionCommand("numtab1");
+                admin_view.numtab1.addActionListener(this);
+                admin_view.numtab2.setActionCommand("numtab2");
+                admin_view.numtab2.addActionListener(this);
+                admin_view.numtab3.setActionCommand("numtab3");
+                admin_view.numtab3.addActionListener(this);
+                admin_view.numtab4.setActionCommand("numtab4");
+                admin_view.numtab4.addActionListener(this);
+                admin_view.numtab5.setActionCommand("numtab5");
+                admin_view.numtab5.addActionListener(this);
+                admin_view.numtab6.setActionCommand("numtab6");
+                admin_view.numtab6.addActionListener(this);
+                admin_view.numtab7.setActionCommand("numtab7");
+                admin_view.numtab7.addActionListener(this);
                 updatetable();
                 timer.start();
                 break;
@@ -239,20 +233,6 @@ public class admin_controller implements ActionListener, MouseListener {
         });
     }
 
-    //@Override
-    /*public void adminstableMouseClicked(ActionEvent ae) {
-        switch (action.valueOf(ae.getActionCommand())){
-            case adminstable:
-                System.out.print("dentro2");
-                break;
-        }
-        System.out.print("dentro");
-        singleton.pager.selectadmin();
-    }
-    public void adminstableMouseClicked(java.awt.event.MouseEvent evt) {
-        System.out.println("dentro");
-        singleton.pager.selectadmin();
-    }*/
     @Override
     public void actionPerformed(ActionEvent ae) {
         switch (action.valueOf(ae.getActionCommand())) {
@@ -358,19 +338,46 @@ public class admin_controller implements ActionListener, MouseListener {
                 updatetable();
                 break;
             case numtab1:
-
+                numtab1.setForeground(Color.BLUE);
+                singleton.pager.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
+                singleton.pager.setPage(Integer.parseInt(numtab1.getText()) - 1);
+                updatetable();
                 break;
             case numtab2:
+                numtab2.setForeground(Color.BLUE);
+                singleton.pager.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
+                singleton.pager.setPage(Integer.parseInt(numtab2.getText()) - 1);
+                updatetable();
                 break;
             case numtab3:
+                numtab3.setForeground(Color.BLUE);
+                singleton.pager.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
+                singleton.pager.setPage(Integer.parseInt(numtab3.getText()) - 1);
+                updatetable();
                 break;
             case numtab4:
+                numtab4.setForeground(Color.BLUE);
+                singleton.pager.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
+                singleton.pager.setPage(Integer.parseInt(numtab4.getText()) - 1);
+                updatetable();
                 break;
             case numtab5:
+                numtab5.setForeground(Color.BLUE);
+                singleton.pager.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
+                singleton.pager.setPage(Integer.parseInt(numtab5.getText()) - 1);
+                updatetable();
                 break;
             case numtab6:
+                numtab6.setForeground(Color.BLUE);
+                singleton.pager.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
+                singleton.pager.setPage(Integer.parseInt(numtab6.getText()) - 1);
+                updatetable();
                 break;
             case numtab7:
+                numtab7.setForeground(Color.BLUE);
+                singleton.pager.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
+                singleton.pager.setPage(Integer.parseInt(numtab7.getText()) - 1);
+                updatetable();
                 break;
             case pagefield:
                 singleton.pager.pagefield();
@@ -406,5 +413,55 @@ public class admin_controller implements ActionListener, MouseListener {
                 new controller(new app_view(), 0).init("menu");
                 break;
         }
+    }
+
+    public static void updatetable() {
+        JTable jTable = new JTable() {
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        };
+        adminstable = jTable;
+        adminstable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
+                }
+        ));
+        adminstable.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent me) {
+                JTable table = (JTable) me.getSource();
+                Point p = me.getPoint();
+                int row = table.rowAtPoint(p);
+                if (me.getClickCount() == 2) {
+                    tabbedtable.setSelectedIndex(1);
+                }
+            }
+        });
+        adminstable.setColumnSelectionAllowed(true);
+        adminstable.getTableHeader().setReorderingAllowed(false);
+
+        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminstableMouseClicked(evt);
+            }
+
+            private void adminstableMouseClicked(MouseEvent evt) {
+                singleton.pager.selectadmin();
+            }
+        });
+
+        list.setViewportView(adminstable);
+        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
+        // Creamos un ordenador de filas para el modelo
+        TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
+        adminstable.setRowSorter(sorter);
+        adminstable.setColumnSelectionAllowed(false);
+        singleton.pager.updatetable2();
+        singleton.pager.pagenum();
     }
 }

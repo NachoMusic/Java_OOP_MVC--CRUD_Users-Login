@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
 import application.modules.users.model.DAO.functions_users;
-import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.registered_user;
 import application.modules.users.model.models.sortbyAge;

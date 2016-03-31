@@ -110,7 +110,7 @@ public class controller implements ActionListener {
                 config_view.xmlbutton.addActionListener(this);
                 config_view.dummiesOn.setActionCommand("dummiesOn");
                 config_view.dummiesOn.addActionListener(this);
-                config_view.dummiesOff.setActionCommand("dummeisOff");
+                config_view.dummiesOff.setActionCommand("dummiesOff");
                 config_view.dummiesOff.addActionListener(this);
                 config_view.addRandomDummies.setActionCommand("addRandomDummies");
                 config_view.addRandomDummies.addActionListener(this);

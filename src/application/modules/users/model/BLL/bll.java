@@ -262,7 +262,7 @@ public class bll {
         }
         return validA;
     }
-
+/*
     public static void updatetable() {
         JTable jTable = new JTable() {
             private static final long serialVersionUID = 1L;
@@ -297,7 +297,7 @@ public class bll {
                 adminstableMouseClicked(evt);
             }
         });*/
-
+/*
         list.setViewportView(adminstable);
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
@@ -307,5 +307,5 @@ public class bll {
         adminstable.setColumnSelectionAllowed(false);
         singleton.pager.updatetable2();
         singleton.pager.pagenum();
-    }
+    }*/
 }

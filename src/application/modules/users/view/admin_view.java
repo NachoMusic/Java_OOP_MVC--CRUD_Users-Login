@@ -5,14 +5,11 @@
  */
 package application.modules.users.view;
 
+import static application.modules.users.controller.admin_controller.updatetable;
 import application.modules.users.model.models.singleton;
 import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
+
+
 
 /**
  *
@@ -26,7 +23,7 @@ public class admin_view extends javax.swing.JFrame {
     public admin_view() {
         initComponents();
     }
-
+/*
     JTable jTable = new JTable() {
         private static final long serialVersionUID = 1L;
 
@@ -72,7 +69,7 @@ public class admin_view extends javax.swing.JFrame {
         singleton.pager.updatetable2();
         singleton.pager.pagenum();
     }
-
+*/
     public static int Admintochange;
 
     /**
@@ -102,13 +99,13 @@ public class admin_view extends javax.swing.JFrame {
         pagefield = new javax.swing.JTextField();
         combopage = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        numtab1 = new javax.swing.JLabel();
-        numtab2 = new javax.swing.JLabel();
-        numtab3 = new javax.swing.JLabel();
-        numtab4 = new javax.swing.JLabel();
-        numtab5 = new javax.swing.JLabel();
-        numtab6 = new javax.swing.JLabel();
-        numtab7 = new javax.swing.JLabel();
+        numtab1 = new javax.swing.JButton();
+        numtab2 = new javax.swing.JButton();
+        numtab3 = new javax.swing.JButton();
+        numtab4 = new javax.swing.JButton();
+        numtab5 = new javax.swing.JButton();
+        numtab6 = new javax.swing.JButton();
+        numtab7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         dniform = new javax.swing.JTextField();
@@ -266,87 +263,52 @@ public class admin_view extends javax.swing.JFrame {
 
         jPanel2.setBorder(null);
 
-        numtab1.setForeground(java.awt.Color.blue);
-        numtab1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab1.setText("1");
-        numtab1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                numtab1MousePressed(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numtab1MouseClicked(evt);
+        numtab1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtab1ActionPerformed(evt);
             }
         });
 
-        numtab2.setForeground(new java.awt.Color(21, 0, 255));
-        numtab2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab2.setText("2");
-        numtab2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                numtab2MousePressed(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numtab2MouseClicked(evt);
+        numtab2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtab2ActionPerformed(evt);
             }
         });
 
-        numtab3.setForeground(java.awt.Color.blue);
-        numtab3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab3.setText("3");
-        numtab3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                numtab3MousePressed(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numtab3MouseClicked(evt);
+        numtab3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtab3ActionPerformed(evt);
             }
         });
 
-        numtab4.setForeground(java.awt.Color.blue);
-        numtab4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab4.setText("4");
-        numtab4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                numtab4MousePressed(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numtab4MouseClicked(evt);
+        numtab4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtab4ActionPerformed(evt);
             }
         });
 
-        numtab5.setForeground(java.awt.Color.blue);
-        numtab5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab5.setText("5");
-        numtab5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                numtab5MousePressed(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numtab5MouseClicked(evt);
+        numtab5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtab5ActionPerformed(evt);
             }
         });
 
-        numtab6.setForeground(java.awt.Color.blue);
-        numtab6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab6.setText("6");
-        numtab6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                numtab6MousePressed(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numtab6MouseClicked(evt);
+        numtab6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtab6ActionPerformed(evt);
             }
         });
 
-        numtab7.setForeground(java.awt.Color.blue);
-        numtab7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         numtab7.setText("7");
-        numtab7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                numtab7MousePressed(evt);
-            }
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                numtab7MouseClicked(evt);
+        numtab7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numtab7ActionPerformed(evt);
             }
         });
 
@@ -356,33 +318,33 @@ public class admin_view extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(numtab1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(numtab2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(numtab7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(numtab1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numtab2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numtab3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numtab4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numtab5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numtab6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(numtab7)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(numtab2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numtab3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numtab4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numtab5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numtab6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numtab7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numtab1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                    .addComponent(numtab1)
+                    .addComponent(numtab2)
+                    .addComponent(numtab3)
+                    .addComponent(numtab4)
+                    .addComponent(numtab5)
+                    .addComponent(numtab6)
+                    .addComponent(numtab7))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout panelviewsLayout = new javax.swing.GroupLayout(panelviews);
@@ -393,44 +355,49 @@ public class admin_view extends javax.swing.JFrame {
                 .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 1130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(panelviewsLayout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelviewsLayout.createSequentialGroup()
-                        .addGap(609, 609, 609)
+                        .addGap(40, 40, 40)
+                        .addComponent(backwards))
+                    .addComponent(beginning))
+                .addGap(29, 29, 29)
+                .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addComponent(forward))
                     .addGroup(panelviewsLayout.createSequentialGroup()
-                        .addGap(649, 649, 649)
-                        .addComponent(end))
-                    .addGroup(panelviewsLayout.createSequentialGroup()
-                        .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelviewsLayout.createSequentialGroup()
-                                .addGap(479, 479, 479)
-                                .addComponent(backwards))
-                            .addGroup(panelviewsLayout.createSequentialGroup()
-                                .addGap(159, 159, 159)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelviewsLayout.createSequentialGroup()
-                                .addGap(439, 439, 439)
-                                .addComponent(beginning)))
-                        .addGap(26, 26, 26)
-                        .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(67, 67, 67)
+                        .addComponent(end)))
+                .addGap(118, 118, 118)
                 .addComponent(combopage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(291, 291, 291))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelviewsLayout.setVerticalGroup(
             panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(panelviewsLayout.createSequentialGroup()
-                .addGap(189, 189, 189)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelviewsLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(forward)
-                    .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(end)
-                        .addComponent(combopage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(backwards)
-                    .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(beginning)))
+                    .addComponent(beginning))
+                .addGap(3, 3, 3))
+            .addGroup(panelviewsLayout.createSequentialGroup()
+                .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(list, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelviewsLayout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(forward)
+                                .addComponent(pagefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelviewsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(end)
+                                .addComponent(combopage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(2, 2, 2))
         );
 
         tabbedtable.addTab("List", panelviews);
@@ -706,7 +673,7 @@ public class admin_view extends javax.swing.JFrame {
                         .addGap(213, 213, 213)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(407, 407, 407)
+                .addGap(486, 486, 486)
                 .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -808,86 +775,37 @@ public class admin_view extends javax.swing.JFrame {
         
     }//GEN-LAST:event_pagefieldActionPerformed
 
-    private void numtab1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MouseClicked
-        numtab1.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
-        singleton.pager.setPage(Integer.parseInt(numtab1.getText()) - 1);
-        updatetable();
-    }//GEN-LAST:event_numtab1MouseClicked
-
-    private void numtab1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab1MousePressed
-        numtab1.setForeground(Color.GRAY);
-    }//GEN-LAST:event_numtab1MousePressed
-
-    private void numtab2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab2MouseClicked
-        numtab2.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
-        singleton.pager.setPage(Integer.parseInt(numtab2.getText()) - 1);
-        updatetable();
-    }//GEN-LAST:event_numtab2MouseClicked
-
-    private void numtab2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab2MousePressed
-        numtab2.setForeground(Color.GRAY);
-    }//GEN-LAST:event_numtab2MousePressed
-
-    private void numtab3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab3MouseClicked
-        numtab3.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
-        singleton.pager.setPage(Integer.parseInt(numtab3.getText()) - 1);
-        updatetable();
-    }//GEN-LAST:event_numtab3MouseClicked
-
-    private void numtab3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab3MousePressed
-        numtab3.setForeground(Color.GRAY);
-    }//GEN-LAST:event_numtab3MousePressed
-
-    private void numtab4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab4MouseClicked
-        numtab4.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
-        singleton.pager.setPage(Integer.parseInt(numtab4.getText()) - 1);
-        updatetable();
-    }//GEN-LAST:event_numtab4MouseClicked
-
-    private void numtab4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab4MousePressed
-        numtab4.setForeground(Color.GRAY);
-    }//GEN-LAST:event_numtab4MousePressed
-
-    private void numtab5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab5MouseClicked
-        numtab5.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
-        singleton.pager.setPage(Integer.parseInt(numtab5.getText()) - 1);
-        updatetable();
-    }//GEN-LAST:event_numtab5MouseClicked
-
-    private void numtab5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab5MousePressed
-        numtab5.setForeground(Color.GRAY);
-    }//GEN-LAST:event_numtab5MousePressed
-
-    private void numtab6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab6MouseClicked
-        numtab6.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
-        singleton.pager.setPage(Integer.parseInt(numtab6.getText()) - 1);
-        updatetable();
-    }//GEN-LAST:event_numtab6MouseClicked
-
-    private void numtab6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab6MousePressed
-        numtab6.setForeground(Color.GRAY);
-    }//GEN-LAST:event_numtab6MousePressed
-
-    private void numtab7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab7MouseClicked
-        numtab7.setForeground(Color.magenta);
-        singleton.pager.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
-        singleton.pager.setPage(Integer.parseInt(numtab7.getText()) - 1);
-        updatetable();
-    }//GEN-LAST:event_numtab7MouseClicked
-
-    private void numtab7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numtab7MousePressed
-        numtab7.setForeground(Color.GRAY);
-    }//GEN-LAST:event_numtab7MousePressed
-
     private void formmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formmenuActionPerformed
         
     }//GEN-LAST:event_formmenuActionPerformed
+
+    private void numtab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtab1ActionPerformed
+        
+    }//GEN-LAST:event_numtab1ActionPerformed
+
+    private void numtab2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtab2ActionPerformed
+        
+    }//GEN-LAST:event_numtab2ActionPerformed
+
+    private void numtab3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtab3ActionPerformed
+        
+    }//GEN-LAST:event_numtab3ActionPerformed
+
+    private void numtab4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtab4ActionPerformed
+        
+    }//GEN-LAST:event_numtab4ActionPerformed
+
+    private void numtab5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtab5ActionPerformed
+        
+    }//GEN-LAST:event_numtab5ActionPerformed
+
+    private void numtab6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtab6ActionPerformed
+        
+    }//GEN-LAST:event_numtab6ActionPerformed
+
+    private void numtab7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numtab7ActionPerformed
+        
+    }//GEN-LAST:event_numtab7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -941,13 +859,13 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JScrollPane list;
     public static javax.swing.JMenuItem listmenu;
     public static javax.swing.JTextField nameform;
-    public static javax.swing.JLabel numtab1;
-    public static javax.swing.JLabel numtab2;
-    public static javax.swing.JLabel numtab3;
-    public static javax.swing.JLabel numtab4;
-    public static javax.swing.JLabel numtab5;
-    public static javax.swing.JLabel numtab6;
-    public static javax.swing.JLabel numtab7;
+    public static javax.swing.JButton numtab1;
+    public static javax.swing.JButton numtab2;
+    public static javax.swing.JButton numtab3;
+    public static javax.swing.JButton numtab4;
+    public static javax.swing.JButton numtab5;
+    public static javax.swing.JButton numtab6;
+    public static javax.swing.JButton numtab7;
     public static javax.swing.JTextField pagefield;
     private javax.swing.JPanel panelviews;
     public static javax.swing.JTextField phoneform;

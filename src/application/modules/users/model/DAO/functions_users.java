@@ -1,14 +1,10 @@
 package application.modules.users.model.DAO;
 
-import application.models.Dates;
 import application.models.SingletonF;
-import application.modules.users.model.kernel.GenericKernel;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.client;
 import application.modules.users.model.models.registered_user;
-import application.modules.users.model.models.singleton;
 import application.modules.users.model.models.users;
-import static application.modules.users.view.new_admin_view.*;
 import application.utils.Functions;
 import application.utils.Menus;
 
