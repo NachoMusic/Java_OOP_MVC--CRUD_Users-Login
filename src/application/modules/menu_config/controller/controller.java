@@ -190,6 +190,7 @@ public class controller implements ActionListener {
         switch (action.valueOf(ae.getActionCommand())) {
             //Menu
             case adminsButton:
+                menu.dispose();
                 new admin_controller(new admin_view(), 0).init("v");
                 break;
 

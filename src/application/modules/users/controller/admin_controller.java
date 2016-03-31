@@ -19,6 +19,7 @@ import application.modules.users.model.models.singleton;
 import application.modules.users.model.pager.Pager;
 import application.modules.users.view.admin_view;
 import static application.modules.users.view.admin_view.admincreated;
+import static application.modules.users.view.admin_view.adminstable;
 import static application.modules.users.view.admin_view.backwards;
 import static application.modules.users.view.admin_view.beginning;
 import static application.modules.users.view.admin_view.combopage;
@@ -37,19 +38,23 @@ import application.utils.Config_json;
 import application.utils.Functions;
 import application.utils.Menus;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.Timer;
 
 /**
  *
  * @author nacho
  */
-public class admin_controller implements ActionListener/*, MouseClicked */ {
+public class admin_controller implements ActionListener, MouseListener {
 
     public static admin_view admin_v;
     public static new_admin_view admin_f;
@@ -63,6 +68,39 @@ public class admin_controller implements ActionListener/*, MouseClicked */ {
                 admin_f = (new_admin_view) inicio;
                 break;
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        switch (action.valueOf(e.getComponent().getName())) {
+            case adminstable:
+                System.out.println("dentro");
+                break;
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        switch (action.valueOf(e.getComponent().getName())) {
+            case adminstable:
+                System.out.println("dentro");
+                break;
+        }
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public enum action {
@@ -90,6 +128,7 @@ public class admin_controller implements ActionListener/*, MouseClicked */ {
         listmenu,
         formmenu,
         backA,
+        adminstable,
         //Admin_f
     }
 
@@ -109,13 +148,37 @@ public class admin_controller implements ActionListener/*, MouseClicked */ {
                 numtab7.setVisible(false);
                 singleton.pager = new Pager();
                 singleton.pager.setPage(0);
-                //updatetable();
                 Timer timer = new Timer(10000, new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         admincreated.setVisible(false);
                     }
+                });/*
+                adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        adminstableMouseClicked(evt);
+                    }
+                });*/
+
+                adminstable.addMouseListener(new MouseAdapter() {
+                    public void mousePressed(MouseEvent me) {
+                        JTable table = (JTable) me.getSource();
+                        Point p = me.getPoint();
+                        int row = table.rowAtPoint(p);
+                        if (me.getClickCount() == 2) {
+                            //tabbedtable.setSelectedIndex(1);
+                            singleton.pager.selectadmin();
+                            if (bll.editadmin()) {
+                                admin_v.dispose();
+                            }
+                        }
+
+                    }
                 });
-                admin_view.createAButton.setActionCommand("createAButtons");
+
+                admin_view.adminstable.setName("adminstable");
+                admin_view.adminstable.addMouseListener(this);
+                admin_view.createAButton.setActionCommand("createAButton");
                 admin_view.createAButton.addActionListener(this);
                 admin_view.changeDataAButton.setActionCommand("changeDataAButton");
                 admin_view.changeDataAButton.addActionListener(this);
@@ -145,7 +208,10 @@ public class admin_controller implements ActionListener/*, MouseClicked */ {
                 admin_view.listmenu.addActionListener(this);
                 admin_view.formmenu.setActionCommand("formmenu");
                 admin_view.formmenu.addActionListener(this);
-
+                admin_view.backA.setActionCommand("backA");
+                admin_view.backA.addActionListener(this);
+                //admin_view.adminstable.addMouseListener(this);
+                updatetable();
                 timer.start();
                 break;
             case "f":
@@ -173,19 +239,36 @@ public class admin_controller implements ActionListener/*, MouseClicked */ {
         });
     }
 
+    //@Override
+    /*public void adminstableMouseClicked(ActionEvent ae) {
+        switch (action.valueOf(ae.getActionCommand())){
+            case adminstable:
+                System.out.print("dentro2");
+                break;
+        }
+        System.out.print("dentro");
+        singleton.pager.selectadmin();
+    }
+    public void adminstableMouseClicked(java.awt.event.MouseEvent evt) {
+        System.out.println("dentro");
+        singleton.pager.selectadmin();
+    }*/
     @Override
     public void actionPerformed(ActionEvent ae) {
         switch (action.valueOf(ae.getActionCommand())) {
             case createAButton:
+
                 new new_admin_view().setVisible(true);
                 admin_v.dispose();
                 break;
             case changeDataAButton:
+                singleton.pager.selectadmin();
                 if (bll.editadmin()) {
                     admin_v.dispose();
                 }
                 break;
             case deleteDataAButton:
+                singleton.pager.selectadmin();
                 if (singleton.pager.getSelected() != null) {
                     singleton.admins.deleteData(Integer.parseInt(singleton.pager.getSelected()));
                     updatetable();
@@ -275,7 +358,7 @@ public class admin_controller implements ActionListener/*, MouseClicked */ {
                 updatetable();
                 break;
             case numtab1:
-                
+
                 break;
             case numtab2:
                 break;
@@ -318,13 +401,10 @@ public class admin_controller implements ActionListener/*, MouseClicked */ {
             case formmenu:
                 tabbedtable.setSelectedIndex(1);
                 break;
+            case backA:
+                admin_v.dispose();
+                new controller(new app_view(), 0).init("menu");
+                break;
         }
     }
-    /*
-    @Override
-    public void MouseClicked (MouseEvent ae) {
-        switch (action.valueOf(ae.getActionCommand())) {
-
-        }
-    }*/
 }

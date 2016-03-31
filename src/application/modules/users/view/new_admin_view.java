@@ -5,6 +5,7 @@
  */
 package application.modules.users.view;
 
+import application.modules.users.controller.admin_controller;
 import application.modules.users.model.BLL.bll;
 import application.modules.users.model.BLL.lib_files.json;
 import application.modules.users.model.BLL.lib_files.txt;
@@ -443,7 +444,7 @@ public class new_admin_view extends javax.swing.JFrame {
         if (emptyButton.isVisible()) {
             if (bll.newAdmin()) {
                 dispose();
-                new admin_view().setVisible(true);
+                new admin_controller(new admin_view(), 0).init("v");
                 admincreated.setText("Created");
                 admincreated.setVisible(true);
                 json.createjson_auto();
@@ -453,7 +454,7 @@ public class new_admin_view extends javax.swing.JFrame {
             }
         } else if (bll.editAdmin()) {
             dispose();
-            new admin_view().setVisible(true);
+            new admin_controller(new admin_view(), 0).init("v");
             admincreated.setText("Edited");
             admincreated.setVisible(true);
             json.createjson_auto();
@@ -710,7 +711,7 @@ public class new_admin_view extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                new admin_view().setVisible(true);
+                new admin_controller(new admin_view(), 0).init("v");
                 dispose();
             }
         });

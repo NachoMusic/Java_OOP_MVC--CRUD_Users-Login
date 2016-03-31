@@ -5,8 +5,6 @@
  */
 package application.modules.menu_config.view;
 
-import application.modules.menu_config.view.config_view;
-
 /**
  *
  * @author nacho

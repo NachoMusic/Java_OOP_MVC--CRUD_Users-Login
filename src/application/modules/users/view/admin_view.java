@@ -5,24 +5,11 @@
  */
 package application.modules.users.view;
 
-import application.models.SingletonF;
-import application.modules.menu_config.controller.controller;
-import application.modules.users.model.BLL.lib_files.json;
-import application.modules.users.model.BLL.lib_files.txt;
-import application.modules.users.model.BLL.lib_files.xml;
 import application.modules.users.model.models.singleton;
-import application.utils.Functions;
-import application.utils.Menus;
-import application.modules.menu_config.view.app_view;
-import application.modules.users.model.BLL.bll;
-import static application.modules.users.view.new_admin_view.*;
-import application.utils.Config_json;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -790,7 +777,7 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_listmenuActionPerformed
 
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
-        singleton.pager.selectadmin();
+        //singleton.pager.selectadmin();
     }//GEN-LAST:event_adminstableMouseClicked
 
     private void adminstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMousePressed
@@ -901,17 +888,6 @@ public class admin_view extends javax.swing.JFrame {
     private void formmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formmenuActionPerformed
         
     }//GEN-LAST:event_formmenuActionPerformed
-
-    private void closeWindow() {
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                dispose();
-                new controller(new app_view(),0).init("menu");
-            }
-        });
-    }
 
     /**
      * @param args the command line arguments
