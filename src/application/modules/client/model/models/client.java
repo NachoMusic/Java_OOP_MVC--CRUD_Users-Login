@@ -1,9 +1,10 @@
-package application.modules.admin.model.models;
+package application.modules.client.model.models;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import application.modules.menu_config.model.Config;
 import application.models.Dates;
+import application.modules.admin.model.models.users;
 import application.utils.Format;
 @SuppressWarnings("serial")
 @XStreamAlias("client")

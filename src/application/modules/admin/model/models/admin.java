@@ -6,7 +6,6 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 import application.models.Dates;
 import application.models.SingletonF;
-import application.modules.admin.model.models.users;
 import application.utils.Format;
 
 @SuppressWarnings("serial")

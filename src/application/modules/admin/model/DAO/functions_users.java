@@ -2,7 +2,7 @@ package application.modules.admin.model.DAO;
 
 import application.models.SingletonF;
 import application.modules.admin.model.models.admin;
-import application.modules.admin.model.models.client;
+import application.modules.client.model.models.client;
 import application.modules.admin.model.models.registered_user;
 import application.modules.admin.model.models.users;
 import application.utils.Functions;

@@ -5,7 +5,7 @@ import java.util.Collections;
 import javax.swing.JOptionPane;
 import application.models.SingletonF;
 import application.modules.admin.model.DAO.functions_users;
-import application.modules.admin.model.models.client;
+import application.modules.client.model.models.client;
 import application.modules.admin.model.models.sortbyAge;
 import application.modules.admin.model.models.sortbyName;
 import application.utils.Functions;

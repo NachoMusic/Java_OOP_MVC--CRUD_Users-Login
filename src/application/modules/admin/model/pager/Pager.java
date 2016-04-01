@@ -4,7 +4,6 @@ package application.modules.admin.model.pager;
 import application.modules.admin.model.models.singleton;
 import static application.modules.admin.view.admin_view.adminstable;
 import static application.modules.admin.view.admin_view.*;
-import static application.modules.admin.view.new_admin_view.avatarField;
 import static application.modules.admin.view.new_admin_view.defaultAvatar;
 import application.utils.Functions;
 import java.awt.Image;
