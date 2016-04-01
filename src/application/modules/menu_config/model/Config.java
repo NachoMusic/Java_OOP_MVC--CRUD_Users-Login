@@ -2,10 +2,10 @@ package application.modules.menu_config.model;
 
 import java.io.Serializable;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import application.modules.users.model.BLL.Arraylist_admin;
-import application.modules.users.model.BLL.Arraylist_client;
-import application.modules.users.model.BLL.Arraylist_registered_user;
-import application.modules.users.model.models.singleton;
+import application.modules.admin.model.BLL.Arraylist_admin;
+import application.modules.admin.model.BLL.Arraylist_client;
+import application.modules.admin.model.BLL.Arraylist_registered_user;
+import application.modules.admin.model.models.singleton;
 
 @SuppressWarnings("serial")
 @XStreamAlias("Config")

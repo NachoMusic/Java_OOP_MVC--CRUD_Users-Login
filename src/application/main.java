@@ -9,10 +9,10 @@ import application.modules.menu_config.model.Config;
 import application.modules.menu_config.model.Language;
 import application.models.SingletonF;
 import application.modules.menu_config.controller.controller;
-import application.modules.users.model.BLL.lib_files.json;
-import application.modules.users.model.BLL.lib_files.txt;
-import application.modules.users.model.BLL.lib_files.xml;
-import application.modules.users.view.new_admin_view;
+import application.modules.admin.model.BLL.lib_files.json;
+import application.modules.admin.model.BLL.lib_files.txt;
+import application.modules.admin.model.BLL.lib_files.xml;
+import application.modules.admin.view.new_admin_view;
 import application.utils.Config_json;
 import application.modules.menu_config.view.app_view;
 
