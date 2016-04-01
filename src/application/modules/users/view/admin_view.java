@@ -5,12 +5,6 @@
  */
 package application.modules.users.view;
 
-import static application.modules.users.controller.admin_controller.updatetable;
-import application.modules.users.model.models.singleton;
-import java.awt.Color;
-
-
-
 /**
  *
  * @author nacho
@@ -23,53 +17,7 @@ public class admin_view extends javax.swing.JFrame {
     public admin_view() {
         initComponents();
     }
-/*
-    JTable jTable = new JTable() {
-        private static final long serialVersionUID = 1L;
 
-        public boolean isCellEditable(int row, int column) {
-            return false;
-        }
-    
-    };
-    public void updatetable() {
-        adminstable = jTable;
-        adminstable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{},
-                new String[]{
-                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
-                }
-        ));
-        adminstable.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent me) {
-                JTable table = (JTable) me.getSource();
-                Point p = me.getPoint();
-                int row = table.rowAtPoint(p);
-                if (me.getClickCount() == 2) {
-                    tabbedtable.setSelectedIndex(1);
-                }
-            }
-        });
-        adminstable.setColumnSelectionAllowed(true);
-        adminstable.getTableHeader().setReorderingAllowed(false);
-
-        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminstableMouseClicked(evt);
-            }
-        });
-
-        list.setViewportView(adminstable);
-        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
-        // Creamos un ordenador de filas para el modelo
-        TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
-        adminstable.setRowSorter(sorter);
-        adminstable.setColumnSelectionAllowed(false);
-        singleton.pager.updatetable2();
-        singleton.pager.pagenum();
-    }
-*/
     public static int Admintochange;
 
     /**
@@ -744,11 +692,11 @@ public class admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_listmenuActionPerformed
 
     private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
-        //singleton.pager.selectadmin();
+
     }//GEN-LAST:event_adminstableMouseClicked
 
     private void adminstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMousePressed
-        //Poner que al clicar doble entre en el form
+
     }//GEN-LAST:event_adminstableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed

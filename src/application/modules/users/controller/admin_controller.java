@@ -34,6 +34,21 @@ import static application.modules.users.view.admin_view.numtab6;
 import static application.modules.users.view.admin_view.numtab7;
 import static application.modules.users.view.admin_view.tabbedtable;
 import application.modules.users.view.new_admin_view;
+import static application.modules.users.view.new_admin_view.activitylabel;
+import static application.modules.users.view.new_admin_view.avatarlabel;
+import static application.modules.users.view.new_admin_view.datebirthdaylabel;
+import static application.modules.users.view.new_admin_view.dnilabel;
+import static application.modules.users.view.new_admin_view.emaillabel;
+import static application.modules.users.view.new_admin_view.emptyButton;
+import static application.modules.users.view.new_admin_view.hiringdatelabel;
+import static application.modules.users.view.new_admin_view.namelabel;
+import static application.modules.users.view.new_admin_view.passwordlabel;
+import static application.modules.users.view.new_admin_view.phonelabel;
+import static application.modules.users.view.new_admin_view.salarylabel;
+import static application.modules.users.view.new_admin_view.saveLabel;
+import static application.modules.users.view.new_admin_view.statuslabel;
+import static application.modules.users.view.new_admin_view.subnamelabel;
+import static application.modules.users.view.new_admin_view.usernamelabel;
 import application.utils.Config_json;
 import application.utils.Functions;
 import application.utils.Menus;
@@ -133,6 +148,23 @@ public class admin_controller implements ActionListener, MouseListener {
         backA,
         adminstable,
         //Admin_f
+        discartButton,
+        emptyButton,
+        saveAdminButton,
+        dniField,
+        nameField,
+        subnameField,
+        phoneField,
+        emailField,
+        usernameField,
+        passwordField,
+        avatarField,
+        avatarbutton,
+        statusField,
+        datebirthdayField,
+        hiringdateField,
+        salaryField,
+        activityField,
     }
 
     public void init(String type) {
@@ -209,6 +241,50 @@ public class admin_controller implements ActionListener, MouseListener {
                 timer.start();
                 break;
             case "f":
+                admin_f.setTitle("Create new admin");
+                admin_f.setLocationRelativeTo(null);
+                saveLabel.setVisible(false);
+                dnilabel.setVisible(false);
+                namelabel.setVisible(false);
+                subnamelabel.setVisible(false);
+                emaillabel.setVisible(false);
+                statuslabel.setVisible(false);
+                usernamelabel.setVisible(false);
+                passwordlabel.setVisible(false);
+                salarylabel.setVisible(false);
+                activitylabel.setVisible(false);
+                datebirthdaylabel.setVisible(false);
+                hiringdatelabel.setVisible(false);
+                phonelabel.setVisible(false);
+                avatarlabel.setVisible(false);
+                new_admin_view.saveAdminButton.setActionCommand("saveAdminButton");
+                new_admin_view.saveAdminButton.addActionListener(this);
+                new_admin_view.discartButton.setActionCommand("discartButton");
+                new_admin_view.discartButton.addActionListener(this);
+                new_admin_view.emptyButton.setActionCommand("emptyButton");
+                new_admin_view.emptyButton.addActionListener(this);
+                new_admin_view.dniField.setActionCommand("dniField");
+                new_admin_view.dniField.addActionListener(this);
+                new_admin_view.nameField.setActionCommand("nameField");
+                new_admin_view.nameField.addActionListener(this);
+                new_admin_view.subnameField.setActionCommand("subnameField");
+                new_admin_view.subnameField.addActionListener(this);
+                new_admin_view.phoneField.setActionCommand("phoneField");
+                new_admin_view.phoneField.addActionListener(this);
+                new_admin_view.emailField.setActionCommand("emailField");
+                new_admin_view.emailField.addActionListener(this);
+                new_admin_view.usernameField.setActionCommand("usernameField");
+                new_admin_view.usernameField.addActionListener(this);
+                new_admin_view.passwordField.setActionCommand("passwordField");
+                new_admin_view.passwordField.addActionListener(this);
+                new_admin_view.avatarbutton.setActionCommand("avatarbutton");
+                new_admin_view.avatarbutton.addActionListener(this);
+                new_admin_view.statusField.setActionCommand("statusField");
+                new_admin_view.statusField.addActionListener(this);
+                new_admin_view.salaryField.setActionCommand("salaryField");
+                new_admin_view.salaryField.addActionListener(this);
+                new_admin_view.activityField.setActionCommand("activityField");
+                new_admin_view.activityField.addActionListener(this);
                 break;
         }
     }
@@ -236,8 +312,8 @@ public class admin_controller implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         switch (action.valueOf(ae.getActionCommand())) {
+            //admin_view
             case createAButton:
-
                 new new_admin_view().setVisible(true);
                 admin_v.dispose();
                 break;
@@ -411,6 +487,72 @@ public class admin_controller implements ActionListener, MouseListener {
             case backA:
                 admin_v.dispose();
                 new controller(new app_view(), 0).init("menu");
+                break;
+            //new_admin_view form
+            case discartButton:
+                admin_f.dispose();
+                new admin_controller(new admin_view(), 0).init("v");
+                break;
+            case emptyButton:
+                break;
+            case saveAdminButton:
+                if (emptyButton.isVisible()) {
+                    if (bll.newAdmin()) {
+                        admin_f.dispose();
+                        new admin_controller(new admin_view(), 0).init("v");
+                        admincreated.setText("Created");
+                        admincreated.setVisible(true);
+                        json.createjson_auto();
+                        xml.createxml_auto();
+                        txt.createtxt_auto();
+                        Config_json.create_conf_json();
+                    }
+                } else if (bll.editAdmin()) {
+                    admin_f.dispose();
+                    new admin_controller(new admin_view(), 0).init("v");
+                    admincreated.setText("Edited");
+                    admincreated.setVisible(true);
+                    json.createjson_auto();
+                    xml.createxml_auto();
+                    txt.createtxt_auto();
+                    Config_json.create_conf_json();
+                }
+                break;
+            case dniField:
+                bll.validateDNI();
+                break;
+            case nameField:
+                bll.validateName();
+                break;
+            case subnameField:
+                bll.validateSubname();
+                break;
+            case phoneField:
+                bll.validatePhone();
+                break;
+            case emailField:
+                bll.validateEmail();
+                break;
+            case usernameField:
+                bll.validateUsername();
+                break;
+            case passwordField:
+                bll.validatePassword();
+                break;
+            case avatarbutton:
+                break;
+            case statusField:
+                bll.validateStatus();
+                break;
+            case datebirthdayField:
+                break;
+            case hiringdateField:
+                break;
+            case salaryField:
+                bll.validateSalary();
+                break;
+            case activityField:
+                bll.validateActivity();
                 break;
         }
     }

@@ -32,6 +32,7 @@ public class new_admin_view extends javax.swing.JFrame {
     public new_admin_view() {
         initComponents();
         closeWindow();
+        /*
         this.setTitle("Create new admin");
         this.setLocationRelativeTo(null);
 
@@ -48,7 +49,7 @@ public class new_admin_view extends javax.swing.JFrame {
         datebirthdaylabel.setVisible(false);
         hiringdatelabel.setVisible(false);
         phonelabel.setVisible(false);
-        avatarlabel.setVisible(false);
+        avatarlabel.setVisible(false);*/
     }
 
     /**
@@ -438,27 +439,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAdminButtonActionPerformed
-        if (emptyButton.isVisible()) {
-            if (bll.newAdmin()) {
-                dispose();
-                new admin_controller(new admin_view(), 0).init("v");
-                admincreated.setText("Created");
-                admincreated.setVisible(true);
-                json.createjson_auto();
-                xml.createxml_auto();
-                txt.createtxt_auto();
-                Config_json.create_conf_json();
-            }
-        } else if (bll.editAdmin()) {
-            dispose();
-            new admin_controller(new admin_view(), 0).init("v");
-            admincreated.setText("Edited");
-            admincreated.setVisible(true);
-            json.createjson_auto();
-            xml.createxml_auto();
-            txt.createtxt_auto();
-            Config_json.create_conf_json();
-        }
+        
     }//GEN-LAST:event_saveAdminButtonActionPerformed
 
     private void emptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyButtonActionPerformed
@@ -466,7 +447,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_emptyButtonActionPerformed
 
     private void dniFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniFieldActionPerformed
-        bll.validateDNI();
+        
     }//GEN-LAST:event_dniFieldActionPerformed
 
     private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dniFieldKeyTyped
@@ -488,7 +469,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_dniFieldKeyReleased
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
-        bll.validateName();
+        
     }//GEN-LAST:event_nameFieldActionPerformed
 
     private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameFieldKeyPressed
@@ -504,7 +485,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_nameFieldKeyTyped
 
     private void subnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subnameFieldActionPerformed
-        bll.validateSubname();
+        
     }//GEN-LAST:event_subnameFieldActionPerformed
 
     private void subnameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_subnameFieldKeyPressed
@@ -520,7 +501,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_subnameFieldKeyTyped
 
     private void phoneFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phoneFieldActionPerformed
-        bll.validatePhone();
+        
     }//GEN-LAST:event_phoneFieldActionPerformed
 
     private void phoneFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneFieldKeyPressed
@@ -536,7 +517,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_phoneFieldKeyTyped
 
     private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
-        bll.validateEmail();
+        
     }//GEN-LAST:event_emailFieldActionPerformed
 
     private void emailFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFieldKeyPressed
@@ -552,7 +533,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_emailFieldKeyTyped
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
-        bll.validateUsername();
+        
 
     }//GEN-LAST:event_usernameFieldActionPerformed
 
@@ -569,7 +550,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameFieldKeyTyped
 
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        bll.validatePassword();
+        
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
@@ -585,7 +566,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldKeyTyped
 
     private void statusFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusFieldActionPerformed
-        bll.validateStatus();
+        
     }//GEN-LAST:event_statusFieldActionPerformed
 
     private void statusFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusFieldKeyPressed
@@ -601,7 +582,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_statusFieldKeyTyped
 
     private void salaryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaryFieldActionPerformed
-        bll.validateSalary();
+        
     }//GEN-LAST:event_salaryFieldActionPerformed
 
     private void salaryFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_salaryFieldKeyPressed
@@ -617,7 +598,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_salaryFieldKeyTyped
 
     private void activityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityFieldActionPerformed
-        bll.validateActivity();
+        
     }//GEN-LAST:event_activityFieldActionPerformed
 
     private void activityFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_activityFieldKeyPressed
@@ -649,8 +630,7 @@ public class new_admin_view extends javax.swing.JFrame {
     }//GEN-LAST:event_namehiringdatelabelMouseEntered
 
     private void discartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_discartButtonActionPerformed
-        dispose();
-        new admin_controller(new admin_view(), 0).init("v");
+        
     }//GEN-LAST:event_discartButtonActionPerformed
 
     /**
