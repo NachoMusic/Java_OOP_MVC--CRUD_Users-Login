@@ -63,8 +63,8 @@ public class main {
         
         
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                //new app_view().setVisible(true);
                 new controller(new app_view(),0).init("menu");
             }
         }

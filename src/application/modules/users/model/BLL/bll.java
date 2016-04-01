@@ -6,13 +6,11 @@
 package application.modules.users.model.BLL;
 
 import application.models.Dates;
+import application.modules.users.controller.admin_controller;
 import application.modules.users.model.DAO.dao;
 import application.modules.users.model.models.admin;
 import application.modules.users.model.models.singleton;
 import static application.modules.users.view.admin_view.Admintochange;
-import static application.modules.users.view.admin_view.adminstable;
-import static application.modules.users.view.admin_view.list;
-import static application.modules.users.view.admin_view.tabbedtable;
 import application.modules.users.view.new_admin_view;
 import static application.modules.users.view.new_admin_view.activityField;
 import static application.modules.users.view.new_admin_view.avatarField;
@@ -32,9 +30,6 @@ import static application.modules.users.view.new_admin_view.statusField;
 import static application.modules.users.view.new_admin_view.subnameField;
 import static application.modules.users.view.new_admin_view.usernameField;
 import java.awt.Image;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -42,9 +37,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.ImageIcon;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -108,7 +100,8 @@ public class bll {
         boolean validA = false;
         if (singleton.pager.getSelected() != null) {
             Admintochange = Integer.parseInt(singleton.pager.getSelected());
-            new new_admin_view().setVisible(true);
+            //new new_admin_view().setVisible(true);
+            new admin_controller(new new_admin_view(), 1).init("f");
             saveAdminButton.setText("Edit Admin");
             emptyButton.setVisible(false);
             dniField.setText(singleton.admins.getData(Admintochange - 1).getDni());
@@ -262,50 +255,4 @@ public class bll {
         }
         return validA;
     }
-/*
-    public static void updatetable() {
-        JTable jTable = new JTable() {
-            private static final long serialVersionUID = 1L;
-
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-
-        };
-        adminstable = jTable;
-        adminstable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{},
-                new String[]{
-                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
-                }
-        ));
-        adminstable.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent me) {
-                JTable table = (JTable) me.getSource();
-                Point p = me.getPoint();
-                int row = table.rowAtPoint(p);
-                if (me.getClickCount() == 2) {
-                    tabbedtable.setSelectedIndex(1);
-                }
-            }
-        });
-        adminstable.setColumnSelectionAllowed(true);
-        adminstable.getTableHeader().setReorderingAllowed(false);
-        /* clicar el formulario -> echarlo al controller
-        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminstableMouseClicked(evt);
-            }
-        });*/
-/*
-        list.setViewportView(adminstable);
-        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
-        // Creamos un ordenador de filas para el modelo
-        TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
-        adminstable.setRowSorter(sorter);
-        adminstable.setColumnSelectionAllowed(false);
-        singleton.pager.updatetable2();
-        singleton.pager.pagenum();
-    }*/
 }

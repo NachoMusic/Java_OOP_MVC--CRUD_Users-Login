@@ -34,30 +34,20 @@ import static application.modules.users.view.admin_view.numtab6;
 import static application.modules.users.view.admin_view.numtab7;
 import static application.modules.users.view.admin_view.tabbedtable;
 import application.modules.users.view.new_admin_view;
-import static application.modules.users.view.new_admin_view.activityField;
 import static application.modules.users.view.new_admin_view.activitylabel;
 import static application.modules.users.view.new_admin_view.avatarlabel;
 import static application.modules.users.view.new_admin_view.datebirthdaylabel;
-import static application.modules.users.view.new_admin_view.dniField;
 import static application.modules.users.view.new_admin_view.dnilabel;
-import static application.modules.users.view.new_admin_view.emailField;
 import static application.modules.users.view.new_admin_view.emaillabel;
 import static application.modules.users.view.new_admin_view.emptyButton;
 import static application.modules.users.view.new_admin_view.hiringdatelabel;
-import static application.modules.users.view.new_admin_view.nameField;
 import static application.modules.users.view.new_admin_view.namelabel;
-import static application.modules.users.view.new_admin_view.passwordField;
 import static application.modules.users.view.new_admin_view.passwordlabel;
-import static application.modules.users.view.new_admin_view.phoneField;
 import static application.modules.users.view.new_admin_view.phonelabel;
-import static application.modules.users.view.new_admin_view.salaryField;
 import static application.modules.users.view.new_admin_view.salarylabel;
 import static application.modules.users.view.new_admin_view.saveLabel;
-import static application.modules.users.view.new_admin_view.statusField;
 import static application.modules.users.view.new_admin_view.statuslabel;
-import static application.modules.users.view.new_admin_view.subnameField;
 import static application.modules.users.view.new_admin_view.subnamelabel;
-import static application.modules.users.view.new_admin_view.usernameField;
 import static application.modules.users.view.new_admin_view.usernamelabel;
 import application.utils.Config_json;
 import application.utils.Functions;
@@ -67,11 +57,8 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -84,7 +71,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author nacho
  */
-public class admin_controller implements ActionListener, MouseListener {
+public class admin_controller implements ActionListener {
 
     public static admin_view admin_v;
     public static new_admin_view admin_f;
@@ -98,39 +85,6 @@ public class admin_controller implements ActionListener, MouseListener {
                 admin_f = (new_admin_view) inicio;
                 break;
         }
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        switch (action.valueOf(e.getComponent().getName())) {
-            case adminstable:
-                System.out.println("dentro");
-                break;
-        }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        switch (action.valueOf(e.getComponent().getName())) {
-            case adminstable:
-                System.out.println("dentro");
-                break;
-        }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public enum action {
@@ -196,13 +150,13 @@ public class admin_controller implements ActionListener, MouseListener {
                 singleton.pager = new Pager();
                 singleton.pager.setPage(0);
                 Timer timer = new Timer(10000, new ActionListener() {
+                    @Override
                     public void actionPerformed(ActionEvent e) {
                         admincreated.setVisible(false);
                     }
                 });
 
                 admin_view.adminstable.setName("adminstable");
-                admin_view.adminstable.addMouseListener(this);
                 admin_view.createAButton.setActionCommand("createAButton");
                 admin_view.createAButton.addActionListener(this);
                 admin_view.changeDataAButton.setActionCommand("changeDataAButton");
@@ -299,131 +253,161 @@ public class admin_controller implements ActionListener, MouseListener {
                 new_admin_view.activityField.setActionCommand("activityField");
                 new_admin_view.activityField.addActionListener(this);
                 new_admin_view.dniField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         dniFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         dniFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         dniFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         nameFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         nameFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         nameFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.subnameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         subnameFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         subnameFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         subnameFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.phoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         phoneFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         phoneFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         phoneFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.emailField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         emailFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         emailFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         emailFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         usernameFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         usernameFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         usernameFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.salaryField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         salaryFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         salaryFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         salaryFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.activityField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         activityFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         activityFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         activityFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.statusField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         statusFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         statusFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         statusFieldKeyReleased(evt);
                     }
                 });
                 new_admin_view.passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         passwordFieldKeyTyped(evt);
                     }
 
+                    @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
                         passwordFieldKeyPressed(evt);
                     }
 
+                    @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         passwordFieldKeyReleased(evt);
                     }
@@ -457,8 +441,6 @@ public class admin_controller implements ActionListener, MouseListener {
         switch (action.valueOf(ae.getActionCommand())) {
             //admin_view
             case createAButton:
-                //new new_admin_view().setVisible(true);
-                System.out.println("fuera");
                 admin_v.dispose();
                 new admin_controller(new new_admin_view(), 1).init("f");
                 break;
@@ -833,6 +815,7 @@ public class admin_controller implements ActionListener, MouseListener {
         JTable jTable = new JTable() {
             private static final long serialVersionUID = 1L;
 
+            @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
             }
@@ -846,6 +829,7 @@ public class admin_controller implements ActionListener, MouseListener {
                 }
         ));
         adminstable.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent me) {
                 JTable table = (JTable) me.getSource();
                 Point p = me.getPoint();
@@ -859,6 +843,7 @@ public class admin_controller implements ActionListener, MouseListener {
         adminstable.getTableHeader().setReorderingAllowed(false);
 
         adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 adminstableMouseClicked(evt);
             }
