@@ -34,20 +34,30 @@ import static application.modules.users.view.admin_view.numtab6;
 import static application.modules.users.view.admin_view.numtab7;
 import static application.modules.users.view.admin_view.tabbedtable;
 import application.modules.users.view.new_admin_view;
+import static application.modules.users.view.new_admin_view.activityField;
 import static application.modules.users.view.new_admin_view.activitylabel;
 import static application.modules.users.view.new_admin_view.avatarlabel;
 import static application.modules.users.view.new_admin_view.datebirthdaylabel;
+import static application.modules.users.view.new_admin_view.dniField;
 import static application.modules.users.view.new_admin_view.dnilabel;
+import static application.modules.users.view.new_admin_view.emailField;
 import static application.modules.users.view.new_admin_view.emaillabel;
 import static application.modules.users.view.new_admin_view.emptyButton;
 import static application.modules.users.view.new_admin_view.hiringdatelabel;
+import static application.modules.users.view.new_admin_view.nameField;
 import static application.modules.users.view.new_admin_view.namelabel;
+import static application.modules.users.view.new_admin_view.passwordField;
 import static application.modules.users.view.new_admin_view.passwordlabel;
+import static application.modules.users.view.new_admin_view.phoneField;
 import static application.modules.users.view.new_admin_view.phonelabel;
+import static application.modules.users.view.new_admin_view.salaryField;
 import static application.modules.users.view.new_admin_view.salarylabel;
 import static application.modules.users.view.new_admin_view.saveLabel;
+import static application.modules.users.view.new_admin_view.statusField;
 import static application.modules.users.view.new_admin_view.statuslabel;
+import static application.modules.users.view.new_admin_view.subnameField;
 import static application.modules.users.view.new_admin_view.subnamelabel;
+import static application.modules.users.view.new_admin_view.usernameField;
 import static application.modules.users.view.new_admin_view.usernamelabel;
 import application.utils.Config_json;
 import application.utils.Functions;
@@ -57,6 +67,8 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -243,6 +255,7 @@ public class admin_controller implements ActionListener, MouseListener {
             case "f":
                 admin_f.setTitle("Create new admin");
                 admin_f.setLocationRelativeTo(null);
+                admin_f.setVisible(true);
                 saveLabel.setVisible(false);
                 dnilabel.setVisible(false);
                 namelabel.setVisible(false);
@@ -285,6 +298,136 @@ public class admin_controller implements ActionListener, MouseListener {
                 new_admin_view.salaryField.addActionListener(this);
                 new_admin_view.activityField.setActionCommand("activityField");
                 new_admin_view.activityField.addActionListener(this);
+                new_admin_view.dniField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        dniFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        dniFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        dniFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        nameFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        nameFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        nameFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.subnameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        subnameFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        subnameFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        subnameFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.phoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        phoneFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        phoneFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        phoneFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.emailField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        emailFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        emailFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        emailFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        usernameFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        usernameFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        usernameFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.salaryField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        salaryFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        salaryFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        salaryFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.activityField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        activityFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        activityFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        activityFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.statusField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        statusFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        statusFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        statusFieldKeyReleased(evt);
+                    }
+                });
+                new_admin_view.passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        passwordFieldKeyTyped(evt);
+                    }
+
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        passwordFieldKeyPressed(evt);
+                    }
+
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        passwordFieldKeyReleased(evt);
+                    }
+                });
                 break;
         }
     }
@@ -314,8 +457,10 @@ public class admin_controller implements ActionListener, MouseListener {
         switch (action.valueOf(ae.getActionCommand())) {
             //admin_view
             case createAButton:
-                new new_admin_view().setVisible(true);
+                //new new_admin_view().setVisible(true);
+                System.out.println("fuera");
                 admin_v.dispose();
+                new admin_controller(new new_admin_view(), 1).init("f");
                 break;
             case changeDataAButton:
                 singleton.pager.selectadmin();
@@ -540,6 +685,7 @@ public class admin_controller implements ActionListener, MouseListener {
                 bll.validatePassword();
                 break;
             case avatarbutton:
+                bll.validateAvatar();
                 break;
             case statusField:
                 bll.validateStatus();
@@ -555,6 +701,132 @@ public class admin_controller implements ActionListener, MouseListener {
                 bll.validateActivity();
                 break;
         }
+    }
+
+    private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateDNI();
+        bll.validateBirthday();
+        bll.validateHiringdate();
+    }
+
+    private void dniFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateDNI();
+        bll.validateBirthday();
+        bll.validateHiringdate();
+    }
+
+    private void dniFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateDNI();
+        bll.validateBirthday();
+        bll.validateHiringdate();
+    }
+
+    private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateName();
+    }
+
+    private void nameFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateName();
+    }
+
+    private void nameFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateName();
+    }
+
+    private void subnameFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateSubname();
+    }
+
+    private void subnameFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateSubname();
+    }
+
+    private void subnameFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateSubname();
+    }
+
+    private void phoneFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validatePhone();
+    }
+
+    private void phoneFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validatePhone();
+    }
+
+    private void phoneFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validatePhone();
+    }
+
+    private void emailFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateEmail();
+    }
+
+    private void emailFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateEmail();
+    }
+
+    private void emailFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateEmail();
+    }
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateUsername();
+    }
+
+    private void usernameFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateUsername();
+    }
+
+    private void usernameFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateUsername();
+    }
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validatePassword();
+    }
+
+    private void passwordFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validatePassword();
+    }
+
+    private void passwordFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validatePassword();
+    }
+
+    private void statusFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateStatus();
+    }
+
+    private void statusFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateStatus();
+    }
+
+    private void statusFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateStatus();
+    }
+
+    private void salaryFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateSalary();
+    }
+
+    private void salaryFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateSalary();
+    }
+
+    private void salaryFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateSalary();
+    }
+
+    private void activityFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bll.validateActivity();
+    }
+
+    private void activityFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bll.validateActivity();
+    }
+
+    private void activityFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bll.validateActivity();
     }
 
     public static void updatetable() {
