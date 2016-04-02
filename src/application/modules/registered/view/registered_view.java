@@ -18,7 +18,7 @@ public class registered_view extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static int Admintochange;
+    public static int Registeredtochange;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +29,7 @@ public class registered_view extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        createAButton = new javax.swing.JButton();
+        createRButton = new javax.swing.JButton();
         changeDataAButton = new javax.swing.JButton();
         deleteDataAButton = new javax.swing.JButton();
         findAButton = new javax.swing.JButton();
@@ -39,7 +39,7 @@ public class registered_view extends javax.swing.JFrame {
         tabbedtable = new javax.swing.JTabbedPane();
         panelviews = new javax.swing.JPanel();
         list = new javax.swing.JScrollPane();
-        adminstable = new javax.swing.JTable();
+        registeredtable = new javax.swing.JTable();
         beginning = new javax.swing.JButton();
         backwards = new javax.swing.JButton();
         forward = new javax.swing.JButton();
@@ -82,7 +82,7 @@ public class registered_view extends javax.swing.JFrame {
         ageform = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        admincreated = new javax.swing.JLabel();
+        registeredcreated = new javax.swing.JLabel();
         backA = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
@@ -96,10 +96,10 @@ public class registered_view extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        createAButton.setText("Create");
-        createAButton.addActionListener(new java.awt.event.ActionListener() {
+        createRButton.setText("Create");
+        createRButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createAButtonActionPerformed(evt);
+                createRButtonActionPerformed(evt);
             }
         });
 
@@ -147,7 +147,7 @@ public class registered_view extends javax.swing.JFrame {
 
         panelviews.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 101, 101)));
 
-        adminstable.setModel(new javax.swing.table.DefaultTableModel(
+        registeredtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -155,17 +155,17 @@ public class registered_view extends javax.swing.JFrame {
                 "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
             }
         ));
-        adminstable.getTableHeader().setReorderingAllowed(false);
-        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+        registeredtable.getTableHeader().setReorderingAllowed(false);
+        registeredtable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                adminstableMousePressed(evt);
+                registeredtableMousePressed(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminstableMouseClicked(evt);
+                registeredtableMouseClicked(evt);
             }
         });
-        list.setViewportView(adminstable);
-        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        list.setViewportView(registeredtable);
+        registeredtable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         beginning.setText("|<");
         beginning.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +202,7 @@ public class registered_view extends javax.swing.JFrame {
             }
         });
 
-        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Admins", "Show 20 Admins", "Show 50 Admins", "Show 100 Admins" }));
+        combopage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show 10 Registered Users", "Show 20 Registered Users", "Show 50 Registered Users", "Show 100 Registered Users" }));
         combopage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combopageActionPerformed(evt);
@@ -537,8 +537,8 @@ public class registered_view extends javax.swing.JFrame {
 
         tabbedtable.addTab("Kanban", jPanel3);
 
-        admincreated.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        admincreated.setForeground(new java.awt.Color(18, 107, 1));
+        registeredcreated.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        registeredcreated.setForeground(new java.awt.Color(18, 107, 1));
 
         backA.setText("Volver");
 
@@ -603,7 +603,7 @@ public class registered_view extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(findAButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(createAButton, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(createRButton, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(165, 165, 165)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -622,7 +622,7 @@ public class registered_view extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(486, 486, 486)
-                .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registeredcreated, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -630,7 +630,7 @@ public class registered_view extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tabbedtable, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registeredcreated, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -640,7 +640,7 @@ public class registered_view extends javax.swing.JFrame {
                         .addComponent(importAButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(createAButton)
+                            .addComponent(createRButton)
                             .addComponent(changeDataAButton)
                             .addComponent(deleteDataAButton)
                             .addComponent(backA))
@@ -651,9 +651,9 @@ public class registered_view extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void createAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAButtonActionPerformed
+    private void createRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createRButtonActionPerformed
         
-    }//GEN-LAST:event_createAButtonActionPerformed
+    }//GEN-LAST:event_createRButtonActionPerformed
 
     private void changeDataAButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDataAButtonActionPerformed
         
@@ -691,13 +691,13 @@ public class registered_view extends javax.swing.JFrame {
         
     }//GEN-LAST:event_listmenuActionPerformed
 
-    private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
+    private void registeredtableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registeredtableMouseClicked
 
-    }//GEN-LAST:event_adminstableMouseClicked
+    }//GEN-LAST:event_registeredtableMouseClicked
 
-    private void adminstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMousePressed
+    private void registeredtableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registeredtableMousePressed
 
-    }//GEN-LAST:event_adminstableMousePressed
+    }//GEN-LAST:event_registeredtableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
         
@@ -761,8 +761,6 @@ public class registered_view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField activityform;
-    public static javax.swing.JLabel admincreated;
-    public static javax.swing.JTable adminstable;
     public static javax.swing.JTextField ageform;
     public static javax.swing.JLabel avatarform;
     public static javax.swing.JButton backA;
@@ -771,7 +769,7 @@ public class registered_view extends javax.swing.JFrame {
     public static javax.swing.JTextField birthdayform;
     public static javax.swing.JButton changeDataAButton;
     public static javax.swing.JComboBox<String> combopage;
-    public static javax.swing.JButton createAButton;
+    public static javax.swing.JButton createRButton;
     public static javax.swing.JButton deleteDataAButton;
     public static javax.swing.JTextField dniform;
     public static javax.swing.JTextField emailform;
@@ -817,6 +815,8 @@ public class registered_view extends javax.swing.JFrame {
     public static javax.swing.JTextField pagefield;
     private javax.swing.JPanel panelviews;
     public static javax.swing.JTextField phoneform;
+    public static javax.swing.JLabel registeredcreated;
+    public static javax.swing.JTable registeredtable;
     public static javax.swing.JTextField salaryform;
     public static javax.swing.JButton sortbyAButton;
     private javax.swing.JMenu sortmenu;

@@ -468,7 +468,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JButton" name="saveAdminButton">
+    <Component class="javax.swing.JButton" name="saveRegisteredButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>

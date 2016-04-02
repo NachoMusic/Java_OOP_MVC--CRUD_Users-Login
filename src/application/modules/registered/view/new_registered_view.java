@@ -72,7 +72,7 @@ public class new_registered_view extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         statusField = new javax.swing.JTextField();
         statuslabel = new javax.swing.JLabel();
-        saveAdminButton = new javax.swing.JButton();
+        saveRegisteredButton = new javax.swing.JButton();
         discartButton = new javax.swing.JButton();
         emptyButton = new javax.swing.JButton();
         saveLabel = new javax.swing.JLabel();
@@ -176,8 +176,8 @@ public class new_registered_view extends javax.swing.JFrame {
         statuslabel.setText(" ");
         getContentPane().add(statuslabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 20, 20));
 
-        saveAdminButton.setText("Save");
-        getContentPane().add(saveAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 100, -1));
+        saveRegisteredButton.setText("Save");
+        getContentPane().add(saveRegisteredButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 100, -1));
 
         discartButton.setText("Discart");
         getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 90, -1));
@@ -261,8 +261,8 @@ public class new_registered_view extends javax.swing.JFrame {
     public static javax.swing.JLabel phonelabel;
     public static javax.swing.JTextField salaryField;
     public static javax.swing.JLabel salarylabel;
-    public static javax.swing.JButton saveAdminButton;
     public static javax.swing.JLabel saveLabel;
+    public static javax.swing.JButton saveRegisteredButton;
     public static javax.swing.JTextField statusField;
     public static javax.swing.JLabel statuslabel;
     public static javax.swing.JTextField subnameField;
