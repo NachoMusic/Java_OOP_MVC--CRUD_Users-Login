@@ -17,7 +17,9 @@ public class Arraylist_client {
     public Arraylist_client() {
         //constructor
     }
-
+    public ArrayList<client> getClients() {
+        return clients;
+    }
     public void addData(client a) {
         client client1 = a;
         boolean action = true;

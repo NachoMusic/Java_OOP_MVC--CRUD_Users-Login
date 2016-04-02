@@ -36,6 +36,8 @@ import javax.swing.ImageIcon;
 import static application.modules.client.view.client_view.Clienttochange;
 import static application.modules.client.view.new_client_view.dischargedateField;
 import static application.modules.client.view.new_client_view.client_typeField;
+import static application.modules.client.view.new_client_view.premiumCheckbox;
+import static application.modules.client.view.new_client_view.shoppingField;
 
 /**
  *
@@ -138,9 +140,9 @@ public class bllC {
     public static boolean newClient() {
         boolean validA = true;
         String dni, name, subname, phone_number, email, user, pass, avatar,
-                state, date_birthday, hiring_date;
-        float salary;
-        int activity;
+                state, date_birthday, discharge_date, client_type;
+        float shopping;
+        boolean premium;
 
         if (validateDNI() && validateName() && validateSubname() && validatePhone()
                 && validateEmail() && validateUsername() && validatePassword()
@@ -175,11 +177,13 @@ public class bllC {
             state = statusField.getText();
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
-            hiring_date = date.DateToString(dischargedateField.getCalendar(), 0);
-            salary = Float.parseFloat(client_typeField.getText());
+            discharge_date = date.DateToString(dischargedateField.getCalendar(), 0);
+            client_type = client_typeField.getText();
+            shopping = Float.parseFloat(shoppingField.getText());
+            premium = premiumCheckbox.isSelected();
             //"dischargedate","clienttype","yearsservice","shopping","premium"
             singleton.clients.addData(new client(dni, name, subname, phone_number,
-                    email, user, pass, avatar, state, date_birthday,"dischargedate","clienttype",100.0f,true));
+                    email, user, pass, avatar, state, date_birthday,discharge_date,client_type,shopping,premium));
         } else {
             saveLabel.setVisible(true);
             saveLabel.setText("The client was not created, check the errors in the fields");

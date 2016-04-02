@@ -13,6 +13,7 @@ import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.model.models.singleton;
 import application.modules.client.model.BLL.bllC;
+import application.modules.client.model.BLL.lib_files.jsonC;
 import application.modules.client.model.pager.PagerC;
 import application.modules.client.view.client_view;
 import static application.modules.client.view.client_view.backwards;
@@ -452,9 +453,7 @@ public class client_controller implements ActionListener {
                 if (singleton.pagerC.getSelected() != null) {
                     singleton.admins.deleteData(Integer.parseInt(singleton.pagerC.getSelected()));
                     updatetable();
-                    json.createjson_auto();
-                    xml.createxml_auto();
-                    txt.createtxt_auto();
+                    jsonC.createjson_auto();
                     Config_json.create_conf_json();
                 }
                 break;
@@ -626,9 +625,7 @@ public class client_controller implements ActionListener {
                         new client_controller(new client_view(), 0).init("v");
                         clientcreated.setText("Created");
                         clientcreated.setVisible(true);
-                        json.createjson_auto();
-                        xml.createxml_auto();
-                        txt.createtxt_auto();
+                        jsonC.createjson_auto();
                         Config_json.create_conf_json();
                     }
                 } else if (bllC.editClient()) {
@@ -636,9 +633,7 @@ public class client_controller implements ActionListener {
                     new client_controller(new client_view(), 0).init("v");
                     clientcreated.setText("Edited");
                     clientcreated.setVisible(true);
-                    json.createjson_auto();
-                    xml.createxml_auto();
-                    txt.createtxt_auto();
+                    jsonC.createjson_auto();
                     Config_json.create_conf_json();
                 }
                 break;

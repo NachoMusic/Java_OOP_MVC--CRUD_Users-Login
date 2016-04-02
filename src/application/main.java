@@ -13,6 +13,7 @@ import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.view.new_admin_view;
+import application.modules.client.model.BLL.lib_files.jsonC;
 import application.utils.Config_json;
 import application.modules.menu_config.view.app_view;
 
@@ -37,6 +38,7 @@ public class main {
                 txt.load_txt_auto();
                 break;
         }
+        jsonC.load_json_auto();
         
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
