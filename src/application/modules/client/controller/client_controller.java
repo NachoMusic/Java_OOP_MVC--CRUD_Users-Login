@@ -8,11 +8,11 @@ package application.modules.client.controller;
 import application.models.SingletonF;
 import application.modules.menu_config.controller.controller;
 import application.modules.menu_config.view.app_view;
-import application.modules.admin.model.BLL.bll;
 import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.model.models.singleton;
+import application.modules.client.model.BLL.bllC;
 import application.modules.client.model.pager.PagerC;
 import application.modules.client.view.client_view;
 import static application.modules.client.view.client_view.backwards;
@@ -444,7 +444,7 @@ public class client_controller implements ActionListener {
                 break;
             case changeDataAButton:
                 singleton.pagerC.selectclient();
-                if (bll.editadmin()) {
+                if (bllC.editclient()) {
                     client_v.dispose();
                 }
                 break;
@@ -622,7 +622,7 @@ public class client_controller implements ActionListener {
                 break;
             case saveClientButton:
                 if (emptyButton.isVisible()) {
-                    if (bll.newAdmin()) {
+                    if (bllC.newClient()) {
                         client_f.dispose();
                         new client_controller(new client_view(), 0).init("v");
                         clientcreated.setText("Created");
@@ -632,7 +632,7 @@ public class client_controller implements ActionListener {
                         txt.createtxt_auto();
                         Config_json.create_conf_json();
                     }
-                } else if (bll.editAdmin()) {
+                } else if (bllC.editClient()) {
                     client_f.dispose();
                     new client_controller(new client_view(), 0).init("v");
                     clientcreated.setText("Edited");
@@ -644,169 +644,169 @@ public class client_controller implements ActionListener {
                 }
                 break;
             case dniField:
-                bll.validateDNI();
+                bllC.validateDNI();
                 break;
             case nameField:
-                bll.validateName();
+                bllC.validateName();
                 break;
             case subnameField:
-                bll.validateSubname();
+                bllC.validateSubname();
                 break;
             case phoneField:
-                bll.validatePhone();
+                bllC.validatePhone();
                 break;
             case emailField:
-                bll.validateEmail();
+                bllC.validateEmail();
                 break;
             case usernameField:
-                bll.validateUsername();
+                bllC.validateUsername();
                 break;
             case passwordField:
-                bll.validatePassword();
+                bllC.validatePassword();
                 break;
             case avatarbutton:
-                bll.validateAvatar();
+                bllC.validateAvatar();
                 break;
             case statusField:
-                bll.validateStatus();
+                bllC.validateStatus();
                 break;
             case datebirthdayField:
                 break;
             case hiringdateField:
                 break;
             case salaryField:
-                bll.validateSalary();
+                //bllC.validateSalary();
                 break;
             case activityField:
-                bll.validateActivity();
+                //bllC.validateActivity();
                 break;
         }
     }
 
     private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateDNI();
-        bll.validateBirthday();
-        bll.validateHiringdate();
+        bllC.validateDNI();
+        bllC.validateBirthday();
+        //bllC.validateHiringdate();
     }
 
     private void dniFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateDNI();
-        bll.validateBirthday();
-        bll.validateHiringdate();
+        bllC.validateDNI();
+        bllC.validateBirthday();
+        //bllC.validateHiringdate();
     }
 
     private void dniFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateDNI();
-        bll.validateBirthday();
-        bll.validateHiringdate();
+        bllC.validateDNI();
+        bllC.validateBirthday();
+        //bllC.validateHiringdate();
     }
 
     private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateName();
+        bllC.validateName();
     }
 
     private void nameFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateName();
+        bllC.validateName();
     }
 
     private void nameFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateName();
+        bllC.validateName();
     }
 
     private void subnameFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateSubname();
+        bllC.validateSubname();
     }
 
     private void subnameFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateSubname();
+        bllC.validateSubname();
     }
 
     private void subnameFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateSubname();
+        bllC.validateSubname();
     }
 
     private void phoneFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validatePhone();
+        bllC.validatePhone();
     }
 
     private void phoneFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validatePhone();
+        bllC.validatePhone();
     }
 
     private void phoneFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validatePhone();
+        bllC.validatePhone();
     }
 
     private void emailFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateEmail();
+        bllC.validateEmail();
     }
 
     private void emailFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateEmail();
+        bllC.validateEmail();
     }
 
     private void emailFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateEmail();
+        bllC.validateEmail();
     }
 
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateUsername();
+        bllC.validateUsername();
     }
 
     private void usernameFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateUsername();
+        bllC.validateUsername();
     }
 
     private void usernameFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateUsername();
+        bllC.validateUsername();
     }
 
     private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validatePassword();
+        bllC.validatePassword();
     }
 
     private void passwordFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validatePassword();
+        bllC.validatePassword();
     }
 
     private void passwordFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validatePassword();
+        bllC.validatePassword();
     }
 
     private void statusFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateStatus();
+        bllC.validateStatus();
     }
 
     private void statusFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateStatus();
+        bllC.validateStatus();
     }
 
     private void statusFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateStatus();
+        bllC.validateStatus();
     }
 
     private void salaryFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateSalary();
+        //bllC.validateSalary();
     }
 
     private void salaryFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateSalary();
+        //bllC.validateSalary();
     }
 
     private void salaryFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateSalary();
+        //bllC.validateSalary();
     }
 
     private void activityFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bll.validateActivity();
+        //bllC.validateActivity();
     }
 
     private void activityFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bll.validateActivity();
+        //bllC.validateActivity();
     }
 
     private void activityFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bll.validateActivity();
+        //bllC.validateActivity();
     }
 
     public static void updatetable() {

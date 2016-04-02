@@ -6,7 +6,7 @@
 package application.modules.client.model.DAO;
 
 import application.models.Dates;
-import static application.modules.admin.view.new_admin_view.*;
+import static application.modules.client.view.new_client_view.*;
 import application.utils.Validate;
 import static java.awt.Color.red;
 import static java.awt.Color.white;
@@ -229,7 +229,7 @@ public class daoC {
         }
         return validate;
     }
-
+/*
     public static boolean validateHiringdate() {
         boolean validate = true;
 
@@ -304,4 +304,5 @@ public class daoC {
         }
         return validate;
     }
+*/
 }

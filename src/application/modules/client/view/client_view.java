@@ -18,7 +18,7 @@ public class client_view extends javax.swing.JFrame {
         initComponents();
     }
 
-    public static int Admintochange;
+    public static int Clienttochange;
 
     /**
      * This method is called from within the constructor to initialize the form.
