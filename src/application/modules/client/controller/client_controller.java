@@ -349,17 +349,17 @@ public class client_controller implements ActionListener {
                 new_client_view.client_typeField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
-                        salaryFieldKeyTyped(evt);
+                       client_typeFieldKeyTyped(evt);
                     }
 
                     @Override
                     public void keyPressed(java.awt.event.KeyEvent evt) {
-                        salaryFieldKeyPressed(evt);
+                        client_typeFieldKeyPressed(evt);
                     }
 
                     @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
-                        salaryFieldKeyReleased(evt);
+                        client_typeFieldKeyReleased(evt);
                     }
                 });
                 new_client_view.statusField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -625,6 +625,7 @@ public class client_controller implements ActionListener {
                         new client_controller(new client_view(), 0).init("v");
                         clientcreated.setText("Created");
                         clientcreated.setVisible(true);
+                        System.out.println("Fuera");
                         jsonC.createjson_auto();
                         Config_json.create_conf_json();
                     }
@@ -678,19 +679,19 @@ public class client_controller implements ActionListener {
     private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {
         bllC.validateDNI();
         bllC.validateBirthday();
-        //bllC.validateHiringdate();
+        bllC.validateDischargedate();
     }
 
     private void dniFieldKeyPressed(java.awt.event.KeyEvent evt) {
         bllC.validateDNI();
         bllC.validateBirthday();
-        //bllC.validateHiringdate();
+        bllC.validateDischargedate();
     }
 
     private void dniFieldKeyReleased(java.awt.event.KeyEvent evt) {
         bllC.validateDNI();
         bllC.validateBirthday();
-        //bllC.validateHiringdate();
+        bllC.validateDischargedate();
     }
 
     private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {
@@ -777,16 +778,16 @@ public class client_controller implements ActionListener {
         bllC.validateStatus();
     }
 
-    private void salaryFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        //bllC.validateSalary();
+    private void client_typeFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bllC.validateClient_type();
     }
 
-    private void salaryFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        //bllC.validateSalary();
+    private void client_typeFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bllC.validateClient_type();
     }
 
-    private void salaryFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        //bllC.validateSalary();
+    private void client_typeFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bllC.validateClient_type();
     }
 
     private void shoppingFieldKeyReleased(java.awt.event.KeyEvent evt) {

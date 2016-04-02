@@ -48,23 +48,32 @@ public class jsonC {
         String PATH = null, pathin = "";
 
         try {
+            System.out.println("Dentro1");
             XStream xstreamjson = new XStream(new JettisonMappedXmlDriver());
             xstreamjson.setMode(XStream.NO_REFERENCES);
             xstreamjson.alias("client", client.class);
-            pathin = "src/application/modules/client/files/client_files";
+            System.out.println("Dentro2");
+            pathin = "/src/application/modules/client/files/client_files/client_files";
+            System.out.println("Dentro3");
             try {
                 PATH = new java.io.File(".").getCanonicalPath()
                         + pathin;
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println("Dentro4");
             PATH = PATH + ".json";
             Gson gson = new Gson();
+            System.out.println("Dentro5");
             String json = gson.toJson(singleton.clients.getClients());
+            System.out.println("Dentro5.5");
             FileWriter fileXml = new FileWriter(PATH);
+            System.out.println("Dentro6");
             fileXml.write(json.toString());
+            System.out.println("Dentro7");
             fileXml.close();
         } catch (Exception E) {
+            System.out.println("DentroError");
             JOptionPane.showMessageDialog(null, "Error creating the JSON", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -111,7 +120,7 @@ public class jsonC {
             XStream xstream = new XStream(new JettisonMappedXmlDriver());
             xstream.setMode(XStream.NO_REFERENCES);
             xstream.alias("client", client.class);
-            pathin = "src/application/modules/client/files/client_files";
+            pathin = "/src/application/modules/client/files/client_files/client_files.json";
             PATH = new java.io.File(".").getCanonicalPath()
                     + pathin;
             File path = new File(PATH);
