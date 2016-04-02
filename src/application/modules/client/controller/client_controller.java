@@ -13,41 +13,39 @@ import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.model.models.singleton;
-import application.modules.admin.model.pager.Pager;
-import application.modules.admin.view.admin_view;
-import static application.modules.admin.view.admin_view.admincreated;
-import static application.modules.admin.view.admin_view.adminstable;
-import static application.modules.admin.view.admin_view.backwards;
-import static application.modules.admin.view.admin_view.beginning;
-import static application.modules.admin.view.admin_view.combopage;
-import static application.modules.admin.view.admin_view.end;
-import static application.modules.admin.view.admin_view.forward;
-import static application.modules.admin.view.admin_view.list;
-import static application.modules.admin.view.admin_view.numtab1;
-import static application.modules.admin.view.admin_view.numtab2;
-import static application.modules.admin.view.admin_view.numtab3;
-import static application.modules.admin.view.admin_view.numtab4;
-import static application.modules.admin.view.admin_view.numtab5;
-import static application.modules.admin.view.admin_view.numtab6;
-import static application.modules.admin.view.admin_view.numtab7;
-import static application.modules.admin.view.admin_view.tabbedtable;
-import application.modules.admin.view.new_admin_view;
-import static application.modules.admin.view.new_admin_view.activitylabel;
-import static application.modules.admin.view.new_admin_view.avatarlabel;
-import static application.modules.admin.view.new_admin_view.datebirthdaylabel;
-import static application.modules.admin.view.new_admin_view.dnilabel;
-import static application.modules.admin.view.new_admin_view.emaillabel;
-import static application.modules.admin.view.new_admin_view.emptyButton;
-import static application.modules.admin.view.new_admin_view.hiringdatelabel;
-import static application.modules.admin.view.new_admin_view.namelabel;
-import static application.modules.admin.view.new_admin_view.passwordlabel;
-import static application.modules.admin.view.new_admin_view.phonelabel;
-import static application.modules.admin.view.new_admin_view.salarylabel;
-import static application.modules.admin.view.new_admin_view.saveLabel;
-import static application.modules.admin.view.new_admin_view.statuslabel;
-import static application.modules.admin.view.new_admin_view.subnamelabel;
-import static application.modules.admin.view.new_admin_view.usernamelabel;
+import application.modules.client.model.pager.PagerC;
 import application.modules.client.view.client_view;
+import static application.modules.client.view.client_view.backwards;
+import static application.modules.client.view.client_view.beginning;
+import static application.modules.client.view.client_view.clientstable;
+import static application.modules.client.view.client_view.combopage;
+import static application.modules.client.view.client_view.end;
+import static application.modules.client.view.client_view.forward;
+import static application.modules.client.view.client_view.list;
+import static application.modules.client.view.client_view.numtab1;
+import static application.modules.client.view.client_view.numtab2;
+import static application.modules.client.view.client_view.numtab3;
+import static application.modules.client.view.client_view.numtab4;
+import static application.modules.client.view.client_view.numtab5;
+import static application.modules.client.view.client_view.numtab6;
+import static application.modules.client.view.client_view.numtab7;
+import static application.modules.client.view.client_view.tabbedtable;
+import application.modules.client.view.new_client_view;
+import static application.modules.client.view.new_client_view.activitylabel;
+import static application.modules.client.view.new_client_view.avatarlabel;
+import static application.modules.client.view.new_client_view.datebirthdaylabel;
+import static application.modules.client.view.new_client_view.dnilabel;
+import static application.modules.client.view.new_client_view.emaillabel;
+import static application.modules.client.view.new_client_view.emptyButton;
+import static application.modules.client.view.new_client_view.hiringdatelabel;
+import static application.modules.client.view.new_client_view.namelabel;
+import static application.modules.client.view.new_client_view.passwordlabel;
+import static application.modules.client.view.new_client_view.phonelabel;
+import static application.modules.client.view.new_client_view.salarylabel;
+import static application.modules.client.view.new_client_view.saveLabel;
+import static application.modules.client.view.new_client_view.statuslabel;
+import static application.modules.client.view.new_client_view.subnamelabel;
+import static application.modules.client.view.new_client_view.usernamelabel;
 import application.utils.Config_json;
 import application.utils.Functions;
 import application.utils.Menus;
@@ -65,6 +63,7 @@ import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import static application.modules.client.view.client_view.clientcreated;
 
 /**
  *
@@ -73,7 +72,7 @@ import javax.swing.table.TableRowSorter;
 public class client_controller implements ActionListener {
 
     public static client_view client_v;
-    public static new_admin_view client_f;
+    public static new_client_view client_f;
 
     public client_controller(JFrame inicio, int i) {
         switch (i) {
@@ -81,13 +80,13 @@ public class client_controller implements ActionListener {
                 client_v = (client_view) inicio;
                 break;
             case 1:
-                client_f = (new_admin_view) inicio;
+                client_f = (new_client_view) inicio;
                 break;
         }
     }
 
     public enum action {
-        //Admin_v
+        //Client_v
         createAButton,
         changeDataAButton,
         deleteDataAButton,
@@ -111,8 +110,8 @@ public class client_controller implements ActionListener {
         listmenu,
         formmenu,
         backA,
-        adminstable,
-        //Admin_f
+        clientstable,
+        //Client_f
         discartButton,
         emptyButton,
         saveClientButton,
@@ -146,62 +145,62 @@ public class client_controller implements ActionListener {
                 numtab5.setVisible(false);
                 numtab6.setVisible(false);
                 numtab7.setVisible(false);
-                singleton.pager = new Pager();
-                singleton.pager.setPage(0);
+                singleton.pagerC = new PagerC();
+                singleton.pagerC.setPage(0);
                 Timer timer = new Timer(10000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        admincreated.setVisible(false);
+                        clientcreated.setVisible(false);
                     }
                 });
 
-                admin_view.adminstable.setName("adminstable");
-                admin_view.createAButton.setActionCommand("createAButton");
-                admin_view.createAButton.addActionListener(this);
-                admin_view.changeDataAButton.setActionCommand("changeDataAButton");
-                admin_view.changeDataAButton.addActionListener(this);
-                admin_view.deleteDataAButton.setActionCommand("deleteDataAButton");
-                admin_view.deleteDataAButton.addActionListener(this);
-                admin_view.findAButton.setActionCommand("findAButton");
-                admin_view.findAButton.addActionListener(this);
-                admin_view.sortbyAButton.setActionCommand("sortbyAButton");
-                admin_view.sortbyAButton.addActionListener(this);
-                admin_view.exportAButton.setActionCommand("exportAButton");
-                admin_view.exportAButton.addActionListener(this);
-                admin_view.importAButton.setActionCommand("importAButton");
-                admin_view.importAButton.addActionListener(this);
-                admin_view.backwards.setActionCommand("backwards");
-                admin_view.backwards.addActionListener(this);
-                admin_view.forward.setActionCommand("forward");
-                admin_view.forward.addActionListener(this);
-                admin_view.beginning.setActionCommand("beginning");
-                admin_view.beginning.addActionListener(this);
-                admin_view.end.setActionCommand("end");
-                admin_view.end.addActionListener(this);
-                admin_view.pagefield.setActionCommand("pagefield");
-                admin_view.pagefield.addActionListener(this);
-                admin_view.combopage.setActionCommand("combopage");
-                admin_view.combopage.addActionListener(this);
-                admin_view.listmenu.setActionCommand("listmenu");
-                admin_view.listmenu.addActionListener(this);
-                admin_view.formmenu.setActionCommand("formmenu");
-                admin_view.formmenu.addActionListener(this);
-                admin_view.backA.setActionCommand("backA");
-                admin_view.backA.addActionListener(this);
-                admin_view.numtab1.setActionCommand("numtab1");
-                admin_view.numtab1.addActionListener(this);
-                admin_view.numtab2.setActionCommand("numtab2");
-                admin_view.numtab2.addActionListener(this);
-                admin_view.numtab3.setActionCommand("numtab3");
-                admin_view.numtab3.addActionListener(this);
-                admin_view.numtab4.setActionCommand("numtab4");
-                admin_view.numtab4.addActionListener(this);
-                admin_view.numtab5.setActionCommand("numtab5");
-                admin_view.numtab5.addActionListener(this);
-                admin_view.numtab6.setActionCommand("numtab6");
-                admin_view.numtab6.addActionListener(this);
-                admin_view.numtab7.setActionCommand("numtab7");
-                admin_view.numtab7.addActionListener(this);
+                client_view.clientstable.setName("clientstable");
+                client_view.createAButton.setActionCommand("createAButton");
+                client_view.createAButton.addActionListener(this);
+                client_view.changeDataAButton.setActionCommand("changeDataAButton");
+                client_view.changeDataAButton.addActionListener(this);
+                client_view.deleteDataAButton.setActionCommand("deleteDataAButton");
+                client_view.deleteDataAButton.addActionListener(this);
+                client_view.findAButton.setActionCommand("findAButton");
+                client_view.findAButton.addActionListener(this);
+                client_view.sortbyAButton.setActionCommand("sortbyAButton");
+                client_view.sortbyAButton.addActionListener(this);
+                client_view.exportAButton.setActionCommand("exportAButton");
+                client_view.exportAButton.addActionListener(this);
+                client_view.importAButton.setActionCommand("importAButton");
+                client_view.importAButton.addActionListener(this);
+                client_view.backwards.setActionCommand("backwards");
+                client_view.backwards.addActionListener(this);
+                client_view.forward.setActionCommand("forward");
+                client_view.forward.addActionListener(this);
+                client_view.beginning.setActionCommand("beginning");
+                client_view.beginning.addActionListener(this);
+                client_view.end.setActionCommand("end");
+                client_view.end.addActionListener(this);
+                client_view.pagefield.setActionCommand("pagefield");
+                client_view.pagefield.addActionListener(this);
+                client_view.combopage.setActionCommand("combopage");
+                client_view.combopage.addActionListener(this);
+                client_view.listmenu.setActionCommand("listmenu");
+                client_view.listmenu.addActionListener(this);
+                client_view.formmenu.setActionCommand("formmenu");
+                client_view.formmenu.addActionListener(this);
+                client_view.backA.setActionCommand("backA");
+                client_view.backA.addActionListener(this);
+                client_view.numtab1.setActionCommand("numtab1");
+                client_view.numtab1.addActionListener(this);
+                client_view.numtab2.setActionCommand("numtab2");
+                client_view.numtab2.addActionListener(this);
+                client_view.numtab3.setActionCommand("numtab3");
+                client_view.numtab3.addActionListener(this);
+                client_view.numtab4.setActionCommand("numtab4");
+                client_view.numtab4.addActionListener(this);
+                client_view.numtab5.setActionCommand("numtab5");
+                client_view.numtab5.addActionListener(this);
+                client_view.numtab6.setActionCommand("numtab6");
+                client_view.numtab6.addActionListener(this);
+                client_view.numtab7.setActionCommand("numtab7");
+                client_view.numtab7.addActionListener(this);
                 updatetable();
                 timer.start();
                 break;
@@ -223,35 +222,35 @@ public class client_controller implements ActionListener {
                 hiringdatelabel.setVisible(false);
                 phonelabel.setVisible(false);
                 avatarlabel.setVisible(false);
-                new_admin_view.saveAdminButton.setActionCommand("saveClientButton");
-                new_admin_view.saveAdminButton.addActionListener(this);
-                new_admin_view.discartButton.setActionCommand("discartButton");
-                new_admin_view.discartButton.addActionListener(this);
-                new_admin_view.emptyButton.setActionCommand("emptyButton");
-                new_admin_view.emptyButton.addActionListener(this);
-                new_admin_view.dniField.setActionCommand("dniField");
-                new_admin_view.dniField.addActionListener(this);
-                new_admin_view.nameField.setActionCommand("nameField");
-                new_admin_view.nameField.addActionListener(this);
-                new_admin_view.subnameField.setActionCommand("subnameField");
-                new_admin_view.subnameField.addActionListener(this);
-                new_admin_view.phoneField.setActionCommand("phoneField");
-                new_admin_view.phoneField.addActionListener(this);
-                new_admin_view.emailField.setActionCommand("emailField");
-                new_admin_view.emailField.addActionListener(this);
-                new_admin_view.usernameField.setActionCommand("usernameField");
-                new_admin_view.usernameField.addActionListener(this);
-                new_admin_view.passwordField.setActionCommand("passwordField");
-                new_admin_view.passwordField.addActionListener(this);
-                new_admin_view.avatarbutton.setActionCommand("avatarbutton");
-                new_admin_view.avatarbutton.addActionListener(this);
-                new_admin_view.statusField.setActionCommand("statusField");
-                new_admin_view.statusField.addActionListener(this);
-                new_admin_view.salaryField.setActionCommand("salaryField");
-                new_admin_view.salaryField.addActionListener(this);
-                new_admin_view.activityField.setActionCommand("activityField");
-                new_admin_view.activityField.addActionListener(this);
-                new_admin_view.dniField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.saveClientButton.setActionCommand("saveClientButton");
+                new_client_view.saveClientButton.addActionListener(this);
+                new_client_view.discartButton.setActionCommand("discartButton");
+                new_client_view.discartButton.addActionListener(this);
+                new_client_view.emptyButton.setActionCommand("emptyButton");
+                new_client_view.emptyButton.addActionListener(this);
+                new_client_view.dniField.setActionCommand("dniField");
+                new_client_view.dniField.addActionListener(this);
+                new_client_view.nameField.setActionCommand("nameField");
+                new_client_view.nameField.addActionListener(this);
+                new_client_view.subnameField.setActionCommand("subnameField");
+                new_client_view.subnameField.addActionListener(this);
+                new_client_view.phoneField.setActionCommand("phoneField");
+                new_client_view.phoneField.addActionListener(this);
+                new_client_view.emailField.setActionCommand("emailField");
+                new_client_view.emailField.addActionListener(this);
+                new_client_view.usernameField.setActionCommand("usernameField");
+                new_client_view.usernameField.addActionListener(this);
+                new_client_view.passwordField.setActionCommand("passwordField");
+                new_client_view.passwordField.addActionListener(this);
+                new_client_view.avatarbutton.setActionCommand("avatarbutton");
+                new_client_view.avatarbutton.addActionListener(this);
+                new_client_view.statusField.setActionCommand("statusField");
+                new_client_view.statusField.addActionListener(this);
+                new_client_view.salaryField.setActionCommand("salaryField");
+                new_client_view.salaryField.addActionListener(this);
+                new_client_view.activityField.setActionCommand("activityField");
+                new_client_view.activityField.addActionListener(this);
+                new_client_view.dniField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         dniFieldKeyTyped(evt);
@@ -267,7 +266,7 @@ public class client_controller implements ActionListener {
                         dniFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.nameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.nameField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         nameFieldKeyTyped(evt);
@@ -283,7 +282,7 @@ public class client_controller implements ActionListener {
                         nameFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.subnameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.subnameField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         subnameFieldKeyTyped(evt);
@@ -299,7 +298,7 @@ public class client_controller implements ActionListener {
                         subnameFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.phoneField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.phoneField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         phoneFieldKeyTyped(evt);
@@ -315,7 +314,7 @@ public class client_controller implements ActionListener {
                         phoneFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.emailField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.emailField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         emailFieldKeyTyped(evt);
@@ -331,7 +330,7 @@ public class client_controller implements ActionListener {
                         emailFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         usernameFieldKeyTyped(evt);
@@ -347,7 +346,7 @@ public class client_controller implements ActionListener {
                         usernameFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.salaryField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.salaryField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         salaryFieldKeyTyped(evt);
@@ -363,7 +362,7 @@ public class client_controller implements ActionListener {
                         salaryFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.activityField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.activityField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         activityFieldKeyTyped(evt);
@@ -379,7 +378,7 @@ public class client_controller implements ActionListener {
                         activityFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.statusField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.statusField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         statusFieldKeyTyped(evt);
@@ -395,7 +394,7 @@ public class client_controller implements ActionListener {
                         statusFieldKeyReleased(evt);
                     }
                 });
-                new_admin_view.passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         passwordFieldKeyTyped(evt);
@@ -438,21 +437,21 @@ public class client_controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         switch (action.valueOf(ae.getActionCommand())) {
-            //admin_view
+            //client_view
             case createAButton:
                 client_v.dispose();
-                new client_controller(new new_admin_view(), 1).init("f");
+                new client_controller(new new_client_view(), 1).init("f");
                 break;
             case changeDataAButton:
-                singleton.pager.selectadmin();
+                singleton.pagerC.selectclient();
                 if (bll.editadmin()) {
                     client_v.dispose();
                 }
                 break;
             case deleteDataAButton:
-                singleton.pager.selectadmin();
-                if (singleton.pager.getSelected() != null) {
-                    singleton.admins.deleteData(Integer.parseInt(singleton.pager.getSelected()));
+                singleton.pagerC.selectclient();
+                if (singleton.pagerC.getSelected() != null) {
+                    singleton.admins.deleteData(Integer.parseInt(singleton.pagerC.getSelected()));
                     updatetable();
                     json.createjson_auto();
                     xml.createxml_auto();
@@ -520,87 +519,87 @@ public class client_controller implements ActionListener {
                 }
                 break;
             case backwards:
-                singleton.pager.backwards();
+                singleton.pagerC.backwards();
                 updatetable();
                 break;
             case forward:
-                singleton.pager.forward();
+                singleton.pagerC.forward();
                 updatetable();
                 break;
             case beginning:
-                singleton.pager.setPage(0);
+                singleton.pagerC.setPage(0);
                 forward.setEnabled(true);
                 end.setEnabled(true);
                 updatetable();
                 break;
             case end:
-                singleton.pager.setPage(singleton.admins.size() / singleton.pager.getMovepage());
+                singleton.pagerC.setPage(singleton.admins.size() / singleton.pagerC.getMovepage());
                 backwards.setEnabled(true);
                 beginning.setEnabled(true);
                 updatetable();
                 break;
             case numtab1:
                 numtab1.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab1.getText()) - 1);
+                singleton.pagerC.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
+                singleton.pagerC.setPage(Integer.parseInt(numtab1.getText()) - 1);
                 updatetable();
                 break;
             case numtab2:
                 numtab2.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab2.getText()) - 1);
+                singleton.pagerC.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
+                singleton.pagerC.setPage(Integer.parseInt(numtab2.getText()) - 1);
                 updatetable();
                 break;
             case numtab3:
                 numtab3.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab3.getText()) - 1);
+                singleton.pagerC.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
+                singleton.pagerC.setPage(Integer.parseInt(numtab3.getText()) - 1);
                 updatetable();
                 break;
             case numtab4:
                 numtab4.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab4.getText()) - 1);
+                singleton.pagerC.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
+                singleton.pagerC.setPage(Integer.parseInt(numtab4.getText()) - 1);
                 updatetable();
                 break;
             case numtab5:
                 numtab5.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab5.getText()) - 1);
+                singleton.pagerC.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
+                singleton.pagerC.setPage(Integer.parseInt(numtab5.getText()) - 1);
                 updatetable();
                 break;
             case numtab6:
                 numtab6.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab6.getText()) - 1);
+                singleton.pagerC.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
+                singleton.pagerC.setPage(Integer.parseInt(numtab6.getText()) - 1);
                 updatetable();
                 break;
             case numtab7:
                 numtab7.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab7.getText()) - 1);
+                singleton.pagerC.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
+                singleton.pagerC.setPage(Integer.parseInt(numtab7.getText()) - 1);
                 updatetable();
                 break;
             case pagefield:
-                singleton.pager.pagefield();
+                singleton.pagerC.pagefield();
                 updatetable();
                 break;
             case combopage:
                 switch (combopage.getSelectedIndex()) {
                     case 0:
-                        singleton.pager.setMovepage(10);
-                        singleton.pager.setPage(0);
+                        singleton.pagerC.setMovepage(10);
+                        singleton.pagerC.setPage(0);
                         break;
                     case 1:
-                        singleton.pager.setMovepage(20);
-                        singleton.pager.setPage(0);
+                        singleton.pagerC.setMovepage(20);
+                        singleton.pagerC.setPage(0);
                         break;
                     case 2:
-                        singleton.pager.setMovepage(50);
-                        singleton.pager.setPage(0);
+                        singleton.pagerC.setMovepage(50);
+                        singleton.pagerC.setPage(0);
                     case 3:
-                        singleton.pager.setMovepage(100);
-                        singleton.pager.setPage(0);
+                        singleton.pagerC.setMovepage(100);
+                        singleton.pagerC.setPage(0);
                 }
                 updatetable();
                 break;
@@ -614,10 +613,10 @@ public class client_controller implements ActionListener {
                 client_v.dispose();
                 new controller(new app_view(), 0).init("menu");
                 break;
-            //new_admin_view form
+            //new_client_view form
             case discartButton:
                 client_f.dispose();
-                new client_controller(new admin_view(), 0).init("v");
+                new client_controller(new client_view(), 0).init("v");
                 break;
             case emptyButton:
                 break;
@@ -625,9 +624,9 @@ public class client_controller implements ActionListener {
                 if (emptyButton.isVisible()) {
                     if (bll.newAdmin()) {
                         client_f.dispose();
-                        new client_controller(new admin_view(), 0).init("v");
-                        admincreated.setText("Created");
-                        admincreated.setVisible(true);
+                        new client_controller(new client_view(), 0).init("v");
+                        clientcreated.setText("Created");
+                        clientcreated.setVisible(true);
                         json.createjson_auto();
                         xml.createxml_auto();
                         txt.createtxt_auto();
@@ -635,9 +634,9 @@ public class client_controller implements ActionListener {
                     }
                 } else if (bll.editAdmin()) {
                     client_f.dispose();
-                    new client_controller(new admin_view(), 0).init("v");
-                    admincreated.setText("Edited");
-                    admincreated.setVisible(true);
+                    new client_controller(new client_view(), 0).init("v");
+                    clientcreated.setText("Edited");
+                    clientcreated.setVisible(true);
                     json.createjson_auto();
                     xml.createxml_auto();
                     txt.createtxt_auto();
@@ -820,14 +819,14 @@ public class client_controller implements ActionListener {
             }
 
         };
-        adminstable = jTable;
-        adminstable.setModel(new javax.swing.table.DefaultTableModel(
+        clientstable = jTable;
+        clientstable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
                     "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
                 }
         ));
-        adminstable.addMouseListener(new MouseAdapter() {
+        clientstable.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent me) {
                 JTable table = (JTable) me.getSource();
@@ -838,28 +837,28 @@ public class client_controller implements ActionListener {
                 }
             }
         });
-        adminstable.setColumnSelectionAllowed(true);
-        adminstable.getTableHeader().setReorderingAllowed(false);
+        clientstable.setColumnSelectionAllowed(true);
+        clientstable.getTableHeader().setReorderingAllowed(false);
 
-        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+        clientstable.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminstableMouseClicked(evt);
+                clientstableMouseClicked(evt);
             }
 
-            private void adminstableMouseClicked(MouseEvent evt) {
-                singleton.pager.selectadmin();
+            private void clientstableMouseClicked(MouseEvent evt) {
+                singleton.pagerC.selectclient();
             }
         });
 
-        list.setViewportView(adminstable);
-        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
+        list.setViewportView(clientstable);
+        clientstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        singleton.pagerC.setModel((DefaultTableModel) clientstable.getModel());
         // Creamos un ordenador de filas para el modelo
-        TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
-        adminstable.setRowSorter(sorter);
-        adminstable.setColumnSelectionAllowed(false);
-        singleton.pager.updatetable2();
-        singleton.pager.pagenum();
+        TableRowSorter sorter = new TableRowSorter(singleton.pagerC.getModel());
+        clientstable.setRowSorter(sorter);
+        clientstable.setColumnSelectionAllowed(false);
+        singleton.pagerC.updatetable2();
+        singleton.pagerC.pagenum();
     }
 }

@@ -1,5 +1,5 @@
 
-package application.modules.admin.model.pager;
+package application.modules.client.model.pager;
 
 import application.modules.admin.model.models.singleton;
 import static application.modules.admin.view.admin_view.adminstable;
@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nacho
  */
-public class Pager {
+public class PagerC {
     private int maxpage;
     private int movepage;
     private int page;
@@ -22,7 +22,7 @@ public class Pager {
     private int selectedpage;
     private DefaultTableModel model;
 
-    public Pager() {
+    public PagerC() {
         this.movepage=10;
         this.page=0;
         this.selectedpage=1;
@@ -202,7 +202,8 @@ public class Pager {
         }
     }
     
-    public void selectadmin(){
+    public void selectclient(){
+        
         selected = String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0));
         dniform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 1)));
         nameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 2)));
@@ -213,9 +214,11 @@ public class Pager {
         stateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 7)));
         birthdayform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 8)));
         ageform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 9)));
+        System.out.println("The rest will come eventually");
+        /*
         hiringdateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 10)));
         salaryform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 11)));
-        activityform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 12)));
+        activityform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 12)));*/
         try{
             ImageIcon icon = new ImageIcon(singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getAvatar());
             Image imgn = icon.getImage();

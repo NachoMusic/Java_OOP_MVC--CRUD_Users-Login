@@ -39,7 +39,7 @@ public class client_view extends javax.swing.JFrame {
         tabbedtable = new javax.swing.JTabbedPane();
         panelviews = new javax.swing.JPanel();
         list = new javax.swing.JScrollPane();
-        adminstable = new javax.swing.JTable();
+        clientstable = new javax.swing.JTable();
         beginning = new javax.swing.JButton();
         backwards = new javax.swing.JButton();
         forward = new javax.swing.JButton();
@@ -82,7 +82,7 @@ public class client_view extends javax.swing.JFrame {
         ageform = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        admincreated = new javax.swing.JLabel();
+        clientcreated = new javax.swing.JLabel();
         backA = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
@@ -147,7 +147,7 @@ public class client_view extends javax.swing.JFrame {
 
         panelviews.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(101, 101, 101)));
 
-        adminstable.setModel(new javax.swing.table.DefaultTableModel(
+        clientstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -155,17 +155,17 @@ public class client_view extends javax.swing.JFrame {
                 "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
             }
         ));
-        adminstable.getTableHeader().setReorderingAllowed(false);
-        adminstable.addMouseListener(new java.awt.event.MouseAdapter() {
+        clientstable.getTableHeader().setReorderingAllowed(false);
+        clientstable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                adminstableMousePressed(evt);
+                clientstableMousePressed(evt);
             }
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminstableMouseClicked(evt);
+                clientstableMouseClicked(evt);
             }
         });
-        list.setViewportView(adminstable);
-        adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        list.setViewportView(clientstable);
+        clientstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         beginning.setText("|<");
         beginning.addActionListener(new java.awt.event.ActionListener() {
@@ -537,8 +537,8 @@ public class client_view extends javax.swing.JFrame {
 
         tabbedtable.addTab("Kanban", jPanel3);
 
-        admincreated.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
-        admincreated.setForeground(new java.awt.Color(18, 107, 1));
+        clientcreated.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        clientcreated.setForeground(new java.awt.Color(18, 107, 1));
 
         backA.setText("Volver");
 
@@ -622,7 +622,7 @@ public class client_view extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(486, 486, 486)
-                .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(clientcreated, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -630,7 +630,7 @@ public class client_view extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tabbedtable, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(admincreated, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(clientcreated, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -691,13 +691,13 @@ public class client_view extends javax.swing.JFrame {
         
     }//GEN-LAST:event_listmenuActionPerformed
 
-    private void adminstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMouseClicked
+    private void clientstableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientstableMouseClicked
 
-    }//GEN-LAST:event_adminstableMouseClicked
+    }//GEN-LAST:event_clientstableMouseClicked
 
-    private void adminstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminstableMousePressed
+    private void clientstableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientstableMousePressed
 
-    }//GEN-LAST:event_adminstableMousePressed
+    }//GEN-LAST:event_clientstableMousePressed
 
     private void forwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forwardActionPerformed
         
@@ -761,8 +761,6 @@ public class client_view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextField activityform;
-    public static javax.swing.JLabel admincreated;
-    public static javax.swing.JTable adminstable;
     public static javax.swing.JTextField ageform;
     public static javax.swing.JLabel avatarform;
     public static javax.swing.JButton backA;
@@ -770,6 +768,8 @@ public class client_view extends javax.swing.JFrame {
     public static javax.swing.JButton beginning;
     public static javax.swing.JTextField birthdayform;
     public static javax.swing.JButton changeDataAButton;
+    public static javax.swing.JLabel clientcreated;
+    public static javax.swing.JTable clientstable;
     public static javax.swing.JComboBox<String> combopage;
     public static javax.swing.JButton createAButton;
     public static javax.swing.JButton deleteDataAButton;

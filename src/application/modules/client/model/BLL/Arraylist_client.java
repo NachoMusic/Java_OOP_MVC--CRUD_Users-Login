@@ -1,4 +1,4 @@
-package application.modules.admin.model.BLL;
+package application.modules.client.model.BLL;
 
 import java.util.ArrayList;
 import java.util.Collections;

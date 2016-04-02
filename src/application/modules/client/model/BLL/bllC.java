@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.modules.admin.model.BLL;
+package application.modules.client.model.BLL;
 
 import application.models.Dates;
 import application.modules.admin.controller.admin_controller;
@@ -42,7 +42,7 @@ import javax.swing.ImageIcon;
  *
  * @author nacho
  */
-public class bll {
+public class bllC {
 
     public static boolean validateDNI() {
         return dao.validateDNI();

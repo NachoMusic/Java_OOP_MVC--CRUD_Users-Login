@@ -27,6 +27,8 @@ import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.model.kernel.Dummies;
 import application.modules.admin.model.models.singleton;
 import application.modules.admin.view.admin_view;
+import application.modules.client.controller.client_controller;
+import application.modules.client.view.client_view;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -195,7 +197,8 @@ public class controller implements ActionListener {
                 break;
 
             case clientsButton:
-                System.out.println("Clients");
+                menu.dispose();
+                new client_controller(new client_view(), 0).init("v");
                 break;
 
             case usregButton:

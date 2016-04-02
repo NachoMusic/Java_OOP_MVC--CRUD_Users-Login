@@ -147,8 +147,8 @@ public class admin_controller implements ActionListener {
                 numtab5.setVisible(false);
                 numtab6.setVisible(false);
                 numtab7.setVisible(false);
-                singleton.pager = new Pager();
-                singleton.pager.setPage(0);
+                singleton.pagerA = new Pager();
+                singleton.pagerA.setPage(0);
                 Timer timer = new Timer(10000, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -445,15 +445,15 @@ public class admin_controller implements ActionListener {
                 new admin_controller(new new_admin_view(), 1).init("f");
                 break;
             case changeDataAButton:
-                singleton.pager.selectadmin();
+                singleton.pagerA.selectadmin();
                 if (bll.editadmin()) {
                     admin_v.dispose();
                 }
                 break;
             case deleteDataAButton:
-                singleton.pager.selectadmin();
-                if (singleton.pager.getSelected() != null) {
-                    singleton.admins.deleteData(Integer.parseInt(singleton.pager.getSelected()));
+                singleton.pagerA.selectadmin();
+                if (singleton.pagerA.getSelected() != null) {
+                    singleton.admins.deleteData(Integer.parseInt(singleton.pagerA.getSelected()));
                     updatetable();
                     json.createjson_auto();
                     xml.createxml_auto();
@@ -521,87 +521,87 @@ public class admin_controller implements ActionListener {
                 }
                 break;
             case backwards:
-                singleton.pager.backwards();
+                singleton.pagerA.backwards();
                 updatetable();
                 break;
             case forward:
-                singleton.pager.forward();
+                singleton.pagerA.forward();
                 updatetable();
                 break;
             case beginning:
-                singleton.pager.setPage(0);
+                singleton.pagerA.setPage(0);
                 forward.setEnabled(true);
                 end.setEnabled(true);
                 updatetable();
                 break;
             case end:
-                singleton.pager.setPage(singleton.admins.size() / singleton.pager.getMovepage());
+                singleton.pagerA.setPage(singleton.admins.size() / singleton.pagerA.getMovepage());
                 backwards.setEnabled(true);
                 beginning.setEnabled(true);
                 updatetable();
                 break;
             case numtab1:
                 numtab1.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab1.getText()) - 1);
+                singleton.pagerA.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
+                singleton.pagerA.setPage(Integer.parseInt(numtab1.getText()) - 1);
                 updatetable();
                 break;
             case numtab2:
                 numtab2.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab2.getText()) - 1);
+                singleton.pagerA.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
+                singleton.pagerA.setPage(Integer.parseInt(numtab2.getText()) - 1);
                 updatetable();
                 break;
             case numtab3:
                 numtab3.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab3.getText()) - 1);
+                singleton.pagerA.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
+                singleton.pagerA.setPage(Integer.parseInt(numtab3.getText()) - 1);
                 updatetable();
                 break;
             case numtab4:
                 numtab4.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab4.getText()) - 1);
+                singleton.pagerA.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
+                singleton.pagerA.setPage(Integer.parseInt(numtab4.getText()) - 1);
                 updatetable();
                 break;
             case numtab5:
                 numtab5.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab5.getText()) - 1);
+                singleton.pagerA.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
+                singleton.pagerA.setPage(Integer.parseInt(numtab5.getText()) - 1);
                 updatetable();
                 break;
             case numtab6:
                 numtab6.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab6.getText()) - 1);
+                singleton.pagerA.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
+                singleton.pagerA.setPage(Integer.parseInt(numtab6.getText()) - 1);
                 updatetable();
                 break;
             case numtab7:
                 numtab7.setForeground(Color.BLUE);
-                singleton.pager.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
-                singleton.pager.setPage(Integer.parseInt(numtab7.getText()) - 1);
+                singleton.pagerA.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
+                singleton.pagerA.setPage(Integer.parseInt(numtab7.getText()) - 1);
                 updatetable();
                 break;
             case pagefield:
-                singleton.pager.pagefield();
+                singleton.pagerA.pagefield();
                 updatetable();
                 break;
             case combopage:
                 switch (combopage.getSelectedIndex()) {
                     case 0:
-                        singleton.pager.setMovepage(10);
-                        singleton.pager.setPage(0);
+                        singleton.pagerA.setMovepage(10);
+                        singleton.pagerA.setPage(0);
                         break;
                     case 1:
-                        singleton.pager.setMovepage(20);
-                        singleton.pager.setPage(0);
+                        singleton.pagerA.setMovepage(20);
+                        singleton.pagerA.setPage(0);
                         break;
                     case 2:
-                        singleton.pager.setMovepage(50);
-                        singleton.pager.setPage(0);
+                        singleton.pagerA.setMovepage(50);
+                        singleton.pagerA.setPage(0);
                     case 3:
-                        singleton.pager.setMovepage(100);
-                        singleton.pager.setPage(0);
+                        singleton.pagerA.setMovepage(100);
+                        singleton.pagerA.setPage(0);
                 }
                 updatetable();
                 break;
@@ -849,18 +849,18 @@ public class admin_controller implements ActionListener {
             }
 
             private void adminstableMouseClicked(MouseEvent evt) {
-                singleton.pager.selectadmin();
+                singleton.pagerA.selectadmin();
             }
         });
 
         list.setViewportView(adminstable);
         adminstable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        singleton.pager.setModel((DefaultTableModel) adminstable.getModel());
+        singleton.pagerA.setModel((DefaultTableModel) adminstable.getModel());
         // Creamos un ordenador de filas para el modelo
-        TableRowSorter sorter = new TableRowSorter(singleton.pager.getModel());
+        TableRowSorter sorter = new TableRowSorter(singleton.pagerA.getModel());
         adminstable.setRowSorter(sorter);
         adminstable.setColumnSelectionAllowed(false);
-        singleton.pager.updatetable2();
-        singleton.pager.pagenum();
+        singleton.pagerA.updatetable2();
+        singleton.pagerA.pagenum();
     }
 }

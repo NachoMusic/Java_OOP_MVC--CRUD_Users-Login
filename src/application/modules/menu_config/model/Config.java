@@ -3,7 +3,7 @@ package application.modules.menu_config.model;
 import java.io.Serializable;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import application.modules.admin.model.BLL.Arraylist_admin;
-import application.modules.admin.model.BLL.Arraylist_client;
+import application.modules.client.model.BLL.Arraylist_client;
 import application.modules.admin.model.BLL.Arraylist_registered_user;
 import application.modules.admin.model.models.singleton;
 
