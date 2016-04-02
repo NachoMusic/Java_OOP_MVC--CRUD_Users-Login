@@ -1,11 +1,11 @@
-package application.modules.admin.model.BLL;
+package application.modules.registered.model.BLL;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import javax.swing.JOptionPane;
 import application.modules.admin.model.DAO.functions_users;
 import application.modules.admin.model.models.admin;
-import application.modules.admin.model.models.registered_user;
+import application.modules.registered.model.models.registered_user;
 import application.modules.admin.model.models.sortbyAge;
 import application.modules.admin.model.models.sortbyName;
 import application.utils.Functions;
