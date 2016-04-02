@@ -99,8 +99,8 @@ public class bllC {
 
     public static boolean editclient() {
         boolean validA = false;
-        if (singleton.pagerA.getSelected() != null) {
-            Clienttochange = Integer.parseInt(singleton.pagerA.getSelected());
+        if (singleton.pagerC.getSelected() != null) {
+            Clienttochange = Integer.parseInt(singleton.pagerC.getSelected());
             new client_controller(new new_client_view(), 1).init("f");
             saveClientButton.setText("Edit Client");
             emptyButton.setVisible(false);
@@ -115,11 +115,11 @@ public class bllC {
             statusField.setText(singleton.clients.getData(Clienttochange - 1).getState());
             Dates b = new Dates(singleton.clients.getData(Clienttochange - 1).getDate_birthday());
             datebirthdayField.setCalendar(b.DateToCalendar());
-            /*
-            Dates h = new Dates(singleton.admins.getData(Clienttochange - 1).getHirin_date());
-            hiringdateField.setCalendar(h.DateToCalendar());
-            salaryField.setText(singleton.admins.getData(Clienttochange - 1).getSalary() + "");
-            activityField.setText(singleton.admins.getData(Clienttochange - 1).getActivity() + "");*/
+            Dates h = new Dates(singleton.clients.getData(Clienttochange - 1).getDischarge_date());
+            dischargedateField.setCalendar(h.DateToCalendar());
+            client_typeField.setText(singleton.clients.getData(Clienttochange - 1).getClient_type());
+            shoppingField.setText(singleton.clients.getData(Clienttochange - 1).getShopping()+"");
+            premiumCheckbox.setSelected(singleton.clients.getData(Clienttochange - 1).isPremium());
             try {
                 ImageIcon icon = new ImageIcon(singleton.admins.getData(Clienttochange - 1).getAvatar());
                 Image imgn = icon.getImage();
@@ -131,7 +131,6 @@ public class bllC {
                 avatarField.setIcon(defaultAvatar);
                 avatarField.setText("src/application/modules/admin/view/img/" + singleton.clients.getData(Clienttochange - 1).getDni());
             }
-
             validA = true;
         }
         return validA;
@@ -195,14 +194,14 @@ public class bllC {
     public static boolean editClient() {
         boolean validA = true;
         String dni, name, subname, phone_number, email, user, pass, avatar,
-                state, date_birthday, hiring_date;
+                state, date_birthday, discharge_date;
         float salary;
         int activity;
 
         if (validateDNI() && validateName() && validateSubname() && validatePhone()
                 && validateEmail() && validateUsername() && validatePassword()
-                && validateStatus() && validateBirthday() /*&& validateHiringdate()
-                && validateSalary() && validateActivity()*/) {
+                && validateStatus() && validateBirthday() && validateDischargedate()
+                && validateClient_type() && validateShopping()) {
             validA = true;
             dni = dniField.getText();
             name = nameField.getText();
@@ -233,8 +232,8 @@ public class bllC {
             state = statusField.getText();
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
-            hiring_date = date.DateToString(dischargedateField.getCalendar(), 0);
-            salary = Float.parseFloat(client_typeField.getText());
+            discharge_date = date.DateToString(dischargedateField.getCalendar(), 0);
+
             singleton.clients.getData(Clienttochange - 1).setDni(dni);
             singleton.clients.getData(Clienttochange - 1).setName(name);
             singleton.clients.getData(Clienttochange - 1).setSubname(subname);
@@ -245,10 +244,10 @@ public class bllC {
             singleton.clients.getData(Clienttochange - 1).setAvatar(avatar);
             singleton.clients.getData(Clienttochange - 1).setState(state);
             singleton.clients.getData(Clienttochange - 1).setDate_birthday(date_birthday);
-            /*
-            singleton.admins.getData(Clienttochange - 1).setHirin_date(hiring_date);
-            singleton.admins.getData(Clienttochange - 1).setSalary(salary);
-            singleton.admins.getData(Clienttochange - 1).setActivity(activity);*/
+            singleton.clients.getData(Clienttochange - 1).setDischarge_date(discharge_date);
+            singleton.clients.getData(Clienttochange - 1).setClient_type(client_typeField.getText());
+            singleton.clients.getData(Clienttochange - 1).setShopping(Float.parseFloat(shoppingField.getText()));
+            singleton.clients.getData(Clienttochange - 1).setPremium(premiumCheckbox.isSelected());
         } else {
             saveLabel.setVisible(true);
             saveLabel.setText("The client was not edited, check the errors in the fields");

@@ -451,7 +451,7 @@ public class client_controller implements ActionListener {
             case deleteDataAButton:
                 singleton.pagerC.selectclient();
                 if (singleton.pagerC.getSelected() != null) {
-                    singleton.admins.deleteData(Integer.parseInt(singleton.pagerC.getSelected()));
+                    singleton.clients.deleteData(Integer.parseInt(singleton.pagerC.getSelected()));
                     updatetable();
                     jsonC.createjson_auto();
                     Config_json.create_conf_json();
@@ -625,7 +625,6 @@ public class client_controller implements ActionListener {
                         new client_controller(new client_view(), 0).init("v");
                         clientcreated.setText("Created");
                         clientcreated.setVisible(true);
-                        System.out.println("Fuera");
                         jsonC.createjson_auto();
                         Config_json.create_conf_json();
                     }

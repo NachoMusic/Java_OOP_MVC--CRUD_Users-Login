@@ -135,9 +135,9 @@ public class Arraylist_client {
 			}
 		}catch(Exception e){};
 	}*/
-    public void deleteData() {
+    public void deleteData(int usertodelete) {
         try {
-            clients.remove(Functions.validateint("Type the number of the user to delete", "Delete entries") - 1);
+            clients.remove(usertodelete - 1);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "The client does not exist");
         }
