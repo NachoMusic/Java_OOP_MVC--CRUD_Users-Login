@@ -37,7 +37,11 @@ public class Arraylist_client {
     public client getData(int num) {
         return clients.get(num);
     }
-
+    
+    public int size() {
+        return clients.size();
+    }
+    
     public void changeData() {
         try {
             int action = 0;

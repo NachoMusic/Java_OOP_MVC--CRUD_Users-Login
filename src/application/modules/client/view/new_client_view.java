@@ -62,13 +62,10 @@ public class new_client_view extends javax.swing.JFrame {
         namebirthdaylabel = new javax.swing.JLabel();
         datebirthdaylabel = new javax.swing.JLabel();
         namehiringdatelabel = new javax.swing.JLabel();
-        hiringdatelabel = new javax.swing.JLabel();
+        dischargedatelabel = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        salaryField = new javax.swing.JTextField();
-        salarylabel = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        activityField = new javax.swing.JTextField();
-        activitylabel = new javax.swing.JLabel();
+        client_typeField = new javax.swing.JTextField();
+        client_typelabel = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         statusField = new javax.swing.JTextField();
         statuslabel = new javax.swing.JLabel();
@@ -76,11 +73,16 @@ public class new_client_view extends javax.swing.JFrame {
         discartButton = new javax.swing.JButton();
         emptyButton = new javax.swing.JButton();
         saveLabel = new javax.swing.JLabel();
-        hiringdateField = new com.toedter.calendar.JDateChooser();
+        dischargedateField = new com.toedter.calendar.JDateChooser();
         datebirthdayField = new com.toedter.calendar.JDateChooser();
         passwordField = new javax.swing.JPasswordField();
         avatarField = new javax.swing.JLabel();
         avatarbutton = new javax.swing.JButton();
+        shoppingtext = new javax.swing.JLabel();
+        shoppingField = new javax.swing.JTextField();
+        shoppinglabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        premiumCheckbox = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,7 +131,7 @@ public class new_client_view extends javax.swing.JFrame {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 9, 416));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 10, 420));
 
         passwordlabel.setText(" ");
         getContentPane().add(passwordlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 377, 20, 20));
@@ -144,30 +146,23 @@ public class new_client_view extends javax.swing.JFrame {
         getContentPane().add(avatarlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 20, -1));
 
         namebirthdaylabel.setText("Date birthday:");
-        getContentPane().add(namebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, -1, -1));
+        getContentPane().add(namebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, -1, -1));
 
         datebirthdaylabel.setText(" ");
-        getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 20, 20));
+        getContentPane().add(datebirthdaylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 180, 20, 20));
 
-        namehiringdatelabel.setText("Hiring date:");
-        getContentPane().add(namehiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        namehiringdatelabel.setText("Discharge date:");
+        getContentPane().add(namehiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, -1));
 
-        hiringdatelabel.setText(" ");
-        getContentPane().add(hiringdatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, 20, -1));
+        dischargedatelabel.setText(" ");
+        getContentPane().add(dischargedatelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 20, -1));
 
-        jLabel21.setText("Base salary:");
-        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
-        getContentPane().add(salaryField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 120, -1));
+        jLabel21.setText("Client type:");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
+        getContentPane().add(client_typeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 120, -1));
 
-        salarylabel.setText(" ");
-        getContentPane().add(salarylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 20, -1));
-
-        jLabel23.setText("Initial Activity:");
-        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, -1, -1));
-        getContentPane().add(activityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 120, -1));
-
-        activitylabel.setText(" ");
-        getContentPane().add(activitylabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 20, -1));
+        client_typelabel.setText(" ");
+        getContentPane().add(client_typelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 20, -1));
 
         jLabel25.setText("Status:");
         getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, -1, 20));
@@ -177,26 +172,26 @@ public class new_client_view extends javax.swing.JFrame {
         getContentPane().add(statuslabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 20, 20));
 
         saveClientButton.setText("Save");
-        getContentPane().add(saveClientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 100, -1));
+        getContentPane().add(saveClientButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, 100, -1));
 
         discartButton.setText("Discart");
-        getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 90, -1));
+        getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 90, -1));
 
         emptyButton.setText("Empty all fields");
-        getContentPane().add(emptyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 450, -1, -1));
+        getContentPane().add(emptyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, -1));
 
         saveLabel.setText(" ");
-        getContentPane().add(saveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 540, 20));
+        getContentPane().add(saveLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 540, 20));
 
-        hiringdateField.setDateFormatString("dd/MM/yyyy");
-        hiringdateField.setMaxSelectableDate(new java.util.Date(4070908882000L));
-        hiringdateField.setMinSelectableDate(new java.util.Date(-2208984234000L));
-        getContentPane().add(hiringdateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 170, -1));
+        dischargedateField.setDateFormatString("dd/MM/yyyy");
+        dischargedateField.setMaxSelectableDate(new java.util.Date(4070908882000L));
+        dischargedateField.setMinSelectableDate(new java.util.Date(-2208984234000L));
+        getContentPane().add(dischargedateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 170, -1));
 
         datebirthdayField.setDateFormatString("dd/MM/yyyy");
         datebirthdayField.setMaxSelectableDate(new java.util.Date(4070908882000L));
         datebirthdayField.setMinSelectableDate(new java.util.Date(-2208984234000L));
-        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 170, -1));
+        getContentPane().add(datebirthdayField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 170, -1));
         getContentPane().add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 140, -1));
 
         avatarField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -204,6 +199,17 @@ public class new_client_view extends javax.swing.JFrame {
 
         avatarbutton.setText("Select avatar");
         getContentPane().add(avatarbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(555, 70, 120, -1));
+
+        shoppingtext.setText("Shopping:");
+        getContentPane().add(shoppingtext, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        getContentPane().add(shoppingField, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 120, -1));
+
+        shoppinglabel.setText(" ");
+        getContentPane().add(shoppinglabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 20, -1));
+
+        jLabel2.setText("Premium:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, -1, -1));
+        getContentPane().add(premiumCheckbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,27 +230,27 @@ public class new_client_view extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JTextField activityField;
-    public static javax.swing.JLabel activitylabel;
     public static javax.swing.JLabel avatarField;
     public static javax.swing.JButton avatarbutton;
     public static javax.swing.JLabel avatarlabel;
+    public static javax.swing.JTextField client_typeField;
+    public static javax.swing.JLabel client_typelabel;
     public static com.toedter.calendar.JDateChooser datebirthdayField;
     public static javax.swing.JLabel datebirthdaylabel;
     public static javax.swing.JButton discartButton;
+    public static com.toedter.calendar.JDateChooser dischargedateField;
+    public static javax.swing.JLabel dischargedatelabel;
     public static javax.swing.JTextField dniField;
     public static javax.swing.JLabel dnilabel;
     public static javax.swing.JTextField emailField;
     public static javax.swing.JLabel emaillabel;
     public static javax.swing.JButton emptyButton;
-    public static com.toedter.calendar.JDateChooser hiringdateField;
-    public static javax.swing.JLabel hiringdatelabel;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel11;
     public static javax.swing.JLabel jLabel14;
     public static javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel21;
-    public static javax.swing.JLabel jLabel23;
     public static javax.swing.JLabel jLabel25;
     public static javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel5;
@@ -259,10 +265,12 @@ public class new_client_view extends javax.swing.JFrame {
     public static javax.swing.JLabel passwordlabel;
     public static javax.swing.JTextField phoneField;
     public static javax.swing.JLabel phonelabel;
-    public static javax.swing.JTextField salaryField;
-    public static javax.swing.JLabel salarylabel;
+    public static javax.swing.JCheckBox premiumCheckbox;
     public static javax.swing.JButton saveClientButton;
     public static javax.swing.JLabel saveLabel;
+    public static javax.swing.JTextField shoppingField;
+    public static javax.swing.JLabel shoppinglabel;
+    private javax.swing.JLabel shoppingtext;
     public static javax.swing.JTextField statusField;
     public static javax.swing.JLabel statuslabel;
     public static javax.swing.JTextField subnameField;

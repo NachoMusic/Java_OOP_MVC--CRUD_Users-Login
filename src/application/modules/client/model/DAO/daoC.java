@@ -229,15 +229,15 @@ public class daoC {
         }
         return validate;
     }
-/*
-    public static boolean validateHiringdate() {
+
+    public static boolean validateDischargedate() {
         boolean validate = true;
 
         int yearsDif = 0;
         Dates date1 = null;
         Dates date0 = new Dates("");
         try {
-            date1 = new Dates(date0.insertDate(date0.DateToString(hiringdateField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
+            date1 = new Dates(date0.insertDate(date0.DateToString(dischargedateField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
             Dates date2 = new Dates(date0.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
 
             if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
@@ -247,16 +247,14 @@ public class daoC {
             yearsDif = date1.timeBetweetDates(date1.DateToCalendar(), date2.DateToCalendar(), 1);
             if (yearsDif < 18) {
                 validate = false;
-                //JOptionPane.showMessageDialog(null, "You could not be hired until you were 18");
-                saveLabel.setText("You could not be hired until you were 18");
+                saveLabel.setText("You could not be registered until you were 18");
                 saveLabel.setVisible(true);
                 date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
             }
 
             if (date1.compareWith(date1.DateToCalendar(), date2.DateToCalendar()) == 1) {
                 validate = false;
-                //JOptionPane.showMessageDialog(null, "The date can not be before your date birthday");
-                saveLabel.setText("The hiring date can not be before your date birthday");
+                saveLabel.setText("The discharge date can not be before your date birthday");
                 saveLabel.setVisible(true);
                 date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
             }
@@ -264,45 +262,45 @@ public class daoC {
             validate = false;
         }
         if (validate) {
-            hiringdatelabel.setIcon(valid);
-            hiringdatelabel.setVisible(true);
-            hiringdateField.setBackground(white);
+            dischargedatelabel.setIcon(valid);
+            dischargedatelabel.setVisible(true);
+            dischargedateField.setBackground(white);
         } else {
-            hiringdatelabel.setIcon(warning);
-            hiringdatelabel.setVisible(true);
-            hiringdateField.setBackground(red);
+            dischargedatelabel.setIcon(warning);
+            dischargedatelabel.setVisible(true);
+            dischargedateField.setBackground(red);
         }
         return validate;
     }
 
-    public static boolean validateSalary() {
+    public static boolean validateClient_type() {
         boolean validate = false;
-        if (Validate.validateFloat(salaryField.getText())) {
-            salarylabel.setVisible(true);
-            salarylabel.setIcon(valid);
-            salaryField.setBackground(white);
+        if (!client_typeField.getText().isEmpty()) {
+            client_typelabel.setVisible(true);
+            client_typelabel.setIcon(valid);
+            client_typeField.setBackground(white);
             validate = true;
         } else {
-            salarylabel.setVisible(true);
-            salarylabel.setIcon(warning);
-            salaryField.setBackground(red);
+            client_typelabel.setVisible(true);
+            client_typelabel.setIcon(warning);
+            client_typeField.setBackground(red);
         }
         return validate;
     }
 
-    public static boolean validateActivity() {
+    public static boolean validateShopping() {
         boolean validate = false;
-        if (Validate.validateInt(activityField.getText())) {
-            activitylabel.setVisible(true);
-            activitylabel.setIcon(valid);
-            activityField.setBackground(white);
+        if (Validate.validateFloat(shoppingField.getText())) {
+            shoppinglabel.setVisible(true);
+            shoppinglabel.setIcon(valid);
+            shoppingField.setBackground(white);
             validate = true;
         } else {
-            activitylabel.setVisible(true);
-            activitylabel.setIcon(warning);
-            activityField.setBackground(red);
+            shoppinglabel.setVisible(true);
+            shoppinglabel.setIcon(warning);
+            shoppingField.setBackground(red);
         }
         return validate;
     }
-*/
+
 }

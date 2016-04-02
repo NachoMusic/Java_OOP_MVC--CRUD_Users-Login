@@ -11,18 +11,15 @@ import application.modules.client.controller.client_controller;
 import application.modules.client.model.DAO.daoC;
 import application.modules.client.model.models.client;
 import application.modules.client.view.new_client_view;
-import static application.modules.client.view.new_client_view.activityField;
 import static application.modules.client.view.new_client_view.avatarField;
 import static application.modules.client.view.new_client_view.datebirthdayField;
 import static application.modules.client.view.new_client_view.defaultAvatar;
 import static application.modules.client.view.new_client_view.dniField;
 import static application.modules.client.view.new_client_view.emailField;
 import static application.modules.client.view.new_client_view.emptyButton;
-import static application.modules.client.view.new_client_view.hiringdateField;
 import static application.modules.client.view.new_client_view.nameField;
 import static application.modules.client.view.new_client_view.passwordField;
 import static application.modules.client.view.new_client_view.phoneField;
-import static application.modules.client.view.new_client_view.salaryField;
 import static application.modules.client.view.new_client_view.saveClientButton;
 import static application.modules.client.view.new_client_view.saveLabel;
 import static application.modules.client.view.new_client_view.statusField;
@@ -37,6 +34,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.ImageIcon;
 import static application.modules.client.view.client_view.Clienttochange;
+import static application.modules.client.view.new_client_view.dischargedateField;
+import static application.modules.client.view.new_client_view.client_typeField;
 
 /**
  *
@@ -83,19 +82,19 @@ public class bllC {
     public static boolean validateBirthday() {
         return daoC.validateBirthday();
     }
-/*
-    public static boolean validateHiringdate() {
-        return daoC.validateHiringdate();
+
+    public static boolean validateDischargedate() {
+        return daoC.validateDischargedate();
     }
 
-    public static boolean validateSalary() {
-        return daoC.validateSalary();
+    public static boolean validateClient_type() {
+        return daoC.validateClient_type();
     }
 
-    public static boolean validateActivity() {
-        return daoC.validateActivity();
+    public static boolean validateShopping() {
+        return daoC.validateShopping();
     }
-*/
+
     public static boolean editclient() {
         boolean validA = false;
         if (singleton.pagerA.getSelected() != null) {
@@ -176,9 +175,8 @@ public class bllC {
             state = statusField.getText();
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
-            hiring_date = date.DateToString(hiringdateField.getCalendar(), 0);
-            salary = Float.parseFloat(salaryField.getText());
-            activity = Integer.parseInt(activityField.getText());
+            hiring_date = date.DateToString(dischargedateField.getCalendar(), 0);
+            salary = Float.parseFloat(client_typeField.getText());
             //"dischargedate","clienttype","yearsservice","shopping","premium"
             singleton.clients.addData(new client(dni, name, subname, phone_number,
                     email, user, pass, avatar, state, date_birthday,"dischargedate","clienttype",100.0f,true));
@@ -231,10 +229,8 @@ public class bllC {
             state = statusField.getText();
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
-            hiring_date = date.DateToString(hiringdateField.getCalendar(), 0);
-            salary = Float.parseFloat(salaryField.getText());
-            activity = Integer.parseInt(activityField.getText());
-
+            hiring_date = date.DateToString(dischargedateField.getCalendar(), 0);
+            salary = Float.parseFloat(client_typeField.getText());
             singleton.clients.getData(Clienttochange - 1).setDni(dni);
             singleton.clients.getData(Clienttochange - 1).setName(name);
             singleton.clients.getData(Clienttochange - 1).setSubname(subname);

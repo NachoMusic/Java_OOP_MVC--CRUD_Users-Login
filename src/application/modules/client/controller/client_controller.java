@@ -31,17 +31,14 @@ import static application.modules.client.view.client_view.numtab6;
 import static application.modules.client.view.client_view.numtab7;
 import static application.modules.client.view.client_view.tabbedtable;
 import application.modules.client.view.new_client_view;
-import static application.modules.client.view.new_client_view.activitylabel;
 import static application.modules.client.view.new_client_view.avatarlabel;
 import static application.modules.client.view.new_client_view.datebirthdaylabel;
 import static application.modules.client.view.new_client_view.dnilabel;
 import static application.modules.client.view.new_client_view.emaillabel;
 import static application.modules.client.view.new_client_view.emptyButton;
-import static application.modules.client.view.new_client_view.hiringdatelabel;
 import static application.modules.client.view.new_client_view.namelabel;
 import static application.modules.client.view.new_client_view.passwordlabel;
 import static application.modules.client.view.new_client_view.phonelabel;
-import static application.modules.client.view.new_client_view.salarylabel;
 import static application.modules.client.view.new_client_view.saveLabel;
 import static application.modules.client.view.new_client_view.statuslabel;
 import static application.modules.client.view.new_client_view.subnamelabel;
@@ -64,6 +61,8 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import static application.modules.client.view.client_view.clientcreated;
+import static application.modules.client.view.new_client_view.client_typelabel;
+import static application.modules.client.view.new_client_view.dischargedatelabel;
 
 /**
  *
@@ -125,10 +124,10 @@ public class client_controller implements ActionListener {
         avatarField,
         avatarbutton,
         statusField,
-        datebirthdayField,
+        dischargedateField,
         hiringdateField,
-        salaryField,
-        activityField,
+        client_typeField,
+        shoppingField,
     }
 
     public void init(String type) {
@@ -216,10 +215,9 @@ public class client_controller implements ActionListener {
                 statuslabel.setVisible(false);
                 usernamelabel.setVisible(false);
                 passwordlabel.setVisible(false);
-                salarylabel.setVisible(false);
-                activitylabel.setVisible(false);
+                client_typelabel.setVisible(false);
                 datebirthdaylabel.setVisible(false);
-                hiringdatelabel.setVisible(false);
+                dischargedatelabel.setVisible(false);
                 phonelabel.setVisible(false);
                 avatarlabel.setVisible(false);
                 new_client_view.saveClientButton.setActionCommand("saveClientButton");
@@ -246,10 +244,11 @@ public class client_controller implements ActionListener {
                 new_client_view.avatarbutton.addActionListener(this);
                 new_client_view.statusField.setActionCommand("statusField");
                 new_client_view.statusField.addActionListener(this);
-                new_client_view.salaryField.setActionCommand("salaryField");
-                new_client_view.salaryField.addActionListener(this);
-                new_client_view.activityField.setActionCommand("activityField");
-                new_client_view.activityField.addActionListener(this);
+                new_client_view.client_typeField.setActionCommand("client_typeField");
+                new_client_view.client_typeField.addActionListener(this);
+                new_client_view.shoppingField.setActionCommand("shoppingField");
+                new_client_view.shoppingField.addActionListener(this);
+
                 new_client_view.dniField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -346,7 +345,7 @@ public class client_controller implements ActionListener {
                         usernameFieldKeyReleased(evt);
                     }
                 });
-                new_client_view.salaryField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_client_view.client_typeField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         salaryFieldKeyTyped(evt);
@@ -360,22 +359,6 @@ public class client_controller implements ActionListener {
                     @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         salaryFieldKeyReleased(evt);
-                    }
-                });
-                new_client_view.activityField.addKeyListener(new java.awt.event.KeyAdapter() {
-                    @Override
-                    public void keyTyped(java.awt.event.KeyEvent evt) {
-                        activityFieldKeyTyped(evt);
-                    }
-
-                    @Override
-                    public void keyPressed(java.awt.event.KeyEvent evt) {
-                        activityFieldKeyPressed(evt);
-                    }
-
-                    @Override
-                    public void keyReleased(java.awt.event.KeyEvent evt) {
-                        activityFieldKeyReleased(evt);
                     }
                 });
                 new_client_view.statusField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -408,6 +391,22 @@ public class client_controller implements ActionListener {
                     @Override
                     public void keyReleased(java.awt.event.KeyEvent evt) {
                         passwordFieldKeyReleased(evt);
+                    }
+                });
+                new_client_view.shoppingField.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        shoppingFieldKeyTyped(evt);
+                    }
+
+                    @Override
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        shoppingFieldKeyPressed(evt);
+                    }
+
+                    @Override
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        shoppingFieldKeyReleased(evt);
                     }
                 });
                 break;
@@ -670,15 +669,13 @@ public class client_controller implements ActionListener {
             case statusField:
                 bllC.validateStatus();
                 break;
-            case datebirthdayField:
+            case dischargedateField:
                 break;
-            case hiringdateField:
+            case client_typeField:
+                
                 break;
-            case salaryField:
-                //bllC.validateSalary();
-                break;
-            case activityField:
-                //bllC.validateActivity();
+            case shoppingField:
+                bllC.validateShopping();
                 break;
         }
     }
@@ -797,16 +794,16 @@ public class client_controller implements ActionListener {
         //bllC.validateSalary();
     }
 
-    private void activityFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        //bllC.validateActivity();
+    private void shoppingFieldKeyReleased(java.awt.event.KeyEvent evt) {
+        bllC.validateShopping();
     }
 
-    private void activityFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        //bllC.validateActivity();
+    private void shoppingFieldKeyTyped(java.awt.event.KeyEvent evt) {
+        bllC.validateShopping();
     }
 
-    private void activityFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        //bllC.validateActivity();
+    private void shoppingFieldKeyPressed(java.awt.event.KeyEvent evt) {
+        bllC.validateShopping();
     }
 
     public static void updatetable() {
@@ -823,7 +820,9 @@ public class client_controller implements ActionListener {
         clientstable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", "Status", "Birthday", "Age", "Hiring Date", "Salary", "Activity"
+                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", 
+                    "Status", "Birthday", "Age", "Discharge Date", "Client Type",
+                    "years_service","shopping","premium"
                 }
         ));
         clientstable.addMouseListener(new MouseAdapter() {

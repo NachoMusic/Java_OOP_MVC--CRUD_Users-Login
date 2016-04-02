@@ -2,9 +2,31 @@
 package application.modules.client.model.pager;
 
 import application.modules.admin.model.models.singleton;
-import static application.modules.admin.view.admin_view.adminstable;
-import static application.modules.admin.view.admin_view.*;
-import static application.modules.admin.view.new_admin_view.defaultAvatar;
+import static application.modules.client.view.client_view.ageform;
+import static application.modules.client.view.client_view.avatarform;
+import static application.modules.client.view.client_view.backwards;
+import static application.modules.client.view.client_view.beginning;
+import static application.modules.client.view.client_view.birthdayform;
+import static application.modules.client.view.client_view.clientstable;
+import static application.modules.client.view.client_view.dniform;
+import static application.modules.client.view.client_view.emailform;
+import static application.modules.client.view.client_view.end;
+import static application.modules.client.view.client_view.forward;
+import static application.modules.client.view.client_view.nameform;
+import static application.modules.client.view.client_view.numtab1;
+import static application.modules.client.view.client_view.numtab2;
+import static application.modules.client.view.client_view.numtab3;
+import static application.modules.client.view.client_view.numtab4;
+import static application.modules.client.view.client_view.numtab5;
+import static application.modules.client.view.client_view.numtab6;
+import static application.modules.client.view.client_view.numtab7;
+import static application.modules.client.view.client_view.pagefield;
+import static application.modules.client.view.client_view.phoneform;
+import static application.modules.client.view.client_view.stateform;
+import static application.modules.client.view.client_view.surnameform;
+import static application.modules.client.view.client_view.userform;
+import static application.modules.client.view.new_client_view.defaultAvatar;
+
 import application.utils.Functions;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -77,44 +99,45 @@ public class PagerC {
     }
     
     public void updatetable2() {
-        this.maxpage = singleton.admins.size();
+        this.maxpage = singleton.clients.size();
         int translatedpage = 0;
 
-        if (maxpage < movepage) //SI HAY MENOS ADMINS QUE NUM PAGINACIÓN 
-            for (int i = 0; i < singleton.admins.size(); i++) 
-                printadmins(i);
-        else {  //SI HAY MÁS ADMINS QUE NUM PAGINACIÓN 
+        if (maxpage < movepage) //SI HAY MENOS CLIENTES QUE NUM PAGINACIÓN 
+            for (int i = 0; i < singleton.clients.size(); i++) 
+                printclients(i);
+        else {  //SI HAY MÁS CLIENTES QUE NUM PAGINACIÓN 
             if (page == 0)
                 translatedpage = 0;
             else 
                 translatedpage = page * movepage;          
             if ((translatedpage + movepage) >= maxpage) 
-                for (int i = translatedpage; i < singleton.admins.size(); i++)
-                    printadmins(i);               
+                for (int i = translatedpage; i < singleton.clients.size(); i++)
+                    printclients(i);               
             else
                 for (int i = translatedpage; i < translatedpage + movepage; i++) 
-                    printadmins(i);                          
+                    printclients(i);                          
         }
         pagefield.setText(String.valueOf(page+1)+"/"+(int)((maxpage/(movepage))+1));
     }
     
-    public void printadmins(int i){
-        model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
-                    singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
-                    singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
-                    singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
-                    singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
-                    singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
-                    singleton.admins.getData(i).getActivity()
+    public void printclients(int i){
+        model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.clients.getData(i).getDni(),
+                    singleton.clients.getData(i).getName(), singleton.clients.getData(i).getSubname(),
+                    singleton.clients.getData(i).getPhone_number(), singleton.clients.getData(i).getEmail(),
+                    singleton.clients.getData(i).getUser(), singleton.clients.getData(i).getState(),
+                    singleton.clients.getData(i).getDate_birthday(), singleton.clients.getData(i).getAge(),
+                    singleton.clients.getData(i).getDischarge_date(), singleton.clients.getData(i).getClient_type(),
+                    singleton.clients.getData(i).getYears_service(), singleton.clients.getData(i).getShopping(),
+                    singleton.clients.getData(i).isPremium()
                 });
     }
     
     public void forward(){
-        if (page < (singleton.admins.size() / this.movepage)) {
+        if (page < (singleton.clients.size() / this.movepage)) {
             page++;
             selectedpage++;
             
-            if (page >=(singleton.admins.size() / this.movepage)){
+            if (page >=(singleton.clients.size() / this.movepage)){
                 forward.setEnabled(false);
                 end.setEnabled(false);
             }
@@ -139,7 +162,7 @@ public class PagerC {
     public void pagefield(){
         int prepage;
         prepage = Functions.validateInt(pagefield.getText()) - 1;
-        if (prepage >= 0 && prepage <= singleton.admins.size() / movepage) {
+        if (prepage >= 0 && prepage <= singleton.clients.size() / movepage) {
             page = prepage;
         }
     }
@@ -204,31 +227,31 @@ public class PagerC {
     
     public void selectclient(){
         
-        selected = String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0));
-        dniform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 1)));
-        nameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 2)));
-        surnameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 3)));
-        phoneform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 4)));
-        emailform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 5)));
-        userform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 6)));
-        stateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 7)));
-        birthdayform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 8)));
-        ageform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 9)));
+        selected = String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 0));
+        dniform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 1)));
+        nameform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 2)));
+        surnameform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 3)));
+        phoneform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 4)));
+        emailform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 5)));
+        userform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 6)));
+        stateform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 7)));
+        birthdayform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 8)));
+        ageform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 9)));
         System.out.println("The rest will come eventually");
         /*
         hiringdateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 10)));
         salaryform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 11)));
         activityform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 12)));*/
         try{
-            ImageIcon icon = new ImageIcon(singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getAvatar());
+            ImageIcon icon = new ImageIcon(singleton.clients.getData(Integer.parseInt(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 0)))-1).getAvatar());
             Image imgn = icon.getImage();
             Image newimg = imgn.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
             avatarform.setIcon(newIcon);
-            avatarform.setText(singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getAvatar());
+            avatarform.setText(singleton.clients.getData(Integer.parseInt(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 0)))-1).getAvatar());
         }catch(Exception E){
             avatarform.setIcon(defaultAvatar);
-            avatarform.setText("src/application/modules/users/view/img/"+singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getDni());
+            avatarform.setText("src/application/modules/users/view/img/"+singleton.clients.getData(Integer.parseInt(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 0)))-1).getDni());
         }
     }
 }
