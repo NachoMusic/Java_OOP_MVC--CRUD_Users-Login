@@ -6,7 +6,7 @@
 package application.modules.registered.model.DAO;
 
 import application.models.Dates;
-import static application.modules.admin.view.new_admin_view.*;
+import static application.modules.registered.view.new_registered_view.*;
 import application.utils.Validate;
 import static java.awt.Color.red;
 import static java.awt.Color.white;
@@ -230,62 +230,17 @@ public class daoR {
         return validate;
     }
 
-    public static boolean validateHiringdate() {
-        boolean validate = true;
-
-        int yearsDif = 0;
-        Dates date1 = null;
-        Dates date0 = new Dates("");
-        try {
-            date1 = new Dates(date0.insertDate(date0.DateToString(hiringdateField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
-            Dates date2 = new Dates(date0.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
-
-            if (date1.compareWith(date1.DateToCalendar(), date1.SystemDate()) != 1) {
-                validate = false;
-                date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
-            }
-            yearsDif = date1.timeBetweetDates(date1.DateToCalendar(), date2.DateToCalendar(), 1);
-            if (yearsDif < 18) {
-                validate = false;
-                //JOptionPane.showMessageDialog(null, "You could not be hired until you were 18");
-                saveLabel.setText("You could not be hired until you were 18");
-                saveLabel.setVisible(true);
-                date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
-            }
-
-            if (date1.compareWith(date1.DateToCalendar(), date2.DateToCalendar()) == 1) {
-                validate = false;
-                //JOptionPane.showMessageDialog(null, "The date can not be before your date birthday");
-                saveLabel.setText("The hiring date can not be before your date birthday");
-                saveLabel.setVisible(true);
-                date1 = new Dates(date1.insertDate(date0.DateToString(datebirthdayField.getCalendar(), 0)));//Cambiar el 0 por la de la confi
-            }
-        } catch (Exception e) {
-            validate = false;
-        }
-        if (validate) {
-            hiringdatelabel.setIcon(valid);
-            hiringdatelabel.setVisible(true);
-            hiringdateField.setBackground(white);
-        } else {
-            hiringdatelabel.setIcon(warning);
-            hiringdatelabel.setVisible(true);
-            hiringdateField.setBackground(red);
-        }
-        return validate;
-    }
-
-    public static boolean validateSalary() {
+    public static boolean validateKarma() {
         boolean validate = false;
-        if (Validate.validateFloat(salaryField.getText())) {
+        if (!karmaField.getText().isEmpty()) {
             salarylabel.setVisible(true);
             salarylabel.setIcon(valid);
-            salaryField.setBackground(white);
+            karmaField.setBackground(white);
             validate = true;
         } else {
             salarylabel.setVisible(true);
             salarylabel.setIcon(warning);
-            salaryField.setBackground(red);
+            karmaField.setBackground(red);
         }
         return validate;
     }

@@ -2,9 +2,8 @@
 package application.modules.registered.model.pager;
 
 import application.modules.admin.model.models.singleton;
-import static application.modules.admin.view.admin_view.adminstable;
-import static application.modules.admin.view.admin_view.*;
-import static application.modules.admin.view.new_admin_view.defaultAvatar;
+import static application.modules.registered.view.new_registered_view.defaultAvatar;
+import static application.modules.registered.view.registered_view.*;
 import application.utils.Functions;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -77,44 +76,43 @@ public class PagerR {
     }
     
     public void updatetable2() {
-        this.maxpage = singleton.admins.size();
+        this.maxpage = singleton.registered_users.size();
         int translatedpage = 0;
 
-        if (maxpage < movepage) //SI HAY MENOS ADMINS QUE NUM PAGINACIÓN 
-            for (int i = 0; i < singleton.admins.size(); i++) 
-                printadmins(i);
-        else {  //SI HAY MÁS ADMINS QUE NUM PAGINACIÓN 
+        if (maxpage < movepage) //SI HAY MENOS REGISTERED USERS QUE NUM PAGINACIÓN 
+            for (int i = 0; i < singleton.registered_users.size(); i++) 
+                printregistered(i);
+        else {  //SI HAY MÁS REGISTERED USERS QUE NUM PAGINACIÓN 
             if (page == 0)
                 translatedpage = 0;
             else 
                 translatedpage = page * movepage;          
             if ((translatedpage + movepage) >= maxpage) 
-                for (int i = translatedpage; i < singleton.admins.size(); i++)
-                    printadmins(i);               
+                for (int i = translatedpage; i < singleton.registered_users.size(); i++)
+                    printregistered(i);               
             else
                 for (int i = translatedpage; i < translatedpage + movepage; i++) 
-                    printadmins(i);                          
+                    printregistered(i);                          
         }
         pagefield.setText(String.valueOf(page+1)+"/"+(int)((maxpage/(movepage))+1));
     }
     
-    public void printadmins(int i){
-        model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
-                    singleton.admins.getData(i).getName(), singleton.admins.getData(i).getSubname(),
-                    singleton.admins.getData(i).getPhone_number(), singleton.admins.getData(i).getEmail(),
-                    singleton.admins.getData(i).getUser(), singleton.admins.getData(i).getState(),
-                    singleton.admins.getData(i).getDate_birthday(), singleton.admins.getData(i).getAge(),
-                    singleton.admins.getData(i).getHirin_date(), singleton.admins.getData(i).getSalary(),
-                    singleton.admins.getData(i).getActivity()
+    public void printregistered(int i){
+        model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.registered_users.getData(i).getDni(),
+                    singleton.registered_users.getData(i).getName(), singleton.registered_users.getData(i).getSubname(),
+                    singleton.registered_users.getData(i).getPhone_number(), singleton.registered_users.getData(i).getEmail(),
+                    singleton.registered_users.getData(i).getUser(), singleton.registered_users.getData(i).getState(),
+                    singleton.registered_users.getData(i).getDate_birthday(), singleton.registered_users.getData(i).getAge(),
+                    singleton.registered_users.getData(i).getKarma(), singleton.registered_users.getData(i).getActivity()
                 });
     }
     
     public void forward(){
-        if (page < (singleton.admins.size() / this.movepage)) {
+        if (page < (singleton.registered_users.size() / this.movepage)) {
             page++;
             selectedpage++;
             
-            if (page >=(singleton.admins.size() / this.movepage)){
+            if (page >=(singleton.registered_users.size() / this.movepage)){
                 forward.setEnabled(false);
                 end.setEnabled(false);
             }
@@ -139,7 +137,7 @@ public class PagerR {
     public void pagefield(){
         int prepage;
         prepage = Functions.validateInt(pagefield.getText()) - 1;
-        if (prepage >= 0 && prepage <= singleton.admins.size() / movepage) {
+        if (prepage >= 0 && prepage <= singleton.registered_users.size() / movepage) {
             page = prepage;
         }
     }
@@ -202,30 +200,29 @@ public class PagerR {
         }
     }
     
-    public void selectadmin(){
-        selected = String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0));
-        dniform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 1)));
-        nameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 2)));
-        surnameform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 3)));
-        phoneform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 4)));
-        emailform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 5)));
-        userform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 6)));
-        stateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 7)));
-        birthdayform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 8)));
-        ageform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 9)));
-        hiringdateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 10)));
-        salaryform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 11)));
-        activityform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 12)));
+    public void selectregistered(){
+        selected = String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 0));
+        dniform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 1)));
+        nameform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 2)));
+        surnameform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 3)));
+        phoneform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 4)));
+        emailform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 5)));
+        userform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 6)));
+        stateform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 7)));
+        birthdayform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 8)));
+        ageform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 9)));
+        
+        activityform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 11)));
         try{
-            ImageIcon icon = new ImageIcon(singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getAvatar());
+            ImageIcon icon = new ImageIcon(singleton.registered_users.getData(Integer.parseInt(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 0)))-1).getAvatar());
             Image imgn = icon.getImage();
             Image newimg = imgn.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
             ImageIcon newIcon = new ImageIcon(newimg);
             avatarform.setIcon(newIcon);
-            avatarform.setText(singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getAvatar());
+            avatarform.setText(singleton.registered_users.getData(Integer.parseInt(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 0)))-1).getAvatar());
         }catch(Exception E){
             avatarform.setIcon(defaultAvatar);
-            avatarform.setText("src/application/modules/users/view/img/"+singleton.admins.getData(Integer.parseInt(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0)))-1).getDni());
+            avatarform.setText("src/application/modules/users/view/img/"+singleton.registered_users.getData(Integer.parseInt(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 0)))-1).getDni());
         }
     }
 }

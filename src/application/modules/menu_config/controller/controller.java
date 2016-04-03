@@ -29,6 +29,8 @@ import application.modules.admin.model.models.singleton;
 import application.modules.admin.view.admin_view;
 import application.modules.client.controller.client_controller;
 import application.modules.client.view.client_view;
+import application.modules.registered.controller.registered_controller;
+import application.modules.registered.view.registered_view;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -202,7 +204,8 @@ public class controller implements ActionListener {
                 break;
 
             case usregButton:
-                System.out.println("Usreg");
+                menu.dispose();
+                new registered_controller(new registered_view(), 0).init("v");
                 break;
 
             case confButton:

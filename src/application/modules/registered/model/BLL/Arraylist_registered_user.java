@@ -22,6 +22,10 @@ public class Arraylist_registered_user {
         return registered_users;
     }
     
+    public int size() {
+        return registered_users.size();
+    }
+    
     public void addData(registered_user a) {
         registered_user registered_user1 = a;
         boolean action = true;

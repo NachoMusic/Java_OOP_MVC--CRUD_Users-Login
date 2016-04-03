@@ -21,7 +21,6 @@ import static application.modules.registered.view.new_registered_view.datebirthd
 import static application.modules.registered.view.new_registered_view.dnilabel;
 import static application.modules.registered.view.new_registered_view.emaillabel;
 import static application.modules.registered.view.new_registered_view.emptyButton;
-import static application.modules.registered.view.new_registered_view.hiringdatelabel;
 import static application.modules.registered.view.new_registered_view.namelabel;
 import static application.modules.registered.view.new_registered_view.passwordlabel;
 import static application.modules.registered.view.new_registered_view.phonelabel;
@@ -219,7 +218,6 @@ public class registered_controller implements ActionListener {
                 salarylabel.setVisible(false);
                 activitylabel.setVisible(false);
                 datebirthdaylabel.setVisible(false);
-                hiringdatelabel.setVisible(false);
                 phonelabel.setVisible(false);
                 avatarlabel.setVisible(false);
                 new_registered_view.saveRegisteredButton.setActionCommand("saveAdminButton");
@@ -246,8 +244,8 @@ public class registered_controller implements ActionListener {
                 new_registered_view.avatarbutton.addActionListener(this);
                 new_registered_view.statusField.setActionCommand("statusField");
                 new_registered_view.statusField.addActionListener(this);
-                new_registered_view.salaryField.setActionCommand("salaryField");
-                new_registered_view.salaryField.addActionListener(this);
+                new_registered_view.karmaField.setActionCommand("salaryField");
+                new_registered_view.karmaField.addActionListener(this);
                 new_registered_view.activityField.setActionCommand("activityField");
                 new_registered_view.activityField.addActionListener(this);
                 new_registered_view.dniField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -346,7 +344,7 @@ public class registered_controller implements ActionListener {
                         usernameFieldKeyReleased(evt);
                     }
                 });
-                new_registered_view.salaryField.addKeyListener(new java.awt.event.KeyAdapter() {
+                new_registered_view.karmaField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
                         salaryFieldKeyTyped(evt);
@@ -443,13 +441,13 @@ public class registered_controller implements ActionListener {
                 new registered_controller(new new_registered_view(), 1).init("f");
                 break;
             case changeDataAButton:
-                singleton.pagerR.selectadmin();
+                singleton.pagerR.selectregistered();
                 if (bllR.editadmin()) {
                     registered_v.dispose();
                 }
                 break;
             case deleteDataAButton:
-                singleton.pagerR.selectadmin();
+                singleton.pagerR.selectregistered();
                 if (singleton.pagerR.getSelected() != null) {
                     singleton.admins.deleteData(Integer.parseInt(singleton.pagerR.getSelected()));
                     updatetable();
@@ -675,7 +673,7 @@ public class registered_controller implements ActionListener {
             case hiringdateField:
                 break;
             case salaryField:
-                bllR.validateSalary();
+                bllR.validateKarma();
                 break;
             case activityField:
                 bllR.validateActivity();
@@ -686,19 +684,16 @@ public class registered_controller implements ActionListener {
     private void dniFieldKeyTyped(java.awt.event.KeyEvent evt) {
         bllR.validateDNI();
         bllR.validateBirthday();
-        bllR.validateHiringdate();
     }
 
     private void dniFieldKeyPressed(java.awt.event.KeyEvent evt) {
         bllR.validateDNI();
         bllR.validateBirthday();
-        bllR.validateHiringdate();
     }
 
     private void dniFieldKeyReleased(java.awt.event.KeyEvent evt) {
         bllR.validateDNI();
         bllR.validateBirthday();
-        bllR.validateHiringdate();
     }
 
     private void nameFieldKeyPressed(java.awt.event.KeyEvent evt) {
@@ -786,15 +781,15 @@ public class registered_controller implements ActionListener {
     }
 
     private void salaryFieldKeyPressed(java.awt.event.KeyEvent evt) {
-        bllR.validateSalary();
+        bllR.validateKarma();
     }
 
     private void salaryFieldKeyReleased(java.awt.event.KeyEvent evt) {
-        bllR.validateSalary();
+        bllR.validateKarma();
     }
 
     private void salaryFieldKeyTyped(java.awt.event.KeyEvent evt) {
-        bllR.validateSalary();
+        bllR.validateKarma();
     }
 
     private void activityFieldKeyReleased(java.awt.event.KeyEvent evt) {
@@ -848,7 +843,7 @@ public class registered_controller implements ActionListener {
             }
 
             private void adminstableMouseClicked(MouseEvent evt) {
-                singleton.pagerR.selectadmin();
+                singleton.pagerR.selectregistered();
             }
         });
 
