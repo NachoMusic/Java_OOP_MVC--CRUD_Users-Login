@@ -6,9 +6,7 @@
 package application.modules.registered.model.BLL;
 
 import application.models.Dates;
-import application.modules.admin.controller.admin_controller;
 import application.modules.admin.model.models.singleton;
-import application.modules.admin.view.new_admin_view;
 import application.modules.registered.controller.registered_controller;
 import application.modules.registered.model.DAO.daoR;
 import application.modules.registered.model.models.registered_user;
@@ -37,7 +35,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.ImageIcon;
 import static application.modules.registered.view.new_registered_view.karmaField;
-import static application.modules.admin.view.admin_view.Admintochange;
 import static application.modules.registered.view.registered_view.Registeredtochange;
 
 /**
@@ -112,19 +109,19 @@ public class bllR {
             statusField.setText(singleton.registered_users.getData(Registeredtochange - 1).getState());
             Dates b = new Dates(singleton.registered_users.getData(Registeredtochange - 1).getDate_birthday());
             datebirthdayField.setCalendar(b.DateToCalendar());
-            karmaField.setText(singleton.registered_users.getData(Admintochange - 1).getKarma());
-            activityField.setText(singleton.registered_users.getData(Admintochange - 1).getActivity() + "");
+            karmaField.setText(singleton.registered_users.getData(Registeredtochange - 1).getKarma());
+            activityField.setText(singleton.registered_users.getData(Registeredtochange - 1).getActivity() + "");
 
             try {
-                ImageIcon icon = new ImageIcon(singleton.admins.getData(Admintochange - 1).getAvatar());
+                ImageIcon icon = new ImageIcon(singleton.registered_users.getData(Registeredtochange - 1).getAvatar());
                 Image imgn = icon.getImage();
                 Image newimg = imgn.getScaledInstance(90, 90, java.awt.Image.SCALE_SMOOTH);
                 ImageIcon newIcon = new ImageIcon(newimg);
                 avatarField.setIcon(newIcon);
-                avatarField.setText(singleton.admins.getData(Admintochange - 1).getAvatar());
+                avatarField.setText(singleton.registered_users.getData(Registeredtochange - 1).getAvatar());
             } catch (Exception E) {
                 avatarField.setIcon(defaultAvatar);
-                avatarField.setText("src/application/modules/admin/view/img/" + singleton.admins.getData(Admintochange - 1).getDni());
+                avatarField.setText("src/application/modules/admin/view/img/" + singleton.registered_users.getData(Registeredtochange - 1).getDni());
             }
 
             validA = true;
@@ -227,18 +224,18 @@ public class bllR {
             karma = karmaField.getText();
             activity = Integer.parseInt(activityField.getText());
 
-            singleton.registered_users.getData(Admintochange - 1).setDni(dni);
-            singleton.registered_users.getData(Admintochange - 1).setName(name);
-            singleton.registered_users.getData(Admintochange - 1).setSubname(subname);
-            singleton.registered_users.getData(Admintochange - 1).setPhone_number(phone_number);
-            singleton.registered_users.getData(Admintochange - 1).setEmail(email);
-            singleton.registered_users.getData(Admintochange - 1).setUser(user);
-            singleton.registered_users.getData(Admintochange - 1).setPass(pass);
-            singleton.registered_users.getData(Admintochange - 1).setAvatar(avatar);
-            singleton.registered_users.getData(Admintochange - 1).setState(state);
-            singleton.registered_users.getData(Admintochange - 1).setDate_birthday(date_birthday);
-            singleton.registered_users.getData(Admintochange - 1).setKarma(karma);
-            singleton.registered_users.getData(Admintochange - 1).setActivity(activity);
+            singleton.registered_users.getData(Registeredtochange - 1).setDni(dni);
+            singleton.registered_users.getData(Registeredtochange - 1).setName(name);
+            singleton.registered_users.getData(Registeredtochange - 1).setSubname(subname);
+            singleton.registered_users.getData(Registeredtochange - 1).setPhone_number(phone_number);
+            singleton.registered_users.getData(Registeredtochange - 1).setEmail(email);
+            singleton.registered_users.getData(Registeredtochange - 1).setUser(user);
+            singleton.registered_users.getData(Registeredtochange - 1).setPass(pass);
+            singleton.registered_users.getData(Registeredtochange - 1).setAvatar(avatar);
+            singleton.registered_users.getData(Registeredtochange - 1).setState(state);
+            singleton.registered_users.getData(Registeredtochange - 1).setDate_birthday(date_birthday);
+            singleton.registered_users.getData(Registeredtochange - 1).setKarma(karma);
+            singleton.registered_users.getData(Registeredtochange - 1).setActivity(activity);
             
         } else {
             saveLabel.setVisible(true);

@@ -138,9 +138,9 @@ public class Arraylist_registered_user {
 		}catch(Exception e){};
 	}
      */
-    public void deleteData() {
+    public void deleteData(int i) {
         try {
-            registered_users.remove(Functions.validateint("Type the number of the user to delete", "Delete entries") - 1);
+            registered_users.remove(i - 1);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "The registered user does not exist");
         }

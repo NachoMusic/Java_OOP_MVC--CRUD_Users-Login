@@ -69,13 +69,11 @@ public class registered_view extends javax.swing.JFrame {
         userform = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         stateform = new javax.swing.JTextField();
         birthdayform = new javax.swing.JTextField();
-        hiringdateform = new javax.swing.JTextField();
-        salaryform = new javax.swing.JTextField();
+        karmaform = new javax.swing.JTextField();
         activityform = new javax.swing.JTextField();
         avatarform = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -378,9 +376,7 @@ public class registered_view extends javax.swing.JFrame {
 
         jLabel8.setText("Birthday:");
 
-        jLabel9.setText("Hiring date:");
-
-        jLabel10.setText("Salary:");
+        jLabel10.setText("Karma:");
 
         jLabel11.setText("Activity:");
 
@@ -388,9 +384,7 @@ public class registered_view extends javax.swing.JFrame {
 
         birthdayform.setEditable(false);
 
-        hiringdateform.setEditable(false);
-
-        salaryform.setEditable(false);
+        karmaform.setEditable(false);
 
         activityform.setEditable(false);
 
@@ -439,14 +433,12 @@ public class registered_view extends javax.swing.JFrame {
                             .addComponent(userform, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(67, 67, 67)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(jLabel12))
-                .addGap(35, 35, 35)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(hiringdateform)
-                    .addComponent(salaryform)
+                    .addComponent(karmaform)
                     .addComponent(activityform)
                     .addComponent(ageform, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                 .addGap(89, 89, 89)
@@ -482,7 +474,6 @@ public class registered_view extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel12)
                                     .addComponent(ageform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -497,14 +488,11 @@ public class registered_view extends javax.swing.JFrame {
                                             .addComponent(jLabel8)
                                             .addComponent(birthdayform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel9)
-                                            .addComponent(hiringdateform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGap(21, 21, 21)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel10)
-                                            .addComponent(salaryform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(karmaform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel11)
                                             .addComponent(activityform, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
@@ -780,7 +768,6 @@ public class registered_view extends javax.swing.JFrame {
     public static javax.swing.JButton findAButton;
     public static javax.swing.JMenuItem formmenu;
     public static javax.swing.JButton forward;
-    public static javax.swing.JTextField hiringdateform;
     public static javax.swing.JButton importAButton;
     private javax.swing.JMenuItem importmenu;
     private javax.swing.JLabel jLabel1;
@@ -795,13 +782,13 @@ public class registered_view extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public static javax.swing.JMenuItem kanbanmenu;
+    public static javax.swing.JTextField karmaform;
     public static javax.swing.JScrollPane list;
     public static javax.swing.JMenuItem listmenu;
     public static javax.swing.JTextField nameform;
@@ -817,7 +804,6 @@ public class registered_view extends javax.swing.JFrame {
     public static javax.swing.JTextField phoneform;
     public static javax.swing.JLabel registeredcreated;
     public static javax.swing.JTable registeredtable;
-    public static javax.swing.JTextField salaryform;
     public static javax.swing.JButton sortbyAButton;
     private javax.swing.JMenu sortmenu;
     public static javax.swing.JTextField stateform;

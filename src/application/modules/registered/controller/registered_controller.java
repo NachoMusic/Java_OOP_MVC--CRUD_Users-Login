@@ -442,6 +442,7 @@ public class registered_controller implements ActionListener {
                 new registered_controller(new new_registered_view(), 1).init("f");
                 break;
             case changeDataAButton:
+                System.out.println("Fuera");
                 singleton.pagerR.selectregistered();
                 if (bllR.editadmin()) {
                     registered_v.dispose();
@@ -450,9 +451,9 @@ public class registered_controller implements ActionListener {
             case deleteDataAButton:
                 singleton.pagerR.selectregistered();
                 if (singleton.pagerR.getSelected() != null) {
-                    singleton.admins.deleteData(Integer.parseInt(singleton.pagerR.getSelected()));
+                    singleton.registered_users.deleteData(Integer.parseInt(singleton.pagerR.getSelected()));
                     updatetable();
-                    jsonR.createjson_auto();
+                    //jsonR.createjson_auto();
                     Config_json.create_conf_json();
                 }
                 break;
@@ -624,9 +625,7 @@ public class registered_controller implements ActionListener {
                         new registered_controller(new registered_view(), 0).init("v");
                         registeredcreated.setText("Created");
                         registeredcreated.setVisible(true);
-                        json.createjson_auto();
-                        xml.createxml_auto();
-                        txt.createtxt_auto();
+                        jsonR.createjson_auto();
                         Config_json.create_conf_json();
                     }
                 } else if (bllR.editAdmin()) {
@@ -634,9 +633,7 @@ public class registered_controller implements ActionListener {
                     new registered_controller(new registered_view(), 0).init("v");
                     registeredcreated.setText("Edited");
                     registeredcreated.setVisible(true);
-                    json.createjson_auto();
-                    xml.createxml_auto();
-                    txt.createtxt_auto();
+                    jsonR.createjson_auto();
                     Config_json.create_conf_json();
                 }
                 break;

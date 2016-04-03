@@ -14,7 +14,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import application.models.SingletonF;
 import application.modules.admin.model.models.singleton;
 import application.modules.registered.model.models.registered_user;
 
@@ -54,11 +53,8 @@ public class jsonR {
             XStream xstreamjson = new XStream(new JettisonMappedXmlDriver());
             xstreamjson.setMode(XStream.NO_REFERENCES);
             xstreamjson.alias("registered_user", registered_user.class);
-            if (SingletonF.configApp.getDummiesmode()) {
-                pathin = "/src/application/modules/users/model/files/dummies/admin_files/admins";
-            } else {
-                pathin = "/src/application/modules/users/model/files/admin_files/admins";
-            }
+            pathin = "/src/application/modules/registered/model/files/registered_files/registered";
+
             try {
                 PATH = new java.io.File(".").getCanonicalPath()
                         + pathin;
@@ -67,7 +63,7 @@ public class jsonR {
             }
             PATH = PATH + ".json";
             Gson gson = new Gson();
-            String json = gson.toJson(singleton.admins.getAdmins());
+            String json = gson.toJson(singleton.registered_users.getRegistered());
             FileWriter fileXml = new FileWriter(PATH);
             fileXml.write(json.toString());
             fileXml.close();
@@ -118,11 +114,8 @@ public class jsonR {
             XStream xstream = new XStream(new JettisonMappedXmlDriver());
             xstream.setMode(XStream.NO_REFERENCES);
             xstream.alias("registered_user", registered_user.class);
-            if (SingletonF.configApp.getDummiesmode()) {
-                pathin = "/src/application/modules/admin/model/files/dummies/admin_files/admins.json";
-            } else {
-                pathin = "/src/application/modules/admin/model/files/admin_files/admins.json";
-            }
+            pathin = "/src/application/modules/registered/model/files/registered_files/registered.json";
+
             PATH = new java.io.File(".").getCanonicalPath()
                     + pathin;
             File path = new File(PATH);

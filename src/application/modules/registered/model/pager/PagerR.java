@@ -210,9 +210,8 @@ public class PagerR {
         userform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 6)));
         stateform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 7)));
         birthdayform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 8)));
-        ageform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 9)));
-        
-        activityform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 11)));
+        //ageform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 9)));
+        activityform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 9)));
         try{
             ImageIcon icon = new ImageIcon(singleton.registered_users.getData(Integer.parseInt(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 0)))-1).getAvatar());
             Image imgn = icon.getImage();

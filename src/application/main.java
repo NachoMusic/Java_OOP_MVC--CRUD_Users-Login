@@ -16,6 +16,7 @@ import application.modules.admin.view.new_admin_view;
 import application.modules.client.model.BLL.lib_files.jsonC;
 import application.utils.Config_json;
 import application.modules.menu_config.view.app_view;
+import application.modules.registered.model.BLL.lib_files.jsonR;
 
 /**
  *
@@ -39,7 +40,7 @@ public class main {
                 break;
         }
         jsonC.load_json_auto();
-        
+        jsonR.load_json_auto();
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
