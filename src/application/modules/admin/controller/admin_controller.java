@@ -639,6 +639,7 @@ public class admin_controller implements ActionListener {
                     new admin_controller(new admin_view(), 0).init("v");
                     admincreated.setText("Edited");
                     admincreated.setVisible(true);
+                    System.out.println("fuera2");
                     json.createjson_auto();
                     xml.createxml_auto();
                     txt.createtxt_auto();

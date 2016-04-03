@@ -10,7 +10,6 @@ import application.modules.admin.controller.admin_controller;
 import application.modules.admin.model.DAO.dao;
 import application.modules.admin.model.models.admin;
 import application.modules.admin.model.models.singleton;
-import static application.modules.admin.view.admin_view.Admintochange;
 import application.modules.admin.view.new_admin_view;
 import static application.modules.admin.view.new_admin_view.activityField;
 import static application.modules.admin.view.new_admin_view.avatarField;
@@ -37,6 +36,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.ImageIcon;
+import static application.modules.admin.view.admin_view.Admintochange;
 
 /**
  *
@@ -234,7 +234,6 @@ public class bll {
             hiring_date = date.DateToString(hiringdateField.getCalendar(), 0);
             salary = Float.parseFloat(salaryField.getText());
             activity = Integer.parseInt(activityField.getText());
-
             singleton.admins.getData(Admintochange - 1).setDni(dni);
             singleton.admins.getData(Admintochange - 1).setName(name);
             singleton.admins.getData(Admintochange - 1).setSubname(subname);

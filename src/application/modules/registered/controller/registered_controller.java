@@ -13,6 +13,7 @@ import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.model.models.singleton;
 import application.modules.registered.model.BLL.bllR;
+import application.modules.registered.model.BLL.lib_files.jsonR;
 import application.modules.registered.model.pager.PagerR;
 import application.modules.registered.view.new_registered_view;
 import static application.modules.registered.view.new_registered_view.activitylabel;
@@ -451,9 +452,7 @@ public class registered_controller implements ActionListener {
                 if (singleton.pagerR.getSelected() != null) {
                     singleton.admins.deleteData(Integer.parseInt(singleton.pagerR.getSelected()));
                     updatetable();
-                    json.createjson_auto();
-                    xml.createxml_auto();
-                    txt.createtxt_auto();
+                    jsonR.createjson_auto();
                     Config_json.create_conf_json();
                 }
                 break;
@@ -620,7 +619,7 @@ public class registered_controller implements ActionListener {
                 break;
             case saveAdminButton:
                 if (emptyButton.isVisible()) {
-                    if (bllR.newAdmin()) {
+                    if (bllR.newRegistered()) {
                         registered_f.dispose();
                         new registered_controller(new registered_view(), 0).init("v");
                         registeredcreated.setText("Created");

@@ -57,9 +57,9 @@ public class json {
             xstreamjson.setMode(XStream.NO_REFERENCES);
             xstreamjson.alias("admin", admin.class);
             if (SingletonF.configApp.getDummiesmode()) {
-                pathin = "/src/application/modules/users/model/files/dummies/admin_files/admins";
+                pathin = "/src/application/modules/admin/model/files/dummies/admin_files/admins";
             } else {
-                pathin = "/src/application/modules/users/model/files/admin_files/admins";
+                pathin = "/src/application/modules/admin/model/files/admin_files/admins";
             }
             try {
                 PATH = new java.io.File(".").getCanonicalPath()

@@ -57,9 +57,9 @@ public class xml {
 
         try {
         	if(SingletonF.configApp.getDummiesmode())
-	        	  pathin="/src/application/modules/users/model/files/dummies/admin_files/admins.xml";
+	        	  pathin="/src/application/modules/admin/model/files/dummies/admin_files/admins.xml";
 	          else
-	        	  pathin="/src/application/modules/users/model/files/admin_files/admins.xml";
+	        	  pathin="/src/application/modules/admin/model/files/admin_files/admins.xml";
             PATH = new java.io.File(".").getCanonicalPath()
                     + pathin;
         } catch (IOException e) {

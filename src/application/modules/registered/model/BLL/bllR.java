@@ -8,10 +8,11 @@ package application.modules.registered.model.BLL;
 import application.models.Dates;
 import application.modules.admin.controller.admin_controller;
 import application.modules.admin.model.models.singleton;
-import static application.modules.admin.view.admin_view.Admintochange;
 import application.modules.admin.view.new_admin_view;
+import application.modules.registered.controller.registered_controller;
 import application.modules.registered.model.DAO.daoR;
 import application.modules.registered.model.models.registered_user;
+import application.modules.registered.view.new_registered_view;
 import static application.modules.registered.view.new_registered_view.activityField;
 import static application.modules.registered.view.new_registered_view.avatarField;
 import static application.modules.registered.view.new_registered_view.datebirthdayField;
@@ -36,6 +37,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.ImageIcon;
 import static application.modules.registered.view.new_registered_view.karmaField;
+import static application.modules.admin.view.admin_view.Admintochange;
+import static application.modules.registered.view.registered_view.Registeredtochange;
 
 /**
  *
@@ -94,27 +97,24 @@ public class bllR {
     public static boolean editadmin() {
         boolean validA = false;
         if (singleton.pagerA.getSelected() != null) {
-            Admintochange = Integer.parseInt(singleton.pagerA.getSelected());
-            //new new_admin_view().setVisible(true);
-            new admin_controller(new new_admin_view(), 1).init("f");
-            saveRegisteredButton.setText("Edit Client");
+            Registeredtochange = Integer.parseInt(singleton.pagerA.getSelected());
+            new registered_controller(new new_registered_view(), 1).init("f");
+            saveRegisteredButton.setText("Edit Registered User");
             emptyButton.setVisible(false);
-            dniField.setText(singleton.admins.getData(Admintochange - 1).getDni());
-            nameField.setText(singleton.admins.getData(Admintochange - 1).getName());
-            subnameField.setText(singleton.admins.getData(Admintochange - 1).getSubname());
-            phoneField.setText(singleton.admins.getData(Admintochange - 1).getPhone_number());
-            emailField.setText(singleton.admins.getData(Admintochange - 1).getEmail());
-            usernameField.setText(singleton.admins.getData(Admintochange - 1).getUser());
-            passwordField.setText(singleton.admins.getData(Admintochange - 1).getPass());
-            avatarField.setText(singleton.admins.getData(Admintochange - 1).getAvatar());
-            statusField.setText(singleton.admins.getData(Admintochange - 1).getState());
-            Dates b = new Dates(singleton.admins.getData(Admintochange - 1).getDate_birthday());
+            dniField.setText(singleton.registered_users.getData(Registeredtochange - 1).getDni());
+            nameField.setText(singleton.registered_users.getData(Registeredtochange - 1).getName());
+            subnameField.setText(singleton.registered_users.getData(Registeredtochange - 1).getSubname());
+            phoneField.setText(singleton.registered_users.getData(Registeredtochange - 1).getPhone_number());
+            emailField.setText(singleton.registered_users.getData(Registeredtochange - 1).getEmail());
+            usernameField.setText(singleton.registered_users.getData(Registeredtochange - 1).getUser());
+            passwordField.setText(singleton.registered_users.getData(Registeredtochange - 1).getPass());
+            avatarField.setText(singleton.registered_users.getData(Registeredtochange - 1).getAvatar());
+            statusField.setText(singleton.registered_users.getData(Registeredtochange - 1).getState());
+            Dates b = new Dates(singleton.registered_users.getData(Registeredtochange - 1).getDate_birthday());
             datebirthdayField.setCalendar(b.DateToCalendar());
-            Dates h = new Dates(singleton.admins.getData(Admintochange - 1).getHirin_date());
-            /*
-            hiringdateField.setCalendar(h.DateToCalendar());
-            salaryField.setText(singleton.admins.getData(Admintochange - 1).getSalary() + "");
-            activityField.setText(singleton.admins.getData(Admintochange - 1).getActivity() + "");*/
+            karmaField.setText(singleton.registered_users.getData(Admintochange - 1).getKarma());
+            activityField.setText(singleton.registered_users.getData(Admintochange - 1).getActivity() + "");
+
             try {
                 ImageIcon icon = new ImageIcon(singleton.admins.getData(Admintochange - 1).getAvatar());
                 Image imgn = icon.getImage();
@@ -132,7 +132,7 @@ public class bllR {
         return validA;
     }
 
-    public static boolean newAdmin() {
+    public static boolean newRegistered() {
         boolean validA = true;
         String dni, name, subname, phone_number, email, user, pass, avatar,
                 state, date_birthday, karma;
