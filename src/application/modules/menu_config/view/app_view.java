@@ -140,14 +140,14 @@ public class app_view extends javax.swing.JFrame {
     }//GEN-LAST:event_confButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel adminlabel;
+    public static javax.swing.JLabel adminlabel;
     public static javax.swing.JButton adminsButton;
     public static javax.swing.JButton clientsButton;
-    private javax.swing.JLabel clientslabel;
+    public static javax.swing.JLabel clientslabel;
     public static javax.swing.JButton confButton;
-    private javax.swing.JLabel conflabel;
-    private javax.swing.JLabel labelMenu;
-    private javax.swing.JLabel userslabel;
+    public static javax.swing.JLabel conflabel;
+    public static javax.swing.JLabel labelMenu;
+    public static javax.swing.JLabel userslabel;
     public static javax.swing.JButton usregButton;
     // End of variables declaration//GEN-END:variables
 }

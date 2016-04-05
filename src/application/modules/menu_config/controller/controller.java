@@ -31,6 +31,7 @@ import application.modules.client.controller.client_controller;
 import application.modules.client.view.client_view;
 import application.modules.registered.controller.registered_controller;
 import application.modules.registered.view.registered_view;
+import application.utils.Config_json;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,6 +94,10 @@ public class controller implements ActionListener {
                 app_view.usregButton.addActionListener(this);
                 app_view.confButton.setActionCommand("confButton");
                 app_view.confButton.addActionListener(this);
+                app_view.labelMenu.setText(SingletonF.language.getProperty("choose_an_option"));
+                app_view.clientslabel.setText(SingletonF.language.getProperty("clients"));
+                app_view.userslabel.setText(SingletonF.language.getProperty("registered_users"));
+                app_view.conflabel.setText(SingletonF.language.getProperty("config"));
                 closeM();
                 break;
             case "config":
@@ -232,12 +237,15 @@ public class controller implements ActionListener {
                         singleton.admins.changeFormatCurrency(monedaAnterior);
                         break;
                 }
+                Config_json.create_conf_json();
                 break;
             case decimalsCombo:
                 SingletonF.configApp.setDecimals_config(decimalsCombo.getSelectedIndex() + 1);
+                Config_json.create_conf_json();
                 break;
             case dateCombo:
                 SingletonF.configApp.setDate_config(dateCombo.getSelectedIndex());
+                Config_json.create_conf_json();
                 break;
             case languageCombo:
                 switch (languageCombo.getSelectedIndex()) {
@@ -250,15 +258,19 @@ public class controller implements ActionListener {
                         SingletonF.language.setIdioma(SingletonF.configApp.getLanguage_config());
                         break;
                 }
+                Config_json.create_conf_json();
                 break;
             case jsonbutton:
                 SingletonF.configApp.setSavingextension("json");
+                Config_json.create_conf_json();
                 break;
             case txtbutton:
                 SingletonF.configApp.setSavingextension("txt");
+                Config_json.create_conf_json();
                 break;
             case xmlbutton:
                 SingletonF.configApp.setSavingextension("xml");
+                Config_json.create_conf_json();
                 break;
             case dummiesOn:
                 json.createjson_auto();
@@ -277,6 +289,7 @@ public class controller implements ActionListener {
                         txt.load_txt_auto();
                         break;
                 }
+                Config_json.create_conf_json();
                 break;
             case dummiesOff:
                 json.createjson_auto();
@@ -295,6 +308,7 @@ public class controller implements ActionListener {
                         txt.load_txt_auto();
                         break;
                 }
+                Config_json.create_conf_json();
                 break;
             case addRandomDummies:
                 Dummies.generatedummies(Integer.parseInt(howmanyDummies.getValue().toString()));
@@ -309,6 +323,7 @@ public class controller implements ActionListener {
                 SingletonF.configApp.setSavingextension("json");
                 SingletonF.configApp.setDecimals_config(2);
                 SingletonF.configApp.setLookandfeel(0);
+                Config_json.create_conf_json();
                 break;
             case closeC:
                 config.dispose();

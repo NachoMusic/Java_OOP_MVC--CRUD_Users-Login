@@ -212,6 +212,7 @@ public class PagerR {
         birthdayform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 8)));
         //ageform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 9)));
         activityform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 9)));
+        karmaform.setText(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 10)));
         try{
             ImageIcon icon = new ImageIcon(singleton.registered_users.getData(Integer.parseInt(String.valueOf(model.getValueAt(registeredtable.getSelectedRow(), 0)))-1).getAvatar());
             Image imgn = icon.getImage();

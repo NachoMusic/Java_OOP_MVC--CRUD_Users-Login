@@ -142,6 +142,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Choose an option:"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="conflabel">
       <Properties>
@@ -150,6 +153,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Configuration"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="adminlabel">
       <Properties>
@@ -158,6 +164,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Admins"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="clientslabel">
       <Properties>
@@ -166,6 +175,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Clients"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="userslabel">
       <Properties>
@@ -174,6 +186,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Registered users"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

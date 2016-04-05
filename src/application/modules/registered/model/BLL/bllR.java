@@ -93,8 +93,8 @@ public class bllR {
 
     public static boolean editadmin() {
         boolean validA = false;
-        if (singleton.pagerA.getSelected() != null) {
-            Registeredtochange = Integer.parseInt(singleton.pagerA.getSelected());
+        if (singleton.pagerR.getSelected() != null) {
+            Registeredtochange = Integer.parseInt(singleton.pagerR.getSelected());
             new registered_controller(new new_registered_view(), 1).init("f");
             saveRegisteredButton.setText("Edit Registered User");
             emptyButton.setVisible(false);
@@ -181,7 +181,7 @@ public class bllR {
         return validA;
     }
 
-    public static boolean editAdmin() {
+    public static boolean editRegistered() {
         boolean validA = true;
         String dni, name, subname, phone_number, email, user, pass, avatar,
                 state, date_birthday, karma;

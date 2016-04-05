@@ -442,7 +442,6 @@ public class registered_controller implements ActionListener {
                 new registered_controller(new new_registered_view(), 1).init("f");
                 break;
             case changeDataAButton:
-                System.out.println("Fuera");
                 singleton.pagerR.selectregistered();
                 if (bllR.editadmin()) {
                     registered_v.dispose();
@@ -628,7 +627,7 @@ public class registered_controller implements ActionListener {
                         jsonR.createjson_auto();
                         Config_json.create_conf_json();
                     }
-                } else if (bllR.editAdmin()) {
+                } else if (bllR.editRegistered()) {
                     registered_f.dispose();
                     new registered_controller(new registered_view(), 0).init("v");
                     registeredcreated.setText("Edited");
@@ -815,7 +814,7 @@ public class registered_controller implements ActionListener {
                 new Object[][]{},
                 new String[]{
                     "Num", "DNI", "Name", "Surname", "Phone", "Email", "User",
-                    "Status", "Birthday", "Karma", "Activity"
+                    "Status", "Birthday", "Activity", "Karma"
                 }
         ));
         registeredtable.addMouseListener(new MouseAdapter() {
