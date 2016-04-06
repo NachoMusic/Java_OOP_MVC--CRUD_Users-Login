@@ -113,6 +113,7 @@ public class admin_controller implements ActionListener {
         formmenu,
         backA,
         adminstable,
+        autocompletefield,
         //Admin_f
         discartButton,
         emptyButton,
@@ -203,6 +204,8 @@ public class admin_controller implements ActionListener {
                 admin_view.numtab6.addActionListener(this);
                 admin_view.numtab7.setActionCommand("numtab7");
                 admin_view.numtab7.addActionListener(this);
+                admin_view.autocompletefield.setActionCommand("autocompletefield");
+                admin_view.autocompletefield.addActionListener(this);
                 admin_view.createAButton.setText(SingletonF.language.getProperty("create"));
                 admin_view.changeDataAButton.setText(SingletonF.language.getProperty("change_data"));
                 admin_view.deleteDataAButton.setText(SingletonF.language.getProperty("delete"));
@@ -216,7 +219,23 @@ public class admin_controller implements ActionListener {
                 admin_view.importmenu.setText(SingletonF.language.getProperty("import"));
                 admin_view.viewsmenu.setText(SingletonF.language.getProperty("views"));
                 admin_view.sortmenu.setText(SingletonF.language.getProperty("sort"));
-                updatetable();
+                admin_view.autocompletefield.addKeyListener(new java.awt.event.KeyAdapter() {
+                    @Override
+                    public void keyTyped(java.awt.event.KeyEvent evt) {
+                        autocompletefieldKeyTyped(evt);
+                    }
+
+                    @Override
+                    public void keyPressed(java.awt.event.KeyEvent evt) {
+                        autocompletefieldKeyPressed(evt);
+                    }
+
+                    @Override
+                    public void keyReleased(java.awt.event.KeyEvent evt) {
+                        autocompletefieldKeyReleased(evt);
+                    }
+                });
+                updatetable(0);
                 timer.start();
                 break;
             case "f":
@@ -467,7 +486,7 @@ public class admin_controller implements ActionListener {
                 singleton.pagerA.selectadmin();
                 if (singleton.pagerA.getSelected() != null) {
                     singleton.admins.deleteData(Integer.parseInt(singleton.pagerA.getSelected()));
-                    updatetable();
+                    updatetable(0);
                     json.createjson_auto();
                     xml.createxml_auto();
                     txt.createtxt_auto();
@@ -505,7 +524,7 @@ public class admin_controller implements ActionListener {
                         break;
                     case 3://Go back
                 }
-                updatetable();
+                updatetable(0);
                 break;
             case exportAButton:
                 switch (SingletonF.configApp.getSavingextension()) {
@@ -535,69 +554,69 @@ public class admin_controller implements ActionListener {
                 break;
             case backwards:
                 singleton.pagerA.backwards();
-                updatetable();
+                updatetable(0);
                 break;
             case forward:
                 singleton.pagerA.forward();
-                updatetable();
+                updatetable(0);
                 break;
             case beginning:
                 singleton.pagerA.setPage(0);
                 forward.setEnabled(true);
                 end.setEnabled(true);
-                updatetable();
+                updatetable(0);
                 break;
             case end:
                 singleton.pagerA.setPage(singleton.admins.size() / singleton.pagerA.getMovepage());
                 backwards.setEnabled(true);
                 beginning.setEnabled(true);
-                updatetable();
+                updatetable(0);
                 break;
             case numtab1:
                 numtab1.setForeground(Color.BLUE);
                 singleton.pagerA.setSelectedpage(Integer.parseInt(numtab1.getText()) - 1);
                 singleton.pagerA.setPage(Integer.parseInt(numtab1.getText()) - 1);
-                updatetable();
+                updatetable(0);
                 break;
             case numtab2:
                 numtab2.setForeground(Color.BLUE);
                 singleton.pagerA.setSelectedpage(Integer.parseInt(numtab2.getText()) - 1);
                 singleton.pagerA.setPage(Integer.parseInt(numtab2.getText()) - 1);
-                updatetable();
+                updatetable(0);
                 break;
             case numtab3:
                 numtab3.setForeground(Color.BLUE);
                 singleton.pagerA.setSelectedpage(Integer.parseInt(numtab3.getText()) - 1);
                 singleton.pagerA.setPage(Integer.parseInt(numtab3.getText()) - 1);
-                updatetable();
+                updatetable(0);
                 break;
             case numtab4:
                 numtab4.setForeground(Color.BLUE);
                 singleton.pagerA.setSelectedpage(Integer.parseInt(numtab4.getText()) - 1);
                 singleton.pagerA.setPage(Integer.parseInt(numtab4.getText()) - 1);
-                updatetable();
+                updatetable(0);
                 break;
             case numtab5:
                 numtab5.setForeground(Color.BLUE);
                 singleton.pagerA.setSelectedpage(Integer.parseInt(numtab5.getText()) - 1);
                 singleton.pagerA.setPage(Integer.parseInt(numtab5.getText()) - 1);
-                updatetable();
+                updatetable(0);
                 break;
             case numtab6:
                 numtab6.setForeground(Color.BLUE);
                 singleton.pagerA.setSelectedpage(Integer.parseInt(numtab6.getText()) - 1);
                 singleton.pagerA.setPage(Integer.parseInt(numtab6.getText()) - 1);
-                updatetable();
+                updatetable(0);
                 break;
             case numtab7:
                 numtab7.setForeground(Color.BLUE);
                 singleton.pagerA.setSelectedpage(Integer.parseInt(numtab7.getText()) - 1);
                 singleton.pagerA.setPage(Integer.parseInt(numtab7.getText()) - 1);
-                updatetable();
+                updatetable(0);
                 break;
             case pagefield:
                 singleton.pagerA.pagefield();
-                updatetable();
+                updatetable(0);
                 break;
             case combopage:
                 switch (combopage.getSelectedIndex()) {
@@ -616,7 +635,7 @@ public class admin_controller implements ActionListener {
                         singleton.pagerA.setMovepage(100);
                         singleton.pagerA.setPage(0);
                 }
-                updatetable();
+                updatetable(0);
                 break;
             case listmenu:
                 tabbedtable.setSelectedIndex(0);
@@ -627,6 +646,9 @@ public class admin_controller implements ActionListener {
             case backA:
                 admin_v.dispose();
                 new controller(new app_view(), 0).init("menu");
+                break;
+            case autocompletefield:
+                singleton.admins.find(1, admin_view.autocompletefield.getText());
                 break;
             //new_admin_view form
             case discartButton:
@@ -825,7 +847,19 @@ public class admin_controller implements ActionListener {
         bll.validateActivity();
     }
 
-    public static void updatetable() {
+    private void autocompletefieldKeyReleased(java.awt.event.KeyEvent evt){
+        singleton.admins.find(1, admin_view.autocompletefield.getText());
+    }
+    
+    private void autocompletefieldKeyTyped(java.awt.event.KeyEvent evt){
+        singleton.admins.find(1, admin_view.autocompletefield.getText());
+    }
+    
+    private void autocompletefieldKeyPressed(java.awt.event.KeyEvent evt){
+        singleton.admins.find(1, admin_view.autocompletefield.getText());
+    }
+    
+    public static void updatetable(int option) {
         JTable jTable = new JTable() {
             private static final long serialVersionUID = 1L;
 
@@ -874,7 +908,9 @@ public class admin_controller implements ActionListener {
         TableRowSorter sorter = new TableRowSorter(singleton.pagerA.getModel());
         adminstable.setRowSorter(sorter);
         adminstable.setColumnSelectionAllowed(false);
-        singleton.pagerA.updatetable2();
+        if (option == 0) {
+            singleton.pagerA.updatetable2();
+        }
         singleton.pagerA.pagenum();
     }
 }

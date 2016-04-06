@@ -5,8 +5,10 @@ import java.util.Collections;
 import javax.swing.JOptionPane;
 
 import application.models.SingletonF;
+import static application.modules.admin.controller.admin_controller.updatetable;
 import application.modules.admin.model.DAO.functions_users;
 import application.modules.admin.model.models.admin;
+import application.modules.admin.model.models.singleton;
 import application.modules.admin.model.models.sortbyAge;
 import application.modules.admin.model.models.sortbyName;
 import application.utils.Functions;
@@ -87,13 +89,13 @@ public class Arraylist_admin {
         }
     }
 
-    public void find(int option, String dni) {
+    public void find(int option, String dniname) {
         admin admin1 = new admin();
         int times = 0;
 
         switch (option) {
             case 0://By dni
-                admin1.setDni(dni);
+                admin1.setDni(dniname);
                 for (int i = 0; i < admins.size(); i++) {
                     if (admins.get(i).equals(admin1, 0)) {
                         JOptionPane.showMessageDialog(null, admins.get(i).toString());
@@ -105,15 +107,18 @@ public class Arraylist_admin {
                 }
                 break;
             case 1://By name
-                admin1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
+                admin1.setName(dniname);
+                if ("".equals(dniname)) {
+                    updatetable(0);
+                }
+                else {
+                    updatetable(1);
+                }
                 for (int i = 0; i < admins.size(); i++) {
                     if (admins.get(i).equals(admin1, 1)) {
-                        JOptionPane.showMessageDialog(null, admins.get(i).toString());
+                        singleton.pagerA.printadmins(i);
                         times++;
                     }
-                }
-                if (times == 0) {
-                    JOptionPane.showMessageDialog(null, "No admins found");
                 }
                 break;
         }
