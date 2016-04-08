@@ -14,6 +14,7 @@ import application.modules.admin.model.BLL.bll;
 import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
+import application.modules.admin.model.DAO.dao;
 import application.modules.admin.model.models.singleton;
 import application.modules.admin.model.pager.Pager;
 import application.modules.admin.view.admin_view;
@@ -61,6 +62,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -114,6 +118,7 @@ public class admin_controller implements ActionListener {
         backA,
         adminstable,
         autocompletefield,
+        test,
         //Admin_f
         discartButton,
         emptyButton,
@@ -204,6 +209,8 @@ public class admin_controller implements ActionListener {
                 admin_view.numtab6.addActionListener(this);
                 admin_view.numtab7.setActionCommand("numtab7");
                 admin_view.numtab7.addActionListener(this);
+                admin_view.test.setActionCommand("test");
+                admin_view.test.addActionListener(this);
                 admin_view.autocompletefield.setActionCommand("autocompletefield");
                 admin_view.autocompletefield.addActionListener(this);
                 admin_view.createAButton.setText(SingletonF.language.getProperty("create"));
@@ -650,6 +657,14 @@ public class admin_controller implements ActionListener {
             case autocompletefield:
                 singleton.admins.find(1, admin_view.autocompletefield.getText());
                 break;
+            case test: 
+                try {
+                    dao.loadadminsBBDD();
+                } catch (SQLException ex) {
+                    Logger.getLogger(admin_controller.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            break;
             //new_admin_view form
             case discartButton:
                 admin_f.dispose();
@@ -847,18 +862,18 @@ public class admin_controller implements ActionListener {
         bll.validateActivity();
     }
 
-    private void autocompletefieldKeyReleased(java.awt.event.KeyEvent evt){
+    private void autocompletefieldKeyReleased(java.awt.event.KeyEvent evt) {
         singleton.admins.find(1, admin_view.autocompletefield.getText());
     }
-    
-    private void autocompletefieldKeyTyped(java.awt.event.KeyEvent evt){
+
+    private void autocompletefieldKeyTyped(java.awt.event.KeyEvent evt) {
         singleton.admins.find(1, admin_view.autocompletefield.getText());
     }
-    
-    private void autocompletefieldKeyPressed(java.awt.event.KeyEvent evt){
+
+    private void autocompletefieldKeyPressed(java.awt.event.KeyEvent evt) {
         singleton.admins.find(1, admin_view.autocompletefield.getText());
     }
-    
+
     public static void updatetable(int option) {
         JTable jTable = new JTable() {
             private static final long serialVersionUID = 1L;

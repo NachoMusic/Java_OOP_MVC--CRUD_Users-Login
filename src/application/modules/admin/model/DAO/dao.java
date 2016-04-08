@@ -6,11 +6,16 @@
 package application.modules.admin.model.DAO;
 
 import application.models.Dates;
+import application.modules.admin.model.models.ConexionBD;
+import application.modules.admin.model.models.admin;
 import static application.modules.admin.view.new_admin_view.*;
 import application.utils.Validate;
 import static java.awt.Color.red;
 import static java.awt.Color.white;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -303,5 +308,42 @@ public class dao {
             activityField.setBackground(red);
         }
         return validate;
+    }
+    
+    public static boolean loadadminsBBDD() throws SQLException{
+        Connection _con = null;
+        ConexionBD _conexion_DB = new ConexionBD();
+        PreparedStatement stmt = null;
+        int resultado = 0;
+        _con = _conexion_DB.AbrirConexion();
+        System.out.println("02");
+        admin admin1 = new admin("12345678Z", "Dummy002", "Assdg", "9846531351", "asdf@asdf.afsd", "Dummy002", "Pass",
+			"avatar", "online", "12/03/1985", "12/12/2014", 1500,
+			150);
+        stmt = _con.prepareStatement("INSERT INTO admins"
+                    + "(dni,name,subname,phone_number,email,user,pass,"
+                    + "avatar,state,date_birthday,age,hirin_date,salary,years_of_service,activity) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        
+        stmt.setString(1, admin1.getDni());
+            stmt.setString(2, admin1.getName());
+            stmt.setString(3, admin1.getSubname());
+            stmt.setString(4, admin1.getPhone_number());
+            stmt.setString(5, admin1.getEmail());
+            stmt.setString(6, admin1.getUser());
+            stmt.setString(7, admin1.getPass());
+            stmt.setString(8, admin1.getAvatar());
+            stmt.setString(9, admin1.getState());
+            stmt.setString(10, admin1.getDate_birthday());
+            stmt.setInt(11, admin1.getAge());
+            stmt.setString(12, admin1.getHirin_date());
+            stmt.setFloat(13, admin1.getSalary());
+            stmt.setInt(14, admin1.getYears_of_service());
+            stmt.setInt(15, admin1.getActivity());
+            
+            stmt.executeUpdate();
+            
+            _conexion_DB.CerrarConexion(_con);
+        return true;
     }
 }

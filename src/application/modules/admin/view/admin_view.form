@@ -154,7 +154,9 @@
                           <Component id="importAButton" min="-2" max="-2" attributes="0"/>
                           <Component id="backA" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="test" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -179,7 +181,6 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="findAButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -193,6 +194,7 @@
                           <Component id="changeDataAButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="deleteDataAButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="backA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="test" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                   </Group>
@@ -1092,6 +1094,14 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="autocompletefield">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="test">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="test"/>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>

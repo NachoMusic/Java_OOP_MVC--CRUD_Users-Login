@@ -86,6 +86,7 @@ public class admin_view extends javax.swing.JFrame {
         backA = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         autocompletefield = new javax.swing.JTextField();
+        test = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         filemenu = new javax.swing.JMenu();
         importmenu = new javax.swing.JMenuItem();
@@ -546,6 +547,8 @@ public class admin_view extends javax.swing.JFrame {
 
         jLabel14.setText("Search:");
 
+        test.setText("test");
+
         filemenu.setText("File");
 
         importmenu.setText("Import");
@@ -632,7 +635,9 @@ public class admin_view extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(importAButton)
                             .addComponent(backA))
-                        .addGap(213, 213, 213)))
+                        .addGap(107, 107, 107)
+                        .addComponent(test)
+                        .addGap(47, 47, 47)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -649,7 +654,6 @@ public class admin_view extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(autocompletefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(findAButton)
@@ -661,7 +665,8 @@ public class admin_view extends javax.swing.JFrame {
                             .addComponent(createAButton)
                             .addComponent(changeDataAButton)
                             .addComponent(deleteDataAButton)
-                            .addComponent(backA))
+                            .addComponent(backA)
+                            .addComponent(test))
                         .addGap(60, 60, 60)))
                 .addContainerGap())
         );
@@ -842,6 +847,7 @@ public class admin_view extends javax.swing.JFrame {
     public static javax.swing.JTextField stateform;
     public static javax.swing.JTextField surnameform;
     public static javax.swing.JTabbedPane tabbedtable;
+    public static javax.swing.JButton test;
     public static javax.swing.JTextField userform;
     public static javax.swing.JMenu viewsmenu;
     // End of variables declaration//GEN-END:variables
