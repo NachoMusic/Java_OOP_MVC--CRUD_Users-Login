@@ -492,12 +492,13 @@ public class admin_controller implements ActionListener {
             case deleteDataAButton:
                 singleton.pagerA.selectadmin();
                 if (singleton.pagerA.getSelected() != null) {
-                    singleton.admins.deleteData(Integer.parseInt(singleton.pagerA.getSelected()));
+                    //singleton.admins.deleteData(Integer.parseInt(singleton.pagerA.getSelected()));
                     updatetable(0);
                     json.createjson_auto();
                     xml.createxml_auto();
                     txt.createtxt_auto();
                     Config_json.create_conf_json();
+                    bll.deleteadminBBDD();
                 }
                 break;
             case findAButton:

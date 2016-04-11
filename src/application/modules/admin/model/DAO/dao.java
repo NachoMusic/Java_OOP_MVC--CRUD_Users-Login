@@ -8,6 +8,7 @@ package application.modules.admin.model.DAO;
 import application.models.Dates;
 import application.modules.admin.model.models.ConexionBD;
 import application.modules.admin.model.models.singleton;
+import application.modules.admin.model.pager.Pager;
 import static application.modules.admin.view.new_admin_view.*;
 import application.utils.Validate;
 import static java.awt.Color.red;
@@ -346,10 +347,18 @@ public class dao {
         }
         return valid;
     }
-    public static boolean deleteadminBBDD(){
+    public static boolean deleteadminBBDD(Connection _con){
         PreparedStatement stmt = null;
         boolean valid = false;
 
+        try {
+            stmt = _con.prepareStatement("DELETE FROM application.admins WHERE dni=?");
+            stmt.setString(1, singleton.admins.getAdmins().get(Integer.parseInt(singleton.pagerA.getSelected())-1).getDni());
+            stmt.executeUpdate();
+            valid = true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ha habido un error al eliminar el usuario!");
+        }
         return valid;
     }
 }

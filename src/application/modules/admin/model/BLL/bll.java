@@ -275,7 +275,7 @@ public class bll {
         boolean valid=true;
         
         _con = _conexion_DB.AbrirConexion();
-        valid=dao.deleteadminBBDD();
+        valid=dao.deleteadminBBDD(_con);
         _conexion_DB.CerrarConexion(_con);
         return valid;
     }
