@@ -7,7 +7,7 @@ package application.modules.admin.model.DAO;
 
 import application.models.Dates;
 import application.modules.admin.model.models.ConexionBD;
-import application.modules.admin.model.models.admin;
+import application.modules.admin.model.models.singleton;
 import static application.modules.admin.view.new_admin_view.*;
 import application.utils.Validate;
 import static java.awt.Color.red;
@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -186,7 +187,6 @@ public class dao {
         return image;
     }
 
-
     public static boolean validateStatus() {
         boolean validate = false;
         if (statusField.getText().isEmpty()) {
@@ -309,41 +309,47 @@ public class dao {
         }
         return validate;
     }
-    
-    public static boolean loadadminsBBDD() throws SQLException{
-        Connection _con = null;
-        ConexionBD _conexion_DB = new ConexionBD();
+
+    public static boolean saveadminsBBDD(Connection _con) throws SQLException {
         PreparedStatement stmt = null;
-        int resultado = 0;
-        _con = _conexion_DB.AbrirConexion();
-        System.out.println("02");
-        admin admin1 = new admin("12345678Z", "Dummy002", "Assdg", "9846531351", "asdf@asdf.afsd", "Dummy002", "Pass",
-			"avatar", "online", "12/03/1985", "12/12/2014", 1500,
-			150);
-        stmt = _con.prepareStatement("INSERT INTO admins"
-                    + "(dni,name,subname,phone_number,email,user,pass,"
-                    + "avatar,state,date_birthday,age,hirin_date,salary,years_of_service,activity) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        
-        stmt.setString(1, admin1.getDni());
-            stmt.setString(2, admin1.getName());
-            stmt.setString(3, admin1.getSubname());
-            stmt.setString(4, admin1.getPhone_number());
-            stmt.setString(5, admin1.getEmail());
-            stmt.setString(6, admin1.getUser());
-            stmt.setString(7, admin1.getPass());
-            stmt.setString(8, admin1.getAvatar());
-            stmt.setString(9, admin1.getState());
-            stmt.setString(10, admin1.getDate_birthday());
-            stmt.setInt(11, admin1.getAge());
-            stmt.setString(12, admin1.getHirin_date());
-            stmt.setFloat(13, admin1.getSalary());
-            stmt.setInt(14, admin1.getYears_of_service());
-            stmt.setInt(15, admin1.getActivity());
+        boolean valid = true;
+
+        try {
             
-            stmt.executeUpdate();
-            
-            _conexion_DB.CerrarConexion(_con);
-        return true;
+            for (int i = 0; i < singleton.admins.size(); i++) {
+                stmt = _con.prepareStatement("INSERT INTO admins"
+                        + "(dni,name,subname,phone_number,email,user,pass,"
+                        + "avatar,state,date_birthday,age,hirin_date,salary,years_of_service,activity) "
+                        + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                System.out.println(i+" "+singleton.admins.getAdmins().get(i).getUser());
+                stmt.setString(1, singleton.admins.getAdmins().get(i).getDni());
+                stmt.setString(2, singleton.admins.getAdmins().get(i).getName());
+                stmt.setString(3, singleton.admins.getAdmins().get(i).getSubname());
+                stmt.setString(4, singleton.admins.getAdmins().get(i).getPhone_number());
+                stmt.setString(5, singleton.admins.getAdmins().get(i).getEmail());
+                stmt.setString(6, singleton.admins.getAdmins().get(i).getUser());
+                stmt.setString(7, singleton.admins.getAdmins().get(i).getPass());
+                stmt.setString(8, singleton.admins.getAdmins().get(i).getAvatar());
+                stmt.setString(9, singleton.admins.getAdmins().get(i).getState());
+                stmt.setString(10, singleton.admins.getAdmins().get(i).getDate_birthday());
+                stmt.setInt(11, singleton.admins.getAdmins().get(i).getAge());
+                stmt.setString(12, singleton.admins.getAdmins().get(i).getHirin_date());
+                stmt.setFloat(13, singleton.admins.getAdmins().get(i).getSalary());
+                stmt.setInt(14, singleton.admins.getAdmins().get(i).getYears_of_service());
+                stmt.setInt(15, singleton.admins.getAdmins().get(i).getActivity());
+                stmt.executeUpdate();
+                
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ha habido un problema con la bbdd");
+            valid = false;
+        }
+        return valid;
+    }
+    public static boolean deleteadminBBDD(){
+        PreparedStatement stmt = null;
+        boolean valid = false;
+
+        return valid;
     }
 }

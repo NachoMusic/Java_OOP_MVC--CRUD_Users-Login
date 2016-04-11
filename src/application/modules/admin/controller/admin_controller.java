@@ -659,7 +659,7 @@ public class admin_controller implements ActionListener {
                 break;
             case test: 
                 try {
-                    dao.loadadminsBBDD();
+                    bll.saveadminsBBDD();
                 } catch (SQLException ex) {
                     Logger.getLogger(admin_controller.class.getName()).log(Level.SEVERE, null, ex);
                 }

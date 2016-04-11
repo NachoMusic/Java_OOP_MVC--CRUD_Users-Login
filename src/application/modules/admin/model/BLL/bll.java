@@ -8,6 +8,7 @@ package application.modules.admin.model.BLL;
 import application.models.Dates;
 import application.modules.admin.controller.admin_controller;
 import application.modules.admin.model.DAO.dao;
+import application.modules.admin.model.models.ConexionBD;
 import application.modules.admin.model.models.admin;
 import application.modules.admin.model.models.singleton;
 import application.modules.admin.view.new_admin_view;
@@ -37,6 +38,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import javax.swing.ImageIcon;
 import static application.modules.admin.view.admin_view.Admintochange;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -254,4 +257,27 @@ public class bll {
         }
         return validA;
     }
+
+    public static boolean saveadminsBBDD() throws SQLException {
+        ConexionBD _conexion_DB = new ConexionBD();
+        Connection _con = null;
+        boolean valid;
+        
+        _con = _conexion_DB.AbrirConexion();
+        valid = dao.saveadminsBBDD(_con);
+        _conexion_DB.CerrarConexion(_con);
+        return valid;
+    }
+    
+    public static boolean deleteadminBBDD(){
+        ConexionBD _conexion_DB = new ConexionBD();
+        Connection _con = null;
+        boolean valid=true;
+        
+        _con = _conexion_DB.AbrirConexion();
+        valid=dao.deleteadminBBDD();
+        _conexion_DB.CerrarConexion(_con);
+        return valid;
+    }
+
 }

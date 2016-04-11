@@ -58,7 +58,7 @@ public abstract class users implements Comparable <users>, Serializable {
 	public users(String dni) {
 		this.dni = dni;
 	}
-	//constructor a petici�n del usuario
+	//constructor a petición del usuario
 	public users(int i, String s, int age){
 		switch(i){
 		case 0:

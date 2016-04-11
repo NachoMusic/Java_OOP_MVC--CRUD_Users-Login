@@ -21,18 +21,12 @@ public class ConexionBD {
      * @return
      */
     public Connection AbrirConexion() {
-        System.out.println("01");
         Connection con = null;
         try {
-            System.out.println("01");
             Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("01");
             String urlOdbc = "jdbc:mysql://127.0.0.1:3306/application";
-            System.out.println("01");
-            con = (java.sql.DriverManager.getConnection(urlOdbc, "root", ""));
-            System.out.println("01");
+            con = (java.sql.DriverManager.getConnection(urlOdbc, "root", "1234"));
         } catch (Exception e) {
-
             JOptionPane.showMessageDialog(null, "Ha sido imposible establecer la conexion!");
         }
         return con;
@@ -49,7 +43,6 @@ public class ConexionBD {
                 con.close();
             }
         } catch (SQLException e) {
-
             JOptionPane.showMessageDialog(null, "Ha sido imposible cerrar la conexion!");
         }
     }

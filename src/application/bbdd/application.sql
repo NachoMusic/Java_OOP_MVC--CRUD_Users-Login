@@ -41,7 +41,7 @@ CREATE TABLE `admins` (
   `years_of_service` int(11) NOT NULL DEFAULT '0',
   `activity` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`dni`),
-  UNIQUE KEY `name` (`name`)
+  UNIQUE KEY `user` (`user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
