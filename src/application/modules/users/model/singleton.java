@@ -1,4 +1,4 @@
-package application.modules.admin.model.models;
+package application.modules.users.model;
 
 import application.modules.admin.model.BLL.Arraylist_admin;
 import application.modules.client.model.BLL.Arraylist_client;

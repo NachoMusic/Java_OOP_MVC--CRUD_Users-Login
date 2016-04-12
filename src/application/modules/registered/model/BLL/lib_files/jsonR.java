@@ -14,7 +14,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import application.modules.registered.model.models.registered_user;
 
 public class jsonR {

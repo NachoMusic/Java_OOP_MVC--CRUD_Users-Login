@@ -4,7 +4,7 @@ import application.models.SingletonF;
 import application.modules.admin.model.models.admin;
 import application.modules.client.model.models.client;
 import application.modules.registered.model.models.registered_user;
-import application.modules.admin.model.models.users;
+import application.modules.users.model.users;
 import application.utils.Functions;
 import application.utils.Menus;
 

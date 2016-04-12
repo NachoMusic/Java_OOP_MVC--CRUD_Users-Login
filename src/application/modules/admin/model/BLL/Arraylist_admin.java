@@ -1,16 +1,12 @@
 package application.modules.admin.model.BLL;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.swing.JOptionPane;
-
 import application.models.SingletonF;
 import static application.modules.admin.controller.admin_controller.updatetable;
 import application.modules.admin.model.DAO.functions_users;
 import application.modules.admin.model.models.admin;
-import application.modules.admin.model.models.singleton;
-import application.modules.admin.model.models.sortbyAge;
-import application.modules.admin.model.models.sortbyName;
+import application.modules.users.model.singleton;
 import application.utils.Functions;
 
 public class Arraylist_admin {
@@ -120,20 +116,6 @@ public class Arraylist_admin {
                         times++;
                     }
                 }
-                break;
-        }
-    }
-
-    public void sortData(int type) {
-        switch (type) {
-            case 0:
-                Collections.sort(admins);
-                break;
-            case 1:
-                Collections.sort(admins, new sortbyName());
-                break;
-            case 2:
-                Collections.sort(admins, new sortbyAge());
                 break;
         }
     }

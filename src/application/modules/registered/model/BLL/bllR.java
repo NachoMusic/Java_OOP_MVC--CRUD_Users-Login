@@ -6,7 +6,7 @@
 package application.modules.registered.model.BLL;
 
 import application.models.Dates;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import application.modules.registered.controller.registered_controller;
 import application.modules.registered.model.DAO.daoR;
 import application.modules.registered.model.models.registered_user;

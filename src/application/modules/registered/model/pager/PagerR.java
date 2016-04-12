@@ -1,7 +1,7 @@
 
 package application.modules.registered.model.pager;
 
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import static application.modules.registered.view.new_registered_view.defaultAvatar;
 import static application.modules.registered.view.registered_view.*;
 import application.utils.Functions;

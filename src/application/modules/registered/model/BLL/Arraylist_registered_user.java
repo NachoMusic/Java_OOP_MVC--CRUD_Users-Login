@@ -6,8 +6,6 @@ import javax.swing.JOptionPane;
 import application.modules.admin.model.DAO.functions_users;
 import application.modules.admin.model.models.admin;
 import application.modules.registered.model.models.registered_user;
-import application.modules.admin.model.models.sortbyAge;
-import application.modules.admin.model.models.sortbyName;
 import application.utils.Functions;
 
 public class Arraylist_registered_user {
@@ -115,29 +113,6 @@ public class Arraylist_registered_user {
         }
     }
 
-    public void sortData(int type) {
-        switch (type) {
-            case 0:
-                Collections.sort(registered_users);
-                break;
-            case 1:
-                Collections.sort(registered_users, new sortbyName());
-                break;
-            case 2:
-                Collections.sort(registered_users, new sortbyAge());
-                break;
-        }
-    }
-
-    /*
-	public void changeFormatCurrency(Config configApp, char monedaAnterior){
-		try{
-			for(int i = 0;i<registered_users.size();i++){
-				registered_users.get(i).changeCurrency(configApp, monedaAnterior);
-			}
-		}catch(Exception e){};
-	}
-     */
     public void deleteData(int i) {
         try {
             registered_users.remove(i - 1);

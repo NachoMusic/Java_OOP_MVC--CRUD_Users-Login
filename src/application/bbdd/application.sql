@@ -42,7 +42,7 @@ CREATE TABLE `admins` (
   `activity` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`dni`),
   UNIQUE KEY `user` (`user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

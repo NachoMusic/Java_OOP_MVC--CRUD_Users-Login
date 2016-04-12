@@ -13,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import application.models.SingletonF;
 import application.modules.admin.model.models.admin;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 
 public class txt {
 	public static void createtxt() {

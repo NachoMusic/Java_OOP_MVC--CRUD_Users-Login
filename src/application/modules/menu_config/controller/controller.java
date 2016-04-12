@@ -25,7 +25,7 @@ import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.model.kernel.Dummies;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import application.modules.admin.view.admin_view;
 import application.modules.client.controller.client_controller;
 import application.modules.client.view.client_view;

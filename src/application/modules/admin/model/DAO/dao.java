@@ -6,8 +6,8 @@
 package application.modules.admin.model.DAO;
 
 import application.models.Dates;
-import application.modules.admin.model.models.ConexionBD;
-import application.modules.admin.model.models.singleton;
+import application.bbdd.ConexionBD;
+import application.modules.users.model.singleton;
 import application.modules.admin.model.pager.Pager;
 import static application.modules.admin.view.new_admin_view.*;
 import application.utils.Validate;
@@ -322,7 +322,7 @@ public class dao {
                         + "(dni,name,subname,phone_number,email,user,pass,"
                         + "avatar,state,date_birthday,age,hirin_date,salary,years_of_service,activity) "
                         + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                System.out.println(i+" "+singleton.admins.getAdmins().get(i).getUser());
+                //System.out.println(i+" "+singleton.admins.getAdmins().get(i).getUser());
                 stmt.setString(1, singleton.admins.getAdmins().get(i).getDni());
                 stmt.setString(2, singleton.admins.getAdmins().get(i).getName());
                 stmt.setString(3, singleton.admins.getAdmins().get(i).getSubname());
@@ -339,7 +339,6 @@ public class dao {
                 stmt.setInt(14, singleton.admins.getAdmins().get(i).getYears_of_service());
                 stmt.setInt(15, singleton.admins.getAdmins().get(i).getActivity());
                 stmt.executeUpdate();
-                
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un problema con la bbdd");

@@ -1,7 +1,7 @@
 
 package application.modules.client.model.pager;
 
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import static application.modules.client.view.client_view.ageform;
 import static application.modules.client.view.client_view.avatarform;
 import static application.modules.client.view.client_view.backwards;

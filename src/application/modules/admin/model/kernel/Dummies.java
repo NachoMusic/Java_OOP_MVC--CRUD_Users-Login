@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 import application.models.SingletonF;
 import application.modules.admin.model.BLL.Arraylist_admin;
 import application.modules.admin.model.models.admin;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import application.utils.Functions;
 
 public class Dummies {

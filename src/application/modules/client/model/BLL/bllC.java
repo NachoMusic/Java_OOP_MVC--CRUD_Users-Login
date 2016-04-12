@@ -6,7 +6,7 @@
 package application.modules.client.model.BLL;
 
 import application.models.Dates;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import application.modules.client.controller.client_controller;
 import application.modules.client.model.DAO.daoC;
 import application.modules.client.model.models.client;

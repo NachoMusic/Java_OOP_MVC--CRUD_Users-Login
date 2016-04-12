@@ -1,6 +1,6 @@
 package application.modules.registered.model.models;
 
-import application.modules.admin.model.models.users;
+import application.modules.users.model.users;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @SuppressWarnings("serial")

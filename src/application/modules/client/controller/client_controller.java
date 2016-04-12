@@ -11,7 +11,7 @@ import application.modules.menu_config.view.app_view;
 import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 import application.modules.client.model.BLL.bllC;
 import application.modules.client.model.BLL.lib_files.jsonC;
 import application.modules.client.model.pager.PagerC;
@@ -473,22 +473,6 @@ public class client_controller implements ActionListener {
                 }
                 break;
             case sortbyAButton:
-                String[] sortBy = {"By DNI", "By name", "By birthday", SingletonF.language.getProperty("go_back")};
-                int optionS = Menus.menu(sortBy, SingletonF.language.getProperty("sortadmins"),
-                        SingletonF.language.getProperty("sort"));
-                switch (optionS) {
-                    case 0://By dni
-                        singleton.admins.sortData(0);
-                        break;
-                    case 1://By name
-                        singleton.admins.sortData(1);
-                        break;
-                    case 2://By date birthday
-                        singleton.admins.sortData(2);
-                        break;
-                    case 3://Go back
-                }
-                updatetable();
                 break;
             case exportAButton:
                 switch (SingletonF.configApp.getSavingextension()) {

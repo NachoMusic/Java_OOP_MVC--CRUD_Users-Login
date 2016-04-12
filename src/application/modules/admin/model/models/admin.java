@@ -1,5 +1,6 @@
 package application.modules.admin.model.models;
 
+import application.modules.users.model.users;
 import java.io.Serializable;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;

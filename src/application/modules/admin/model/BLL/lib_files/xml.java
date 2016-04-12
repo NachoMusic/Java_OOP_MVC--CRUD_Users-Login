@@ -16,7 +16,7 @@ import com.thoughtworks.xstream.annotations.Annotations;
 
 import application.models.SingletonF;
 import application.modules.admin.model.models.admin;
-import application.modules.admin.model.models.singleton;
+import application.modules.users.model.singleton;
 
 @SuppressWarnings("deprecation")
 public class xml {

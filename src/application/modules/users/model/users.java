@@ -1,4 +1,4 @@
-package application.modules.admin.model.models;
+package application.modules.users.model;
 
 import java.io.Serializable;
 import com.thoughtworks.xstream.annotations.XStreamAlias;

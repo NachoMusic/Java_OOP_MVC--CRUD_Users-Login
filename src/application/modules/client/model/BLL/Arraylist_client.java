@@ -6,8 +6,6 @@ import javax.swing.JOptionPane;
 import application.models.SingletonF;
 import application.modules.admin.model.DAO.functions_users;
 import application.modules.client.model.models.client;
-import application.modules.admin.model.models.sortbyAge;
-import application.modules.admin.model.models.sortbyName;
 import application.utils.Functions;
 
 public class Arraylist_client {
@@ -113,28 +111,6 @@ public class Arraylist_client {
         }
     }
 
-    public void sortData(int type) {
-        switch (type) {
-            case 0:
-                Collections.sort(clients);
-                break;
-            case 1:
-                Collections.sort(clients, new sortbyName());
-                break;
-            case 2:
-                Collections.sort(clients, new sortbyAge());
-                break;
-        }
-
-    }
-
-    /*public void changeFormatCurrency(Config configApp, char monedaAnterior){
-		try{
-			for(int i = 0;i<clients.size();i++){
-				clients.get(i).changeCurrency(configApp, monedaAnterior);
-			}
-		}catch(Exception e){};
-	}*/
     public void deleteData(int usertodelete) {
         try {
             clients.remove(usertodelete - 1);
