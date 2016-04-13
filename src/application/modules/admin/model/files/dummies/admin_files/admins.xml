@@ -273,4 +273,25 @@
     <years__of__service>0</years__of__service>
     <activity>6531</activity>
   </admin>
+  <admin>
+    <dni>00000000T</dni>
+    <name>Test</name>
+    <subname>Test</subname>
+    <phone__number>987465132</phone__number>
+    <email>asdf@fdsa.asdf</email>
+    <user>User</user>
+    <pass>pass</pass>
+    <avatar>src/application/modules/admin/view/img/00000000T</avatar>
+    <state>Online</state>
+    <date__birthday>06/04/1989</date__birthday>
+    <age>27</age>
+    <points>0</points>
+    <discount>0</discount>
+    <incentives>4936</incentives>
+    <advantages>0.0</advantages>
+    <hirin__date>01/04/2016</hirin__date>
+    <salary>2500.0</salary>
+    <years__of__service>0</years__of__service>
+    <activity>12342</activity>
+  </admin>
 </list>

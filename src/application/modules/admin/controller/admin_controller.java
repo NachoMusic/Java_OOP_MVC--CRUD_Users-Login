@@ -659,6 +659,7 @@ public class admin_controller implements ActionListener {
             case saveAdminButton:
                 if (emptyButton.isVisible()) {
                     if (bll.newAdmin()) {
+                        bll.createadminBBDD();
                         admin_f.dispose();
                         new admin_controller(new admin_view(), 0).init("v");
                         admincreated.setText("Created");

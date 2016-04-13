@@ -99,7 +99,7 @@ public class new_admin_view extends javax.swing.JFrame {
         getContentPane().add(dniField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 140, -1));
         getContentPane().add(nameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 140, -1));
 
-        jLabel5.setText("Subname:");
+        jLabel5.setText("Surname:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
         getContentPane().add(subnameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 140, -1));
 

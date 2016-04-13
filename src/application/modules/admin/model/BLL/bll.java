@@ -280,4 +280,15 @@ public class bll {
         return valid;
     }
 
+    public static boolean createadminBBDD(){
+        boolean valid=true;
+        ConexionBD _conexion_DB = new ConexionBD();
+        Connection _con = null;
+        
+        _con = _conexion_DB.AbrirConexion();
+        valid=dao.createadminBBDD(_con);
+        _conexion_DB.CerrarConexion(_con);
+        return valid;
+    }
+    
 }

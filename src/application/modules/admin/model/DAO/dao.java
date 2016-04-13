@@ -6,9 +6,9 @@
 package application.modules.admin.model.DAO;
 
 import application.models.Dates;
-import application.bbdd.ConexionBD;
+import application.modules.admin.model.models.admin;
+import application.modules.admin.view.new_admin_view;
 import application.modules.users.model.singleton;
-import application.modules.admin.model.pager.Pager;
 import static application.modules.admin.view.new_admin_view.*;
 import application.utils.Validate;
 import static java.awt.Color.red;
@@ -314,9 +314,9 @@ public class dao {
     public static boolean saveadminsBBDD(Connection _con) throws SQLException {
         PreparedStatement stmt = null;
         boolean valid = true;
-
+        
         try {
-            
+
             for (int i = 0; i < singleton.admins.size(); i++) {
                 stmt = _con.prepareStatement("INSERT INTO admins"
                         + "(dni,name,subname,phone_number,email,user,pass,"
@@ -346,13 +346,14 @@ public class dao {
         }
         return valid;
     }
-    public static boolean deleteadminBBDD(Connection _con){
+
+    public static boolean deleteadminBBDD(Connection _con) {
         PreparedStatement stmt = null;
         boolean valid = false;
 
         try {
             stmt = _con.prepareStatement("DELETE FROM application.admins WHERE dni=?");
-            stmt.setString(1, singleton.admins.getAdmins().get(Integer.parseInt(singleton.pagerA.getSelected())-1).getDni());
+            stmt.setString(1, singleton.admins.getAdmins().get(Integer.parseInt(singleton.pagerA.getSelected()) - 1).getDni());
             stmt.executeUpdate();
             valid = true;
         } catch (SQLException ex) {
@@ -360,4 +361,44 @@ public class dao {
         }
         return valid;
     }
+
+    public static boolean createadminBBDD(Connection _con) {
+        PreparedStatement stmt = null;
+        boolean valid = true;
+        Dates date = new Dates("");
+        admin a = new admin(new_admin_view.dniField.getText(), "", "","",
+                    "", "", "", "", "", date.DateToString(new_admin_view.datebirthdayField.getCalendar(), 0),
+                date.DateToString(new_admin_view.hiringdateField.getCalendar(), 0),
+                Float.parseFloat(new_admin_view.salaryField.getText()), Integer.parseInt(new_admin_view.activityField.getText()));
+        
+        try {
+            stmt = _con.prepareStatement("INSERT INTO admins"
+                    + "(dni,name,subname,phone_number,email,user,pass,"
+                    + "avatar,state,date_birthday,age,hirin_date,salary,years_of_service,activity) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+            stmt.setString(1, new_admin_view.dniField.getText());
+            stmt.setString(2, new_admin_view.nameField.getText());
+            stmt.setString(3, new_admin_view.subnameField.getText());
+            stmt.setString(4, new_admin_view.phoneField.getText());
+            stmt.setString(5, new_admin_view.emailField.getText());
+            stmt.setString(6, new_admin_view.usernameField.getText());
+            stmt.setString(7, new_admin_view.passwordField.getText());
+            stmt.setString(8, new_admin_view.avatarField.getText());
+            stmt.setString(9, new_admin_view.statusField.getText());
+            stmt.setString(10, date.DateToString(new_admin_view.datebirthdayField.getCalendar(), 0));
+            stmt.setInt(11, a.getAge());
+            stmt.setString(12, date.DateToString(new_admin_view.hiringdateField.getCalendar(), 0));
+            stmt.setFloat(13, Float.parseFloat(new_admin_view.salaryField.getText()));
+            stmt.setInt(14, a.getYears_of_service());
+            stmt.setInt(15, Integer.parseInt(new_admin_view.activityField.getText()));
+            stmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ha habido un problema con la bbdd");
+            valid = false;
+        }
+        return valid;
+    }
+
 }
