@@ -107,7 +107,7 @@ public class controller implements ActionListener {
                 config_view.comboCurrency.addActionListener(this);
                 config_view.decimalsCombo.setActionCommand("decimalsCombo");
                 config_view.decimalsCombo.addActionListener(this);
-                config_view.dateCombo.setActionCommand("dataCombo");
+                config_view.dateCombo.setActionCommand("dateCombo");
                 config_view.dateCombo.addActionListener(this);
                 config_view.languageCombo.setActionCommand("languageCombo");
                 config_view.languageCombo.addActionListener(this);
