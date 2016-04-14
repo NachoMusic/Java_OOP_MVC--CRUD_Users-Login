@@ -670,6 +670,7 @@ public class admin_controller implements ActionListener {
                         Config_json.create_conf_json();
                     }
                 } else if (bll.editAdmin()) {
+                    bll.editadminBBDD();
                     admin_f.dispose();
                     new admin_controller(new admin_view(), 0).init("v");
                     admincreated.setText("Edited");

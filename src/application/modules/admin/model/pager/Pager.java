@@ -1,6 +1,7 @@
 
 package application.modules.admin.model.pager;
 
+import application.modules.admin.model.BLL.bll;
 import application.modules.users.model.singleton;
 import static application.modules.admin.view.admin_view.adminstable;
 import static application.modules.admin.view.admin_view.*;
@@ -77,6 +78,7 @@ public class Pager {
     }
     
     public void updatetable2() {
+        bll.readadminsBBDD();
         this.maxpage = singleton.admins.size();
         int translatedpage = 0;
 

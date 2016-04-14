@@ -291,4 +291,28 @@ public class bll {
         return valid;
     }
     
+    public static boolean editadminBBDD(){
+        boolean valid=true;
+        ConexionBD _conexion_DB = new ConexionBD();
+        Connection _con = null;
+        
+        _con = _conexion_DB.AbrirConexion();
+        dao.editadminBBDD(_con);
+        _conexion_DB.CerrarConexion(_con);
+        
+        return valid;
+    }
+    
+    public static boolean readadminsBBDD(){
+        boolean valid=true;
+        ConexionBD _conexion_DB = new ConexionBD();
+        Connection _con = null;
+        
+        _con = _conexion_DB.AbrirConexion();
+        dao.readadminsBBDD(_con);
+        _conexion_DB.CerrarConexion(_con);
+        
+        return valid;
+    }
+    
 }

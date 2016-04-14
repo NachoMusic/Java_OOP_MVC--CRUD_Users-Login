@@ -16,6 +16,7 @@ import static java.awt.Color.white;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -314,7 +315,7 @@ public class dao {
     public static boolean saveadminsBBDD(Connection _con) throws SQLException {
         PreparedStatement stmt = null;
         boolean valid = true;
-        
+
         try {
 
             for (int i = 0; i < singleton.admins.size(); i++) {
@@ -366,11 +367,11 @@ public class dao {
         PreparedStatement stmt = null;
         boolean valid = true;
         Dates date = new Dates("");
-        admin a = new admin(new_admin_view.dniField.getText(), "", "","",
-                    "", "", "", "", "", date.DateToString(new_admin_view.datebirthdayField.getCalendar(), 0),
+        admin a = new admin(new_admin_view.dniField.getText(), "", "", "",
+                "", "", "", "", "", date.DateToString(new_admin_view.datebirthdayField.getCalendar(), 0),
                 date.DateToString(new_admin_view.hiringdateField.getCalendar(), 0),
                 Float.parseFloat(new_admin_view.salaryField.getText()), Integer.parseInt(new_admin_view.activityField.getText()));
-        
+
         try {
             stmt = _con.prepareStatement("INSERT INTO admins"
                     + "(dni,name,subname,phone_number,email,user,pass,"
@@ -400,5 +401,86 @@ public class dao {
         }
         return valid;
     }
+    
+    public static boolean editadminBBDD(Connection _con){
+        boolean valid=true;
+        Dates date = new Dates("");
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = _con.prepareStatement("UPDATE application.admins SET dni=?, "
+                    + "name=?, subname=?, phone_number=?, email=?, user=?, pass=?, avatar=?, state=?,"
+                    + "date_birthday=?, age=?, hirin_date=?, salary=?, "
+                    + "years_of_service=?, activity=? WHERE DNI=?");
+            admin a = new admin(new_admin_view.dniField.getText(), new_admin_view.nameField.getText(),
+                    new_admin_view.subnameField.getText(), new_admin_view.phoneField.getText(),
+                new_admin_view.emailField.getText(), new_admin_view.usernameField.getText(),
+                    new_admin_view.passwordField.getText(), new_admin_view.avatarField.getText(), new_admin_view.statusField.getText(),
+                    date.DateToString(new_admin_view.datebirthdayField.getCalendar(), 0),
+                date.DateToString(new_admin_view.hiringdateField.getCalendar(), 0),
+                Float.parseFloat(new_admin_view.salaryField.getText()), Integer.parseInt(new_admin_view.activityField.getText()));
+            
+            stmt.setString(1, a.getDni());
+            stmt.setString(2, a.getName());
+            stmt.setString(3, a.getSubname());
+            stmt.setString(4, a.getPhone_number());
+            stmt.setString(5, a.getEmail());
+            stmt.setString(6, a.getUser());
+            stmt.setString(7, a.getPass());
+            stmt.setString(8, a.getAvatar());
+            stmt.setString(9, a.getState());
+            stmt.setString(10, a.getDate_birthday());
+            stmt.setInt(11, a.getAge());
+            stmt.setString(12, a.getHirin_date());
+            stmt.setFloat(13, a.getSalary());
+            stmt.setInt(14, a.getYears_of_service());
+            stmt.setInt(15, a.getActivity());
+            stmt.setString(16, a.getDni());
+            stmt.executeUpdate();
 
+            JOptionPane.showMessageDialog(null, "El usuario ha sido modificado correctamente!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al actualizar el usuario!");
+        }
+        return valid;
+    }
+
+    public static boolean readadminsBBDD(Connection _con){
+        boolean valid=true;
+        Dates date = new Dates("");
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        admin ad = null;
+        
+        singleton.admins.getAdmins().clear();
+        try{
+            stmt = _con.prepareStatement("SELECT * FROM admins");
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                ad = new admin();
+                ad.setDni(rs.getString("dni"));
+                ad.setName(rs.getString("name"));
+                ad.setSubname(rs.getString("subname"));
+                ad.setPhone_number(rs.getString("phone_number"));
+                ad.setEmail(rs.getString("email"));
+                ad.setUser(rs.getString("user"));
+                ad.setPass(rs.getString("pass"));
+                ad.setAvatar(rs.getString("avatar"));
+                ad.setState(rs.getString("state"));
+                ad.setDate_birthday(rs.getString("date_birthday"));
+                ad.setHirin_date(rs.getString("hirin_date"));
+                ad.setSalary(rs.getFloat("salary"));
+                ad.setActivity(rs.getInt("activity"));
+                
+                singleton.admins.addData(ad);
+                
+                valid=true;
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al leer los admins");
+        }
+        
+        return valid;
+    }
+    
 }
