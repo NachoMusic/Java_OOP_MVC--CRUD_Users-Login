@@ -438,7 +438,6 @@ public class dao {
             stmt.setString(16, a.getDni());
             stmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "El usuario ha sido modificado correctamente!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un problema al actualizar el usuario!");
         }

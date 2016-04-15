@@ -5,6 +5,7 @@
  */
 package application;
 
+import application.bbdd.pool;
 import application.modules.menu_config.model.Config;
 import application.modules.menu_config.model.Language;
 import application.models.SingletonF;
@@ -41,6 +42,7 @@ public class main {
         }
         jsonC.load_json_auto();
         jsonR.load_json_auto();
+        pool.inicializa_BasicDataSourceFactory();
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 

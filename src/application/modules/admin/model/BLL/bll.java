@@ -9,6 +9,7 @@ import application.models.Dates;
 import application.modules.admin.controller.admin_controller;
 import application.modules.admin.model.DAO.dao;
 import application.bbdd.ConexionBD;
+import application.bbdd.pool;
 import application.modules.admin.model.models.admin;
 import application.modules.users.model.singleton;
 import application.modules.admin.view.new_admin_view;
@@ -259,59 +260,53 @@ public class bll {
     }
 
     public static boolean saveadminsBBDD() throws SQLException {
-        ConexionBD _conexion_DB = new ConexionBD();
         Connection _con = null;
         boolean valid;
         
-        _con = _conexion_DB.AbrirConexion();
+        _con = pool.getConexion();
         valid = dao.saveadminsBBDD(_con);
-        _conexion_DB.CerrarConexion(_con);
+        pool.liberaConexion(_con);
         return valid;
     }
     
     public static boolean deleteadminBBDD(){
-        ConexionBD _conexion_DB = new ConexionBD();
         Connection _con = null;
         boolean valid=true;
-        
-        _con = _conexion_DB.AbrirConexion();
+
+        _con = pool.getConexion();
         valid=dao.deleteadminBBDD(_con);
-        _conexion_DB.CerrarConexion(_con);
+        pool.liberaConexion(_con);
         return valid;
     }
 
     public static boolean createadminBBDD(){
         boolean valid=true;
-        ConexionBD _conexion_DB = new ConexionBD();
         Connection _con = null;
-        
-        _con = _conexion_DB.AbrirConexion();
+
+        _con = pool.getConexion();
         valid=dao.createadminBBDD(_con);
-        _conexion_DB.CerrarConexion(_con);
+        pool.liberaConexion(_con);
         return valid;
     }
     
     public static boolean editadminBBDD(){
         boolean valid=true;
-        ConexionBD _conexion_DB = new ConexionBD();
         Connection _con = null;
-        
-        _con = _conexion_DB.AbrirConexion();
+        _con = pool.getConexion();
         dao.editadminBBDD(_con);
-        _conexion_DB.CerrarConexion(_con);
-        
+        pool.liberaConexion(_con);
+
         return valid;
     }
     
     public static boolean readadminsBBDD(){
         boolean valid=true;
-        ConexionBD _conexion_DB = new ConexionBD();
         Connection _con = null;
-        
-        _con = _conexion_DB.AbrirConexion();
+
+        _con = pool.getConexion();
         dao.readadminsBBDD(_con);
-        _conexion_DB.CerrarConexion(_con);
-        
+        pool.liberaConexion(_con);
+
         return valid;
     }
     
