@@ -108,7 +108,9 @@ public class Pager {
     }
 
     public void printadmins(int i) {
-        String dateBirthday = "", hiringDate = "", day = "", month = "", year = "", day2 = "", month2 = "", year2 = "";
+        String dateBirthday = "", hiringDate = "", day = "", month = "", year = "",
+                day2 = "", month2 = "", year2 = "", salary="";
+        
         dateBirthday = singleton.admins.getData(i).getDate_birthday();
         hiringDate = singleton.admins.getData(i).getHirin_date();
         day += dateBirthday.charAt(0) + "";
@@ -139,6 +141,18 @@ public class Pager {
             case 3:
                 dateBirthday = year + "-" + month + "-" + day;
                 hiringDate = year2 + "-" + month2 + "-" + day2;
+                break;
+        }
+        salary=singleton.admins.getData(i).getSalary()+"";
+        switch(SingletonF.configApp.getDecimals_config()){
+            case 1:
+                salary+="€";
+                break;
+            case 2:
+                salary+="$";
+                break;
+            case 3:
+                salary+="£";
                 break;
         }
         model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
