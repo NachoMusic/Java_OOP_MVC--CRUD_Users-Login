@@ -349,7 +349,7 @@ public class client_controller implements ActionListener {
                 new_client_view.client_typeField.addKeyListener(new java.awt.event.KeyAdapter() {
                     @Override
                     public void keyTyped(java.awt.event.KeyEvent evt) {
-                       client_typeFieldKeyTyped(evt);
+                        client_typeFieldKeyTyped(evt);
                     }
 
                     @Override
@@ -451,6 +451,7 @@ public class client_controller implements ActionListener {
             case deleteDataAButton:
                 singleton.pagerC.selectclient();
                 if (singleton.pagerC.getSelected() != null) {
+                    bllC.delete_clientMongo(singleton.clients.getClients().get(Integer.parseInt(singleton.pagerC.getSelected())-1).getDni());
                     singleton.clients.deleteData(Integer.parseInt(singleton.pagerC.getSelected()));
                     updatetable();
                     jsonC.createjson_auto();
@@ -651,7 +652,7 @@ public class client_controller implements ActionListener {
             case dischargedateField:
                 break;
             case client_typeField:
-                
+
                 break;
             case shoppingField:
                 bllC.validateShopping();
@@ -799,9 +800,9 @@ public class client_controller implements ActionListener {
         clientstable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User", 
+                    "Num", "DNI", "Name", "Surname", "Phone", "Email", "User",
                     "Status", "Birthday", "Age", "Discharge Date", "Client Type",
-                    "years_service","shopping","premium"
+                    "years_service", "shopping", "premium"
                 }
         ));
         clientstable.addMouseListener(new MouseAdapter() {

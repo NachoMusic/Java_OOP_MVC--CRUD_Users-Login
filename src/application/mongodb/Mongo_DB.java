@@ -20,7 +20,7 @@ public class Mongo_DB {
    
     public Mongo_DB() {
         try {
-            input = new FileInputStream("src/mongodb/ejer1_CRUD/mongo.properties"); 
+            input = new FileInputStream("src/application/mongodb/mongo.properties"); 
             try {
                 prop.load(input);
             } catch (Exception e) {

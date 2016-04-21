@@ -173,14 +173,13 @@ public class client extends users {
         this.setClient_type((String) dBObjectWorker.get("client_type"));
         this.setShopping(Float.parseFloat((String) dBObjectWorker.get("shopping")));
         this.setPremium(Boolean.parseBoolean((String) dBObjectWorker.get("premium")));
-
         return new client(super.getDni(), super.getName(), super.getSubname(), super.getPhone_number(),
                 super.getEmail(), super.getUser(), super.getPass(), super.getAvatar(), super.getState(),
                 super.getDate_birthday(), this.getDischarge_date(), this.getClient_type(), this.getShopping(),
                 this.isPremium());
     }
 
-    public BasicDBObject BD_to_client() {
+    public BasicDBObject client_to_BD() {
         BasicDBObject dBObjectWorker = new BasicDBObject();
         dBObjectWorker.append("dni", this.getDni());
         dBObjectWorker.append("name", this.getName());

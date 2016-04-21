@@ -6,14 +6,21 @@
 package application.modules.client.model.DAO;
 
 import application.models.Dates;
+import application.models.SingletonF;
+import application.modules.client.model.models.client;
+import application.modules.client.view.new_client_view;
 import static application.modules.client.view.new_client_view.*;
+import application.modules.users.model.singleton;
 import application.utils.Validate;
+import com.mongodb.BasicDBObject;
 import static java.awt.Color.red;
 import static java.awt.Color.white;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import com.mongodb.DBCollection;
+
 
 /**
  *
@@ -303,4 +310,34 @@ public class daoC {
         return validate;
     }
 
+    public static void insert_client(client c) {
+        SingletonF.collection.insert(c.client_to_BD());
+    }
+       
+    public static void delete_worker(String dni) {
+        SingletonF.collection.remove(new BasicDBObject().append("dni", dni));
+    }
+    
+    public static void update_worker(String dni) { //no va, arreglar
+        Dates date = new Dates("");
+        //Prepara para insertar un nuevo campo
+        BasicDBObject updateClient = new BasicDBObject();
+        updateClient.append("$set", new BasicDBObject().append("dni", new_client_view.dniField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("name", new_client_view.nameField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("subname", new_client_view.subnameField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("phone", new_client_view.phoneField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("email", new_client_view.emailField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("user", new_client_view.usernameField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("pass", new_client_view.passwordField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("avatar", new_client_view.avatarField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("state", new_client_view.statusField.getText()));
+        updateClient.append("$set", new BasicDBObject().append("date_birthday", date.DateToString(new_client_view.datebirthdayField.getCalendar(), 0)));
+        //Busca el/los registro/s con el nombre indicado
+        BasicDBObject searchById = new BasicDBObject();
+        searchById.append("dni", dni);
+ 
+        //Realiza la actualización
+        SingletonF.collection.updateMulti(searchById, updateClient);
+    }
+    
 }

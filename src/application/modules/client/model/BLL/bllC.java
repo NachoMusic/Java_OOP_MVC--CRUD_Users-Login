@@ -181,6 +181,8 @@ public class bllC {
             shopping = Float.parseFloat(shoppingField.getText());
             premium = premiumCheckbox.isSelected();
             //"dischargedate","clienttype","yearsservice","shopping","premium"
+            bllC.insert_clientMongo(new client(dni, name, subname, phone_number,
+                    email, user, pass, avatar, state, date_birthday,discharge_date,client_type,shopping,premium));
             singleton.clients.addData(new client(dni, name, subname, phone_number,
                     email, user, pass, avatar, state, date_birthday,discharge_date,client_type,shopping,premium));
         } else {
@@ -233,7 +235,7 @@ public class bllC {
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
             discharge_date = date.DateToString(dischargedateField.getCalendar(), 0);
-
+            bllC.update_clientMongo(singleton.clients.getData(Clienttochange - 1).getDni());
             singleton.clients.getData(Clienttochange - 1).setDni(dni);
             singleton.clients.getData(Clienttochange - 1).setName(name);
             singleton.clients.getData(Clienttochange - 1).setSubname(subname);
@@ -255,4 +257,17 @@ public class bllC {
         }
         return validA;
     }
+    
+    public static void insert_clientMongo(client c){
+        daoC.insert_client(c);
+    }
+    
+    public static void delete_clientMongo(String dni){
+        daoC.delete_worker(dni);
+    }
+    
+    public static void update_clientMongo(String dni){
+        daoC.update_worker(dni);
+    }
+    
 }

@@ -226,7 +226,6 @@ public class PagerC {
     }
     
     public void selectclient(){
-        
         selected = String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 0));
         dniform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 1)));
         nameform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 2)));
@@ -237,7 +236,6 @@ public class PagerC {
         stateform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 7)));
         birthdayform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 8)));
         ageform.setText(String.valueOf(model.getValueAt(clientstable.getSelectedRow(), 9)));
-        System.out.println("The rest will come eventually");
         /*
         hiringdateform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 10)));
         salaryform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 11)));

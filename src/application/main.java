@@ -9,6 +9,7 @@ import application.bbdd.pool;
 import application.modules.menu_config.model.Config;
 import application.modules.menu_config.model.Language;
 import application.models.SingletonF;
+import static application.models.SingletonF.mongo;
 import application.modules.menu_config.controller.controller;
 import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
@@ -18,6 +19,7 @@ import application.modules.client.model.BLL.lib_files.jsonC;
 import application.utils.Config_json;
 import application.modules.menu_config.view.app_view;
 import application.modules.registered.model.BLL.lib_files.jsonR;
+import application.mongodb.Mongo_DB;
 
 /**
  *
@@ -43,6 +45,15 @@ public class main {
         jsonC.load_json_auto();
         jsonR.load_json_auto();
         pool.inicializa_BasicDataSourceFactory();
+        //mongo
+        SingletonF.mongo = new Mongo_DB();
+        SingletonF.nom_bd = mongo.getNom_bd();
+        SingletonF.nom_table = mongo.getNom_table();
+        SingletonF.client = Mongo_DB.connect();
+        if (SingletonF.client != null) {
+            SingletonF.db = mongo.getDb();
+            SingletonF.collection = mongo.getCollection();
+        }
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
