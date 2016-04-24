@@ -103,19 +103,22 @@ public class PagerC {
         int translatedpage = 0;
 
         if (maxpage < movepage) //SI HAY MENOS CLIENTES QUE NUM PAGINACIÓN 
-            for (int i = 0; i < singleton.clients.size(); i++) 
+            for (int i = 0; i < singleton.clients.size(); i++){
                 printclients(i);
+            }
         else {  //SI HAY MÁS CLIENTES QUE NUM PAGINACIÓN 
             if (page == 0)
                 translatedpage = 0;
             else 
                 translatedpage = page * movepage;          
             if ((translatedpage + movepage) >= maxpage) 
-                for (int i = translatedpage; i < singleton.clients.size(); i++)
-                    printclients(i);               
+                for (int i = translatedpage; i < singleton.clients.size(); i++){
+                    printclients(i);
+                }
             else
-                for (int i = translatedpage; i < translatedpage + movepage; i++) 
-                    printclients(i);                          
+                for (int i = translatedpage; i < translatedpage + movepage; i++){
+                    printclients(i);       
+                }
         }
         pagefield.setText(String.valueOf(page+1)+"/"+(int)((maxpage/(movepage))+1));
     }

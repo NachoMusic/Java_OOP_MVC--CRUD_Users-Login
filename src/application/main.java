@@ -42,7 +42,7 @@ public class main {
                 txt.load_txt_auto();
                 break;
         }
-        jsonC.load_json_auto();
+        //jsonC.load_json_auto();
         jsonR.load_json_auto();
         pool.inicializa_BasicDataSourceFactory();
         //mongo
@@ -54,6 +54,7 @@ public class main {
             SingletonF.db = mongo.getDb();
             SingletonF.collection = mongo.getCollection();
         }
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 

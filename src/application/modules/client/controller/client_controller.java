@@ -14,6 +14,7 @@ import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.users.model.singleton;
 import application.modules.client.model.BLL.bllC;
 import application.modules.client.model.BLL.lib_files.jsonC;
+import application.modules.client.model.DAO.daoC;
 import application.modules.client.model.pager.PagerC;
 import application.modules.client.view.client_view;
 import static application.modules.client.view.client_view.backwards;
@@ -64,6 +65,7 @@ import javax.swing.table.TableRowSorter;
 import static application.modules.client.view.client_view.clientcreated;
 import static application.modules.client.view.new_client_view.client_typelabel;
 import static application.modules.client.view.new_client_view.dischargedatelabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -787,6 +789,8 @@ public class client_controller implements ActionListener {
     }
 
     public static void updatetable() {
+        singleton.clients.getClients().clear();
+        daoC.retrieve_admins();
         JTable jTable = new JTable() {
             private static final long serialVersionUID = 1L;
 

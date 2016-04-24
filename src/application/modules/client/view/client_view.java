@@ -5,6 +5,8 @@
  */
 package application.modules.client.view;
 
+import application.modules.client.model.DAO.daoC;
+
 /**
  *
  * @author nacho
@@ -616,7 +618,7 @@ public class client_view extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(importAButton)
                             .addComponent(backA))
-                        .addGap(213, 213, 213)))
+                        .addGap(187, 187, 187)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(486, 486, 486)

@@ -168,11 +168,11 @@ public class client extends users {
         super.setAvatar((String) dBObjectWorker.get("avatar"));
         super.setState((String) dBObjectWorker.get("state"));
         super.setDate_birthday((String) dBObjectWorker.get("date_birthday"));
-        super.setAge(Integer.parseInt((String) dBObjectWorker.get("age")));
+        super.setAge((int) dBObjectWorker.get("age"));
         this.setDischarge_date((String) dBObjectWorker.get("discharge_date"));
         this.setClient_type((String) dBObjectWorker.get("client_type"));
-        this.setShopping(Float.parseFloat((String) dBObjectWorker.get("shopping")));
-        this.setPremium(Boolean.parseBoolean((String) dBObjectWorker.get("premium")));
+        this.setShopping(Float.parseFloat((Double) dBObjectWorker.get("shopping")+""));
+        this.setPremium((boolean) dBObjectWorker.get("premium"));
         return new client(super.getDni(), super.getName(), super.getSubname(), super.getPhone_number(),
                 super.getEmail(), super.getUser(), super.getPass(), super.getAvatar(), super.getState(),
                 super.getDate_birthday(), this.getDischarge_date(), this.getClient_type(), this.getShopping(),

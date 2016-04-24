@@ -7,18 +7,20 @@ package application.modules.client.model.DAO;
 
 import application.models.Dates;
 import application.models.SingletonF;
+import static application.models.SingletonF.collection;
 import application.modules.client.model.models.client;
 import application.modules.client.view.new_client_view;
 import static application.modules.client.view.new_client_view.*;
+import application.modules.users.model.singleton;
 import application.utils.Validate;
 import com.mongodb.BasicDBObject;
+import com.mongodb.DBCursor;
 import static java.awt.Color.red;
 import static java.awt.Color.white;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 
 /**
  *
@@ -186,7 +188,6 @@ public class daoC {
         return image;
     }
 
-
     public static boolean validateStatus() {
         boolean validate = false;
         if (statusField.getText().isEmpty()) {
@@ -311,18 +312,18 @@ public class daoC {
     public static void insert_client(client c) {
         SingletonF.collection.insert(c.client_to_BD());
     }
-       
+
     public static void delete_worker(String dni) {
         SingletonF.collection.remove(new BasicDBObject().append("dni", dni));
     }
-    
+
     public static void update_worker(String dni) {
         //Prepara para insertar un nuevo campo
-        BasicDBObject updateDni = new BasicDBObject(),updateName = new BasicDBObject(),
-                updateSurname = new BasicDBObject(),updatePhone = new BasicDBObject(),
-                updateEmail = new BasicDBObject(),updateUser = new BasicDBObject(),
-                updatePass = new BasicDBObject(),updateAvatar = new BasicDBObject(),
-                updateState = new BasicDBObject(),updateDate_birthday = new BasicDBObject(),
+        BasicDBObject updateDni = new BasicDBObject(), updateName = new BasicDBObject(),
+                updateSurname = new BasicDBObject(), updatePhone = new BasicDBObject(),
+                updateEmail = new BasicDBObject(), updateUser = new BasicDBObject(),
+                updatePass = new BasicDBObject(), updateAvatar = new BasicDBObject(),
+                updateState = new BasicDBObject(), updateDate_birthday = new BasicDBObject(),
                 updateClient_type = new BasicDBObject(), updatePremium = new BasicDBObject();
         updateDni.append("$set", new BasicDBObject().append("dni", new_client_view.dniField.getText()));
         updateName.append("$set", new BasicDBObject().append("name", new_client_view.nameField.getText()));
@@ -354,5 +355,32 @@ public class daoC {
         SingletonF.collection.updateMulti(searchById, updateClient_type);
         SingletonF.collection.updateMulti(searchById, updatePremium);
     }
-    
+
+    /*
+    public static void update_worker2(String dni, client c) {
+        //Prepara para insertar un nuevo campo
+        BasicDBObject updateClient = new BasicDBObject();
+        updateClient.append("$set", new BasicDBObject().append("user", c));
+        //Busca el/los registro/s con el nombre indicado
+        BasicDBObject searchById = new BasicDBObject();
+        searchById.append("dni", dni);
+
+        //Realiza la actualización
+        SingletonF.collection.updateMulti(searchById, updateClient);
+    }*/
+
+    public static void retrieve_admins() {
+        //DBCollection dbCollection = db.getCollection(tableName);
+        client c = new client();
+        DBCursor cur = collection.find();
+        for (int i = 0; i<cur.size();i++) {
+            BasicDBObject document = (BasicDBObject) cur.next();
+            c = c.DB_to_client(document);
+            client d = new client(c.getDni(),c.getName(),c.getSubname(), c.getPhone_number(),
+                    c.getEmail(), c.getUser(), c.getPass(), c.getAvatar(), c.getState(), c.getDate_birthday(),
+                    c.getDischarge_date(), c.getClient_type(), c.getShopping(), c.isPremium());
+            singleton.clients.getClients().add(d);
+        }
+    }
+
 }

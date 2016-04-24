@@ -235,7 +235,8 @@ public class bllC {
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
             discharge_date = date.DateToString(dischargedateField.getCalendar(), 0);
-            bllC.update_clientMongo(singleton.clients.getData(Clienttochange - 1).getDni());
+            String dniAnterior = singleton.clients.getData(Clienttochange - 1).getDni();
+            
             singleton.clients.getData(Clienttochange - 1).setDni(dni);
             singleton.clients.getData(Clienttochange - 1).setName(name);
             singleton.clients.getData(Clienttochange - 1).setSubname(subname);
@@ -250,6 +251,7 @@ public class bllC {
             singleton.clients.getData(Clienttochange - 1).setClient_type(client_typeField.getText());
             singleton.clients.getData(Clienttochange - 1).setShopping(Float.parseFloat(shoppingField.getText()));
             singleton.clients.getData(Clienttochange - 1).setPremium(premiumCheckbox.isSelected());
+            bllC.update_clientMongo(dniAnterior,singleton.clients.getData(Clienttochange - 1));
         } else {
             saveLabel.setVisible(true);
             saveLabel.setText("The client was not edited, check the errors in the fields");
@@ -266,8 +268,12 @@ public class bllC {
         daoC.delete_worker(dni);
     }
     
-    public static void update_clientMongo(String dni){
+    public static void update_clientMongo(String dni, client c){
         daoC.update_worker(dni);
+    }
+    
+    public static void retrieve_admins(){
+        daoC.retrieve_admins();
     }
     
 }
