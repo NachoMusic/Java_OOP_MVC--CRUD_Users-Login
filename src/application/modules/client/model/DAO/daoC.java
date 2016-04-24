@@ -324,18 +324,21 @@ public class daoC {
                 updateEmail = new BasicDBObject(), updateUser = new BasicDBObject(),
                 updatePass = new BasicDBObject(), updateAvatar = new BasicDBObject(),
                 updateState = new BasicDBObject(), updateDate_birthday = new BasicDBObject(),
-                updateClient_type = new BasicDBObject(), updatePremium = new BasicDBObject();
+                updateClient_type = new BasicDBObject(), updatePremium = new BasicDBObject(),
+                updateDischarge_date = new BasicDBObject();
         updateDni.append("$set", new BasicDBObject().append("dni", new_client_view.dniField.getText()));
         updateName.append("$set", new BasicDBObject().append("name", new_client_view.nameField.getText()));
         updateSurname.append("$set", new BasicDBObject().append("subname", new_client_view.subnameField.getText()));
-        updatePhone.append("$set", new BasicDBObject().append("phone", new_client_view.phoneField.getText()));
+        updatePhone.append("$set", new BasicDBObject().append("phone_number", new_client_view.phoneField.getText()));
         updateEmail.append("$set", new BasicDBObject().append("email", new_client_view.emailField.getText()));
         updateUser.append("$set", new BasicDBObject().append("user", new_client_view.usernameField.getText()));
         updatePass.append("$set", new BasicDBObject().append("pass", new_client_view.passwordField.getText()));
         updateAvatar.append("$set", new BasicDBObject().append("avatar", new_client_view.avatarField.getText()));
         updateState.append("$set", new BasicDBObject().append("state", new_client_view.statusField.getText()));
         updateClient_type.append("$set", new BasicDBObject().append("client_type", new_client_view.client_typeField.getText()));
-        updateDate_birthday.append("$set", new BasicDBObject().append("date_birthday", new_client_view.phoneField.getText()));
+        Dates d = new Dates("");
+        updateDate_birthday.append("$set", new BasicDBObject().append("date_birthday", d.DateToString(new_client_view.datebirthdayField.getCalendar(), 0)));
+        updateDischarge_date.append("discharge_date", d.DateToString(new_client_view.dischargedateField.getCalendar(), 0));
         updatePremium.append("$set", new BasicDBObject().append("premium", new_client_view.premiumCheckbox.isSelected()));
         //Busca el/los registro/s con el nombre indicado
         BasicDBObject searchById = new BasicDBObject();
