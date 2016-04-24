@@ -16,6 +16,8 @@ import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.view.new_admin_view;
 import application.modules.client.model.BLL.lib_files.jsonC;
+import application.modules.login.controller.login_controller;
+import application.modules.login.view.login_view;
 import application.utils.Config_json;
 import application.modules.menu_config.view.app_view;
 import application.modules.registered.model.BLL.lib_files.jsonR;
@@ -82,7 +84,7 @@ public class main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new controller(new app_view(),0).init("menu");
+                new login_controller(new login_view()).init();
             }
         }
         );

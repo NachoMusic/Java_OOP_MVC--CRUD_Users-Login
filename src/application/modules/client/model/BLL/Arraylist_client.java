@@ -22,16 +22,16 @@ public class Arraylist_client {
         client client1 = a;
         boolean action = true;
 
-        /*for (int i = 0; i < clients.size(); i++) {
+        for (int i = 0; i < clients.size(); i++) {
             if (clients.get(i).equals(client1, 0)) {
                 action = false;
             }
         }
-        if (action) {*/
+        if (action) {
             clients.add(a);
-        /*} else {
+        } else {
             JOptionPane.showMessageDialog(null, "There is already a user with the same DNI");
-        }*/
+        }
         //System.out.print(clients.get(0));
     }
 
