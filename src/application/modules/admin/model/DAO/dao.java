@@ -32,6 +32,11 @@ public class dao {
     public static ImageIcon warning = new ImageIcon("src/application/view/img/warning.png");
     public static ImageIcon valid = new ImageIcon("src/application/view/img/ok.png");
 
+    /**
+     * Validates the dni from the new_admin_view
+     *
+     * @return boolean, true if the dni is correct
+     */
     public static boolean validateDNI() {
         String DNIletters = "TRWAGMYFPDXBNJZSQVHLCKET";
         String number = "";
@@ -70,6 +75,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the name from the new_admin_view
+     *
+     * @return boolean, true if the dni is correct
+     */
     public static boolean validateName() {
         boolean validate = false;
         if (Validate.validateText(nameField.getText())) {
@@ -85,6 +95,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the subname of the new_admin_view
+     *
+     * @return boolean, true if the surname is correct
+     */
     public static boolean validateSubname() {
         boolean validate = false;
         if (Validate.validateText(subnameField.getText())) {
@@ -100,6 +115,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the phone of the new_admin-view
+     *
+     * @return boolean, true if the phone is correct
+     */
     public static boolean validatePhone() {
         boolean validate = false;
         if (Validate.validatePhone(phoneField.getText())) {
@@ -115,6 +135,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the email of the new_admin_view
+     *
+     * @return boolean, true if the Email is correct
+     */
     public static boolean validateEmail() {
         boolean validate = false;
         if (Validate.validateEmail(emailField.getText())) {
@@ -130,6 +155,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the username of the new_admin_view
+     *
+     * @return boolean, true if the username is correct
+     */
     public static boolean validateUsername() {
         boolean validate = false;
         if (usernameField.getText().isEmpty()) {
@@ -145,6 +175,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the password of the new_admin_view
+     *
+     * @return boolean, true if the password is correct
+     */
     public static boolean validatePassword() {
         boolean validate = false;
         if (passwordField.getText().isEmpty()) {
@@ -160,6 +195,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the avatar of the new_admin_view
+     *
+     * @return boolean, true if the avatar is correct
+     */
     public static String validateAvatar() {
         boolean validate = false;
         FileNameExtensionFilter img = new FileNameExtensionFilter("JPG image", "jpg");
@@ -189,6 +229,11 @@ public class dao {
         return image;
     }
 
+    /**
+     * Validates the status of the new_admin_view
+     *
+     * @return boolean, true if the status is correct
+     */
     public static boolean validateStatus() {
         boolean validate = false;
         if (statusField.getText().isEmpty()) {
@@ -204,6 +249,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the birthday of the new_admin_view
+     *
+     * @return boolean, true if the birthday is correct
+     */
     public static boolean validateBirthday() {
         boolean validate = true;
 
@@ -237,6 +287,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the hiring date of the new_admin_view
+     *
+     * @return boolean, true if the hiring date is correct
+     */
     public static boolean validateHiringdate() {
         boolean validate = true;
 
@@ -282,6 +337,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the salary of the new_admin_view
+     *
+     * @return boolean, true if the salary is correct
+     */
     public static boolean validateSalary() {
         boolean validate = false;
         if (Validate.validateFloat(salaryField.getText())) {
@@ -297,6 +357,11 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Validates the activity of the new_admin_view
+     *
+     * @return boolean, true if the activity is correct
+     */
     public static boolean validateActivity() {
         boolean validate = false;
         if (Validate.validateInt(activityField.getText())) {
@@ -312,6 +377,13 @@ public class dao {
         return validate;
     }
 
+    /**
+     * Saves the admins from the arraylist in the singleton on Mysql database
+     *
+     * @param _con The connection given by the bll
+     * @return boolean, if it was well done
+     * @throws SQLException if an exception during the connection occurred
+     */
     public static boolean saveadminsBBDD(Connection _con) throws SQLException {
         PreparedStatement stmt = null;
         boolean valid = true;
@@ -321,7 +393,7 @@ public class dao {
             for (int i = 0; i < singleton.admins.size(); i++) {
                 stmt = _con.prepareStatement("INSERT INTO admins"
                         + "(dni,name,subname,phone_number,email,user,pass,"
-                        + "avatar,state,date_birthday,age,hirin_date,salary,years_of_service,activity) "
+                        + "avatar,state,date_birthday,age,hirin_date,salary,years_of_service,athectivity) "
                         + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                 //System.out.println(i+" "+singleton.admins.getAdmins().get(i).getUser());
                 stmt.setString(1, singleton.admins.getAdmins().get(i).getDni());
@@ -348,6 +420,12 @@ public class dao {
         return valid;
     }
 
+    /**
+     * Deletes the selected admin from the jtable on the database
+     *
+     * @param _con The connection given by the bll
+     * @return boolean, if it was well deleted
+     */
     public static boolean deleteadminBBDD(Connection _con) {
         PreparedStatement stmt = null;
         boolean valid = false;
@@ -401,12 +479,12 @@ public class dao {
         }
         return valid;
     }
-    
-    public static boolean editadminBBDD(Connection _con){
-        boolean valid=true;
+
+    public static boolean editadminBBDD(Connection _con) {
+        boolean valid = true;
         Dates date = new Dates("");
         PreparedStatement stmt = null;
-        
+
         try {
             stmt = _con.prepareStatement("UPDATE application.admins SET dni=?, "
                     + "name=?, subname=?, phone_number=?, email=?, user=?, pass=?, avatar=?, state=?,"
@@ -414,12 +492,12 @@ public class dao {
                     + "years_of_service=?, activity=? WHERE DNI=?");
             admin a = new admin(new_admin_view.dniField.getText(), new_admin_view.nameField.getText(),
                     new_admin_view.subnameField.getText(), new_admin_view.phoneField.getText(),
-                new_admin_view.emailField.getText(), new_admin_view.usernameField.getText(),
+                    new_admin_view.emailField.getText(), new_admin_view.usernameField.getText(),
                     new_admin_view.passwordField.getText(), new_admin_view.avatarField.getText(), new_admin_view.statusField.getText(),
                     date.DateToString(new_admin_view.datebirthdayField.getCalendar(), 0),
-                date.DateToString(new_admin_view.hiringdateField.getCalendar(), 0),
-                Float.parseFloat(new_admin_view.salaryField.getText()), Integer.parseInt(new_admin_view.activityField.getText()));
-            
+                    date.DateToString(new_admin_view.hiringdateField.getCalendar(), 0),
+                    Float.parseFloat(new_admin_view.salaryField.getText()), Integer.parseInt(new_admin_view.activityField.getText()));
+
             stmt.setString(1, a.getDni());
             stmt.setString(2, a.getName());
             stmt.setString(3, a.getSubname());
@@ -444,18 +522,18 @@ public class dao {
         return valid;
     }
 
-    public static boolean readadminsBBDD(Connection _con){
-        boolean valid=true;
+    public static boolean readadminsBBDD(Connection _con) {
+        boolean valid = true;
         Dates date = new Dates("");
         PreparedStatement stmt = null;
         ResultSet rs = null;
         admin ad = null;
-        
+
         singleton.admins.getAdmins().clear();
-        try{
+        try {
             stmt = _con.prepareStatement("SELECT * FROM admins");
             rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 ad = new admin();
                 ad.setDni(rs.getString("dni"));
                 ad.setName(rs.getString("name"));
@@ -470,16 +548,16 @@ public class dao {
                 ad.setHirin_date(rs.getString("hirin_date"));
                 ad.setSalary(rs.getFloat("salary"));
                 ad.setActivity(rs.getInt("activity"));
-                
+
                 singleton.admins.addData(ad);
-                
-                valid=true;
+
+                valid = true;
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un problema al leer los admins");
         }
-        
+
         return valid;
     }
-    
+
 }

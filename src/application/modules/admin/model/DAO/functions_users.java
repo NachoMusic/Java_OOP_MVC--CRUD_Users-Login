@@ -10,29 +10,13 @@ import application.utils.Menus;
 
 public class functions_users {
 
-    
-
     public static admin newadmin() {
         String dni, name, subname, phone_number, email, user, pass,
                 avatar, state, date_birthday, hiring_date;
         float salary;
         int activity;
-        String dateFormat = "";
+        String dateFormat = "dd/mm/yyyy";
 
-        switch (SingletonF.configApp.getDate_config()) {
-            case 0:
-                dateFormat = "dd/mm/yyyy";
-                break;
-            case 1:
-                dateFormat = "dd-mm-yyyy";
-                break;
-            case 2:
-                dateFormat = "yyyy/mm/dd";
-                break;
-            case 3:
-                dateFormat = "yyyy-mm-dd";
-                break;
-        }
         dni = Functions.validatestring("dni", "dni");
         name = Functions.validatestring("name", "name");
         subname = Functions.validatestring("subname", "subname");
