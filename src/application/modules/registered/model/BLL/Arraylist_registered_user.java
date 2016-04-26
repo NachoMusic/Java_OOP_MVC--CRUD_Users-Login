@@ -1,11 +1,11 @@
 package application.modules.registered.model.BLL;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import javax.swing.JOptionPane;
 import application.modules.admin.model.DAO.functions_users;
 import application.modules.admin.model.models.admin;
 import application.modules.registered.model.models.registered_user;
+import application.modules.users.model.singleton;
 import application.utils.Functions;
 
 public class Arraylist_registered_user {
@@ -81,13 +81,14 @@ public class Arraylist_registered_user {
         }
     }
 
-    public void find(int option, String dni) {
+    public registered_user find(int option, String param) {
         admin admin1 = new admin();
+        registered_user usreg = new registered_user();
         int times = 0;
 
         switch (option) {
             case 0://By dni
-                admin1.setDni(dni);
+                admin1.setDni(param);
                 for (int i = 0; i < registered_users.size(); i++) {
                     if (registered_users.get(i).equals(admin1, 0)) {
                         JOptionPane.showMessageDialog(null, registered_users.get(i).toString());// I removed config from it
@@ -95,11 +96,11 @@ public class Arraylist_registered_user {
                     }
                 }
                 if (times == 0) {
-                    JOptionPane.showMessageDialog(null, "No admins found");
+                    JOptionPane.showMessageDialog(null, "No user found");
                 }
                 break;
             case 1://By name
-                admin1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
+                admin1.setName(param);
                 for (int i = 0; i < registered_users.size(); i++) {
                     if (registered_users.get(i).equals(admin1, 1)) {
                         JOptionPane.showMessageDialog(null, registered_users.get(i).toString());//I removed config from it
@@ -107,10 +108,25 @@ public class Arraylist_registered_user {
                     }
                 }
                 if (times == 0) {
-                    JOptionPane.showMessageDialog(null, "No admins found");
+                    JOptionPane.showMessageDialog(null, "No user found");
                 }
                 break;
+            case 2://By username
+                admin1.setUser(param);
+                for (int i = 0; i < registered_users.size(); i++) {
+                    if (registered_users.get(i).equals(admin1, 2)) {
+                        usreg = registered_users.get(i);
+                        times++;
+                    }
+                }
+                if (times == 0) {
+                    JOptionPane.showMessageDialog(null, "No user found");
+                }
+                
+                singleton.pagerR.setSelected(times+1+"");
+                break;
         }
+        return usreg;
     }
 
     public void deleteData(int i) {

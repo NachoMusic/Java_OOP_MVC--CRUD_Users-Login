@@ -15,4 +15,8 @@ public class bllLogin {
     public static boolean sign_in_Admin() {
         return daoLogin.sign_in_Admin();
     }
+    
+    public static boolean sign_in_Usreg() {
+        return daoLogin.sign_in_Usreg();
+    }
 }

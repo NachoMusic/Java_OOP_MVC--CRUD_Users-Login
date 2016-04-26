@@ -196,7 +196,9 @@ public abstract class users implements Comparable <users>, Serializable {
 			return ((this.dni.toUpperCase()).equals(user.getDni().toUpperCase()));
 		case 1:
 			return ((this.name.toUpperCase()).equals(user.getName().toUpperCase()));
-		}
+                case 2:
+                    return ((this.user.toUpperCase()).equals(user.getUser().toUpperCase()));
+                }
 		return false;
 	}
 	public int compareTo(users user){

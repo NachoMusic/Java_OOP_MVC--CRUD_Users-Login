@@ -10,17 +10,16 @@ import application.modules.menu_config.model.Config;
 import application.modules.menu_config.model.Language;
 import application.models.SingletonF;
 import static application.models.SingletonF.mongo;
-import application.modules.menu_config.controller.controller;
 import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
 import application.modules.admin.view.new_admin_view;
-import application.modules.client.model.BLL.lib_files.jsonC;
 import application.modules.login.controller.login_controller;
 import application.modules.login.view.login_view;
 import application.utils.Config_json;
-import application.modules.menu_config.view.app_view;
 import application.modules.registered.model.BLL.lib_files.jsonR;
+import application.modules.registered.model.pager.PagerR;
+import application.modules.users.model.singleton;
 import application.mongodb.Mongo_DB;
 
 /**
@@ -44,6 +43,7 @@ public class main {
                 txt.load_txt_auto();
                 break;
         }
+        singleton.pagerR = new PagerR();
         //jsonC.load_json_auto();
         jsonR.load_json_auto();
         pool.inicializa_BasicDataSourceFactory();

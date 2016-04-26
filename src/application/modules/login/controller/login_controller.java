@@ -5,6 +5,7 @@
  */
 package application.modules.login.controller;
 
+import application.modules.login.model.BLL.bllLogin;
 import application.modules.login.view.login_view;
 import application.modules.menu_config.controller.controller;
 import application.modules.menu_config.view.app_view;
@@ -80,8 +81,17 @@ public class login_controller implements ActionListener {
             case passwordLogin:
                 break;
             case loginbutton:
-                login.dispose();
-                new controller(new app_view(),0).init("menu");
+                switch(login_view.typecombo.getSelectedIndex()){
+                    case 0:
+                        break;
+                    case 1:
+                        bllLogin.sign_in_Usreg();
+                        break;
+                    case 2:
+                        login.dispose();
+                        new controller(new app_view(),0).init("menu");
+                        break;
+                }
                 break;
         }
     }

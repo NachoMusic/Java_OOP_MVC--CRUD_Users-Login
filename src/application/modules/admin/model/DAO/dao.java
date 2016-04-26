@@ -441,6 +441,12 @@ public class dao {
         return valid;
     }
 
+    /**
+     * Creates a single admin on the database mysql
+     *
+     * @param _con The connection given by the bll
+     * @return boolean, if it was well created
+     */
     public static boolean createadminBBDD(Connection _con) {
         PreparedStatement stmt = null;
         boolean valid = true;
@@ -480,6 +486,12 @@ public class dao {
         return valid;
     }
 
+    /**
+     * Updates the data of an admin on the database mysql
+     *
+     * @param _con The connection given by the bll
+     * @return boolean, if it was well updated
+     */
     public static boolean editadminBBDD(Connection _con) {
         boolean valid = true;
         Dates date = new Dates("");
@@ -522,6 +534,12 @@ public class dao {
         return valid;
     }
 
+    /**
+     * Reads the admins from the database mysql
+     *
+     * @param _con The connection given by the bll
+     * @return boolean, if it was well created
+     */
     public static boolean readadminsBBDD(Connection _con) {
         boolean valid = true;
         Dates date = new Dates("");
