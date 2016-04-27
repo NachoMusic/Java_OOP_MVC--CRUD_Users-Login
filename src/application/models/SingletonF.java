@@ -18,4 +18,7 @@ public class SingletonF {
     public static DB db;
     public static String nom_table;
     public static DBCollection collection;
+    //User
+    public static String typeconnected;
+    public static String usernameConnected;
 }

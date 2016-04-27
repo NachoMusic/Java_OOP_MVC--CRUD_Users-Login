@@ -122,8 +122,7 @@ public class Arraylist_registered_user {
                 if (times == 0) {
                     JOptionPane.showMessageDialog(null, "No user found");
                 }
-                
-                singleton.pagerR.setSelected(times+1+"");
+                //singleton.pagerR.setSelected(times+"");
                 break;
         }
         return usreg;

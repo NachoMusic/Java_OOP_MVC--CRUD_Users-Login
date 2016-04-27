@@ -6,6 +6,7 @@
 package application.modules.registered.model.BLL;
 
 import application.models.Dates;
+import application.models.SingletonF;
 import application.modules.users.model.singleton;
 import application.modules.registered.controller.registered_controller;
 import application.modules.registered.model.DAO.daoR;
@@ -223,20 +224,33 @@ public class bllR {
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
             karma = karmaField.getText();
             activity = Integer.parseInt(activityField.getText());
-
-            singleton.registered_users.getData(Registeredtochange - 1).setDni(dni);
-            singleton.registered_users.getData(Registeredtochange - 1).setName(name);
-            singleton.registered_users.getData(Registeredtochange - 1).setSubname(subname);
-            singleton.registered_users.getData(Registeredtochange - 1).setPhone_number(phone_number);
-            singleton.registered_users.getData(Registeredtochange - 1).setEmail(email);
-            singleton.registered_users.getData(Registeredtochange - 1).setUser(user);
-            singleton.registered_users.getData(Registeredtochange - 1).setPass(pass);
-            singleton.registered_users.getData(Registeredtochange - 1).setAvatar(avatar);
-            singleton.registered_users.getData(Registeredtochange - 1).setState(state);
-            singleton.registered_users.getData(Registeredtochange - 1).setDate_birthday(date_birthday);
-            singleton.registered_users.getData(Registeredtochange - 1).setKarma(karma);
-            singleton.registered_users.getData(Registeredtochange - 1).setActivity(activity);
-            
+            if (SingletonF.typeconnected == "usreg") {
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setDni(dni);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setName(name);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setSubname(subname);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setPhone_number(phone_number);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setEmail(email);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setUser(user);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setPass(pass);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setAvatar(avatar);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setState(state);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setDate_birthday(date_birthday);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setKarma(karma);
+                singleton.registered_users.find(2, SingletonF.usernameConnected).setActivity(activity);
+            } else {
+                singleton.registered_users.getData(Registeredtochange - 1).setDni(dni);
+                singleton.registered_users.getData(Registeredtochange - 1).setName(name);
+                singleton.registered_users.getData(Registeredtochange - 1).setSubname(subname);
+                singleton.registered_users.getData(Registeredtochange - 1).setPhone_number(phone_number);
+                singleton.registered_users.getData(Registeredtochange - 1).setEmail(email);
+                singleton.registered_users.getData(Registeredtochange - 1).setUser(user);
+                singleton.registered_users.getData(Registeredtochange - 1).setPass(pass);
+                singleton.registered_users.getData(Registeredtochange - 1).setAvatar(avatar);
+                singleton.registered_users.getData(Registeredtochange - 1).setState(state);
+                singleton.registered_users.getData(Registeredtochange - 1).setDate_birthday(date_birthday);
+                singleton.registered_users.getData(Registeredtochange - 1).setKarma(karma);
+                singleton.registered_users.getData(Registeredtochange - 1).setActivity(activity);
+            }
         } else {
             saveLabel.setVisible(true);
             saveLabel.setText("The registered user was not edited, check the errors in the fields");

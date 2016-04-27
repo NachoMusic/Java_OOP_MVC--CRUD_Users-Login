@@ -168,7 +168,7 @@ public class new_registered_view extends javax.swing.JFrame {
         getContentPane().add(statuslabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 20, 20));
 
         saveRegisteredButton.setText("Save");
-        getContentPane().add(saveRegisteredButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 100, -1));
+        getContentPane().add(saveRegisteredButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 451, 130, -1));
 
         discartButton.setText("Discart");
         getContentPane().add(discartButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 90, -1));

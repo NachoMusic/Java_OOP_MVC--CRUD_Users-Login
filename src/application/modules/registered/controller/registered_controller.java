@@ -11,6 +11,8 @@ import application.modules.menu_config.view.app_view;
 import application.modules.admin.model.BLL.lib_files.json;
 import application.modules.admin.model.BLL.lib_files.txt;
 import application.modules.admin.model.BLL.lib_files.xml;
+import application.modules.login.controller.login_controller;
+import application.modules.login.view.login_view;
 import application.modules.users.model.singleton;
 import application.modules.registered.model.BLL.bllR;
 import application.modules.registered.model.BLL.lib_files.jsonR;
@@ -596,13 +598,25 @@ public class registered_controller implements ActionListener {
                 break;
             //new_admin_view form
             case discartButton:
-                registered_f.dispose();
-                new registered_controller(new registered_view(), 0).init("v");
+                if (SingletonF.typeconnected == "usreg") {
+                    registered_f.dispose();
+                    new login_controller(new login_view()).init();
+                } else {
+                    registered_f.dispose();
+                    new registered_controller(new registered_view(), 0).init("v");
+                }
                 break;
             case emptyButton:
                 break;
             case saveAdminButton:
-                if (emptyButton.isVisible()) {
+                if (SingletonF.typeconnected == "usreg") {
+                    if (bllR.editRegistered()) {
+                        registered_f.dispose();
+                        new login_controller(new login_view()).init();
+                        jsonR.createjson_auto();
+                        Config_json.create_conf_json();
+                    }
+                } else if (emptyButton.isVisible()) {
                     if (bllR.newRegistered()) {
                         registered_f.dispose();
                         new registered_controller(new registered_view(), 0).init("v");

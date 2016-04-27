@@ -5,6 +5,7 @@
  */
 package application.modules.login.controller;
 
+import application.models.SingletonF;
 import application.modules.login.model.BLL.bllLogin;
 import application.modules.login.view.login_view;
 import application.modules.menu_config.controller.controller;
@@ -23,7 +24,6 @@ import javax.swing.JFrame;
 public class login_controller implements ActionListener {
 
     public static login_view login;
-    private String type = "client";
 
     public login_controller(JFrame init) {
         login = (login_view) init;
@@ -64,17 +64,6 @@ public class login_controller implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         switch (action.valueOf(ae.getActionCommand())) {
             case typecombo:
-                switch(login_view.typecombo.getSelectedIndex()){
-                    case 0:
-                        type = "client";
-                        break;
-                    case 1:
-                        type = "usreg";
-                        break;
-                    case 2:
-                        type = "admin";
-                        break;
-                }
                 break;
             case usernameLogin:
                 break;
@@ -83,11 +72,14 @@ public class login_controller implements ActionListener {
             case loginbutton:
                 switch(login_view.typecombo.getSelectedIndex()){
                     case 0:
+                        SingletonF.typeconnected="client";
                         break;
                     case 1:
+                        SingletonF.typeconnected="usreg";
                         bllLogin.sign_in_Usreg();
                         break;
                     case 2:
+                        SingletonF.typeconnected="admin";
                         login.dispose();
                         new controller(new app_view(),0).init("menu");
                         break;
