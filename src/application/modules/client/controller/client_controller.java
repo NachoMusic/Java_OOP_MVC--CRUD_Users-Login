@@ -65,6 +65,8 @@ import javax.swing.table.TableRowSorter;
 import static application.modules.client.view.client_view.clientcreated;
 import static application.modules.client.view.new_client_view.client_typelabel;
 import static application.modules.client.view.new_client_view.dischargedatelabel;
+import application.modules.login.controller.login_controller;
+import application.modules.login.view.login_view;
 import javax.swing.JOptionPane;
 
 /**
@@ -453,7 +455,7 @@ public class client_controller implements ActionListener {
             case deleteDataAButton:
                 singleton.pagerC.selectclient();
                 if (singleton.pagerC.getSelected() != null) {
-                    bllC.delete_clientMongo(singleton.clients.getClients().get(Integer.parseInt(singleton.pagerC.getSelected())-1).getDni());
+                    bllC.delete_clientMongo(singleton.clients.getClients().get(Integer.parseInt(singleton.pagerC.getSelected()) - 1).getDni());
                     singleton.clients.deleteData(Integer.parseInt(singleton.pagerC.getSelected()));
                     updatetable();
                     jsonC.createjson_auto();
@@ -600,13 +602,25 @@ public class client_controller implements ActionListener {
                 break;
             //new_client_view form
             case discartButton:
-                client_f.dispose();
-                new client_controller(new client_view(), 0).init("v");
+                if ("client".equals(SingletonF.typeconnected)) {
+                    client_f.dispose();
+                    new login_controller(new login_view()).init();
+                } else {
+                    client_f.dispose();
+                    new client_controller(new client_view(), 0).init("v");
+                }
                 break;
             case emptyButton:
                 break;
             case saveClientButton:
-                if (emptyButton.isVisible()) {
+                if ("client".equals(SingletonF.typeconnected)) {
+                    if (bllC.editClient()) {
+                        client_f.dispose();
+                        new login_controller(new login_view()).init();
+                        jsonC.createjson_auto();
+                        Config_json.create_conf_json();
+                    }
+                } else if (emptyButton.isVisible()) {
                     if (bllC.newClient()) {
                         client_f.dispose();
                         new client_controller(new client_view(), 0).init("v");

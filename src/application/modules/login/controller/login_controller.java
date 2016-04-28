@@ -73,6 +73,7 @@ public class login_controller implements ActionListener {
                 switch(login_view.typecombo.getSelectedIndex()){
                     case 0:
                         SingletonF.typeconnected="client";
+                        bllLogin.sign_in_Cliente();
                         break;
                     case 1:
                         SingletonF.typeconnected="usreg";

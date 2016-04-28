@@ -80,12 +80,12 @@ public class Arraylist_client {
         }
     }
 
-    public void find(int option, String dni) {
+    public client find(int option, String dni) {
         client client1 = new client();
         int times = 0;
 
         switch (option) {
-            case 0://By dni
+            case 0: //By dni
                 client1.setDni(dni);
                 for (int i = 0; i < clients.size(); i++) {
                     if (clients.get(i).equals(client1, 0)) {
@@ -97,7 +97,7 @@ public class Arraylist_client {
                     JOptionPane.showMessageDialog(null, "No clients found");
                 }
                 break;
-            case 1://By name
+            case 1: //By name
                 client1.setName(Functions.validatestring("Type the Name of the user you are looking for", "Search by Name"));
                 for (int i = 0; i < clients.size(); i++) {
                     if (clients.get(i).equals(client1, 1)) {
@@ -109,7 +109,18 @@ public class Arraylist_client {
                     JOptionPane.showMessageDialog(null, "No cliets found");
                 }
                 break;
+            case 2: //By username
+                client1.setUser(dni);
+                for (int i = 0; i < clients.size(); i++) {
+                    if (clients.get(i).equals(client1, 1)) {
+                        JOptionPane.showMessageDialog(null, clients.get(i).toString(SingletonF.configApp));
+                        client1 = clients.get(i);
+                        times++;
+                    }
+                }
+                break;
         }
+        return client1;
     }
 
     public void deleteData(int usertodelete) {

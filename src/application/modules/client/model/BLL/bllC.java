@@ -6,6 +6,7 @@
 package application.modules.client.model.BLL;
 
 import application.models.Dates;
+import application.models.SingletonF;
 import application.modules.users.model.singleton;
 import application.modules.client.controller.client_controller;
 import application.modules.client.model.DAO.daoC;
@@ -118,7 +119,7 @@ public class bllC {
             Dates h = new Dates(singleton.clients.getData(Clienttochange - 1).getDischarge_date());
             dischargedateField.setCalendar(h.DateToCalendar());
             client_typeField.setText(singleton.clients.getData(Clienttochange - 1).getClient_type());
-            shoppingField.setText(singleton.clients.getData(Clienttochange - 1).getShopping()+"");
+            shoppingField.setText(singleton.clients.getData(Clienttochange - 1).getShopping() + "");
             premiumCheckbox.setSelected(singleton.clients.getData(Clienttochange - 1).isPremium());
             try {
                 ImageIcon icon = new ImageIcon(singleton.admins.getData(Clienttochange - 1).getAvatar());
@@ -182,9 +183,9 @@ public class bllC {
             premium = premiumCheckbox.isSelected();
             //"dischargedate","clienttype","yearsservice","shopping","premium"
             bllC.insert_clientMongo(new client(dni, name, subname, phone_number,
-                    email, user, pass, avatar, state, date_birthday,discharge_date,client_type,shopping,premium));
+                    email, user, pass, avatar, state, date_birthday, discharge_date, client_type, shopping, premium));
             singleton.clients.addData(new client(dni, name, subname, phone_number,
-                    email, user, pass, avatar, state, date_birthday,discharge_date,client_type,shopping,premium));
+                    email, user, pass, avatar, state, date_birthday, discharge_date, client_type, shopping, premium));
         } else {
             saveLabel.setVisible(true);
             saveLabel.setText("The client was not created, check the errors in the fields");
@@ -235,23 +236,42 @@ public class bllC {
             Dates date = new Dates("");
             date_birthday = date.DateToString(datebirthdayField.getCalendar(), 0);
             discharge_date = date.DateToString(dischargedateField.getCalendar(), 0);
-            String dniAnterior = singleton.clients.getData(Clienttochange - 1).getDni();
             
-            singleton.clients.getData(Clienttochange - 1).setDni(dni);
-            singleton.clients.getData(Clienttochange - 1).setName(name);
-            singleton.clients.getData(Clienttochange - 1).setSubname(subname);
-            singleton.clients.getData(Clienttochange - 1).setPhone_number(phone_number);
-            singleton.clients.getData(Clienttochange - 1).setEmail(email);
-            singleton.clients.getData(Clienttochange - 1).setUser(user);
-            singleton.clients.getData(Clienttochange - 1).setPass(pass);
-            singleton.clients.getData(Clienttochange - 1).setAvatar(avatar);
-            singleton.clients.getData(Clienttochange - 1).setState(state);
-            singleton.clients.getData(Clienttochange - 1).setDate_birthday(date_birthday);
-            singleton.clients.getData(Clienttochange - 1).setDischarge_date(discharge_date);
-            singleton.clients.getData(Clienttochange - 1).setClient_type(client_typeField.getText());
-            singleton.clients.getData(Clienttochange - 1).setShopping(Float.parseFloat(shoppingField.getText()));
-            singleton.clients.getData(Clienttochange - 1).setPremium(premiumCheckbox.isSelected());
-            bllC.update_clientMongo(dniAnterior,singleton.clients.getData(Clienttochange - 1));
+            if ("client".equals(SingletonF.typeconnected)) {
+                String dniAnterior = singleton.clients.find(2, SingletonF.usernameConnected).getDni();
+                singleton.clients.find(2, SingletonF.usernameConnected).setDni(dni);
+                singleton.clients.find(2, SingletonF.usernameConnected).setName(name);
+                singleton.clients.find(2, SingletonF.usernameConnected).setSubname(subname);
+                singleton.clients.find(2, SingletonF.usernameConnected).setPhone_number(phone_number);
+                singleton.clients.find(2, SingletonF.usernameConnected).setEmail(email);
+                singleton.clients.find(2, SingletonF.usernameConnected).setUser(user);
+                singleton.clients.find(2, SingletonF.usernameConnected).setPass(pass);
+                singleton.clients.find(2, SingletonF.usernameConnected).setAvatar(avatar);
+                singleton.clients.find(2, SingletonF.usernameConnected).setState(state);
+                singleton.clients.find(2, SingletonF.usernameConnected).setDate_birthday(date_birthday);
+                singleton.clients.find(2, SingletonF.usernameConnected).setDischarge_date(discharge_date);
+                singleton.clients.find(2, SingletonF.usernameConnected).setClient_type(client_typeField.getText());
+                singleton.clients.find(2, SingletonF.usernameConnected).setShopping(Float.parseFloat(shoppingField.getText()));
+                singleton.clients.find(2, SingletonF.usernameConnected).setPremium(premiumCheckbox.isSelected());
+                bllC.update_clientMongo(dniAnterior, singleton.clients.find(2, SingletonF.usernameConnected));
+            } else {
+                String dniAnterior = singleton.clients.getData(Clienttochange - 1).getDni();
+                singleton.clients.getData(Clienttochange - 1).setDni(dni);
+                singleton.clients.getData(Clienttochange - 1).setName(name);
+                singleton.clients.getData(Clienttochange - 1).setSubname(subname);
+                singleton.clients.getData(Clienttochange - 1).setPhone_number(phone_number);
+                singleton.clients.getData(Clienttochange - 1).setEmail(email);
+                singleton.clients.getData(Clienttochange - 1).setUser(user);
+                singleton.clients.getData(Clienttochange - 1).setPass(pass);
+                singleton.clients.getData(Clienttochange - 1).setAvatar(avatar);
+                singleton.clients.getData(Clienttochange - 1).setState(state);
+                singleton.clients.getData(Clienttochange - 1).setDate_birthday(date_birthday);
+                singleton.clients.getData(Clienttochange - 1).setDischarge_date(discharge_date);
+                singleton.clients.getData(Clienttochange - 1).setClient_type(client_typeField.getText());
+                singleton.clients.getData(Clienttochange - 1).setShopping(Float.parseFloat(shoppingField.getText()));
+                singleton.clients.getData(Clienttochange - 1).setPremium(premiumCheckbox.isSelected());
+                bllC.update_clientMongo(dniAnterior, singleton.clients.getData(Clienttochange - 1));
+            }
         } else {
             saveLabel.setVisible(true);
             saveLabel.setText("The client was not edited, check the errors in the fields");
@@ -259,21 +279,21 @@ public class bllC {
         }
         return validA;
     }
-    
-    public static void insert_clientMongo(client c){
+
+    public static void insert_clientMongo(client c) {
         daoC.insert_client(c);
     }
-    
-    public static void delete_clientMongo(String dni){
+
+    public static void delete_clientMongo(String dni) {
         daoC.delete_worker(dni);
     }
-    
-    public static void update_clientMongo(String dni, client c){
+
+    public static void update_clientMongo(String dni, client c) {
         daoC.update_worker(dni);
     }
-    
-    public static void retrieve_admins(){
+
+    public static void retrieve_admins() {
         daoC.retrieve_admins();
     }
-    
+
 }

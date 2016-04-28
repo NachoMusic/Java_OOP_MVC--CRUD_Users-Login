@@ -7,6 +7,9 @@ package application.modules.login.model.DAO;
 
 import application.models.Dates;
 import application.models.SingletonF;
+import application.modules.client.controller.client_controller;
+import application.modules.client.model.models.client;
+import application.modules.client.view.new_client_view;
 import static application.modules.login.controller.login_controller.login;
 import application.modules.login.view.login_view;
 import application.modules.menu_config.controller.controller;
@@ -16,6 +19,8 @@ import application.modules.registered.model.models.registered_user;
 import application.modules.registered.view.new_registered_view;
 import static application.modules.registered.view.new_registered_view.*;
 import application.modules.users.model.singleton;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,7 +90,40 @@ public class daoLogin {
 
     public static boolean sign_in_Client() {
         boolean valid = true;
-
+        try{
+            client c = new client();
+            //SingletonF.collection.remove(new BasicDBObject().append("dni", dni));
+            DBCursor cur = SingletonF.collection.find(new BasicDBObject().append("user", login_view.usernameLogin.getText()));
+            BasicDBObject document = (BasicDBObject) cur.next();
+            c = c.DB_to_client(document);
+            if(c.getPass().equals(login_view.passwordLogin.getText())){
+                login.dispose();
+                new client_controller(new new_client_view(), 1).init("f");
+                new_client_view.emptyButton.setVisible(false);
+                new_client_view.saveClientButton.setText("Edit your profile");
+                new_client_view.dniField.setText(c.getDni());
+                new_client_view.nameField.setText(c.getName());
+                new_client_view.subnameField.setText(c.getSubname());
+                new_client_view.phoneField.setText(c.getPhone_number());
+                new_client_view.emailField.setText(c.getEmail());
+                new_client_view.usernameField.setText(c.getUser());
+                new_client_view.passwordField.setText(c.getPass());
+                new_client_view.avatarField.setText(c.getAvatar());
+                new_client_view.statusField.setText(c.getState());
+                Dates b = new Dates(c.getDate_birthday());
+                new_client_view.datebirthdayField.setCalendar(b.DateToCalendar());
+                b = new Dates(c.getDischarge_date());
+                new_client_view.dischargedateField.setCalendar(b.DateToCalendar());
+                new_client_view.client_typeField.setText(c.getClient_type());
+                new_client_view.shoppingField.setText(c.getShopping()+"");
+                new_client_view.premiumCheckbox.setSelected(c.isPremium());
+                new_client_view.discartButton.setText("Sign Out");
+            } else {
+                login_view.wrongpass.setVisible(true);
+            }
+        } catch (Exception e){
+            login_view.wrongpass.setVisible(true);
+        }
         return valid;
     }
 }
