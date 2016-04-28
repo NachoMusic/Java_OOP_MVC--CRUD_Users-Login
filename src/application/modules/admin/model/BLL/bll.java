@@ -8,7 +8,6 @@ package application.modules.admin.model.BLL;
 import application.models.Dates;
 import application.modules.admin.controller.admin_controller;
 import application.modules.admin.model.DAO.dao;
-import application.bbdd.ConexionBD;
 import application.bbdd.pool;
 import application.modules.admin.model.models.admin;
 import application.modules.users.model.singleton;
@@ -100,6 +99,11 @@ public class bll {
         return dao.validateActivity();
     }
 
+    /**
+     * Loads the data of the admin you have to change to the view
+     *
+     * @return boolean, if it loaded the data to the view correctly
+     */
     public static boolean editadmin() {
         boolean validA = false;
         if (singleton.pagerA.getSelected() != null) {
@@ -140,6 +144,11 @@ public class bll {
         return validA;
     }
 
+    /**
+     * Creates a new admin getting the data from the view
+     *
+     * @return boolean, if it was well created
+     */
     public static boolean newAdmin() {
         boolean validA = true;
         String dni, name, subname, phone_number, email, user, pass, avatar,
@@ -194,6 +203,10 @@ public class bll {
         return validA;
     }
 
+    /**
+     * It edites the admin with the data loaded on the view
+     * @return boolean, if it was well edited
+     */
     public static boolean editAdmin() {
         boolean validA = true;
         String dni, name, subname, phone_number, email, user, pass, avatar,
@@ -258,39 +271,45 @@ public class bll {
         }
         return validA;
     }
-
+    
+    /**
+     * 
+     * 
+     * @return boolean, if it was saved correctly
+     * @throws SQLException if anything fails during the connection
+     */
     public static boolean saveadminsBBDD() throws SQLException {
         Connection _con = null;
         boolean valid;
-        
+
         _con = pool.getConexion();
         valid = dao.saveadminsBBDD(_con);
         pool.liberaConexion(_con);
         return valid;
     }
-    
-    public static boolean deleteadminBBDD(){
+
+    public static boolean deleteadminBBDD() {
         Connection _con = null;
-        boolean valid=true;
+        boolean valid = true;
 
         _con = pool.getConexion();
-        valid=dao.deleteadminBBDD(_con);
+        valid = dao.deleteadminBBDD(_con);
         pool.liberaConexion(_con);
         return valid;
     }
 
-    public static boolean createadminBBDD(){
-        boolean valid=true;
+    public static boolean createadminBBDD() {
+        boolean valid = true;
         Connection _con = null;
 
         _con = pool.getConexion();
-        valid=dao.createadminBBDD(_con);
+        valid = dao.createadminBBDD(_con);
         pool.liberaConexion(_con);
         return valid;
     }
-    
-    public static boolean editadminBBDD(){
-        boolean valid=true;
+
+    public static boolean editadminBBDD() {
+        boolean valid = true;
         Connection _con = null;
         _con = pool.getConexion();
         dao.editadminBBDD(_con);
@@ -298,9 +317,9 @@ public class bll {
 
         return valid;
     }
-    
-    public static boolean readadminsBBDD(){
-        boolean valid=true;
+
+    public static boolean readadminsBBDD() {
+        boolean valid = true;
         Connection _con = null;
 
         _con = pool.getConexion();
@@ -309,5 +328,5 @@ public class bll {
 
         return valid;
     }
-    
+
 }

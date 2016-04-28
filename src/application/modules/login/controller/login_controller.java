@@ -80,8 +80,9 @@ public class login_controller implements ActionListener {
                         break;
                     case 2:
                         SingletonF.typeconnected="admin";
-                        login.dispose();
-                        new controller(new app_view(),0).init("menu");
+                        bllLogin.sign_in_Admin();
+                        //login.dispose();
+                        //new controller(new app_view(),0).init("menu");
                         break;
                 }
                 break;

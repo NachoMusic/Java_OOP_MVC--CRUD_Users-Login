@@ -5,7 +5,9 @@
  */
 package application.modules.login.model.BLL;
 
+import application.bbdd.pool;
 import application.modules.login.model.DAO.daoLogin;
+import java.sql.Connection;
 
 /**
  *
@@ -13,10 +15,19 @@ import application.modules.login.model.DAO.daoLogin;
  */
 public class bllLogin {
     public static boolean sign_in_Admin() {
-        return daoLogin.sign_in_Admin();
+        boolean valid = true;
+        Connection _con = null;
+        _con = pool.getConexion();
+        daoLogin.sign_in_Admin(_con);
+        pool.liberaConexion(_con);
+        return valid;
     }
     
     public static boolean sign_in_Usreg() {
         return daoLogin.sign_in_Usreg();
+    }
+    
+    public static boolean sign_in_Cliente() {
+        return daoLogin.sign_in_Client();
     }
 }

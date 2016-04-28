@@ -9,11 +9,18 @@ import application.models.Dates;
 import application.models.SingletonF;
 import static application.modules.login.controller.login_controller.login;
 import application.modules.login.view.login_view;
+import application.modules.menu_config.controller.controller;
+import application.modules.menu_config.view.app_view;
 import application.modules.registered.controller.registered_controller;
 import application.modules.registered.model.models.registered_user;
 import application.modules.registered.view.new_registered_view;
 import static application.modules.registered.view.new_registered_view.*;
 import application.modules.users.model.singleton;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,9 +28,25 @@ import application.modules.users.model.singleton;
  */
 public class daoLogin {
 
-    public static boolean sign_in_Admin() {
+    public static boolean sign_in_Admin(Connection _con) {
         boolean valid = true;
-
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = _con.prepareStatement("SELECT * FROM admins WHERE user ='" + login_view.usernameLogin.getText() + "'");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                if (rs.getString("pass").equals(login_view.passwordLogin.getText())) {
+                    new controller(new app_view(), 0).init("menu");
+                    login.dispose();
+                } else {
+                    login_view.wrongpass.setVisible(true);
+                }
+                valid = true;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ha habido un problema al leer los admins");
+        }
         return valid;
     }
 
@@ -49,10 +72,16 @@ public class daoLogin {
             activityField.setText(usreg.getActivity() + "");
             login.dispose();
             discartButton.setText("Sign Out");
-            SingletonF.usernameConnected=usreg.getUser();
+            SingletonF.usernameConnected = usreg.getUser();
         } else {
             login_view.wrongpass.setVisible(true);
         }
+        return valid;
+    }
+
+    public static boolean sign_in_Client() {
+        boolean valid = true;
+
         return valid;
     }
 }
