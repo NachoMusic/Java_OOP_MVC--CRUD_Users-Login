@@ -143,6 +143,10 @@ public class admin extends users implements Serializable{
 		Dates date1 = new Dates(date);
 		return date1.timeBetweetDates(date1.DateToCalendar(), date1.SystemDate(), 1);
 	}
+        /**
+         * Transforms the currency changing the value and the character
+         * @param monedaAnterior the previous currency
+         */
 	public void changeCurrency(char monedaAnterior){
 		float test;
 		//1� = 1,09321$ = 0,726888�

@@ -238,7 +238,6 @@ public class bllC {
             
             if ("client".equals(SingletonF.typeconnected)) {
                 String dniAnterior = singleton.clients.find(2, SingletonF.usernameConnected).getDni();
-                System.out.println(singleton.clients.find(2, SingletonF.usernameConnected).getDni());
                 singleton.clients.find(2, SingletonF.usernameConnected).setDni(dni);
                 singleton.clients.find(2, SingletonF.usernameConnected).setName(name);
                 singleton.clients.find(2, SingletonF.usernameConnected).setSubname(subname);

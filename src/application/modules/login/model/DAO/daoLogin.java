@@ -37,7 +37,7 @@ public class daoLogin {
      * with the admins from the database mysql
      * 
      * @param _con The connection given by the bll
-     * @return true if it is well done
+     * @return true if it was well done
      */
     public static boolean sign_in_Admin(Connection _con) {
         boolean valid = true;

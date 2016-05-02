@@ -5,7 +5,6 @@ import javax.swing.JOptionPane;
 import application.modules.admin.model.DAO.functions_users;
 import application.modules.admin.model.models.admin;
 import application.modules.registered.model.models.registered_user;
-import application.modules.users.model.singleton;
 import application.utils.Functions;
 
 public class Arraylist_registered_user {

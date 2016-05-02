@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
+ * Pager del jtable de admins
  *
  * @author nacho
  */
@@ -109,8 +110,8 @@ public class Pager {
 
     public void printadmins(int i) {
         String dateBirthday = "", hiringDate = "", day = "", month = "", year = "",
-                day2 = "", month2 = "", year2 = "", salary="";
-        
+                day2 = "", month2 = "", year2 = "", salary = "";
+
         dateBirthday = singleton.admins.getData(i).getDate_birthday();
         hiringDate = singleton.admins.getData(i).getHirin_date();
         day += dateBirthday.charAt(0) + "";
@@ -143,16 +144,16 @@ public class Pager {
                 hiringDate = year2 + "-" + month2 + "-" + day2;
                 break;
         }
-        salary=singleton.admins.getData(i).getSalary()+"";
-        switch(SingletonF.configApp.getDecimals_config()){
+        salary = singleton.admins.getData(i).getSalary() + "";
+        switch (SingletonF.configApp.getDecimals_config()) {
             case 1:
-                salary+="€";
+                salary += "€";
                 break;
             case 2:
-                salary+="$";
+                salary += "$";
                 break;
             case 3:
-                salary+="£";
+                salary += "£";
                 break;
         }
         model.insertRow(model.getRowCount(), new Object[]{i + 1, singleton.admins.getData(i).getDni(),
@@ -200,7 +201,7 @@ public class Pager {
         }
     }
 
-    public void pagenum() {//aun en pruebas
+    public void pagenum() {
         int num = (int) ((maxpage / (movepage)) + 1), num1 = 1, num2 = 2, num3 = 3, num4 = 4, num5 = 5, num6 = 6, num7 = 7;
         if (num > 7) {
             if (selectedpage > 3) {
@@ -258,6 +259,9 @@ public class Pager {
         }
     }
 
+    /**
+     * Selects the admin from the table and shows it in the form view.
+     */
     public void selectadmin() {
         selected = String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 0));
         dniform.setText(String.valueOf(model.getValueAt(adminstable.getSelectedRow(), 1)));

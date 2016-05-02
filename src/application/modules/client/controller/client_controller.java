@@ -615,7 +615,6 @@ public class client_controller implements ActionListener {
             case saveClientButton:
                 if ("client".equals(SingletonF.typeconnected)) {
                     if (bllC.editClient()) {
-                        System.out.println("fuera");
                         client_f.dispose();
                         new login_controller(new login_view()).init();
                         jsonC.createjson_auto();

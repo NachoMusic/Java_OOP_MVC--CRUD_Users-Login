@@ -14,11 +14,16 @@ import java.sql.Connection;
  * @author nacho
  */
 public class bllLogin {
+    /**
+     * Gives the connection to the dao
+     * 
+     * @return valid if it worked 
+     */
     public static boolean sign_in_Admin() {
         boolean valid = true;
         Connection _con = null;
         _con = pool.getConexion();
-        daoLogin.sign_in_Admin(_con);
+        valid=daoLogin.sign_in_Admin(_con);
         pool.liberaConexion(_con);
         return valid;
     }
