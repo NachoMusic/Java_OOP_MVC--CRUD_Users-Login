@@ -32,7 +32,13 @@ import javax.swing.JOptionPane;
  * @author nacho
  */
 public class daoLogin {
-
+    /**
+     * Tries to sign in with a username and a password from the view comparing it
+     * with the admins from the database mysql
+     * 
+     * @param _con The connection given by the bll
+     * @return true if it is well done
+     */
     public static boolean sign_in_Admin(Connection _con) {
         boolean valid = true;
         PreparedStatement stmt = null;
@@ -51,10 +57,16 @@ public class daoLogin {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ha habido un problema al leer los admins");
+            valid=false;
         }
         return valid;
     }
-
+    /**
+     * Tries to sign in with a username and a password from the view comparing it
+     * with the registered users from the arraylist of the files
+     * 
+     * @return true, if it was well done
+     */
     public static boolean sign_in_Usreg() {
         boolean valid = true;
         try {
@@ -81,22 +93,28 @@ public class daoLogin {
                 SingletonF.usernameConnected = usreg.getUser();
             } else {
                 login_view.wrongpass.setVisible(true);
+                valid=false;
             }
         } catch(Exception e) {
             login_view.wrongpass.setVisible(true);
+            valid=false;
         }
         return valid;
     }
-
+    /**
+     * Tries to sign in with a username and a password from the view comparing it
+     * with the clients from the database mongo
+     * @return true, if it was well done
+     */
     public static boolean sign_in_Client() {
         boolean valid = true;
         try{
             client c = new client();
-            //SingletonF.collection.remove(new BasicDBObject().append("dni", dni));
             DBCursor cur = SingletonF.collection.find(new BasicDBObject().append("user", login_view.usernameLogin.getText()));
             BasicDBObject document = (BasicDBObject) cur.next();
             c = c.DB_to_client(document);
             if(c.getPass().equals(login_view.passwordLogin.getText())){
+                SingletonF.usernameConnected=login_view.usernameLogin.getText();
                 login.dispose();
                 new client_controller(new new_client_view(), 1).init("f");
                 new_client_view.emptyButton.setVisible(false);
@@ -120,9 +138,11 @@ public class daoLogin {
                 new_client_view.discartButton.setText("Sign Out");
             } else {
                 login_view.wrongpass.setVisible(true);
+                valid=false;
             }
         } catch (Exception e){
             login_view.wrongpass.setVisible(true);
+            valid=false;
         }
         return valid;
     }

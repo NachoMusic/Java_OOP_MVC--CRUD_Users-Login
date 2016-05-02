@@ -6,7 +6,7 @@ public class Menus {
 	//Menu
 	public static int menu(String []v, String message, String title){
 		int op=0;
-		//String[] vec = { "suma","resta","producto","división" };
+		//String[] vec = { "suma","resta","producto","division" };
 		op = JOptionPane.showOptionDialog(null,
 						message,title,0,
 						JOptionPane.QUESTION_MESSAGE,null,v,v[0]);

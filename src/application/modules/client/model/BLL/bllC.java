@@ -181,7 +181,6 @@ public class bllC {
             client_type = client_typeField.getText();
             shopping = Float.parseFloat(shoppingField.getText());
             premium = premiumCheckbox.isSelected();
-            //"dischargedate","clienttype","yearsservice","shopping","premium"
             bllC.insert_clientMongo(new client(dni, name, subname, phone_number,
                     email, user, pass, avatar, state, date_birthday, discharge_date, client_type, shopping, premium));
             singleton.clients.addData(new client(dni, name, subname, phone_number,
@@ -206,13 +205,13 @@ public class bllC {
                 && validateStatus() && validateBirthday() && validateDischargedate()
                 && validateClient_type() && validateShopping()) {
             validA = true;
-            dni = dniField.getText();
-            name = nameField.getText();
-            subname = subnameField.getText();
-            phone_number = phoneField.getText();
-            email = emailField.getText();
-            user = usernameField.getText();
-            pass = passwordField.getText();
+            dni = new_client_view.dniField.getText();
+            name = new_client_view.nameField.getText();
+            subname = new_client_view.subnameField.getText();
+            phone_number = new_client_view.phoneField.getText();
+            email = new_client_view.emailField.getText();
+            user = new_client_view.usernameField.getText();
+            pass = new_client_view.passwordField.getText();
             try {
                 File origen = new File(avatarField.getText());
                 File destino = new File("src/application/modules/admin/view/img/" + dniField.getText());
@@ -239,6 +238,7 @@ public class bllC {
             
             if ("client".equals(SingletonF.typeconnected)) {
                 String dniAnterior = singleton.clients.find(2, SingletonF.usernameConnected).getDni();
+                System.out.println(singleton.clients.find(2, SingletonF.usernameConnected).getDni());
                 singleton.clients.find(2, SingletonF.usernameConnected).setDni(dni);
                 singleton.clients.find(2, SingletonF.usernameConnected).setName(name);
                 singleton.clients.find(2, SingletonF.usernameConnected).setSubname(subname);

@@ -8,8 +8,6 @@ package application.modules.login.controller;
 import application.models.SingletonF;
 import application.modules.login.model.BLL.bllLogin;
 import application.modules.login.view.login_view;
-import application.modules.menu_config.controller.controller;
-import application.modules.menu_config.view.app_view;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

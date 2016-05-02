@@ -15,9 +15,11 @@ public class Arraylist_client {
     public Arraylist_client() {
         //constructor
     }
+
     public ArrayList<client> getClients() {
         return clients;
     }
+
     public void addData(client a) {
         client client1 = a;
         boolean action = true;
@@ -38,11 +40,11 @@ public class Arraylist_client {
     public client getData(int num) {
         return clients.get(num);
     }
-    
+
     public int size() {
         return clients.size();
     }
-    
+
     public void changeData() {
         try {
             int action = 0;
@@ -112,8 +114,7 @@ public class Arraylist_client {
             case 2: //By username
                 client1.setUser(dni);
                 for (int i = 0; i < clients.size(); i++) {
-                    if (clients.get(i).equals(client1, 1)) {
-                        JOptionPane.showMessageDialog(null, clients.get(i).toString(SingletonF.configApp));
+                    if (clients.get(i).equals(client1, 2)) {
                         client1 = clients.get(i);
                         times++;
                     }
